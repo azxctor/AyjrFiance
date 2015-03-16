@@ -1,0 +1,72 @@
+<link href="$link.contextPath/assets/css/page/packet/report_common.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/member_deposit_search.js"></script>
+<div id="search">
+	<form id="member-deposit-search" action="">
+		<div class="row">
+			<div class="col-sm-2">
+				<label>类型</label>
+				<select class="form-control" name="rechargeWithdrawFlag">
+					#foreach($!chargeType in $!chargeTypeList )
+						<option value=$!{chargeType.code}>$!{chargeType.text}</option>
+					#end
+				</select>
+			</div>
+			<!--<div class="col-sm-2">
+				<label>签约会员</label>
+				<select class="form-control" name="isSign">
+					<option value="">全部</option>
+					<option value="Y">是</option>
+					<option value="N">否</option>
+				</select>
+			</div>-->
+			<div class="col-sm-2">
+				<label>渠道</label>
+				<select class="form-control" name="fundChannel">
+					#foreach($!channel in $!channelList)
+						<option value=$!{channel.code}>$!{channel.text}</option>
+					#end
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label>起止日期</label>
+				<div class="input-group">
+					<input class="form-control" id="search-start-date" name="startDate" value="$!{selectDate}">
+					<span class="input-group-addon">
+						<i class="fa fa-calendar"></i>
+					</span>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<label class="auto-width">&nbsp;</label>
+				<div class="input-group">
+					<input class="form-control" id="search-end-date" name="endDate" value="$!{selectDate}">
+					<span class="input-group-addon">
+						<i class="fa fa-calendar"></i>
+					</span>
+				</div>
+			</div>
+			<!-- <div class="text-right">
+				<a class="btn btn-mf-primary" id="member_deposit_btn">
+					<i class="fa fa-search"></i>&nbsp;查询
+				</a>
+			</div> -->
+		</div>
+		<div class="row mt10">
+			<div class="col-sm-3">
+				<label>关键字</label>
+				<input class="form-control" name="keyWord" placeholder="输入用户名、交易账号进行查询...">
+			</div>
+			<div class="col-sm-1">
+				<label class="auto-width">&nbsp;</label>
+				<a class="btn btn-mf-primary" id="member_deposit_btn">
+					<i class="fa fa-search"></i>&nbsp;查询
+				</a>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="member-frame" class="kmfex-frame" scrolling="no"></iframe>
+	<iframe  width="100%" id="member-frame-fundChannel" class="kmfex-frame" scrolling="no"></iframe>
+</div>																
+

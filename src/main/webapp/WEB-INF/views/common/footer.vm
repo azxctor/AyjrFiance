@@ -1,0 +1,21 @@
+<link href="$link.contextPath/assets/css/module/webfont/notice.css" rel="stylesheet">
+   <div class="noticeShow" id="noticeContent" style="display:none;">
+			<div id="demoNotice">
+				<div id="indemo">
+					<div id="demo1Notice">
+						<ul id='noticeContentList1'> 
+							<li >  
+							</li> 
+						</ul>
+					</div>
+					<div id="demo2Notice"> 
+					</div>
+				</div>
+			</div>
+			<div class="but">
+				<div id="butstop"></div>
+				<div id="butstart" style="display:none;"></div>
+			</div>
+  </div>
+<script type="text/javascript" src="$link.contextPath/assets/js/page/notice/move.js"></script>
+ 

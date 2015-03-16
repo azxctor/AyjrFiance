@@ -1,0 +1,22 @@
+#set($emptyBody=true)
+#set($layout = "common/simple_layout.vm")
+<link href="$link.contextPath/assets/css/page/escrow/recharge_accomplish.css" rel="stylesheet" />
+<script src="$link.contextPath/assets/js/page/escrow/recharge_accomplish.js" type="text/javascript"></script>	
+<div class="container">
+    <div class="row div-recharge">
+        <div class="col-sm-12 font-one">
+            <h2><i class="fa fa-check-circle"></i>充值成功！</h2>
+		</div>
+        <div class="col-sm-12 font-two">
+			已交由第三方托管系统处理。
+		</div>
+        <div class="col-sm-12">
+			<div class="recharge-btn">
+				<!--<input type=button value="关闭" onclick="window.close()">-->
+                <button class="btn btn-default rec-success" onClick="recharge_colse()">确定</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+<div class="rec-foot"></div>

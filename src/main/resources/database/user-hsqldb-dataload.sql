@@ -1,0 +1,12 @@
+INSERT INTO U001 VALUES('HT001','zhangsan@sina.com','san','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'M', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT002','wuming@sina.com','ming','wu', 'zhejiang-hangzhou-xihu', '310000', 'CN', '18812345678', 'F', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT003','liudehua@sina.com','dehua','liu', 'HK', '3100XX', 'CN', '10086', 'M', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT004','asdf@sina.com','afas','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'F', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT005','fff@sina.com','ffff','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'M', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT006','eee@sina.com','eee','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'F', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT007','dddd@sina.com','dd','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'M', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT008','tttt@sina.com','tt','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'F', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT009','ggggg@sina.com','gg','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'M', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT0010','kkkkk@sina.com','kkk','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'M', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT0011','nnnn@sina.com','nnnnn','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'F', 'abcd1234', 0, null);
+INSERT INTO U001 VALUES('HT0012','mmmm@sina.com','mmmm','zhang', 'zhejiang-hangzhou-xihu', '310000', 'CN', '10086', 'M', 'abcd1234', 0, null);

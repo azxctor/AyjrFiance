@@ -1,0 +1,102 @@
+#set($layout = "common/signinLayout.vm")  
+<script src="$link.contextPath/assets/js/page/member/registration.js" type="text/javascript"></script>	
+<input type="hidden" id="is_sms_check_enabled" value="$!{isSmsCheckEnabled}"/>
+			<div class="row pd">
+			  <div class="col-md-6 col-sm-4">
+					<!--<h1 class="big-title">全国首家</h1>
+                    <h2 class="sub-title"> <span class="high-light">政府监管</span>银行支撑的</h2>
+        			<h2 class="sub-title">小微金融要素交易市场</h3>
+                    <h2 class="sub-title mt fs-num">8%-15%</h3>
+                    <h2 class="sub-title"><span class="year-rate">预期年化收益率</span></h3>	-->
+					<h1 class="big-title signin-h1-font">政府监管/第三方资金托管的</h1>
+					<h2 class="sub-title signin-h2-font">互联网金融阳光交易平台</h2>
+					<h3 class="sub-title signin-h3-font">预期年化收益率<span class="mt pers-font ">10%-20%</span></h3>
+					<div class="go-exp-wrapper">
+						<button type="button" class="btn btn-default go-exp  btn-lg hide">立即体验<span style="margin-left:40px"><i class="fa fa-angle-right"></i></span></button>
+					</div>
+			  </div>
+  			  <div class="col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-1">
+  			  	  <div class="main-wrapper">
+	  			  		<div class="main">
+	  			  			<h3>立即注册</h3>
+	  			  			 <form id="register-form" role="form" method="POST" 
+								action="$link.contextPath/web/members/register">
+								 	  <div class="form-item">
+    									  <div class="input-group has-feedback">
+    										  <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+    										  <input type="text" class="form-control" name="username" data-validate="{required:true,stringMinLength:4,stringMaxLength:15}" maxlength="15" placeholder="用户名"/>
+    									  </div>
+                                      </div>
+									  
+									  <div class="form-item">
+    								 	  <div class="input-group  has-feedback">
+    										  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+    										  <input type="password" class="form-control" id="password" name="password" data-validate="{required:true,minlength:1}" maxlength="20" placeholder="密码"/>
+    									  </div>	
+                                      </div>
+									  
+									  <div class="form-item">
+    									  <div class="input-group has-feedback">
+    										  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+    										  <input type="password" class="form-control" name="passwordConfirm" data-validate="{required:true,minlength:1,equalTo:'#password'}" maxlength="20" placeholder="再次输入密码"/>
+    									  </div>
+                                      </div>	  
+									  
+									  <div class="form-item">
+    									  <div class="input-group has-feedback">
+    										  <span class="input-group-addon"><i class="fa fa-mobile"></i> </span>
+    										  <input type="text" class="form-control" name="mobile" data-validate="{required:true,mobilezh:true}" maxlength="11" placeholder="手机"/>
+    									  </div>
+                                      </div>
+									  
+				#*					  <div class="form-item">
+    									  <div class="input-group  has-feedback  email-reszie">
+    										  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+    										  <input type="text" class="form-control" name="email" data-validate="{email:true}" maxlength="100" placeholder="邮箱"/>
+    									  </div>
+                                      </div>
+				*#					  
+									 <div class="form-item">
+    								 	  <div class="row  has-feedback ">
+    										<div class="col-xs-8">
+    											<div class="form-group has-feedback">
+    												<input type="text" class="form-control yzm-input" name="captcha" data-validate="{required:true}" maxlength="8"  placeholder="验证码"/>
+    								        	</div>
+    								        </div>
+    								        <div class="col-xs-4">
+    								        	<img  id="captcha-img" class="img-responsive yzm-img"  style="cursor:pointer;" ></img>
+    								        </div>
+    									</div>
+                                     </div>	
+                                     
+									 <div class="form-item mobile-check-item">
+    								 	  <div class="row  has-feedback mobile-check-code">
+    										<div class="col-xs-6">
+    											<div class="form-group has-feedback">
+    												<input type="text" class="form-control" name="code"  data-validate="{required:true}" maxlength="100"  placeholder="手机验证码"/>
+    								        	</div>
+    								        </div>
+    								        <div class="col-xs-6">
+    								        	 <a class="btn btn-default ui-button" id="captcha-link" disabled>获取手机验证码</a>
+    								        </div>
+    									</div>
+                                     </div>       
+							
+								    <div class="form-btn-wrapper">
+								      	  <button type="submit" disabled class="btn btn-default ui-button" id="reg-btn">注册</button>
+								   	  	  <p class="ui-form-other" style="display:none;" >
+                                          		<input type="checkbox" id="agg-check" data-ignore="true" name="agg-check" checked />
+                                          		<span class="aggrement">&nbsp;&nbsp;同意<a href="#" class="protocol">注册协议</a>及<a href="#" class="protocol">投资咨询与管理服务协议</a></span>
+                            			  </p>
+										  <br />
+										  <a href="$link.contextPath/web/members/signin" >返回登录页</a>
+										  <br/>
+										  <a href="$link.contextPath/web/agency/register">机构注册</a>
+								    </div>
+								</form>
+	  			  		</div>
+  			  	   </div>
+  			  </div>
+		    </div>
+
+

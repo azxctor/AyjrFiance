@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tool="http://www.springframework.org/schema/tool"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+	   http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
+	   http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd   
+       http://www.springframework.org/schema/tool 
+       http://www.springframework.org/schema/tool/spring-tool-3.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- <mvc:annotation-driven /> -->
+	<context:component-scan base-package="com.hengxin.platform">
+		<context:exclude-filter type="regex"
+			expression=".*\.[^.]*Controller" />
+		<context:exclude-filter type="regex"
+			expression=".*\.[^.]*MenuUtil" />
+	</context:component-scan>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="fileEncodings" value="UTF-8" />
+		<property name="cacheSeconds" value="1" />
+		<property name="basenames">
+			<list>
+				<value>classpath:messages/error</value>
+				<value>classpath:messages/message</value>
+				<value>classpath:todomessage</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="appConfig"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="fileEncodings" value="UTF-8" />
+		<property name="cacheSeconds" value="1" />
+		<property name="basenames">
+			<list>
+				<value>classpath:app-config</value>
+				<value>classpath:env/env-var</value>
+			</list>
+		</property>
+	</bean>
+	<!-- jbpm available -->
+	<bean id="extendJbpmService" class="com.hengxin.platform.common.service.ExtendJbpmService">
+		<property name="available" value="false" />
+	</bean>
+	
+	<bean id="userTransferServiceImpl"
+				class="com.hengxin.platform.fund.webservice.impl.UserTransferServiceImpl" />
+	
+	
+	<context:annotation-config />
+	<aop:aspectj-autoproxy />
+</beans>

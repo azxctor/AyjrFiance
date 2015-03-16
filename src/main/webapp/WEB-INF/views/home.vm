@@ -1,0 +1,6 @@
+#set( $layout = "common/emptyLayout.vm" )
+welcome! 
+
+#foreach( $user in $users )
+$!user.username ,
+#end

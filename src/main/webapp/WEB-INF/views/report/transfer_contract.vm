@@ -1,0 +1,117 @@
+#set($layout = "common/emptyLayout.vm")
+<html>
+	<head>
+	        <link href="/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">  
+		   <link href="$link.contextPath/assets/css/page/report/report_contract.css" rel="stylesheet">
+			 <script type="text/javascript" src="$link.contextPath/assets/vendor/jquery/jquery-1.11.0.min.js"></script>
+			<script>
+			 $(function(){
+				$("#printBtn").click(function(){
+					$("#printBtn").hide();
+					$("body").css({"padding-top":"0px"}); 
+					print(); 
+				}); 
+			});
+		</script>
+</head>
+	
+	<body>
+		<div class="wrapper">
+            <h2 class="text-center">债权转让协议</h2>  <button type="button" class="btn btn-mf-primary " id="printBtn">打印协议</button> 
+            <p class="text-right">协议编号：$!contract.id</p>   
+			
+            <h3>甲方（债权出让方）：$!contract.sellerName</h3>
+            <h3>乙方（债权受让方）：$!contract.buyerName</h3>
+            <h3>丙方（债权转让服务人）：云南安益互联网金融交易服务公司</h3>
+			
+			<p class="text-indent">
+				鉴于，甲乙双方是丙方的注册会员，甲方持有通过丙方平台投资的债权，甲方希望将该债权转让给乙方，乙方愿意通过丙方平台购买甲方转让的债权，丙方则依法获得云南省人民政府金融办公室支持开展“民间资金网络借贷及转让、网络金融中介业务”，取得相应的营业执照，具有阳光、规范、安全交易服务的完善机制，帮助交易双方放心投融资。为此，本合同三方根据我国《民法通则》、《合同法》、民间借贷政策法规、金融管理法规等相关法律法规，在自愿、平等、协商一致的基础上，签订本合同，各方信守。
+            </p>
+			<p class="text-indent">
+				<span class="text-bold">第一条</span> 甲方转让的债权是甲方通过丙方平台投资获得，并在丙方平台登记备案的权益（以下简称“该债权”），相关信息如下：
+                <p class="text-indent-mul">1. 该债权在丙方平台的编号为：$!contract.pkgId；借款人（债务人）为：$!contract.financierName</p>
+                <p class="text-indent-mul">2. 该债权对应的借款合同（以下简称：主合同）的合同编号为：$!contract.loanContractId</p>
+                <p class="text-indent-mul">3. 该债权借款到期日为：$!contract.lastPayDate。</p>
+                <p class="text-indent-mul">4. 该债权尚未归还的本息合计为：$!contract.remainAmount元（大写：$!contract.remainAmountRMB）。</p>
+			</p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第二条</span>
+				甲乙双方约定的债权转让价款为：$!contract.price元（大写：$!contract.priceRMB）。
+	甲方保证：该债权是甲方已经正确履行主合同约定的全部义务而取得的债权；如果该债权存在瑕疵导致某种义务和风险，则全部由甲方承担和解决。
+            </p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第三条</span>
+			甲乙双方各自分别按照上述转让价款金额的   $!contract.feeRate%向丙方支付债权转让服务费。
+            </p>
+			
+			<p>
+				甲乙双方同意丙方直接从甲乙双方在丙方设立的交易账户中扣收本服务费，此项服务费不予退还。
+            </p>	
+			
+			<p class="text-indent">
+                <span class="text-bold">第四条</span>
+			本协议签订当日，该债权从甲方交易账户转让至乙方交易账户，转让价款金额从乙方交易账户划转至甲方交易账户。同时，依照主合同约定甲方享有的所有权利无条件转移到乙方。乙方、丙方承诺遵守并履行主合同的各项约定。
+            </p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第五条</span>
+			  如果该债权转让涉及缴纳法定税金，并且税收法律规定和税务机关责令丙方代扣代缴税金，出让方授权丙方代扣代缴税金；否则丙方无权也无义务代扣代缴税金。
+            </p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第六条</span>
+			      在本协议履行过程中发生的纠纷，各方应友好协商解决；协商不成的，提交丙方所在地有管辖权的人民法院处理。
+            </p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第七条</span>
+			      本协议为电子协议，由丙方在电子平台发布，该发布是签订协议的邀约，经甲乙双方以会员账号登录丙方电子平台进行确认（电子签署）后立即生效，电子签署的日期和时间，即是本协议成立和签订的时间，与纸质合同具同等法律效力。必要时，三方可打印本电子协议为纸质文件签字盖章，自己备查或者办理公证、银行事务等。本协议有效期至主合同履行完毕为止。
+            </p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第八条</span>
+			       若因公证、法律诉讼等原因需要本协议纸质文本打印、复印件时，该打印、复印件上需加盖丙方行政公章方有效。
+            </p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第九条</span>
+			       本协议所载的“交易账户”为甲/乙方申请成为丙方会员后，在丙方电子平台设立开通的用于投资/借款及相关款项划转的账户，详细内容见甲/乙方各自与丙方签订的《会员协议》。
+            </p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第十条</span>
+			       本协议所载的“会员账号”为甲/乙双方成为丙方会员后丙方为其分配的会员代码同时也是其在丙方电子平台交易账户的账号，详见甲/乙双方各自与丙方签订的《会员协议》。
+            </p>
+			
+			<p class="text-indent">
+                <span class="text-bold">第十一条</span>
+			      甲/乙双方各自与丙方签订的《会员协议》中涉及借款事宜的条款与本协议无冲突的，按《会员协议》的约定执行。
+            </p>
+			
+			<p class="text-indent">
+				甲方会员编号：$!contract.sellerAcctNo
+            </p>
+			<p class="text-indent">
+				签署时间：$!contract.signTimestamp
+            </p>
+			
+			<p class="text-indent">
+				乙方会员编号：$!contract.buyerAcctNo
+            </p>
+			<p class="text-indent">
+				签署时间：$!contract.signTimestamp
+            </p>
+			<p class="text-indent">
+				丙方：云南安益互联网金融交易服务公司
+            </p>	
+			<p class="text-indent">
+				法定代表人：吴克飞
+            </p>
+			<p class="text-indent">
+				电子协议发布时间：$!contract.createTimestamp
+            </p>
+        </div>	
+    </body>	
+</html>	

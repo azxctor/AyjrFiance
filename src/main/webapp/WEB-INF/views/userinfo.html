@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><html class="no-js"> <![endif]-->
+<!--[if !IE]>--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Micro Finance</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <!-- Bootstrap core CSS -->
+    	<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="vendor/jquery.spinner/bootstrap-spinner.css" rel="stylesheet">
+        <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="vendor/pnotify/jquery.pnotify.default.css" rel="stylesheet">
+        <link href="vendor/pnotify/jquery.pnotify.default.icons.css" rel="stylesheet">
+        <link href="css/common.css" rel="stylesheet">
+        <link href="css/plugins.css" rel="stylesheet">
+        
+    	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!--[if lt IE 9]>
+	    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	    <script type="text/javascript" src="js/require.js"></script>
+    	<!-- Global variable module which will take variables from sever side -->
+    	<script type="text/javascript">
+	       define('global', {
+	            context: ''
+	        });
+    	</script>
+    	<script type="text/javascript" src="js/base.js"></script>
+    </head>
+    <body>
+    	<header>
+    		<div class="container">
+    			<div class="row">
+				  <div class="col-md-4" id="logo">昆明小微企业金融<br>交易服务有限公司</div>
+				  <div class="col-md-4" id="datetime"> 
+							<div id="time">15:34</div>
+							<div id="date">07-15</div>
+							<div id="dayofweek">SUN</div>
+				  </div>
+				  <div class="col-md-4">Nick Jones 退出</div>
+				</div>
+    		</div>
+    	</header>
+		<div class="container">
+			<div class="col-md-10">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				  <i class="fa fa-user fa-2x pull-left"></i>
+				  <ol class="breadcrumb">
+					  <li><a href="#">会员注册</a></li>
+					  <li class="active">信息补入</li>
+				  </ol>
+				  </div>
+				  <div class="panel-body">
+				    <ul class="nav nav-tabs" id="usertype">
+  						<li><a href="#person" data-toggle="tab">个人</a></li>
+  						<li><a href="#organization" data-toggle="tab">机构</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane fade" id="person" >
+							<form class="form-horizontal" role="form">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">会员类型</label>
+									    <div class="col-sm-8">
+									      <select class="form-control" id="person-type">
+									      	<option value="investor">投资方</option>
+									      	<option value="financier">融资方</option>
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">姓名</label>
+									    <div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">性别</label>
+									  	<div class="col-sm-8">
+									    	 <select class="form-control">
+									    	 	<option>男</option>
+									    	 	<option>女</option>
+									    	 </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">手机</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">座机</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">出生年月</label>
+									    <div class="col-sm-4">
+									    	<select class="form-control"></select>
+									    </div>
+									    <div class="col-sm-2">
+									    	<select class="form-control"></select>
+									    </div>
+									    <div class="col-sm-2">
+									    	<select class="form-control"></select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">所在区域</label>
+									    <div class="col-sm-8">
+									    	 <select class="form-control"></select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">邮编</label>
+									  	<div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">住址</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">常住地址</label>
+									  	<div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">身份证号</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+								</div>
+								 <div class="col-sm-6">
+									 <div class="form-group">
+										    <label  class="col-sm-4 control-label">身份证正面扫描图</label>
+										    <div class="col-sm-8">
+										    	<input type="file"  class="form-control">
+										    </div>
+										</div>
+										<div class="form-group">
+										    <label  class="col-sm-4 control-label">身份证反面扫描图</label>
+										    <div class="col-sm-8">
+										    	<input type="file"  class="form-control">
+										    </div>
+										</div>
+								 	<div class="form-group">
+									    <label  class="col-sm-4 control-label">开户行</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>华夏银行</option>
+											<option>招商银行</option>
+											<option>中国银行</option>
+											<option>建设银行</option>
+											<option>工商银行</option>
+											<option>交通银行</option>
+											<option>农业银行</option>
+											<option>中国平安银行</option>
+											<option>中信银行</option>
+											<option>民生银行</option>
+											<option>兴业银行</option>
+											<option>农村信用社</option>
+											<option>上海浦东发展银行</option>
+											<option>中国邮政储蓄银行</option>
+											<option>光大银行</option>
+											<option>富滇银行</option>
+											<option>广东发展银行</option>
+									      </select>
+									    </div>
+									</div>									
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">开户行全称</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>									
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">银行帐号</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">银行卡正面扫描图</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">会员申请表第一页</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">会员申请表第二页</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">经办人</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">QQ</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">Email</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									
+								 </div>
+							</div>
+							<div class="row" id="person-financieronly">
+								<div class="col-sm-6">
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">征信记录</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>有记录无逾期</option>
+											<option>逾期5次以下逾期30天以内</option>
+											<option>无记录</option>
+											<option>逾期5次以上或有逾期超过30天以上</option>	
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">年龄</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>35-50岁</option>
+											<option>25-35岁</option>
+											<option>50以上或18-25岁</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">学历状况</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>研究生及以上</option>
+											<option>大学本科</option>
+											<option>大学专科</option>
+											<option>中专/高中</option>
+											<option>高中以下</option>	
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">经营所在地居住时间</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>5年以上</option>
+											<option>2-5年</option>
+											<option>2年以下</option>
+											<option>无</option>
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">家庭状况</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>已婚有子女</option>
+											<option>已婚无子女</option>
+											<option>未婚/丧偶</option>
+											<option>离异</option>
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">企业成立年限/核心管理层从业经营</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>5-10年</option>
+											<option>2-5年</option>
+											<option>2年以下</option>
+											<option>无</option>
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">借款人家庭及企业资产总值</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>250万元以上</option>
+											<option>100-250万元</option>
+											<option>50-100万元</option>
+											<option>50万元以下</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">借款人家庭及企业资产负债比</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>0.3以下</option>
+											<option>0.3-0.6</option>
+											<option>0.6-1</option>
+											<option>1以上</option>	
+									      </select>
+									    </div>
+									</div>			
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">授信期限内主营业务收入与期限内到期债务比</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>300%以上</option>
+											<option>200%-300%</option>
+											<option>100%-200%</option>
+											<option>100%以下</option>
+											<option>无</option>
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">单一客户集中度</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>前五名不超过40%</option>
+											<option>40%-60%</option>
+											<option>前五名超过60%</option>
+											<option>无</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">利润率</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>高于行业平均利润率</option>
+											<option>低于行业平均利润率</option>
+											<option>无</option>	
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">主营业务收入增长率</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>30%以上</option>
+											<option>20-30%</option>
+											<option>1-20%</option>
+											<option>负增长</option>
+											<option>无</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">主营业务下游客户分布的地域范围</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>覆盖本省</option>
+											<option>覆盖本地区及周边几个区域</option>
+											<option>业务范围仅在本地区以内</option>
+											<option>无</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">社会地位</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>国家机关</option>
+											<option>企事业单位</option>
+											<option>行业地位</option>
+									      </select>
+									    </div>
+									</div>			
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-1 col-sm-offset-8">
+									<button type="button" class="btn btn-default">提交</button>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-default">取消</button>
+								</div>
+							</div>
+							</form>
+						</div>
+						<div class="tab-pane fade" id="organization">
+							<form class="form-horizontal" role="form">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">会员类型</label>
+									    <div class="col-sm-8">
+									      <select class="form-control" id="organization-type">
+									      	<option value="investor">投资方</option>
+									      	<option value="financier">融资方</option>
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">企业名称</label>
+									    <div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">品牌名称</label>
+									    <div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">所在区域</label>
+									    <div class="col-sm-8">
+									    	 <select class="form-control"></select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">常住地址</label>
+									  	<div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>									
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">邮编</label>
+									  	<div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>
+								 	<div class="form-group">
+									    <label  class="col-sm-4 control-label">企业性质</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>个人</option>
+									      	<option>国有</option>
+									      	<option>集体</option>
+									      </select>
+									    </div>
+									</div>										
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">所属行业</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>房地产/建筑施工类</option>
+									      	<option>金融/保险/证券类</option>
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">组织结构代码</label>
+									  	<div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>		
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">组织结构代码扫描图</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>
+								    <div class="form-group">
+									    <label  class="col-sm-4 control-label">营业执照代码</label>
+									  	<div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>		
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">营业执照扫描图</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>		
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">税务登记号码</label>
+									  	<div class="col-sm-8">
+									    	 <input type="text" class="form-control">
+									    </div>
+									</div>		
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">税务登记证扫描图</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>																								
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">法人代表</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">法人身份证号</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									 <div class="form-group">
+										    <label  class="col-sm-4 control-label">法人身份证正面扫描图</label>
+										    <div class="col-sm-8">
+										    	<input type="file"  class="form-control">
+										    </div>
+									</div>									
+								</div>
+								 <div class="col-sm-6">
+										<div class="form-group">
+										    <label  class="col-sm-4 control-label">法人身份证反面扫描图</label>
+										    <div class="col-sm-8">
+										    	<input type="file"  class="form-control">
+										    </div>
+										</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">企业座机</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">移动电话</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">传真号</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">联系人</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">联系人座机</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">联系人手机</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">联系人传真</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+								 	<div class="form-group">
+									    <label  class="col-sm-4 control-label">开户行</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>华夏银行</option>
+											<option>招商银行</option>
+											<option>中国银行</option>
+											<option>建设银行</option>
+											<option>工商银行</option>
+											<option>交通银行</option>
+											<option>农业银行</option>
+											<option>中国平安银行</option>
+											<option>中信银行</option>
+											<option>民生银行</option>
+											<option>兴业银行</option>
+											<option>农村信用社</option>
+											<option>上海浦东发展银行</option>
+											<option>中国邮政储蓄银行</option>
+											<option>光大银行</option>
+											<option>富滇银行</option>
+											<option>广东发展银行</option>
+									      </select>
+									    </div>
+									</div>									
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">开户行全称</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>									
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">银行帐号</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">银行卡正面扫描图</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">会员申请表第一页</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">会员申请表第二页</label>
+									    <div class="col-sm-8">
+									    	<input type="file"  class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">经办人</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">QQ</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">Email</label>
+									    <div class="col-sm-8">
+									    	<input type="text" class="form-control">
+									    </div>
+									</div>
+									
+								 </div>
+							</div>
+							<div class="row" id="organization-financieronly">
+								<div class="col-sm-6">
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">征信记录</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>有记录无逾期</option>
+											<option>逾期5次以下逾期30天以内</option>
+											<option>无记录</option>
+											<option>逾期5次以上或有逾期超过30天以上</option>	
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">年龄</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>35-50岁</option>
+											<option>25-35岁</option>
+											<option>50以上或18-25岁</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">学历状况</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>研究生及以上</option>
+											<option>大学本科</option>
+											<option>大学专科</option>
+											<option>中专/高中</option>
+											<option>高中以下</option>	
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">经营所在地居住时间</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>5年以上</option>
+											<option>2-5年</option>
+											<option>2年以下</option>
+											<option>无</option>
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">家庭状况</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>已婚有子女</option>
+											<option>已婚无子女</option>
+											<option>未婚/丧偶</option>
+											<option>离异</option>
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">企业成立年限/核心管理层从业经营</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>5-10年</option>
+											<option>2-5年</option>
+											<option>2年以下</option>
+											<option>无</option>
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">借款人家庭及企业资产总值</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>250万元以上</option>
+											<option>100-250万元</option>
+											<option>50-100万元</option>
+											<option>50万元以下</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">借款人家庭及企业资产负债比</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>0.3以下</option>
+											<option>0.3-0.6</option>
+											<option>0.6-1</option>
+											<option>1以上</option>	
+									      </select>
+									    </div>
+									</div>			
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">授信期限内主营业务收入与期限内到期债务比</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>300%以上</option>
+											<option>200%-300%</option>
+											<option>100%-200%</option>
+											<option>100%以下</option>
+											<option>无</option>
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">单一客户集中度</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>前五名不超过40%</option>
+											<option>40%-60%</option>
+											<option>前五名超过60%</option>
+											<option>无</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">利润率</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>高于行业平均利润率</option>
+											<option>低于行业平均利润率</option>
+											<option>无</option>	
+									      </select>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">主营业务收入增长率</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>30%以上</option>
+											<option>20-30%</option>
+											<option>1-20%</option>
+											<option>负增长</option>
+											<option>无</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">主营业务下游客户分布的地域范围</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>覆盖本省</option>
+											<option>覆盖本地区及周边几个区域</option>
+											<option>业务范围仅在本地区以内</option>
+											<option>无</option>	
+									      </select>
+									    </div>
+									</div>	
+									<div class="form-group">
+									    <label  class="col-sm-4 control-label">社会地位</label>
+									    <div class="col-sm-8">
+									      <select class="form-control">
+									      	<option>国家机关</option>
+											<option>企事业单位</option>
+											<option>行业地位</option>
+									      </select>
+									    </div>
+									</div>			
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-1 col-sm-offset-8">
+									<button type="button" class="btn btn-default">提交</button>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-default">取消</button>
+								</div>
+							</div>
+							</form>						
+						
+						
+						</div>
+					</div>
+				  </div>
+				</div>
+				<script type="text/javascript" src="js/page/auth/userinfo.js"></script>
+			</div>
+			<div class="col-md-2">
+				<div class="btn-group-vertical" id="sidebar">
+					 <a class="btn btn-default" role="button"><i class="fa fa-picture-o fa-3x"></i>行情展示</a>
+					 <a class="btn btn-default" role="button"><i class="fa fa-user fa-3x"></i>会员注册</a>
+					 <a class="btn btn-default" role="button"><i class="fa fa-dollar fa-3x"></i>订单管理</a>
+					 <a class="btn btn-default" role="button"><i class="fa fa-reply fa-3x"></i>债权转让</a>
+					 <a class="btn btn-default" role="button"><i class="fa fa-gear fa-3x"></i>我的帐户</a>
+					 <a class="btn btn-default" role="button"><i class="fa fa-bar-chart-o fa-3x"></i>统计分析</a>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

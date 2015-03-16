@@ -1,0 +1,77 @@
+.title-baseinfo{
+	width:150px;
+	cursor:pointer;
+	text-decoration:underline;
+}
+
+.container-baseinfo{
+	width:96%;
+	margin-left:2%;
+	border-radius:5px;
+	border:1px solid #725136;
+}
+
+.link-edit-userinfo{
+	position:relative;
+	float:right;
+}
+#toggle-basicinfo{
+	cursor: pointer;
+}
+#pre-info-form{
+	display: none;
+}
+.go-back{
+	padding:6px 18px;
+	border-radius:0px;
+}
+#basic-info-full {
+	padding-bottom: 30px;
+}
+.view-mode .alert-auth-center{
+	display: none;
+}
+#open-account-agg{
+	height: auto;
+}
+#person-info-sub{
+	/*background-color: #c27724;
+	border-color: #a9651a;*/
+}
+#org-info-sub{
+	background-color: #F08000;
+}
+.invest-info-tip{
+	position: absolute;
+	right: -4px;
+	top: 8px;
+	font-size: 18px;
+	color: #426DB9;
+	z-index: 3;
+}
+#reg-agant-invest .invest-info-tip{
+	display: none;
+}
+.basic-info-tip{
+	display: none;
+}
+.edit-mode .basic-info-tip{
+	display:block;
+	position: absolute;
+	right: -4px;
+	top: 8px;
+	font-size: 18px;
+	color: #426DB9;
+	z-index: 3;
+}
+#onlineProModal .modal-body{
+	height:600px;
+	overflow: auto;
+}
+.auth_center{
+	padding:0px;
+}
+#financierProModal .modal-body{
+	height:600px;
+	overflow: auto;
+}

@@ -1,0 +1,57 @@
+#content .info-panel { 
+	margin:0;
+	 }
+
+#message-tab .ml, #todo-tab .ml, #notice-tab .ml  {
+	margin-left:8px; 
+	}
+
+#message-list, #todo-list, #notice-list { 
+	position:relative; 
+	border-right:2px solid #A9651A; 
+	transition:width .4s; 
+	-moz-transition:width .4s; 
+	/* Firefox 4 */ 
+	-webkit-transition:width .4s;
+	 /* Safari and Chrome */ 
+	 -o-transition:width .4s; 
+	 /* Opera */ 
+	 }
+#message-list .message-list-span, #todo-list .todo-list-span, #notice-list .notice-list-span { 
+	padding:10px 4px;
+	position:absolute;
+	top:50%; right:0;
+    margin-top:-21px; 
+	background-color:#A9651A;
+	display:none;
+	 }
+#message-list .list-span:hover, #todo-list .list-span:hover , #notice-list .list-span:hover { 
+	background-color:#A9651A; 
+	}
+
+#message-read-true, #todo-read-true, #notice-read-true  { 
+	margin-left: 42px; 
+	}
+
+#message-table a, #todo-table a , #notice-table a { 
+	color:#666; 
+	}
+#message-table a:hover, #todo-table a:hover, #notice-table a:hover {
+	color:#A9651A; 
+	text-decoration:none; 
+	}
+#message-table .fwb, #todo-table .fwb { 
+	font-weight:bold; 
+	}
+
+#message-content small, #todo-content small, #notice-content small  { 
+	padding-left:15px; 
+	}
+#message-content hr, #todo-content hr , #notice-content hr {
+	display:none; border-top-color:#e5e5e5;
+	 }
+
+#message-hide-right, #todo-hide-right , #notice-hide-right{ 
+	line-hegiht:350px; color:#ccc;
+	 }
+

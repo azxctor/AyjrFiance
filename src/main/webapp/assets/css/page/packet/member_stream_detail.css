@@ -1,0 +1,18 @@
+#search-area{
+	margin-bottom: 20px;
+}
+#search-area .search-date{
+	background: white;
+	cursor: pointer;
+}
+tfoot td{
+	background-color: #E6E5EA;
+	border: 1px solid #FFFFFF;
+	cursor: pointer;
+	padding: 10px 12px 10px 6px;
+	text-align: center;
+	font-size: 14px;
+	border-top: 3px solid #F79032 !important;
+	color: #646464;
+}
+.receiveAmtSum,.payAmtSum{text-align: right;}

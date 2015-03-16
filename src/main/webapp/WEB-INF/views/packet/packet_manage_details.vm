@@ -1,0 +1,11 @@
+<link href="$link.contextPath/assets/css/page/packet/packet_manage_details.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/packet_manage_details.js" type="text/javascript"></script>
+#set($layout = "common\emptyLayout.vm")
+<div id="package-details">
+#if($!isInvestor)
+	#parse("packet\packet_manage_details_investment.vm")
+#else
+	#parse("packet\packet_manage_details_non_investors.vm")
+#end
+#parse("packet\packet_manage_details_operate.vm")
+</div>

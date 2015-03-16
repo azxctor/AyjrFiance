@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head lang="ZH">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>昆明小微企业金融交易服务有限公司</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../vendor/select2/css/select2.css">
+    <link rel="stylesheet" href="../../../vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/page/prototype/templ.css">
+    <link rel="stylesheet" href="../../../css/page/prototype/product/transform_params_detail.css">
+
+    <script type="text/javascript" src="../../../js/require.js"></script>
+    <!-- Global variable module which will take variables from sever side -->
+    <script type="text/javascript">
+        define('global', {
+            context: '../../../../'
+        })
+    </script>
+    <script type="text/javascript" src="../../../js/base.js"></script>
+</head>
+<body>
+<!--页面顶部-->
+<div class="top">
+    <img class="top-logo" src="../../../img/templ_img/logo.jpg">
+    <div class="top-time">
+        <span class="hours">18:35</span>
+            <span class="dates">
+                <span class="date">04-15</span>
+                <span class="week">TUE</span>
+            </span>
+    </div>
+    <div class="top-logout">
+        <i class="fa fa-user"></i> <span class="user-name">Nick Jones </span> <a href="javascript:void(0);" >退出</a>
+    </div>
+</div>
+
+<div class="page-wrapper">
+<!--页面内容-->
+<div class="right-blk">
+    <div class="right-blk-head">
+        <!--此处更改标题-->
+        <span class="right-blk-head-title">债权转让维护</span>
+     <!--   <span> > </span>
+        <span class="right-blk-head-subtitle">债权转让维护</span>-->
+        <!--此处更改标题-->
+    </div>
+    <div class="right-blk-line"></div>
+    <div class="right-blk-body">
+    	<form class="form-horizontal" role="form">
+	    	<div class="row">
+	    		<div class="form-group">
+	    			<label class="col-sm-4 control-label">可转让融资包类型</label>
+	    			<div class="col-sm-4">
+	    				<input class="finance-type-group" type="hidden" value="分组A, 分组B"/>
+	    			</div>
+	    		</div>
+	    		<div class="form-group">
+	    			<label class="col-sm-4 control-label">可转让融资包逾期情况</label>
+	    			<div class="col-sm-3">
+	    				<input class="rdo-group" name="overdue" type="radio" value="未发生逾期">
+	    				<label class="control-label">未发生逾期</label><br>
+	    				<input class="rdo-group" name="overdue" data-over="1" type="radio" value="已发生逾期">
+	    				<label class="control-label">已发生逾期</label><br>
+	    				<div class="rdo-content">
+	    					<label class="col-sm-6 control-label">正在逾期</label>
+	    					<select class="selectpicker" id="" name="">
+	    						<option>1</option>
+									<option selected>2</option>
+								</select>
+								<label class="control-label">日以下</label><br>
+								<label class="col-sm-6 control-label">已逾期次数小于</label>
+	    					<select class="selectpicker" id="" name="">
+	    						<option>1</option>
+									<option selected>2</option>
+								</select>
+								<label class="control-label">次</label>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="form-group">
+	    			<label class="col-sm-4 control-label">禁止转让融资包</label>
+	    			<div class="col-sm-4">
+	    				<input class="finance-type-group-package" type="hidden" value="融资包A, 融资包B" data-provide="typeahead"/>
+	    			</div>
+	    		</div>
+	    		<div class="col-sm-4 col-sm-offset-1 control-label">
+												<input type="button" class="btn btn-mf-default btn-mf-primary" onclick="location.href='transaction_params.html'" value="确定">
+											</div>
+											<div class="col-sm-1 col-sm-offset-1 control-label">
+												<input type="button" class="btn btn-mf-default btn-mf-primary" onclick="location.href='transaction_params.html'" value="取消">
+											</div>
+	    	</div>
+    	</form>
+    </div>
+</div>
+<!--左菜单-->
+<div class="menu">
+<div class="menu-wrapper">
+
+    <div class="active on menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-code-fork"></i>
+        </div>
+        <h4>行情展示</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 信息补录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div   class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-book"></i>
+        </div>
+        <h4>正在融资</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 融资包管理
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 融资管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div   class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-pagelines"></i>
+        </div>
+        <h4>订单管理</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 订单管理
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-briefcase"></i>
+        </div>
+        <h4>债权转让</h4>
+        <span> > </span>
+
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 信息补录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div  class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-info"></i>
+        </div>
+        <h4>我的账户</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 账户信息
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div  class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-tasks"></i>
+        </div>
+        <h4>统计分析</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 统计操作
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="submenu-wrapper">
+    <a class="submenu-back submenu-blk-el" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left"></i></a>
+    <div class="submenu-content"></div>
+</div>
+</div>
+</div>
+</body>
+
+<!-- JavaScript -->
+<script src="../../../js/page/prototype/templ.js"></script>
+<script src="../../../js/page/prototype/product/transform_params_detail.js"></script>
+
+</html>

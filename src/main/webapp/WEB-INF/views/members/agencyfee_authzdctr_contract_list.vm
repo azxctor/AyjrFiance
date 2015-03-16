@@ -1,0 +1,26 @@
+<div id="contracts-wrapper">
+	<div class="row">
+		<div class="col-sm-4">
+			<a class="btn btn-mf-primary" id="authzdctr-insert-btn">创建新合同</a>
+		</div>
+    </div>
+	<table id="contractsTable" class="dataTable">
+		<thead>
+			<tr>
+				<th data-mData="contractName" data-bSortable="false">合同名称</th>
+                <th data-mData="contractType.text" data-bSortable="false">合同类型</th>
+				<th data-mData="startDt" data-bSortable="false">开始日期</th>
+                <th data-mData="endDt" data-bSortable="true">终止日期</th>
+                <th data-mData="allocRT" data-bSortable="true">B类分配比例</th>
+                <th data-mData="month3RT" data-bSortable="false">A类三月分配比例</th>
+                <th data-mData="month6RT" data-bSortable="false">A类六月分配比例</th>
+                <th data-mData="month9RT" data-bSortable="false">A类九月分配比例</th>
+                <th data-mData="month12RT" data-bSortable="false">A类十二月分配比例</th>
+				<th data-mRender="_fnAgencyBtnRender2" data-bSortable="false">操作</th>
+   			</tr>
+        </thead>
+   		<tbody>
+   		</tbody>
+     </table>
+</div>
+#parse("members/agency_fee_contract.vm")

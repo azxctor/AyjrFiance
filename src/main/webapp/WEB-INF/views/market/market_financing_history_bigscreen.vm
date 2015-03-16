@@ -1,0 +1,84 @@
+<link href="$link.contextPath/assets/css/page/market/market_financing_history_bigscreen.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/market/market_financing_history_bigscreen.js" type="text/javascript"></script>
+<div class="row">
+    <div class="md-tabs big-screen-wrapper">
+        <div class="tab-pane fade active in" id="finacing-detail">
+            	<table class="table big-screen-table hide" id="packet-manage-table">
+                    <thead class="bgc1">
+                    <tr>
+                        <th data-mData="id">编号</th>
+	                    <th data-mRender="_fnflag" data-fnCreatedCell="_fnaipflag" style="min-width: 120px;" data-bSortable="false">项目名称</th>
+	                    <th data-mRender="_fnrenderButton4" data-mData="product.riskLevel.text" style="min-width: 75px;">融资项目级别</th>
+	                    <th data-mData="product.warrantyType.text" data-bSortable="false" style="min-width: 65px;">风险保障</th>
+	                    <th data-mRender="_fndetailButton5" data-mData="product.ratePercentage">年利率</th>
+	                    <th data-mRender="_fndetailButton3" data-mData="packageQuotaStr" style="min-width: 65px;text-align: right;"  class="right_side">融资额（元）</th>
+	                    <th data-mData="product.term" style="min-width: 65px;">融资期限</th>
+	                    <th data-mData="subscribeStartTimeStr" style="min-width: 100px;">起始时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+						 #foreach($data in $!bigScreenData)
+							<tr>
+								<td class="center_side">
+									$data.id
+								</td>
+								<td class="center_side">
+									#if($data.aipFlag)
+										<span class="label label-info flag">定</span>
+									#end
+									$data.packageName
+								</td>
+								<td class="center_side">
+									<!--<a class="creditlevel  $data.product.riskLevel.code">$data.product.riskLevel.text</a>-->
+									
+										#if($!data.product.riskLevel.code == "A")
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+    									#elseif($!data.product.riskLevel.code == "B")
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+    									#elseif($!data.product.riskLevel.code == "C")
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+    									#elseif($!data.product.riskLevel.code == "D")
+    										<i class="fa fa-heart" style='color:#EA6B24'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+											<i class='fa fa-heart-o' style='border-color:#EAEAEA'></i>
+										#end
+									
+                                </td>
+								<td class="center_side">
+									$data.product.warrantyType.text
+                                </td>
+								<td class="center_side">
+									<span class="tdpay">$data.product.ratePercentage</span>
+                                </td>
+								<td class="center_side">
+									<span class="tdpay">$data.packageQuotaStr</span>
+                                </td>
+								<td class="center_side">
+									<span class="tdfontcolor">$data.product.term</span>
+                                </td>
+								<td class="center_side">
+									$data.subscribeStartTimeStr
+                                </td>
+                            </tr>	
+						#end
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

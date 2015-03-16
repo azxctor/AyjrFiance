@@ -1,0 +1,40 @@
+.search-wrapper .col-xs-6,.search-wrapper .col-xs-2{
+    text-align: right;
+    line-height: 30px;
+}
+.search-wrapper select{
+    width:100%;
+}
+td .amount-pay-out {
+    color: #F37800;
+    font-weight: bold;
+}
+td .amount-pay-in {
+    color: #53A000;
+    font-weight: bold;
+}
+#search-start-date,#search-end-date{
+    cursor:pointer;
+    background: #fff;
+}
+
+#search-wrapper .col-xs-5{
+    line-height:30px;
+}
+#table-type{
+    width:300px !important;
+}
+#table-amount{
+    width:150px !important;
+}
+#table-date{
+    width:208px !important;
+}
+#table-memo{
+    width:500px !important;
+    min-width:50%;
+}
+#sign-date{
+    cursor: pointer;
+    background: #fff;
+}

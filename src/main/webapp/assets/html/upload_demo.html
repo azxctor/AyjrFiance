@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ZH">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jQuery File Upload Demo - Basic version</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+<style>
+.upload-button {
+	position: relative;
+	overflow: hidden;
+}
+
+.upload-loading {
+	position: absolute;
+}
+
+.upload-button {
+	position: relative;
+}
+
+.upload-button input {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	opacity: 0;
+	-ms-filter: 'alpha(opacity=0)';
+	font-size: 200px;
+	direction: ltr;
+	cursor: pointer;
+}
+.upload-wrapper .upload-loading,.upload-wrapper .upload-filename,.upload-thumnail{
+    display: none;
+}
+</style>
+</head>
+<body>
+<form action="test" >
+<input name="xxxx"/>
+    <div class="test" id="test"></div>
+    <div class="test" id="test"></div>
+    <div class="test" id="test"></div>
+</form>
+	<script>
+
+</script>
+	<script src="../vendor/jquery/jquery-1.11.0.js"></script>
+	<script src="../vendor/jquery-ui/js/jquery.ui.widget.js"></script>
+	<script src="../vendor/jquery.iframe-transport/jquery.iframe-transport.js"></script>
+	<script src="../vendor/jquery.fileupload/jquery.fileupload.js"></script>
+	<script>
+    $(function () {
+        'use strict';
+        var FileUploadTool  = {
+            /*   选择器，上传借口地址，是否显示缩略图   */
+            init:function(selector,url){
+                var s = $(selector);
+                
+                var html = '<div class="row upload-wrapper">\
+                        <div class="col-md-12">\
+                        <span class="upload-button btn btn-success  btn-xs">\
+                        <span>点击上传</span>\
+                <input class="upload-input"  type="file" name="file" multiple />\
+                </span>\
+                <span class="upload-filename">SSSS</span>\
+                <img class="upload-loading"  src="../img/loading.gif" width="22" height="22">\
+                        <br />\
+                        <img class="upload-thumnail" src="../img/ad2.png"  >\
+                        </div>\
+                </div>';
+                s.append(html);
+                s.find(".upload-input").fileupload({
+                    url: url,
+                    dataType: 'json',
+                    done:function(e,data){
+							console.log(e);
+							console.log(data);
+                    },
+                    success:function(e,data){
+                        var src="";
+                        var fileName = "";
+                        console.log(e);
+                        s.find(".upload-thumbnail").attr("src",src);
+                        s.find(".upload-thumbnail").show();
+                        s.find(".upload-filename").text(fileName);
+                        s.find(".upload-loading").hide();
+                    },
+                    fail:function(){
+                        console.log("UPLOAD FAIL");
+                        s.find(".upload-loading").hide();
+                    }
+                }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
+            }
+        };
+
+        FileUploadTool.init(".test","http://localhost:8080/kmfex-platform/web/uploadfile",true);
+    });
+
+
+</script>
+</body>
+</html>

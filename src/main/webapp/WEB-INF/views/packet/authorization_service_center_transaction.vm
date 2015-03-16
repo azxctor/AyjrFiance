@@ -1,0 +1,42 @@
+<link href="$link.contextPath/assets/css/page/packet/report_common.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/authorization_service_center_transaction.js"></script>
+<div id="main-wrapper">
+	<div class="row" id="search" #if(!$sec.isPlatformUser()) style="display: none" #end>
+		<form id="authorization-transaction-search" action="">
+			<div class="col-sm-2">
+				<label>起止日期</label>
+				<div class="input-group">
+					<input class="form-control" id="search-start-date" name="startDate" readonly value="$!{selectDate}">
+					<span class="input-group-addon">
+						<i class="fa fa-calendar"></i>
+					</span>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<label>&nbsp;</label>
+				<div class="input-group">
+					<input class="form-control" id="search-end-date" name="endDate" readonly value="$!{selectDate}">
+					<span class="input-group-addon">
+						<i class="fa fa-calendar"></i>
+					</span>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<label>关键字</label>
+				<input class="form-control" name="keyWord" placeholder="输入交易账号、授权服务中心名称模糊查询...">
+			</div>
+			<div class="col-sm-2">
+				<label class="auto-width">&nbsp</label>
+				<div>
+					<a class="btn btn-mf-primary" id="authorization-search-btn">
+						<i class="fa fa-search"></i>&nbsp;查询
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="iframe-wrapper">
+		<iframe  width="100%" id="transaction-frame" class="kmfex-frame" scrolling="no"></iframe>
+	</div>																	
+</div>
+<span class="id-wrapper hide"></span>

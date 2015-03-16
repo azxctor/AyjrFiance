@@ -1,0 +1,12 @@
+#contracts-wrapper,#contract-detail-wrapper{display:none;}
+#search-area{padding-bottom:10px;}
+.hidden-form-control{display: block !important;}
+#contracts-wrapper .col-sm-4,#contracts-wrapper .col-sm-4 #authzdctr-insert-btn{float:right;}
+#contracts-wrapper .row{padding-bottom:10px;}
+.insert{color: #dc0505;}
+.modify{color: #1E27E4;}
+.modifyed{border: 1px solid #c80000;}
+.custom-row-button{float:right;padding:0;}
+.exam-note{margin:10px;width:460px;height:140px;}
+.trimspace{padding: 0px;}
+.trimspace1{padding-right:5px;text-align: right;}

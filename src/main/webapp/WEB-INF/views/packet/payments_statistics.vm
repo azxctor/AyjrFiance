@@ -1,0 +1,49 @@
+#set($layout="common/emptyLayout.vm")
+<link href="$link.contextPath/assets/css/page/packet/report_common.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/payments_statistics.js"></script>
+<div class="row" id="search">
+	<form id="payments-statistics-search" action="$link.contextPath/web/report/paymentstatisticspage">
+		<div class="col-sm-2">
+			<div>
+				<select class="form-control" id="payDateType" name="payDateType">
+					#foreach($!payDateType in $!payDateTypeList)
+						<option value=$!{payDateType.code}>$!{payDateType.text}</option>
+					#end
+				</select>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="input-group">
+				<input class="form-control" id="search-start-date" name="startDate" value="$!{selectDate}">
+				<span class="input-group-addon">
+					<i class="fa fa-calendar"></i>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="input-group">
+				<input class="form-control" id="search-end-date" name="endDate" value="$!{selectDate}">
+				<span class="input-group-addon">
+					<i class="fa fa-calendar"></i>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div>
+				<select class="form-control" id="payStatus" name="payStatus">
+					#foreach($!payStatus in $!payStatusList)
+						<option value=$!{payStatus.code}>#if($!{payStatus.code} == "NULL") 还款类型 #else $!{payStatus.text} #end</option>
+					#end
+				</select>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<a class="btn btn-mf-primary" id="pyaments-search-btn">
+				<i class="fa fa-search"></i>&nbsp;查询
+			</a>
+		</div>
+	</form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="payment-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>

@@ -1,0 +1,438 @@
+.right-blk .right-blk-head{
+	border-bottom: none;
+}
+/* .total-assets {
+	border-right:1px solid #E1E1E1;
+} */
+.total-assets .info-button-group{
+	margin-top: 10px;
+}
+.total-assets .btn-mf-primary{
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+.xwb{
+	border-left:1px solid #E1E1E1;
+}
+.xwb-content {
+	padding-top: 70px;
+}
+ .overview-header{
+ 	position: relative;
+    padding:10px 0px 10px 24px;
+    background-color: #4ccee6;
+    height: 100px;
+    background: url(../../../img/overview1.jpg)  no-repeat center right;
+}
+.overview-header > .cover{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background:  url(../../../img/overview_head_cover.png) 0 0 repeat-x;
+}
+.overview-header > .content{
+	position: absolute;
+}
+.right-blk .right-blk-body{
+	padding:0px 0px 30px 0px;
+}
+.header-fix-width{
+	width:800px;
+	position:relative;
+}
+.header-fix-width .tooltip.bottom .tooltip-arrow{
+	border-bottom-color:#fff;
+}
+.greeting-con{
+	font-size: 17px;
+	border-bottom: 1px solid rgba(255,255,255,0.5);
+	padding-bottom: 5px;
+}
+.greeting-words{
+	font-size: 12px;
+}
+.basic-info-div p{
+	font-size: 12px;
+}
+.account-name{
+	
+}
+.last-login-time{
+	padding-left:30px;
+}
+.i-banner-stat{
+	list-style: none;
+	padding-left: 4px;
+}
+.i-banner-stat li{
+	float:left;
+	color:white;
+	margin-left: 10px;
+}
+.i-banner-stat li a{
+	color:white;
+}
+.info-detail{
+	
+}
+.avatar-div{
+    width:80px;
+	cursor: pointer;
+}
+#avatar-lock{
+	position: absolute;
+	left: 26px;
+	top: 17px;
+	color: #3F362B;
+	font-size: 50px;
+}
+.info-div{
+	margin-top:5px;
+	margin-left: 10px;
+	color: #fff;
+	padding: 0px 8px;
+	border-radius: 3px;
+	background-color: rgba(0,0,0,0.2);
+}
+.xxb-info{
+	padding-left:33px;
+	padding-top: 18px;
+}
+.xwb-bg{
+	/*background: url(../../../img/cashbag.png)  no-repeat center right;*/
+}
+.overview-content{
+	padding: 25px;
+}
+.person-amount-info{
+	background-color: white;
+	border:1px solid #E1E1E1;
+}
+
+.overview-title{
+	margin-bottom: 8px;
+	color: #4b4b4b;
+}
+.overview-title span{
+	font-size: 12px;
+}
+.xwb-manage{
+	font-size: 13px;
+}
+.ui-record-table{
+	margin-bottom:0px;
+	font-size: 12px;
+	color: #4D4D4D;
+}
+.ui-record-container{
+	background-color:white;
+	border:1px solid #E1E1E1;
+	padding-top: 18px;
+	padding-left: 33px;
+	padding-right: 33px;
+}
+.ui-record-table .time{
+	width:150px;
+}
+.odd{
+	background-color:#FBFBFB;
+}
+.even{
+	background-color:white;
+}
+.donut-chart-area{
+	background-color:white;
+	padding-bottom: 14px;
+	padding-left: 33px;
+	padding-top: 18px;
+	margin-top: 0px;
+	
+}
+.line-chart-area{
+	background-color:white;
+	padding-bottom: 14px;
+	padding-left: 33px;
+	padding-top: 18px;
+}
+.account-detail{
+	margin-bottom: 4px;
+}
+.color-block {
+	width:42px;
+	height:34px;
+	margin-right:15px;
+}
+.amount{
+	color:#999999;
+}
+.amount .fa{
+	font-size: 16px;
+}
+.zc-color{
+	background-color:#006080;
+}
+.tx-color{
+	background-color:#56a5c0;
+}
+.js-color {
+	background-color:#309cc0;
+}
+.sg-color{
+	background-color:#003445;
+}
+.hk-color{
+	background-color:#1b667e;
+}
+.donut-info{
+	list-style: none;
+}
+.donut-info .perc{
+	color:#909090;
+}
+.donut-info li{
+	margin-bottom:8px;
+	margin-left:0px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #E1E1E1;
+	cursor: pointer;
+	transition: margin-left 0.2s ease-in-out;
+	-moz-transition: margin-left 0.2s ease-in-out;	/* Firefox 4 */
+	-webkit-transition: margin-left 0.2s ease-in-out;	/* Safari 鍜�Chrome */
+	-o-transition: margin-left 0.2s ease-in-out;	/* Opera */
+	
+}
+.donut-info li:hover{
+	border-bottom: 1px solid #A85623;
+}
+.donut-info li span{
+	line-height:34px;
+}
+.big-num{
+	font-size: 20px;
+}
+.bigger-num{
+	font-size: 36px;
+}
+.mid-num {
+	font-size:30px;
+}
+.num-yuan{
+	font-size: 15px;
+	color: #4b4b4b;
+}
+.zzc-num{
+	color:#f37800;
+}
+.czb-num{
+	/*color:#059EF5;*/
+}
+.ui-record-table .zzc-num{
+	font-weight: bold;
+	font-size: 12px;
+	width: 130px;
+}
+.zzc-info{
+	padding-bottom: 14px;
+	padding-top: 18px;
+	padding-left:33px;
+	border-right:1px solid #E1E1E1;
+}	
+.zh-num{
+	color: #3BA7DD;
+}
+.zzc-pd{
+	padding-top:16px;
+}
+.xwb-pd{
+	padding-top:3px;
+}
+.modal .modal-content input{
+	height:32px;
+
+}
+.bankcard-num{
+	padding-top: 8px;
+	margin-bottom: 0px;
+}
+.separator-12{
+	font-style: normal;
+	margin-left: 12px;
+	margin-right: 12px;
+	color: #ccc;;
+}
+.f12{
+	font-size: 12px;
+}
+.middle-num {
+	font-size: 33px;
+}
+.with-avail-amount{
+	padding-left:10px;
+}
+.search-req{
+	/* margin-left: 12px; */
+	vertical-align: middle;
+}
+.residue-money{
+	padding-top: 8px;
+	margin-bottom: 0px;
+}
+.avatar-div img{
+	border: 3px solid #fefefe;
+	box-shadow: 0px 4px 4px #333;
+	box-shadow: 0px 4px 4px rgba(0,0,0,0.7);
+}
+.ui-record-table .detail-type{
+	width:288px;
+}
+.btn-disabled{
+	background-color: #FFB46F;
+	border-color: #EE864B;
+	color: #FFF;
+	cursor: inherit;
+    
+}
+.btn-disabled:active,
+.btn-disabled:hover,
+.btn-disabled:focus,
+.btn-disabled:visited{
+	background-color: #FFB46F;
+	border-color: #EE864B;
+	color: #FFF;
+	cursor: inherit;
+ 
+}
+
+.overview-content >.row {
+	margin-bottom: 20px;
+	border: 1px solid #E1E1E1;
+}
+.overview-header .tooltip .tooltip-inner{
+	background-color: #FFFCEF;
+	color: #DB7C22;
+	border: 1px solid #FFFCEF;
+	border-radius: 2px;
+}
+.overview-header .tooltip.top .tooltip-arrow{
+	border-top-color: #FFFCEF;
+}
+#donut-main text {
+	fill: #646464;
+	font: 500 14px 'Microsoft Yahei' !important;
+}
+.form-horizontal .label-tip{
+	color: #5bc0de;
+	font-size: 12px;
+	text-align: left;
+}
+.form-horizontal .label-tip i{
+	font-size: 14px;
+}
+.word-break{
+	word-break:break-all;
+	font-size:18px;
+}
+.amount-pay-out{
+	font-weight:bold;
+}
+.amount-pay-in{
+	font-weight:bold;
+	color: #53A000;
+}
+.inline-block{
+	display: inline-block;
+}
+.operate-box {
+	padding-top: 15px;
+	margin-top: 15px;
+	border-top: 1px solid #E1E1E1;
+}
+.ma-r35 {
+	margin-right:35px;	
+}
+.ma-lf45 {
+	margin-left: -45px;
+}
+
+.row-fix{
+    border: none !important;
+    margin-bottom: 0 !important;
+}
+.invest-profit-rates{
+	list-style: none;
+	/* margin-top: 20px;
+	background-color: #f9f9f9;
+	border-top:1px solid rgb(221, 221, 221); */
+	padding:10px;
+	margin-left: 10px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.invest-profit-rates li{
+	float:left;
+	margin-right: 60px;
+}
+.profit-val{
+	color: #f37800;
+	font-weight: bold;
+	font-size: 18px;
+}
+/*.invest-profit-rates*/ .fa-question-circle{
+	margin-left:5px;
+	font-size: 17px;
+	cursor: pointer;
+	color: #E7712B;
+}
+.text-indent{
+	text-indent: 28px;
+}
+.recharge-type-body{
+	height: 500px;
+	overflow: auto;
+}
+.tooltip-inner{
+	max-width: 400px;
+}
+.invest-profit-para{
+	margin-bottom: 0px;
+}
+
+#recharge-type{
+	cursor: pointer;
+}
+.recharge-withdraw button{
+	width:75px;
+}
+.a-disabled,
+.a-disabled:hover{
+	color: #888;
+	cursor: default;
+}
+
+
+
+.left_box{
+	border-right:1px solid #E1E1E1;
+}
+.total_property{
+	border-bottom:1px solid #E1E1E1;
+}
+.fund_others{
+	margin-top:10px;
+}
+.cred_rights{
+	border-right:1px solid #E1E1E1
+}
+.r_right_box{
+	margin-top:35px;
+}
+.r_left_box{
+	margin-left:20px;
+}
+#btn-recharge{
+	padding-top: 5px;
+	padding-bottom: 10px
+}

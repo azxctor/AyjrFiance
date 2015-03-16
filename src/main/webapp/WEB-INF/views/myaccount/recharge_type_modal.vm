@@ -1,0 +1,76 @@
+<!-- Modal -->
+<div class="modal modal-micro fade" id="rechargeTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<form class="form-horizontal" role="form" id="recharge-form" action='$link.contextPath/web/myaccount/$!rechargeUrl' method="POST">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">安益金融入金充值方式</h4>
+      </div>
+      <div class="modal-body recharge-type-body">
+            <h3 class="text-center">安益金融入金充值方式</h3>
+            <p>尊敬的会员：</p>
+			<p class="text-indent">
+				为了方便您的充值和提现操作，安益金融开通了三个资金通道，为确保资金及时到账请依照如下提示进行操作。
+            </p>
+			
+			<p>
+                <h4>
+					1、招行银商转账通道：
+				</h4>
+				账户绑定银行卡属招商银行并已签署招行银商转账业务的会员请选择此通道，通过客户端“我的账户”-“账户总览”页面完成充值和提现操作，此通道最为便捷和高效,我们建议您优先考虑.
+            </p>
+			
+			<p>
+                <h4>
+					2、工行卡专用资金通道：
+				</h4>
+				账户绑定银行卡属工商银行的会员请选择此通道，通过工行转账方式进行入金充值，通过客户端的“提现申请”功能完成出金。此通道只能接收工行卡账户转账，他行卡转账后系统将原路退款，这样将影响您的入金实效，请特别注意。
+            </p>
+			
+			<p>
+				转账账号：2502110419024503160
+            </p>
+			
+			<p>
+				开户名：昆明小微企业金融交易服务有限公司
+            </p>
+			
+			<p>
+				开户行：工商银行昆明丽苑路支行
+            </p>
+			
+			<p>
+                <h4>
+					3、他行卡资金通道：
+				</h4>
+				账户绑定银行卡属其他银行的会员请选择此通道，通过转账方式进行入金充值，通过客户端的“提现”功能完成出金。
+            </p>
+			
+			<p>
+				转账账号：871903469010608
+            </p>
+			
+			<p>
+				开户名：昆明小微企业金融交易服务有限公司
+            </p>
+			
+			<p>
+				开户行：招商银行昆明金碧路支行
+            </p>
+			
+			 <h4>
+					温馨提示：
+			 </h4>
+			 
+			 <p class="text-indent">
+				第2、3种情况请您在充值时使用网银转账或银行柜台划款方式，请勿选择银行网点柜台存现或第三方支付平台（如：支付宝）转账方式操作，因这两种转账方式由于转账方业务信息不全，充值失败后退款时间较长，考虑到会耽误您的资金到账时间我们不建议您使用，同时我们正努力争取开通更多资金通道，以便为您提供更加便捷、高效、周道的资金结算服务，感谢您的支持与理解。
+             </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-mf-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div><!-- /.modal-content -->
+    </form>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:hz="http://www.hazelcast.com/schema/spring"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
+        http://www.hazelcast.com/schema/spring http://www.hazelcast.com/schema/spring/hazelcast-spring-3.2.xsd">
+
+
+	<hz:hazelcast id="hc-instance">
+		<hz:config>
+			<hz:instance-name>${hazelcast.instance.name}</hz:instance-name>
+			<hz:group name="${hazelcast.group}" password="password" />
+			<hz:management-center enabled="${hazelcast.admin.enabled}" url="${hazelcast.admin.url}" update-interval="4"/>
+			<hz:properties>
+				<hz:property name="hazelcast.logging.type">slf4j</hz:property>
+			</hz:properties>
+			<hz:network port="${hazelcast.port}" port-auto-increment="true">
+				<hz:join>
+					<hz:multicast enabled="${hazelcast.clustered}"
+						multicast-timeout-seconds="1" />
+					<hz:tcp-ip enabled="false">
+						<hz:members>${hazelcast.members}</hz:members>
+					</hz:tcp-ip>
+				</hz:join>
+			</hz:network>
+			<hz:map name="hcCache" backup-count="1" max-size="0"
+				eviction-percentage="30" read-backup-data="true" eviction-policy="NONE"
+				merge-policy="com.hazelcast.map.merge.PassThroughMergePolicy" />
+			<hz:map name="marketCache" backup-count="1" max-size="0"
+				eviction-percentage="30" read-backup-data="true" eviction-policy="NONE"
+				merge-policy="com.hazelcast.map.merge.PassThroughMergePolicy" />
+			<hz:map name="seqCache" backup-count="1" max-size="0"
+				eviction-percentage="30" read-backup-data="true" eviction-policy="NONE"
+				merge-policy="com.hazelcast.map.merge.PassThroughMergePolicy" />
+			<hz:map name="${hazelcast.session.map.name}" backup-count="1" max-size="50000"
+				eviction-percentage="30"  eviction-policy="LRU"
+				merge-policy="com.hazelcast.map.merge.LatestUpdateMapMergePolicy" >
+				<hz:near-cache max-size="10000"  />
+			</hz:map>
+			<hz:map name="${cache.name.authc}" backup-count="0" async-backup-count="1" max-size="50000"
+				eviction-percentage="30" eviction-policy="LRU" read-backup-data="false" 
+				merge-policy="com.hazelcast.map.merge.LatestUpdateMapMergePolicy" >
+			</hz:map>
+			<hz:map name="${cache.name.authz}" backup-count="0" async-backup-count="1" max-size="50000"
+				eviction-percentage="30" eviction-policy="LRU" read-backup-data="false" 
+				merge-policy="com.hazelcast.map.merge.LatestUpdateMapMergePolicy" >
+				<hz:near-cache max-size="10000"  time-to-live-seconds="600" max-idle-seconds="300"/>
+			</hz:map>
+		</hz:config>
+	</hz:hazelcast>
+	<cache:annotation-driven cache-manager="cacheManager" />
+	<bean id="cacheManager" class="com.hazelcast.spring.cache.HazelcastCacheManager">
+		<constructor-arg ref="hc-instance" />
+	</bean>
+	<!-- <bean -->
+	<!-- class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"> -->
+	<!-- <property name="proxyTargetClass" value="true" /> -->
+	<!-- </bean> -->
+	<bean class="com.hengxin.platform.common.util.resource.hazelcast.HazelcastResourcePool" />
+
+</beans>

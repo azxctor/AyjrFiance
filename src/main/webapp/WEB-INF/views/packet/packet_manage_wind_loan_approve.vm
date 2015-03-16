@@ -1,0 +1,103 @@
+<link href="$link.contextPath/assets/css/page/packet/packet_manage.css" rel="stylesheet"/>
+<script src="$link.contextPath/assets/js/page/packet/packet_manage_wind_loan_approve.js" type="text/javascript"></script>
+<div id="main-wrapper">
+    <div class="row search-wrapper" id="search-wrapper">
+        <div class="col-xs-4">
+            <label class="control-label" id="search-date-label" for="search-investor">签约时间</label>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+						<input class="form-control" id="search-start-date" name="startDate"  type="text"/> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="input-group" >
+						<input class="form-control" id="search-end-date" name="endDate"   type="text"/> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-2">
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label" for="operation-select">处理状态</label>
+                    <select class="form-control" id="operation-select" name="packageStatus">
+                        #foreach($status in $statusList)
+                            <option value="$status.code">$status.text</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="form-group">
+                <label class="control-label" for="keyword">关键字</label>
+                <input  class="form-control" id="keyword" placeholder="输入融资包编号,简称,融资人,担保机构模糊查询..."  title="输入融资包编号,简称,融资人,担保机构模糊查询..." name="keyword"  type="text"/>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="void-label">&nbsp;</label>
+                <button class="btn btn-mf-primary" id="btn-search"><i class="fa fa-search"></i> 查询</button> 
+ 		  		<a class="btn btn-mf-primary" id="wlac-apple-All">批量审核</a> 
+            </div>
+        </div> 
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-wrapper" id="table-wrapper">
+				<span style="display:none" id="hidden_span">
+                </span>
+                <table  class="packet-manage-table" id="packet-manage-table">
+                    <thead>
+                        <tr>
+                            <th data-mData="_fnCheckBox" data-bSortable="false" title='全选'><input id="wlac-selectAll" type="checkbox"></th>
+                            <th data-mData="accountNo">交易账号</th>
+                            <th data-mData="id">融资包编号</th>
+                            <th data-mRender="btn_detail"  data-bSortable="false">融资包简称</th>
+                            <th data-mData="financierName" data-bSortable="false">融资人</th>
+                            <th data-mData="duration" data-bSortable="false">融资期限</th>
+                            <th data-mData="rateString" data-bSortable="false">年利率</th>
+                            <th data-mData="payMethod.text" data-bSortable="false">还款方式</th>
+                            <th data-mData="wrtrNameShow" data-bSortable="false">担保机构</th>
+                            <th data-mData="riskLevel"data-bSortable="false" >融资项目级别</th>
+                            <th data-mData="status.text" data-bSortable="false">状态</th>
+                            <th data-mData="supplyAmount" data-sFormatType="thousand">实际申购额</th>
+                            <th data-mData="signContractTime" >签约时间</th>
+                            <th data-mRender="btn_oper" data-bSortable="false">操作</th>
+                            <th data-mRender="btn_log" data-bSortable="false">日志</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-micro" id="modal-approve_manage_wind_loan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="clsoe_manage_wind_loan">
+                              &times;
+                          </button>
+                          <h4 class="modal-title" id="title_manage_wind_loan">
+        						确认提示
+                          </h4>
+                      </div>
+                      <div class="modal-body">
+                        <p id='content_manage_wind_loan'>是否此批量放款审核操作？</p>
+                      </div>
+        			  <div class="modal-footer">
+        				<button type="button" class="btn btn-mf-primary btn-modal-agree" id="btn_manage_wind_loan">确认</button>
+        				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                      </div>
+                  </div>
+              </div>
+</div>
+
+#parse("packet/package_log.vm")
+<div  id="details-wrapper" style="display:none" class="form-wrapper">
+</div>
+#parse("packet\packet_manage_details_modal.vm")

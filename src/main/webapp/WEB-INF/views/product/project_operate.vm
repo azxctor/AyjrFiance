@@ -1,0 +1,128 @@
+<link href="$link.contextPath/assets/css/page/product/finance_operate.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/product/finance_operate.js" type="text/javascript"></script>
+<div class="operate-background">
+	#if($!{productDetails.canFinancingApprove})
+	<div class="row handle">
+		<div class="col-sm-1 col-sm-offset-1">
+			<button type="button" class="btn btn-mf-primary" id="btn-accept">审批通过</button>
+		</div>
+		<div class="col-sm-1 col-sm-offset-1">
+			<button type="button" class="btn btn-mf-default" id="btn-reject">驳回</button>
+		</div>
+	</div>
+	#elseif($!{productDetails.canFinancingFreeze})
+	<form id="freeze-form">
+	  <div class="row handle">
+		<div class="sub-title">保证金冻结</div>
+          <div class="col-sm-12">
+            <label class="col-sm-3 col-sm-offset-1 control-label">融资服务合同保证金：</label>
+            <label class="col-sm-3 control-label" id="frozen-fee"><span id="frozenFee-margin">#if($!{productDetails.cashDeposit.financeServiceFee})$!number.formatMoney($!{productDetails.cashDeposit.financeServiceFee}) #else $!{productDetails.financeFee} #end</span>元</label>
+			#if($!{productDetails.canCashDepositEdit})
+            <div class="col-sm-2">
+			  <div class="input-group">
+                  <input class="form-control" placeholder="冻结金额" id="real-frozenFee-margin" data-validate="{number:true,fixednumber:2}">
+    			  <span class="input-group-addon">元</span>
+              </div>
+            </div>
+			#end
+          </div>
+          <!--
+          <div class="col-sm-12">
+            <label class="col-sm-3 control-label col-sm-offset-1">担保公司还款保证金：</label>
+			<label class="col-sm-3 control-label" id="warrant">
+				<span id="warrant-account">#if($!{productDetails.cashDeposit.warrantFee})$!number.formatMoney($!{productDetails.cashDeposit.warrantFee}) #else $!number.formatMoney($!{productDetails.warrantFee}) #end</span>元
+				<span class="sr-only" id="warrant-margin">#if(${productDetails.warrantyType.code} == "C" || ${productDetails.warrantyType.code} == "D")
+							                                  0
+														  #else 
+															  #if($!{productDetails.cashDeposit.warrantPercentage})$!{productDetails.cashDeposit.warrantPercentage}
+															  #else $!{productDetails.warrantFeePer} 
+															  #end
+														  #end
+															  </span>
+                <span class="sr-only" id="hidden-warrant-account">$!{productDetails.appliedQuota}</span>
+			</label>
+			#if($!{productDetails.canCashDepositEdit} && (${productDetails.warrantyType.code} == "A" || ${productDetails.warrantyType.code} == "B"))
+            <div class="col-sm-2">
+			  <div class="input-group">
+                  <input class="form-control" placeholder="#if($!{productDetails.cashDeposit.warrantPercentage})$!{productDetails.cashDeposit.warrantPercentage} #else $!{productDetails.warrantFeePer} #end" id="real-warrant-margin" data-validate="{number:true,fixednumber:2}">
+                  <span class="input-group-addon">%</span>
+			  </div>
+            </div>
+			#end
+          </div>
+          -->
+          <div class="col-sm-12">
+			<div class="col-sm-2 col-sm-offset-1">
+				<button type="button" class="btn btn-mf-primary" id="btn-freeze">冻结</button>
+            </div>
+			<div class="col-sm-2">
+    			<button type="button" class="btn btn-mf-default btn-status-back">退回</button>
+    		</div>		
+		  </div>
+	    </div>
+	</form>
+	
+	#elseif($!{productDetails.canFinancingRating})		
+	<div class="row handle">
+		<div class="sub-title">风险评级</div>
+    		<form class="form-horizontal" role="form" method= "POST" action="$link.contextPath/web/product/evaluate" id="form-risk">
+              <div class="form-group">
+                <label class="col-sm-2 control-label required">融资项目级别：</label>
+				<div class="col-sm-2">
+                    <select class="form-control" id="product-rating" name="productLevel" data-validate="{required:true}">
+                    	#foreach ($riskLevel in $riskLevels)
+                    		<option #if($!{productDetails.productLevel} == $riskLevel) selected #end value=$riskLevel>$riskLevel.textShort</option>
+                    	#end
+					</select>
+				</div>
+				##<div class="level-short-msg col-sm-8"></div>
+              </div>
+			  <div class="form-group">
+                <label class="col-sm-2 control-label required">融资会员信用积分：</label>
+				<div class="col-sm-2">
+                    <input type="text" class="form-control" id="financiers-rating" name="financierLevel" data-validate="{required:true,digits:true,max:100}" maxlength="20" value="$!{productDetails.financierLevel}" />
+				</div>
+              </div>
+			  <div class="form-group">
+                <label class="col-sm-2 control-label required">担保机构信用积分：</label>
+				<div class="col-sm-2">
+                    <input type="text" class="form-control" id="guarantee-agency-rating" name="warrantorLevel" data-validate="{required:true,digits:true,max:100}" maxlength="20" value="$!{productDetails.warrantorLevel}" />
+				</div>
+              </div>
+              #* 属性去除
+			   <div class="form-group">
+                <label class="col-sm-2 control-label">担保机构信用披露：</label>
+				<div class="col-sm-4">
+                    <div class="file-upload" name="wrtrCreditFile" data-validate="{docextension:'doc,docx'}"></div>
+				</div>
+              </div>
+			  *#
+			  <div class="row">
+					<div class="col-sm-2 col-sm-offset-2">
+						<button type="submit" class="btn btn-mf-primary">确定</button>
+                    </div>
+    				<div class="col-sm-2">
+						<button type="button" class="btn btn-mf-default btn-status-back">退回</button>
+            		</div>
+    			</div>
+            </form>
+		</div>
+	#elseif($!{productDetails.canFinancingTransSetting})
+		<div class="row handle">
+			<div class="col-sm-2 col-sm-offset-1">
+				<button type="submit" class="btn btn-mf-primary" id="btn-trans-settings">确定</button>
+            </div>
+			#if(!$!isEdit)
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-mf-default btn-status-back">退回</button>
+    		</div>
+			#end
+		</div>
+	#elseif($!{productDetails.canCancelFinancingPackage})
+	<div class="row handle">
+		<div class="col-sm-1 col-sm-offset-1">
+			<button type="button" class="btn btn-mf-primary" id="order-cancellation">撤单</button>
+		</div>
+	</div>
+	#end
+</div>	

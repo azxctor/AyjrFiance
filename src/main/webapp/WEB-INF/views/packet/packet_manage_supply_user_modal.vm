@@ -1,0 +1,28 @@
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="supply-user-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">申购记录</h4>
+				</div>
+				<div class="modal-body">
+                  <table id="supply-table">
+					<thead>
+    					<tr>
+        					<th data-mData="number" data-bSortable="false">序号</th>
+        					<th data-mData="userName" data-bSortable="false">申购人($!{detailsDto.supplyUserCount}人)</th>
+        					<th data-mData="supplyAmount" data-sFormatType="thousand">申购金额(元)</th>
+        					<th data-mData="createTs">申购时间</th>
+    					</tr>
+					</thead>
+					<tbody></tbody>
+				  </table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-mf-primary" data-dismiss="modal">确定</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->

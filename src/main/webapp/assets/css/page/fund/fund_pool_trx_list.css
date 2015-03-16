@@ -1,0 +1,27 @@
+#btn-search{
+	position:relative;
+	float:right;
+	width:120px;
+}
+.row-search{
+	margin-bottom:10px;
+}
+#start-date, #end-date {
+	cursor: pointer;
+	background-color: #fff;
+/* 	text-indent: 10px; */
+}
+.text-align-right {
+	text-align: right;	
+}
+.tfoot{
+	background: #E6E5EA;
+	border-top: solid 3px #F79032;
+	font-weight: bold;
+}
+.no-padding-right {
+	padding-right:0;
+}
+.ma-b10 {
+	margin-bottom: 10px;
+}

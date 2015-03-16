@@ -1,0 +1,68 @@
+
+/*
+* Project Name: kmfex-platform
+* File Name: AccountBalDto.java
+* Class Name: AccountBalDto
+*
+* Copyright 2014 Hengtian Software Inc
+*
+* Licensed under the Hengtiansoft
+*
+* http://www.hengtiansoft.com
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+* implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+	
+package com.hengxin.platform.account.dto.upstream;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+
+/**
+ * Class Name: AccountBalDto
+ * Description: TODO
+ *@SuppressWarnings("serial")
+ @author tingwang
+ *
+ */
+
+public class AccountBalDto implements Serializable{
+    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+     * 银行账号
+     */
+    private String bankAcctNo;
+    /**
+     * 可提现金额
+     */
+    private BigDecimal cashableAmt;
+    
+    public BigDecimal getCashableAmt() {
+        return cashableAmt;
+    }
+
+    public void setCashableAmt(BigDecimal cashableAmt) {
+        this.cashableAmt = cashableAmt;
+    }
+
+    public String getBankAcctNo() {
+        return bankAcctNo;
+    }
+
+    public void setBankAcctNo(String bankAcctNo) {
+        this.bankAcctNo = bankAcctNo;
+    }
+
+   
+
+}

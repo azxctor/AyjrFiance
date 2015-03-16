@@ -1,0 +1,9 @@
+body{
+    overflow-y: auto;
+}
+.blk-body{
+    padding: 50px 40px 20px;
+}
+.copy-right{	
+	visibility: visible;
+}

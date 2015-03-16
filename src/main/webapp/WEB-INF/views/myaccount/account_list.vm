@@ -1,0 +1,100 @@
+<link href="$link.contextPath/assets/css/page/myaccount/myaccount.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/myaccount/account_list.js" type="text/javascript"></script>
+<div class="info-panel">
+		
+		<!-- 财务使用导出功能 -->
+		#if($sec.hasPermission('platform:universal_account:detail_ex_view'))
+		<div class="panel-header" style="display:none;" id="export-excel-div">
+				<div class="col-sm-12">
+    				<div class="col-sm-10">
+    					<i class="fa fa-list-alt fa-lg"></i>&nbsp; 平台账号明细
+    				</div>
+    				<div class="col-sm-2 col-bigger">
+    					<button type="button" class="btn btn-mf-primary pull-right" id="export-excel" style="width:120px"><i class="fa fa-file-excel-o"></i>&nbsp;导出excel</button>
+						<form id="form-export" method="post" class="sr-only" action="$link.contextPath/web/myaccount/platformaccountexceldetails">
+         					<input data-ignore="true"  id="use-types" name="useType"/>
+							<input data-ignore="true"  id="from-date" name="fromDate"/>
+        					<input data-ignore="true"  id="to-date" name="toDate"/> 
+    					</form>
+    				</div>
+				</div>
+        </div>
+        #end
+
+
+<div class="row search-wrapper" id="search-wrapper">
+
+    <div class="col-xs-6">
+        <div class="row">
+            <div class="col-xs-2">
+                <label class="control-label" id="search-date-label" for="search-investor">起止日期</label>
+            </div>
+            <div class="col-xs-5">
+                <div class="input-group">
+                    <input class="form-control" id="search-start-date" name="fromDate"  type="text"/> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="input-group" >
+                    <input class="form-control" id="search-end-date" name="toDate"   type="text"/> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-3">
+        <div class="row">
+            <div class="col-xs-5">
+                <label class="control-label" for="search">出入金类型</label>
+            </div>
+            <div class="col-xs-5">
+                <select name="useType" id='use-type'>  
+                    #foreach($useType in $useTypeList)
+    					<option value="$!useType.code">$!useType.text </option>
+    				#end
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-3">
+        <div class="form-group">
+            <button class="btn btn-mf-primary" id="btn-search"><i class="fa fa-search"></i> 查询</button>
+            &nbsp;
+            #if($sec.hasPermission('account:account:details'))
+            <button class="btn btn-mf-primary pull-right" id="export-my-excel" style="width:120px"><i class="fa fa-file-excel-o"></i>&nbsp;导出excel</button>
+            #end
+        </div>
+    </div>
+</div>
+<div class="panel-header-myaccount" style="display:none;" id="export-myaccount-excel-div">
+	<div class="col-sm-12">
+		<div class="col-sm-2 col-bigger">
+			<form id="form-export-myacc" method="post" class="sr-only" action="$link.contextPath/web/myaccount/getaccountdetailsinxls">
+				<input data-ignore="true"  id="use-types-myacc" name="useType"/>
+				<input data-ignore="true"  id="from-date-myacc" name="fromDate"/>
+				<input data-ignore="true"  id="to-date-myacc" name="toDate"/> 
+			</form>
+		</div>
+	</div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-wrapper" id="table-wrapper">
+            <table  class="packet-manage-table" id="packet-manage-table">
+                <thead>
+                <tr>
+                    <th data-mData="trxDt" id="table-date">交易日期</th>
+                    <th data-mData="useType.text" id="table-type">出入金类型</th>
+                    <th data-mRender="renderGold"  id="table-amount" data-bSortable="false">金额(元)</th>
+                    <th data-mData="createTs" id="table-date" >处理时间</th>
+                    <th data-mData="trxMemo" data-bSortable="false" id="table-memo" style="min-width:50%">备注</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ </div>
+<input type="hidden"="hide" id="is-platform-user" value="$!{isPlatformUser}"/>

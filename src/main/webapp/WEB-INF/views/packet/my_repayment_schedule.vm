@@ -1,0 +1,6 @@
+<div id="main-wrapper">
+    <script src="$link.contextPath/assets/js/page/packet/my_repayment_schedule.js" type="text/javascript"></script>
+    <div class="iframe-wrapper">
+    	<iframe  width="100%" id="repayment-schedule-frame" class="kmfex-frame" scrolling="no"></iframe>
+    </div>	
+</div>

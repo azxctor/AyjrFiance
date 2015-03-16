@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/mytodo.css">
+<script src="$link.contextPath/assets/js/page/mytodo.js"></script>
+<div id="message" title="点击展开消息">
+	<a class="btn btn-mf-primary">
+		<i class="fa fa-bell-o fa-lg"></i>
+	</a>
+	<span class="badge"></span>
+</div>
+
+<div id="mytodo">
+	<div class="row no-margin content">
+		<table class="table table-striped no-margin" id="mytable">
+		</table>
+	</div>
+	<div class="row text-right show-all-message">
+		<a class="fs12" href="$link.contextPath/web/getMessageView">查看全部<strong>&gt;</strong></a>
+	</div>
+</div>

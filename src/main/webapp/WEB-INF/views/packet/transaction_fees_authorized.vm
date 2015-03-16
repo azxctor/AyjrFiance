@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/transaction_fees_inquiry.css">
+<script src="$link.contextPath/assets/js/page/packet/transaction_fees_authorized.js" type="text/javascript"></script>
+<div id="search-area" class="row">
+	<form id="packet-transaction-form" action="$link.contextPath/web/report/" method="post">
+    	<div class="col-sm-2">
+    		<label>还款时间</label>
+    			<div class="input-group">
+                        <input type="text" name="startDate" value=$!selectDate id="search-start-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+    	<div class="col-sm-2">
+    		<label>&nbsp;</label>
+    			<div class="input-group">
+                        <input type="text" name="endDate" value=$!selectDate id="search-end-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+        <div class="col-sm-2">
+        	<label style="width:100%">&nbsp;</label>
+        	<div>
+                <a  class="btn btn-mf-primary" id="transaction-search-btn"><i class="fa fa-search"></i>查询</a>
+            </div>	
+        </div>
+    </form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="transaction-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>

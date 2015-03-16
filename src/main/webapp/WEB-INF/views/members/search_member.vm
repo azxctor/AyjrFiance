@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/jquery.dataTables.flat.css">
+<link rel="stylesheet" href="$link.contextPath/assets/vendor/bootstrap-datepicker/css/datepicker.css">
+<link rel="stylesheet" href="$link.contextPath/assets/css/form.css">
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/member/audit.css">
+<script src="$link.contextPath/assets/js/page/member/member-log.js" type="text/javascript"></script>
+<script src="$link.contextPath/assets/js/page/member/search-member.js" type="text/javascript"></script>
+
+#parse("audit/audit_log.vm")
+<div id="table-wrapper">
+	<form id="search-form-id">
+	<div id="search_area" class="row search-area">
+		<input ID="hidden_search_user_type" name="user_type" type="hidden" value="PERSON"/>	
+    		<div class="col-sm-2">
+    			<label>会员类型:</label>
+    			<div class="full-oqp">
+    				<select id="member_role" class="form-control" name="user_role">
+    					<option value="NULL">全部</option>
+    					<option value="INVESTOR_FINANCER">投融资</option>
+    					<option value="INVESTOR">投资</option>
+    					<option value="FINANCER">融资</option>
+    					<option value="GUEST">游客</option>
+    				</select>	
+                </div>	
+            </div>
+    		
+    		<div class="col-sm-2">
+    			<label>用户名:</label>
+    			<div class="full-oqp">
+    				<input id="member_userid" name="user_name" type="text" class="form-control"/>	
+                </div>	
+            </div>
+            
+            <div class="col-sm-2">
+    			<label>交易账户:</label>
+    			<div class="full-oqp">
+    				<input id="member_transno" name="trans_no" type="text" class="form-control"/>	
+                </div>	
+            </div>
+    		
+    		<div class="col-sm-2">
+    			<label  id="search-name">姓名:</label>
+    			<div class="full-oqp">
+    				<input id="member_username" name="name" type="text" class="form-control"/>	
+                </div>	
+            </div>
+			
+			<div class="col-sm-2">
+    			<label >投资权限状态:</label>
+    			     <div class="full-oqp">
+    						<select id="investor_status"  class="form-control" name="investor_status">
+    							<option value="NULL">全部</option>
+            					<option value="PENDDING">待审核</option>
+            					<option value="ACCEPT">审核通过</option>
+            					<option value="REJECT">审核拒绝</option>
+            				</select>
+                     </div>
+            </div>
+			
+			<div class="col-sm-2">
+    			<label >融资权限状态:</label>
+    			     <div class="full-oqp">
+    						<select id="finance_status" class="form-control" name="finance_status">
+    							<option value="NULL">全部</option>
+            					<option value="PENDDING">待审核</option>
+            					<option value="ACCEPT">审核通过</option>
+            					<option value="REJECT">审核拒绝</option>
+            				</select>
+                     </div>
+            </div>
+    		
+		<div class="col-sm-2">
+			<label style="width:100%">&nbsp;</label>
+			<div>
+                 <a id="member_search" class="btn btn-mf-primary"><i class="fa fa-search"></i>查询</a>
+            </div>	
+		</div>
+	</div>
+	</form>
+		
+	<ul class="nav nav-tabs micro-nav-tabs">
+          <li class="active"><a href="#indiv" data-toggle="tab">个人</a></li>
+          <li><a href="#org" data-toggle="tab">机构</a></li>
+    </ul>
+
+	<div class="tab-content">
+		 <div class="tab-pane fade in active" id="indiv">
+				 <table id="personSearchTable" class="dataTable">
+            		<thead>
+                            <tr>
+								<th data-mData="userName">用户名</th>
+								<th data-mData="accountNo" data-bSortable="false">交易账号</th>
+								<th data-mData="earliestTs">创建日期</th>
+                                <th data-mData="userRole.text" data-bSortable="false">会员类型</th>
+								<th data-mData="name" data-bSortable="false">姓名</th>
+                                <th data-mData="region.fullText">所在区域</th>
+                                <th data-mData="personJob.text" data-bSortable="false">职业</th>
+                                <th data-mData="personEducation.text">学历状况</th>
+                                <th data-mData="investorStatus.text" data-bSortable="false">投资权限状态</th>
+                                <th data-mData="financeStatus.text" data-bSortable="false">融资权限状态</th>
+                                <th data-mRender="_fnSrhPerBtnRender2" data-bSortable="false">操作</th>
+                                <th data-mRender="_fnRenderlog" data-bSortable="false">日志</th>
+            				</tr>
+                    </thead>
+            		<tbody>
+            		</tbody>
+       			 </table>
+		 </div>
+		 <div class="tab-pane fade" id="org">
+				 <table id="orgSearchTable" class="dataTable">
+            		<thead>
+                            <tr>
+								<th data-mData="userName">用户名</th>
+								<th data-mData="accountNo" data-bSortable="false">交易账号</th>
+								<th data-mData="earliestTs">创建日期</th>
+                                <th data-mData="userRole.text" data-bSortable="false">会员类型</th>
+                                <th data-mData="name" data-bSortable="false">企业名称</th>
+                                <th data-mData="region.fullText">所在区域</th>
+                                <th data-mData="orgIndustry.text" data-bSortable="false">所属行业</th>
+                                <th data-mData="orgNature.text" data-bSortable="false">企业性质</th>
+                                <th data-mData="orgType.text">企业类型</th>
+                                <th data-mData="investorStatus.text" data-bSortable="false">投资权限状态</th>
+                                <th data-mData="financeStatus.text" data-bSortable="false">融资权限状态</th>
+                                <th data-mRender="_fnSrhOrgBtnRender" data-bSortable="false">操作</th>
+                                <th data-mRender="_fnRenderlog" data-bSortable="false">日志</th>
+            				</tr>
+                    </thead>
+            		<tbody>
+            		</tbody>
+       			 </table>
+		 </div>
+	</div>
+</div>
+<div id="search-member-wrapper">
+	
+</div>	
+

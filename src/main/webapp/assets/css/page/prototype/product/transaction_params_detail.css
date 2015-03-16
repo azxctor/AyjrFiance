@@ -1,0 +1,80 @@
+#counter-guarantee {
+	position: relative;
+}
+#counter-guarantee .nav {
+	position: absolute;
+	width: 10%;
+}
+#counter-guarantee .tab-content {
+	padding-left: 10%;
+}
+.tab-content {
+	margin-top: 20px;
+	padding-left:50px;
+}
+.file-upload[type="file"] {
+	display: none;
+}
+.form-guarantee-org .box-guarantee-org {
+	width: 100%;
+	margin-top: 20px;
+	border: 1px solid #ccc;
+	background-color: #eee;
+}
+.btn-modal-submit {
+	width:100%;
+	text-align:right;
+	margin-top:20px;
+}
+.btn-modal-submit .btn{
+	margin: 0 5px;
+}
+.submit {
+	float: right;
+	margin: 20px 20px 0 0;
+}
+.add-box {
+	margin-bottom: 15px;
+}
+.add-content {
+	margin-top:10px;
+	border: 1px solid #fff;
+}
+.add-close-btn {
+	float:right;
+}
+.house-box{
+	margin-left:50px;
+}
+#activos-pasivos{
+	margin-left:70px;
+}
+
+.avg-unpaking,
+#unpaking-num { display: none }
+
+
+.vote-group { width: 100% }
+.right-blk-body .vote-content { display: none }
+.handle{
+	margin-bottom:20px;
+	padding-left:50px;
+}
+#panel-heading{
+	cursor:pointer;
+	background-color:#FFF
+}
+#collapseOne{
+	padding-left:50px;
+	padding-top:10px;
+}
+div.panel.panel-default { border-color:#FFF }
+.form-horizontal input.chk-vote { height: 15px }
+div.control-label.col-sm-6 { text-align: left }
+.sub-title {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom:10px;
+}
+
+.content-margin { margin-top: 10px }

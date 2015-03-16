@@ -1,0 +1,27 @@
+.date-select {
+	display: inline-flex;
+}
+.input-fa {
+	width: 20%;
+}
+.ma-b10 {
+	margin-bottom:10px
+}
+.ma-r25 {
+	margin-right:25px
+}
+.extc-reslut-fa {
+	font-size: 15px;
+}
+.color-s {
+	color:#49B21F;
+}
+.color-f {
+	color:#EA6B24;
+}
+.color-r {
+	color:#EBB80F;
+}
+.color-e {
+	color:#50A7F8;
+}

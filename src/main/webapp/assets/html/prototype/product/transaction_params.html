@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head lang="ZH">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>昆明小微企业金融交易服务有限公司</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../../vendor/datatables/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="../../../css/page/jquery.dataTables.flat.css">
+    <link rel="stylesheet" href="../../../css/page/prototype/templ.css">
+	<link rel="stylesheet" href="../../../css/page/prototype/product/transaction_params.css">
+
+    <script type="text/javascript" src="../../../js/require.js"></script>
+    <!-- Global variable module which will take variables from sever side -->
+    <script type="text/javascript">
+        define('global', {
+            context: '../../../../'
+        })
+    </script>
+    <script type="text/javascript" src="../../../js/base.js"></script>
+</head>
+<body>
+<!--页面顶部-->
+<div class="top">
+    <img class="top-logo" src="../../../img/templ_img/logo.jpg">
+    <div class="top-time">
+        <span class="hours">18:35</span>
+            <span class="dates">
+                <span class="date">04-15</span>
+                <span class="week">TUE</span>
+            </span>
+    </div>
+    <div class="top-logout">
+        <i class="fa fa-user"></i> <span class="user-name">Nick Jones </span> <a href="javascript:void(0);" >退出</a>
+    </div>
+</div>
+
+<div class="page-wrapper">
+    <!--页面内容-->
+    <div class="right-blk">
+        <div class="right-blk-head">
+            <!--此处更改标题-->
+            <span class="right-blk-head-title">交易管理</span>
+            <span> > </span>
+            <span class="right-blk-head-subtitle">产品发布</span>
+            <!--此处更改标题-->
+        </div>
+        <div class="right-blk-line"></div>
+        <div class="right-blk-body">
+            <!--此处替换内容-->
+            <div class="right-blk-search">
+	            <form class="form-inline">
+		            <div class="form-group">
+		                 <label class="control-label" for="search-procject-id">融资申请编号</label>
+		                 <input class="form-control" id="search-procject-id" type="text" placeholder="">
+		             </div>
+	               <div class="form-group">
+	                   <label class="control-label" for="search-bag-id">项目简称</label>
+	                   <input class="form-control" id="search-bag-id" type="text" placeholder="">
+	               </div>
+	              <button class="btn btn-mf-default btn-mf-primary" type="button"> <i class="fa fa-search"></i>&nbsp;查询</button>
+	            </form>
+            </div>
+            <div class="right-blk-body-in">
+						  <form role="form">
+								<div class="right-blk-body-tabel">
+								  <table class="dataTable-micro" id="transaction-table">
+								    <thead>
+								      <tr>
+									    <th>融资申请编号</th>
+									    <th>项目简称</th>
+									    <th>申请日期</th>
+									    <th>融资申请额</th>
+									    <th>风险保障</th>
+									    <th>融资期限</th>
+									    <th>还款方式</th>
+									    <th>状态</th>
+									    <th>操作</th>
+									    <th>审核</th>
+									  </tr>
+								    </thead>
+								    <tbody>
+								      <tr>
+										    <td>A5602</td>
+										    <td>项目A</td>
+										    <td>2014-4-1</td>
+										    <td>500,000.00</td>
+										    <td>本息担保</td>
+										    <td>6月</td>
+										    <td>到期一次还本付息</td>
+										    <td>待发布</td>
+										    <td>
+										    	<!-- <a class="view" href='transaction_params_detail.html'><i class='fa fa-search' title='详情'></i></a> -->
+										    	<div class='operation-box'>
+										    	<a class="update" href='transaction_params_detail.html?role=1'><i class='fa fa-pencil fa-lg operation-edit' title='设置参数'></i></a>
+										    	</div>
+										    </td>
+										    <td><a class="check-link" data-type="ind" href="#">审批日志</a></td>
+									  	</tr>
+										  <tr>
+										    <td>A5604</td>
+										    <td>项目B</td>
+										    <td>2014-4-6</td>
+										    <td>600,000.00</td>
+										    <td>本息担保</td>
+										    <td>9月</td>
+										    <td>到期一次还本付息</td>
+										    <td>待发布</td>
+										    <td>
+										    	<!-- <a class="view" href='transaction_params_detail.html'><i class='fa fa-search' title='详情'></i></a> -->
+										    	<div class='operation-box'>
+										    	<a class="update" href='transaction_params_detail.html?role=1'><i class='fa fa-pencil fa-lg operation-edit' title='设置参数'></i></a>
+										    	</div>
+										    </td>
+										    <td><a class="check-link" data-type="ind" href="javascript:void(0);">审批日志</a></td>
+										  </tr>
+								  	</tbody>
+								  </table>
+								</div>
+							  <!-- Modal审核日志 -->
+								<div class="modal fade modal-micro" id="modal-log" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">审核日志</h4>
+											</div>
+											<div class="modal-body">
+												<table class="table" id="table-audit-log">
+													<thead>
+														<tr>
+															<th>日志时间</th>
+															<th>审核人员</th>
+															<th>操作</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th>2014-04-12 10:05:06</th>
+															<th>融资人</th>
+															<th>提交</th>
+														</tr>
+														<tr>
+															<th>2014-04-13 10:00:03</th>
+															<th>担保机构</th>
+															<th>审核通过</th>
+														</tr>
+														<tr>
+															<th>2014-04-12 10:00:55</th>
+															<th>风控机构</th>
+															<th>审核通过</th>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div><!-- /.modal审核日志 -->
+						</form>
+			    </div>    
+          <!--此处替换内容-->
+        </div>
+
+    </div>
+
+</div>
+<!--左菜单-->
+<div class="menu">
+    <div class="menu-wrapper">
+
+        <div class="active on menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-code-fork"></i>
+            </div>
+            <h4>行情展示</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 信息补录
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div   class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-book"></i>
+            </div>
+            <h4>正在融资</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 融资包管理
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 融资管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div   class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-pagelines"></i>
+            </div>
+            <h4>订单管理</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 订单管理
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-briefcase"></i>
+            </div>
+            <h4>债权转让</h4>
+            <span> > </span>
+
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 信息补录
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div  class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-info"></i>
+            </div>
+            <h4>我的账户</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 账户信息
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div  class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-tasks"></i>
+            </div>
+            <h4>统计分析</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 统计操作
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="submenu-wrapper">
+        <a class="submenu-back submenu-blk-el" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left"></i></a>
+        <div class="submenu-content"></div>
+    </div>
+</div>
+</body>
+
+<!-- JavaScript -->
+<script src="../../../js/page/prototype/templ.js"></script>
+<script src="../../../js/page/prototype/product/transaction_params.js"></script>
+
+</html>

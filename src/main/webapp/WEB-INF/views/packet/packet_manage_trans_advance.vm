@@ -1,0 +1,52 @@
+<link href="$link.contextPath/assets/css/page/packet/packet_manage.css" rel="stylesheet"/>
+<script src="$link.contextPath/assets/js/page/packet/packet_manage_trans_advance.js" type="text/javascript"></script>
+<div id="main-wrapper">
+    <div class="row search-wrapper" id="search-wrapper">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="control-label" for="keyword">关键字查询</label>
+                <input  class="form-control" id="keyword" placeholder="输入融资包编号，简称，担保机构，融资人模糊查询..." name="keyword"  type="text"/>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="form-group">
+                <label class="void-label">&nbsp;</label>
+                <button class="btn btn-mf-primary" id="btn-search">
+                    <i class="fa fa-search"></i>
+                    查询</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-wrapper" id="table-wrapper">
+					<span style="display:none" id="hidden_span">
+                </span>
+                <table  class="packet-manage-table" id="packet-manage-table">
+                    <thead>
+                        <tr>
+                            <th data-mData="id">融资包编号</th>
+                            <th data-bSortable="false" data-mRender="btn_detail">融资包简称</th>
+                            <th data-mData="financierName">融资人</th>
+                            <th data-mData="wrtrNameShow">担保机构</th>
+                            <th data-mData="packageQuota" data-sFormatType="thousand">融资额(元)</th>
+                            <th data-mData="duration">融资期限</th>
+                            <th data-mRender="hover_msg">申购进度</th>
+                            <th data-mData="supplyAmount" data-sFormatType="thousand">实际申购额(元)</th>
+                            <th data-mData="signContractTime">签约时间</th>
+                            <th data-mData="status.text">状态</th>
+                            <th class="oper" data-mRender="btn_oper" data-bSortable="false">操作</th>
+                            <th data-mRender="btn_log" data-bSortable="false">日志</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("packet/package_log.vm")
+<div  id="details-wrapper" style="display:none" class="form-wrapper">
+</div>
+#parse("packet\packet_manage_details_modal.vm")
+<span class="id-wrapper hide"></span>

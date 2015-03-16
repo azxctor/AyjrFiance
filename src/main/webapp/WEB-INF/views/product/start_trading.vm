@@ -1,0 +1,34 @@
+<link href="$link.contextPath/assets/css/page/product/start_trading.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/product/start_trading.js" type="text/javascript"></script>	
+<div class="col-xs-10">   
+	<form class="form-inline" id="form-search" role="form">
+##        <div class="form-group">
+##        	<label class="control-label" for="">开始时间</label>
+##        	<input type="text" class="form-control from-time" name=""/>
+##        </div>
+##        <div class="form-group">
+##        	<label class="control-label" for="">截止时间</label>
+##        	<input type="text" class="form-control to-time" name=""/>
+##        </div>
+       <button type="button" class="btn" disabled>当前<span id="current_market_status">#if($!currentMarketStatus=="C")闭市 #else开市#end</span>中</button>
+##	   <button type="button" class="btn btn-mf-primary" id="search-btn"><i class="fa fa-search"></i>&nbsp;查询</button>
+    </form>
+</div>
+<div class="col-xs-2">
+	<input type="hidden" id="current_status" value="$!currentMarketStatus"/>
+	<button type="button" class="btn btn-mf-primary" id="btn-trading">#if($!currentMarketStatus=="C")开市 #else 闭市 #end</button>
+</div>
+<div class="col-xs-12">
+	<table class="display" id="table-search-result" cellspacing="0" cellpadding="0" border="0">
+		<thead>
+			<tr>
+				<th data-mData="workDate">交易日期</th>
+				<th data-mData="createTime">操作时间</th>
+				<th data-mData="operateType">类型</th>
+				<th data-mData="crateOperateId">操作者</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</div>

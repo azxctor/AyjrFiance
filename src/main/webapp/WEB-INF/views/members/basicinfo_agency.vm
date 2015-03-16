@@ -1,0 +1,385 @@
+<div id="basicinfo-org" class="info-organization $!hasPrefix" data-prefix="$!agencyPrefix">
+<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业名称</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="name"></span>
+					<input maxlength="60" type="text" class="form-control" name="name" data-validate="{required:true}">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业性质</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="nature.text"></span>
+					<input type="hidden" id="org-type" class="select2-hidden" name="nature.code" data-validate='{required:true}'>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+			<label class="col-sm-4 control-label required">所在区域</label>
+				<div class="col-sm-8">
+    				<span  class="hidden-form-control" name="region.fullText"></span>
+    				<div class="data-binder" id="basic-region" name="region.code" data-error-prop="true" data-val="">
+    				<div class="col-sm-4 col-bigger">
+    					<select id="basic-province" name="basic_province"
+    						class="form-control no-side-padding" data-ignore="true" data-validate="{required:true}">
+    						#foreach($province in $provinceList)
+    							<option value="$province.code">$province.text</option>
+    						#end
+    					</select>
+    				</div>
+    				<div class="col-sm-4 col-bigger">
+    					<select name="basic_city" style="display:none;"
+    						id="basic-city" class="form-control  no-side-padding" data-ignore="true" data-validate="{required:true}">
+    					</select>
+    				</div>
+    				<div class="col-sm-4 col-bigger">
+    					<select name="basic_county" style="display:none;"
+    						id="basic-county"	class="form-control  no-side-padding" data-ignore="true">
+    					</select>
+    				</div>
+                </div>
+			</div>
+		</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业地址</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="address"></span>
+					<input maxlength="100" type="text" class="form-control" name="address"  data-validate="{required:true}">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">邮编</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="postcode"></span> <input maxlength="6" type="text"
+						class="form-control" name="postcode">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业座机</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="phone"></span> <input maxlength="20" type="text"
+						class="form-control" name="phone"  data-validate="{required:true,phonezh:true}">
+						#if(!$dto.fixedInput&&!$dto.isViewMode())
+					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                        <i class="fa fa-exclamation-triangle fa-lg"></i>
+                        <strong>示例：087164647100</strong>
+					</div>
+					#end
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">传真号</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="fax"></span> <input maxlength="20" type="text"
+						class="form-control" name="fax">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">联系人</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact"></span> <input maxlength="25" type="text"
+						class="form-control" name="contact"  data-validate="{required:true}">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">联系人手机</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_mobile"></span> <input maxlength="11" type="text"
+						class="form-control" name="contact_mobile"  data-validate="{required:true,mobilezh:true}">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">联系人座机</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_phone"></span> <input maxlength="20" type="text"
+						class="form-control" name="contact_phone" data-validate='{phonezh:true}'>
+						#if(!$dto.fixedInput&&!$dto.isViewMode())
+    					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                            <i class="fa fa-exclamation-triangle fa-lg"></i>
+                            <strong>示例：087164647100</strong>
+    					</div>
+    					#end
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">联系人传真</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_fax"></span> <input maxlength="20" type="text"
+						class="form-control" name="contact_fax">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">联系人QQ</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_qq"></span> <input maxlength="12" type="text"
+						class="form-control" name="contact_qq">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">联系人Email</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_email"></span> <input maxlength="50" type="text"
+						class="form-control" name="contact_email">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">法人代表</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_person"></span> <input maxlength="25"
+						class="form-control" name="legal_person"  data-validate="{required:true}">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">法人联系电话</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_phone"></span> <input maxlength="20" type="text"
+						class="form-control" name="legal_phone"  data-validate="{required:true}">
+						#if(!$dto.fixedInput&&!$dto.isViewMode())
+					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                        <i class="fa fa-exclamation-triangle fa-lg"></i>
+                        <strong>示例：087164647100</strong>
+					</div>
+					#end
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人QQ</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_qq"></span> <input maxlength="12" type="text"
+						class="form-control" name="legal_qq">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人Email</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_email"></span> <input maxlength="50" type="text"
+						class="form-control" name="legal_email">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">法人身份证号</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_id_card"></span> <input maxlength="18" type="text"
+						class="form-control" data-validate='{required:true,idcard:true}' name="legal_id_card" id="legal-id-card">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人身份证正面扫描图</label>
+				<div class="col-sm-8">
+					<img class="hidden-form-control" name="legal_idcard_img1_url"></img> <div  data-validate="{extension:'jpg,jpeg,png,gif,pdf'}" class="file-upload" id="legal_idcard_img1" name="legal_idcard_img1"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人手持身份证(<a href="javascript:void(0)" class="image-example-popoverx" data-content="loading..." data-src="$link.contextPath/assets/img/IDCard_s.jpg">图例</a>)</label>
+				<div class="col-sm-8">
+					<img class="hidden-form-control" name="legal_idcard_img2_url"></img> <div class="file-upload"  data-validate="{extension:'jpg,jpeg,png,gif,pdf'}" id="legal_idcard_img2" name="legal_idcard_img2"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	#*
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">银行账号</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="bank_account"></span> <input maxlength="25" type="text"
+						class="form-control" name="bank_account" data-validate="{required:true}" #if($dto.fixedInput) readonly #end>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">银行账户名</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="bank_account_name"></span>
+					<input maxlength="25" type="text" class="form-control" name="bank_account_name" data-validate="{required:true}" #if($dto.fixedInput) readonly #end/>
+					#if(!$dto.fixedInput&&!$dto.isViewMode())
+    					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                            <i class="fa fa-exclamation-triangle fa-lg"></i>
+                            <strong>注：请使用本人开户银行卡认证</strong>
+    					</div>
+					#end
+				</div>
+			</div>
+		</div>
+    </div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">开户银行</label>
+				<div class="col-sm-8">
+					<div class="col-sm-4 col-bigger">
+						<span class="hidden-form-control" name="bank_province.text"></span>
+    					<select class="form-control" name="bank_province.code" id="bank-province" #if($dto.fixedInput) disabled #end placeholder="请选择省份" >
+							#foreach($province in $provinceList)
+    							<option value="$province.code">$province.text</option>
+    						#end
+                        </select>
+					</div>
+					<div class="col-sm-4 col-bigger">
+						<span class="hidden-form-control" name="bank_city.text"></span>
+						<select class="form-control"  id="bank-city" name="bank_city.code" #if($dto.fixedInput) disabled #end placeholder="请选择城市">
+							
+                        </select>
+					</div>
+					<div class="col-sm-4 col-bigger">
+						<span class="hidden-form-control" title="$!dto.bankname.text" name="bank_name.text"></span> 
+						<select class="form-control" name="bank_name.code" placeholder="请选择银行" #if($dto.fixedInput) disabled #end>
+    						#foreach($bank in $bankList)
+    							<option value="$!bank.code">$!bank.text</option>
+    						#end
+						</select>
+    				</div>
+					<div class="col-sm-12 col-bigger">
+						<span class="hidden-form-control" name="bank_branch"></span> 
+    					<input maxlength="50" placeholder="支行/营业所" type="text" class="form-control" name="bank_branch" #if($dto.fixedInput) readonly #end>
+                    </div>
+					#if(!$dto.fixedInput&&!$dto.isViewMode())
+					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                        <i class="fa fa-exclamation-triangle fa-lg"></i>
+                        <strong>注：若所在地有招商银行建议使用招商银行卡以确保您的资金出入效率，无招商银行建议使用工商银行卡，不建议使用其他银行卡</strong>
+					</div>
+					#end
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">银行卡正面扫描图</label>
+				<div class="col-sm-8">
+                    <img class="hidden-form-control" name="bank_card_img_url"></img>
+					#if(!$dto.fixedInput||$dto.isViewMode())
+						 <div class="file-upload" id="bank_card_img" name="bank_card_img"  data-validate="{required:true,extension:'jpg,jpeg,png,gif,pdf'}"></div>
+					#else
+                        <input type="hidden" name="bank_card_img" >
+						<img class="show-form-control" name="bank_card_img_url"></img>
+					#end
+				</div>
+			</div>
+		</div>
+	</div>
+	*#
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">组织机构代码</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="org_no" name="org_no"></span>
+					<input maxlength="10" type="text" class="form-control" name="org_no" data-validate="{required:true}"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">组织机构代码扫描图</label>
+				<div class="col-sm-8">
+                    <img class="hidden-form-control" name="org_no_img_url"></img>
+                    <div class="file-upload"  data-validate="{required:true,extension:'jpg,jpeg,png,gif,pdf'}" name="org_no_img"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">营业执照代码</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="licence_no" name="licence_no"></span>
+					<input maxlength="15" type="text" class="form-control" name="licence_no" data-validate="{required:true}"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">营业执照扫描图</label>
+				<div class="col-sm-8">
+                    <img class="hidden-form-control" name="licence_no_img_url"></img> <div class="file-upload"  data-validate="{required:true,extension:'jpg,jpeg,png,gif,pdf'}" id="licence_no_img" name="licence_no_img"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">税务登记号码</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="tax_no" name="tax_no"></span>
+					<input maxlength="15" type="text" class="form-control" name="tax_no" />
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">税务登记证扫描图</label>
+				<div class="col-sm-8">
+					<img class="hidden-form-control" name="tax_no_img_url"></img> <div class="file-upload"  data-validate="{extension:'jpg,jpeg,png,gif,pdf'}" id="tax_no_img" name="tax_no_img" /></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

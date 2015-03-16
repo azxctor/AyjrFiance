@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+  		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean name="packageStatusChangeJobBean"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.hengxin.platform.job.bean.PackageStatusChangeJob" />
+		<property name="durability" value="true" />
+	</bean>
+	
+	<bean name="packageExpiredSignJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.hengxin.platform.job.bean.PackageExpiredSignJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean name="batchTaskJobBean"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.hengxin.platform.job.bean.BatchTaskJob" />
+		<property name="durability" value="true" />
+	</bean>
+	
+	<bean name="preRemindRepaymentJobBean"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.hengxin.platform.job.bean.PreRemindRepaymentJob" />
+		<property name="durability" value="true" />
+	</bean>
+	
+	<bean name="remindRepaymentJobBean"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.hengxin.platform.job.bean.RemindRepaymentJob" />
+		<property name="durability" value="true" />
+	</bean>
+	
+	<bean name="packageStatusSyncJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.hengxin.platform.job.bean.PackageStatusSyncJob" />
+		<property name="durability" value="true" />
+	</bean>
+	
+	<bean name="packageProgressSyncJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.hengxin.platform.job.bean.PackageProgressSyncJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<!-- send SMS by batch -->
+	<bean name="batchSMSJobAsyncBean"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.hengxin.platform.job.bean.BatchSMSJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="packageStatusChangeJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="packageStatusChangeJobBean" />
+		<property name="cronExpression" value="0 0/15 * * * ?" />
+	</bean>
+	
+	<bean id="packageExpiredSignJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="packageExpiredSignJob" />
+		<property name="cronExpression" value="0 0 0 * * ?" />
+	</bean>
+    
+	<bean id="batchTaskJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="batchTaskJobBean" />
+		<property name="cronExpression" value="${job.batch.cron}" />
+		<property name="jobDataMap">
+		   <map>
+		       <entry key="taskGroupId1" value="BIZTSK" />
+		       <entry key="taskGroupId2" value="BACKUP" />
+		   </map>
+		</property>
+		<property name="misfireInstruction"
+        	value="#{T(org.quartz.CronTrigger).MISFIRE_INSTRUCTION_DO_NOTHING}"/>
+	</bean>
+	
+	<bean id="preRemindRepaymentJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="preRemindRepaymentJobBean" />
+		<property name="cronExpression" value="0 0 8 * * ?" />
+	</bean>
+	
+	<bean id="remindRepaymentJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="remindRepaymentJobBean" />
+		<property name="cronExpression" value="0 30 7 * * ?" />
+	</bean>
+	
+	<bean id="packageStatusSyncJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="packageStatusSyncJob" />
+		<property name="cronExpression" value="30 * * * * ?" />
+	</bean>
+	
+	<bean id="packageProgressSyncJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="packageProgressSyncJob" />
+		<property name="cronExpression" value="2/3 * * * * ?" />
+	</bean>
+	
+	<bean id="batchSMSAsyncJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="batchSMSJobAsyncBean" />
+		<property name="cronExpression" value="0 0 18-19 * * ?" />
+	</bean>
+	
+	<bean id="springJobFactory" class="com.hengxin.platform.job.SpringJobFactory" />
+	
+	<beans profile="!DEV">
+		<bean id="quartzScheduler"
+			class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+			<property name="triggers">
+				<list>
+					<ref bean="packageStatusChangeJobTrigger" />
+					<ref bean="packageExpiredSignJobTrigger"/>
+					<ref bean="preRemindRepaymentJobTrigger"/>
+					<ref bean="remindRepaymentJobTrigger"/>
+					<ref bean="packageStatusSyncJobTrigger"/>
+					<ref bean="packageProgressSyncJobTrigger"/>
+					<!-- <ref bean="batchTaskJobTrigger"/> -->
+					<!-- <ref bean="batchSMSAsyncJobTrigger"/>-->
+				</list>
+			</property>
+			<property name="jobFactory" ref="springJobFactory" />
+			<property name="dataSource" ref="dataSource" />
+			<property name="exposeSchedulerInRepository" value="true" />
+<!-- 			<property name="overwriteExistingJobs" value="true" /> -->
+			<property name="quartzProperties">
+				<props>
+					<prop key="org.quartz.scheduler.instanceName">quartzScheduler</prop>
+					<prop key="org.quartz.scheduler.instanceId">AUTO</prop>
+					<prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>
+					<prop key="org.quartz.threadPool.threadCount">3</prop>
+					<prop key="org.quartz.threadPool.threadPriority">5</prop>
+					<prop key="org.quartz.jobListener.SeperateLoggingJobListener.class">com.hengxin.platform.job.SeperateLoggingJobListener</prop>
+					<prop key="org.quartz.jobListener.SubjectInjectionJobListener.class">com.hengxin.platform.job.SubjectInjectionJobListener</prop>
+					<prop key="org.quartz.scheduler.jmx.export">true</prop>
+					<prop key="org.quartz.jobStore.driverDelegateClass">com.hengxin.platform.job.CustomizedOracleDelegate</prop>
+					<prop key="org.quartz.jobStore.isClustered">true</prop>
+					<!-- <prop key="org.quartz.jobStore.tablePrefix">QRTZ_</prop> -->
+				</props>
+			</property>
+		</bean>
+	</beans>
+	
+	<beans profile="DEV">
+		<bean id="quartzScheduler"
+			class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+			<property name="triggers">
+				<list>
+<!-- 					<ref bean="simpleTrigger" /> -->
+<!-- 					<ref bean="packageStatusChangeJobTrigger" /> -->
+<!-- 					<ref bean="packageExpiredSignJobTrigger"/> -->
+<!-- 					<ref bean="preRemindRepaymentJobTrigger"/> -->
+<!-- 					<ref bean="remindRepaymentJobTrigger"/> -->
+<!-- 					<ref bean="batchTaskJobTrigger"/> -->
+<!-- 					<ref bean="packageStatusSyncJobTrigger"/> -->
+<!-- 					<ref bean="packageProgressSyncJobTrigger"/> -->
+				</list>
+			</property>
+			<property name="jobFactory" ref="springJobFactory" />
+<!-- 			<property name="dataSource" ref="dataSource" /> -->
+			<property name="exposeSchedulerInRepository" value="true" />
+			<property name="quartzProperties">
+				<props>
+					<prop key="org.quartz.scheduler.instanceName">quartzScheduler</prop>
+					<prop key="org.quartz.scheduler.instanceId">AUTO</prop>
+					<prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>
+					<prop key="org.quartz.threadPool.threadCount">3</prop>
+					<prop key="org.quartz.threadPool.threadPriority">5</prop>
+					<prop key="org.quartz.jobListener.SeperateLoggingJobListener.class">com.hengxin.platform.job.SeperateLoggingJobListener</prop>
+					<prop key="org.quartz.jobListener.SubjectInjectionJobListener.class">com.hengxin.platform.job.SubjectInjectionJobListener</prop>
+					<prop key="org.quartz.scheduler.jmx.export">true</prop>
+<!-- 					<prop key="org.quartz.jobStore.driverDelegateClass">com.hengxin.platform.job.CustomizedOracleDelegate</prop> -->
+<!-- 					<prop key="org.quartz.jobStore.isClustered">true</prop> -->
+				</props>
+			</property>
+		</bean>
+	</beans>
+
+</beans>

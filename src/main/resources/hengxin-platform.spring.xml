@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tool 
+	http://www.springframework.org/schema/tool/spring-tool.xsd
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<import resource="classpath:hengxin-platform-db.spring.xml" />
+	<import resource="classpath:hengxin-platform-security.spring.xml" />
+	<import resource="classpath:hengxin-platform-cache.spring.xml" />
+	<!-- <import resource="classpath:hengxin-platform-jbpm.xml" /> -->
+	<import resource="classpath:hengxin-platform-job.spring.xml" />
+	<import resource="classpath:hengxin-platform-cxf-beans.xml" />
+
+
+	<!-- enable component scanning (beware that this does not enable mapper 
+		scanning!) -->
+	<context:component-scan base-package="com.hengxin.platform">
+		<context:exclude-filter type="regex"
+			expression=".*\.[^.]*Controller" />
+		<context:exclude-filter type="regex"
+			expression=".*\.[^.]*MenuUtil" />
+	</context:component-scan>
+	<task:annotation-driven />
+
+	<!-- <task:annotation-driven /> -->
+
+	<!-- enable AspectJ -->
+	<aop:aspectj-autoproxy />
+
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="fileEncodings" value="UTF-8" />
+		<property name="cacheSeconds" value="1" />
+		<property name="basenames">
+			<list>
+				<value>classpath:messages/error</value>
+				<value>classpath:messages/message</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="appConfig"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="fileEncodings" value="UTF-8" />
+		<property name="cacheSeconds" value="1" />
+		<property name="basenames">
+			<list>
+				<!-- do not change the order, app-config should be the LAST one as it is the default config, see ReloadableResourceBundleMessageSource.resolveCode(String code, Locale locale) -->
+				<value>classpath:env/env-var</value>
+				<value>classpath:app-config</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- do not change the order, app-config should be the FIRST one as it is the default config, see PropertiesLoaderSupport.loadProperties(Properties props) -->
+	<context:property-placeholder 
+		location="classpath:app-config.properties, classpath:env/env-var.properties"  
+		ignore-unresolvable="true"/>
+	
+	<!-- captcha  -->
+	<bean id="kaptchaSupport" class="com.hengxin.platform.security.util.KaptchaSupport">
+		<constructor-arg type="java.util.Properties">
+			<props>
+				<prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+	
+	<!-- jbpm available -->
+	<bean id="extendJbpmService" class="com.hengxin.platform.common.service.ExtendJbpmService">
+		<property name="available" value="false" />
+	</bean>
+	
+	<aop:config expose-proxy="true">
+		<aop:pointcut expression="execution(* com.hengxin..*.*Controller.*(..)) and !execution(* com.hengxin.platform.security.controller.SigninController.*(..))" id="monitoringPointcut" />
+		<aop:advisor advice-ref="monitoringAdvice" pointcut-ref="monitoringPointcut" />
+	</aop:config>
+
+	<bean id="monitoringAdvice" class="com.hengxin.platform.common.monitor.MonitoringInterceptor" />
+	
+	<bean id="springDataSourceBeanPostProcessor" class="net.bull.javamelody.SpringDataSourceBeanPostProcessor" />
+	
+</beans>

@@ -1,0 +1,117 @@
+<link href="$link.contextPath/assets/css/page/myaccount/batch_procView.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/myaccount/batch_procView.js" type="text/javascript"></script>	
+<div class="row header">
+	<div id="search_area">
+		<div class="col-sm-2">
+    		<label>日期</label>
+    			<div class="input-group">
+                        <input type="text" name="searchDate" id="search-start-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+		<div class="col-sm-2">
+    		<label>开户银行</label>
+    			<select class="form-control"  name="bnkCd" id="bank">
+					#foreach($bankStatus in $!bankList)
+					<option value="$!bankStatus.code">$!bankStatus.text</option>
+					#end
+				</select>
+        </div>
+		<div class="col-sm-3">
+			<label>&nbsp;</label>
+				<input type="text" class="form-control" name="bnkAcctNo" placeholder="银行卡号"/>	
+		</div>
+		<div class="col-sm-1">
+			<label>&nbsp;</label>
+			<div>
+				<button class="btn btn btn-mf-primary" id="search">
+					<i class="fa fa-search"></i> 查询
+				</button>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<label>&nbsp;</label>
+			<div>
+				<button class="btn btn-mf-primary" id="audit">
+					<i class="fa fa-check"></i> 批量审核
+				</button>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<label>&nbsp;</label>
+			<div>
+				<form id="export-form" action="$link.contextPath/web/settlement/exportExcel" method="post">
+					<input data-ignore="true" id="form-searchDate" style='display:none' name="searchDate" />
+					<input data-ignore="true" id="form-bnkCd" style='display:none' name="bnkCd" />
+					<button type="submit" class="btn btn-mf-primary" id="excel">
+						<i class="fa fa-file-excel-o"></i> 导出excel
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-12 ht760">
+		<table id="batch-table">
+			<thead>
+				<tr>
+					<th data-mData="applNo"  data-bSortable="false">申请编号</th>
+					<th data-mData="applDt" data-bSortable="false">申请日期</th>
+					<th data-mData="trxAmt" data-bSortable="false" data-sFormatType="thousand">提现金额</th>
+					<th data-mData="bnkAcctName" data-bSortable="false">银行账户名</th>
+					<th data-mData="bnkName"  data-bSortable="false">开户银行</th>
+					<th data-mData="bnkAcctNo"  data-bSortable="false">银行卡号</th>
+					<th data-mData="acctNo"data-bSortable="false">交易账户</th>
+					<th data-mData="applStatus.text"  data-bSortable="false">审批状态</th>
+					<th data-mData="approveOpId"  data-bSortable="false">审核人</th>
+					<th data-mData="memo"  data-bSortable="false">交易备注</th>
+					<th data-mRender="_fnDrawButton" data-fnCreatedCell="_fnbuyButton" data-bSortable="false">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="modal fade modal-micro" id="modal-audit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						确认提示
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>是否确认批量审核时间为:<strong class="date"></strong>,开户行为<strong class="bnkname"></strong>的所有记录？</p>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>
+		<div class="modal fade modal-micro" id="modal-refuse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						拒绝理由
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <textarea class="reason"></textarea>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-ok">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>
+		

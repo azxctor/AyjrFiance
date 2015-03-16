@@ -1,0 +1,28 @@
+<div class="modal fade modal-micro" id="logModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+		 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">日志</h4>
+      </div>
+      <div class="modal-body">
+			<table id="logTable" class="dataTable">
+				<thead>
+                        <tr>
+                            <th data-mData="operateTime">日志时间</th>
+                            <th data-mData="operateUser">操作人员</th>
+                            <th data-mData="action.text" data-bSortable="false">操作</th>
+                            <th data-mRender="_fnresultRender" data-bSortable="false" style="min-width:163px">结果</th>
+                            <th data-mData="comment"  data-bSortable="false">备注</th>
+						</tr>
+                </thead>
+				
+				<tbody>
+                </tbody>
+            </table>
+			<br style="clear:both"/>
+      </div>
+    </div>
+  </div>
+</div>
+	 

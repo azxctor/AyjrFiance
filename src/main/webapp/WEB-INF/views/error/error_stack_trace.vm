@@ -1,0 +1,48 @@
+#set($emptyBody=true)
+#set($layout = "common/simple_layout.vm")
+<style>
+    body{ background: #fff; }
+    p a{ text-decoration: underline; }
+    p{ margin-top: 32px; line-height: 26px; font-family: sans-serif; }
+    p span{ font-size:22px; font-weight:bold; font-family: 'Microsoft Yahei';}
+    .container{ padding-top: 100px;}
+    .tit1{ color:#717171; font-family: verdana; font-weight: bold;}
+    .tit1 span{ color:#e85c45;}
+    .tit2{ color:#313131;  }
+    .tit3{ color:#333333; margin-top: 0px; margin-bottom: 33px;}
+    .tit3 span{ color:#eb735b; }
+    .img-wrapper{ position: relative;}
+    .img-wrapper .star1{ position: absolute; left: 72px; top: 228px;}
+	.blk-body {
+        background: none;
+        float: none;
+        position: static;		
+    }
+	.copy-right{
+		bottom: 10px;
+		left: 50%;
+        margin-left: -187px;
+		position: absolute;
+		visibility: visible;
+	}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-1">
+            <h4 class="tit4">$!errorMessage</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-1">
+            <p>
+                <li><a href="$link.contextPath/web/signout">安全退出</a></li><br/>
+                                                 如有任何问题请联系您的客户经理，或者拨打客服专员热线<br/>
+                <span><i class="fa fa-phone"></i>  400-999-7327</span>
+            </p>
+        </div>
+        <div class="col-sm-5">
+            <div class="img-wrapper">
+            </div>
+        </div>
+    </div>
+</div>

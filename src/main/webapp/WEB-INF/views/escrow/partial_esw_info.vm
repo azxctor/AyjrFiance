@@ -1,0 +1,30 @@
+<h3 class="page-header">账户信息</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" >
+  	  <div class="main-wrapper">
+	  		<div class="main">
+            	<form>
+                	<div class="row">
+                        <label class="control-label col-md-3"> 交易账号</label>
+                		<div class="col-md-9 form-group">
+                			<span class="show-form-control">$!eswAcctDto.getAcctNo()</span>
+                        </div>
+                	</div>
+                	<div class="row">
+                        <label class="control-label col-md-3"> 会员托管账号</label>
+                		<div class="col-md-9 form-group">
+                			<span class="show-form-control">$!eswAcctDto.getEswAcctNo()</span>
+                        </div>
+                	</div>
+                	<div class="row">
+                    	<label class="control-label col-md-3"> 托管子账号</label>
+                		<div class="col-md-9 form-group">
+                			<span class="show-form-control">$!eswAcctDto.getEswSubAcctNo()</span>
+                		</div>
+                	</div>
+               </form>
+            </div>
+      </div>
+  </div>
+</div>

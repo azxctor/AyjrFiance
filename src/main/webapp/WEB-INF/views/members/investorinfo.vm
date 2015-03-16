@@ -1,0 +1,154 @@
+<link href="$link.contextPath/assets/css/page/member/complete_base.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="$link.contextPath/assets/js/page/member/investorinfo.js"></script>
+#parse("members/online_protocol_modal.vm")	
+<div class="step-wrapper">
+    <div class="row">
+        <div class="step-blk col-sm-3">
+            <span class="step-i">1</span>
+            <span class="step-content">基本信息提交</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">2</span>
+            <span class="step-content">基本信息审核通过</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">3</span>
+            <span class="step-content">投资权限信息提交</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">4</span>
+            <span class="step-content">投资权限申请成功</span>
+        </div>
+    </div>
+</div>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  欢迎您拨打我们的客服热线 <strong>400-999-7327</strong> 进行业务咨询，我们将竭诚为您服务！
+</div>
+#if($investorInfo.oldInvestor)
+	#set($hasPrefix = "hasPrefix")
+	#set($investorPrefix = "oldInvestor.")
+    <form class="form-horizontal view-mode" role="form" id="pre-info-form">
+    	<a class="btn btn-default go-back"><i class="fa fa-reply"></i>&nbsp;返回</a>
+        <div>
+            <h3>基本信息</h3>
+    		#if($member.containsPerson())
+        		#parse("members\basicinfo_person.vm")
+        	#elseif($member.containsOrg())
+        		#parse("members\basicinfo_org.vm")
+    		#end
+    		<h3>投资信息</h3>
+        	#if($member.containsPerson())
+        		#parse("members\investorinfo_person.vm")
+        	#elseif($member.containsOrg())
+        		#parse("members\investorinfo_org.vm")
+        	#end
+        </div>
+    </form>
+#end
+#set($hasPrefix = "")
+#set($investorPrefix = "")
+<div id="invest-info-full">	
+	#if($investorInfo.oldInvestor)<a href="javascript:void(0)" id="show-pre-info">当前资料</a>#end
+    <h3 id="toggle-basicinfo">
+    	基本信息
+		   #if($investorInfo.hasMemberInfo)
+			<span class="fa fa-angle-up"></span>
+		   #else
+			<span class="fa fa-angle-down"></span>
+		  #end
+    </h3>
+    #set($fromPage = "invest")
+    
+    #if($investorInfo.hasMemberInfo)
+    	<form id="basicinfo-form" class="form-horizontal view-mode" role="form" method="POST">
+        	#if($member.containsPerson())
+				<div class="invest_toggle_slide" style="display:none">
+					#parse("members\basicinfo_person.vm")
+                </div>
+        	#elseif($member.containsOrg())
+				<div class="invest_toggle_slide" style="display:none">
+					#parse("members\basicinfo_org.vm")
+                </div>	
+        	#end
+        </form>
+    #else
+			<div class="invest_toggle_slide">
+				#parse("members\basicinfo_no_submit.vm")
+            </div>	
+    #end
+    
+    <h3>投资信息</h3>
+    <form class="form-horizontal $!investorInfo.formMode.text" role="form" method="POST" id="investorinfo-form"
+    	action="$link.contextPath/web/members/investorinfo" 
+    	data-save-action="$link.contextPath/web/members/investorinfo/save">
+    	
+		#if($investorInfo.rejectLastTime)
+            <div class="alert alert-danger">
+				<i class="fa fa-exclamation-triangle fa-lg"></i>
+                <strong>您的申请被拒绝，拒绝理由：</strong>
+				<span class="" name="commonts">$!investorInfo.comments</span>
+			</div>
+		#end
+		
+    	#if($member.containsPerson())
+    		#parse("members\investorinfo_person.vm")
+    	#elseif($member.containsOrg())
+    		#parse("members\investorinfo_org.vm")
+    	#end
+    	
+        <div class="row">
+        	<div class="col-sm-6">
+        		<div class="form-group">
+        			<div class="col-sm-4">
+        				<input type="checkbox" id="open-account-agg" data-ignore="true" name="aggcheck" class="pull-right" checked  #if($investorInfo.hasMemberInfo && $!investorInfo.formMode.text!="view-mode")"" #else disabled #end/>
+        			</div>
+        			<div class="col-sm-8">
+        				<span>同意
+							<a data-toggle="modal" data-target="#onlineProModal" title="投资会员协议">《投资会员协议》</a>
+							#*<a href="$link.contextPath/assets/doc/onlineprotocol.doc" title="下载">下载</a> *#
+							<a href="$link.contextPath/web/downloadFile/onlineprotocol" title="下载">下载</a>
+						</span>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+		
+    	<!-- 提交重置Button -->
+    	<div class="row row-button">
+    		#if(!$investorInfo.isViewMode())
+        		<div class="col-sm-5 col-sm-offset-6">
+        			<div class="col-sm-4 col-xs-12">
+        				#if($investorInfo.isUncommit())
+        					<button type="submit" class="btn form-btn-save">保存</button>
+        				#end
+        			</div>
+        			<div class="col-sm-4 col-xs-12">
+        				<button type="reset" class="btn form-btn-reset">重置</button>
+        			</div>
+        			<div class="col-sm-4 col-xs-12">
+        				<button type="submit" class="btn form-btn-submit" id="invest-info-submit" #if(!$investorInfo.hasMemberInfo) disabled #end>提交申请</button>
+        			</div>
+        		</div>
+    		#elseif($investorInfo.canEdit)
+        		<div class="col-sm-2 col-sm-offset-9 form-area-edit">
+        			<a href="$link.contextPath/web/members/investorinfo?mode=edit-mode&from=$!fromPage" class="btn form-btn-edit">编辑</a>
+        		</div>
+    		#elseif($investorInfo.isPendding())
+    			<div class="alert alert-warning">
+					<ul class="fa-ul">
+						<li >
+							<i class="fa fa-info-circle fa-lg"> </i>
+							信息审核中！
+                        </li>
+                    </ul>
+				</div>
+    		#end
+    	</div>
+    	<span data-type="json" id="investor-json-string" data-ignore="true" style="display:none">#toJson($investorInfo)</span>
+    	<span data-type="json" id="basic-json-string" data-ignore="true" style="display:none">#toJson($member)</span>
+    </form>
+</div>
+

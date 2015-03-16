@@ -1,0 +1,12 @@
+<span class="upload-button"> <span class="upload-title"><%=title%></span>
+	<input class="upload-input"  accept="<%=accept%>" type="file" name="file" multiple />
+</span>
+<span class="upload-filename">请上传小于2M的文件</span>
+<img class="upload-loading" title="正在上传" style="display:none" src="<%=loadingImg%>" width="22px"
+	height="22px">
+<br />
+<span class="upload-thumbnail" style="display:none"> 
+	<span title="取消" class="upload-close"><img width="24px" height="24px" src="<%=closeImg%>"></span>
+	<img class="upload-img" src=""></img>
+</span>
+<input type="text" data-ignore="true" style="position:relative;float:left;height:0;width:100%;border:none;opacity:0;filter:'opacity=0'" class="file-binder" name="<%=name%>" data-validate="<%=validateStr%>"/>

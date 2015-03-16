@@ -1,0 +1,69 @@
+<script src="$link.contextPath/assets/js/page/escrow/binding.js" type="text/javascript"></script>	
+<div class="row pd">
+  <div class="col-md-6 col-md-offset-3">
+  	  <div class="main-wrapper">
+	  		<div class="main">
+	  			 <form id="binding-form" role="form" method="POST">
+                        <label class="control-label col-md-3 required">银行账号</label>
+    					  <div class="input-group col-md-9 form-item has-feedback">
+    						  <span class="hidden-form-control" name="bank_account"></span> 
+							  <input maxlength="25" type="text" class="form-control" name="bank_account" data-validate="{required:true}" #if($dto.fixedInput) readonly #end>
+    					  </div>
+						
+						<label class="control-label col-md-3" for="newPassword">银行账户名</label>
+					 	  <div class="input-group col-md-9 form-item has-feedback">
+								<span class="hidden-form-control" name="bank_account_name"></span>
+                				<input maxlength="25" type="text" class="form-control" name="bank_account_name" data-validate="{required:true}" #if($dto.fixedInput) readonly #end/>
+                				##if(!$dto.fixedInput&&!$dto.isViewMode())
+                					##<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                                    ##    <i class="fa fa-exclamation-triangle fa-lg"></i>
+                                    ##    <strong>注：请使用本人开户银行卡认证</strong>
+                					##</div>
+                				##end
+						  </div>
+						  
+						  <label class="control-label col-md-3" for="confirmPassword">开户银行</label>
+						  <div class="input-group col-md-9 form-item has-feedback">
+								<div class="col-sm-12 col-bigger">
+            						<span class="hidden-form-control" title="$!dto.bankname.text" name="bank_name.text"></span> 
+            						<select class="form-control" name="bank_name.code" placeholder="请选择银行" #if($dto.fixedInput) disabled #end>
+                						#foreach($bank in $bankList)
+                							<option value="$!bank.code">$!bank.text</option>
+                						#end
+            						</select>
+                				</div>
+								<div class="col-sm-12 col-bigger">
+            						<span class="hidden-form-control" name="bank_province.text"></span>
+                					<select class="form-control" name="bank_province.code" id="bank-province" #if($dto.fixedInput) disabled #end placeholder="请选择省份" >
+            							#foreach($province in $provinceList)
+                							<option value="$province.code">$province.text</option>
+                						#end
+                                    </select>
+            					</div>
+            					<div class="col-sm-12 col-bigger">
+            						<span class="hidden-form-control" name="bank_city.text"></span>
+            						<select class="form-control"  id="bank-city" name="bank_city.code" #if($dto.fixedInput) disabled #end placeholder="请选择城市">
+            							
+                                    </select>
+            					</div>
+            					<div class="col-sm-12 col-bigger">
+									<span class="hidden-form-control" name="bank_city.text"></span>
+            						<select class="form-control"  id="bank-city" name="" #if($dto.fixedInput) disabled #end placeholder="支行/营业所">
+            							
+                                    </select>
+                                </div>
+            					###if(!$dto.fixedInput&&!$dto.isViewMode())
+            					##<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                                ##    <i class="fa fa-exclamation-triangle fa-lg"></i>
+                                ##    <strong>注：若所在地有招商银行建议使用招商银行卡以确保您的资金出入效率，无招商银行建议使用工商银行卡，不建议使用其他银行卡</strong>
+            					##</div>
+            					###end
+						  </div>
+						  <div class="form-btn-wrapper has-feedback">
+								<button type="button" class="btn btn-mf-primary" id="reg-btn">确定</button>
+                          </div>
+					</form>
+	  		</div>
+  	   </div>
+  </div>
+</div>

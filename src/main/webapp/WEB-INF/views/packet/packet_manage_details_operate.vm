@@ -1,0 +1,39 @@
+<div class="operate-background">
+	#if($!{detailsDto.canWithDraw})
+	<div class="row handle">
+		<div class="col-sm-1 col-sm-offset-1">
+            <button type="submit" class="btn btn-mf-primary" id="order-cancellation">撤单</button>
+		</div>
+	</div>
+	#elseif($!{detailsDto.canStopFinancingPackage})
+	<div class="row handle">
+		<div class="col-sm-1 col-sm-offset-1">
+            <button type="submit" class="btn btn-mf-primary" id="terminate-purchase">终止申购</button>
+		</div>
+	</div>
+	#elseif($!{detailsDto.canManualPay})
+	<div class="row handle">
+		<div class="col-sm-1 col-sm-offset-1">
+            <button type="submit" class="btn btn-mf-primary" id="hand-repayment">手工还款</button>
+		</div>
+	</div>
+	#elseif($!{detailsDto.canLoanApprove})
+		<div class="row handle">
+    		<div class="col-sm-1 col-sm-offset-1">
+                <button type="submit" class="btn btn-mf-primary" id="loan-approval">通过</button>
+    		</div>
+		</div>
+	#elseif($!{detailsDto.canLoanApproveConfirm})
+		<div class="row handle">
+    		<div class="col-sm-1 col-sm-offset-1">
+                <button type="submit" class="btn btn-mf-primary" id="loan-approval-confirm">确认</button>
+    		</div>
+		</div>
+	#elseif($!{detailsDto.canprepayment})
+		<div class="row handle">
+    		<div class="col-sm-1 col-sm-offset-1">
+                <button type="submit" class="btn btn-mf-primary" id="prepayment">提前还款</button>
+    		</div>
+		</div>
+	#end
+</div>

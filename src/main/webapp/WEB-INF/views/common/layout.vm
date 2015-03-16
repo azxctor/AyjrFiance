@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>安益金融</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link href="$link.contextPath/assets/img/favicon.ico" rel="icon" type="image/x-icon"/>
+		
+        <!-- Bootstrap core CSS -->
+        <link href="$link.contextPath/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="$link.contextPath/assets/vendor/bootstrap-datepicker/css/datepicker.css"
+        	rel="stylesheet">
+		<link rel="stylesheet" href="$link.contextPath/assets/vendor/datatables/css/jquery.dataTables.css">
+		<link rel="stylesheet" href="$link.contextPath/assets/css/page/jquery.dataTables.flat.css">
+        <link href="$link.contextPath/assets/vendor/jquery.spinner/bootstrap-spinner.css"
+        	rel="stylesheet">
+        <link href="$link.contextPath/assets/vendor/select2/css/select2.css" rel="stylesheet">
+        <link href="$link.contextPath/assets/vendor/font-awesome/css/font-awesome.css"
+        	rel="stylesheet">
+        <link href="$link.contextPath/assets/vendor/pnotify/jquery.pnotify.default.css"
+        	rel="stylesheet">
+        <link href="$link.contextPath/assets/vendor/pnotify/jquery.pnotify.default.icons.css"
+        	rel="stylesheet">
+        <link href="$link.contextPath/assets/vendor/jquery.raty/jquery.raty.css" rel="stylesheet">
+        <link href="$link.contextPath/assets/css/common.css" rel="stylesheet">
+        <link href="$link.contextPath/assets/css/module/menu.css" rel="stylesheet">
+        <link href="$link.contextPath/assets/css/form.css" rel="stylesheet">
+        <link href="$link.contextPath/assets/css/plugins.css" rel="stylesheet">
+		<link href="$link.contextPath/assets/css/module/webfont/menu_icon.css" rel="stylesheet">
+        
+    	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!--[if lt IE 9]>
+	    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	    <script type="text/javascript" src="$link.contextPath/assets/js/require.js"></script>
+    	<!-- Global variable module which will take variables from sever side -->
+    	<script type="text/javascript">
+	        define('global', {
+	            context: '$link.contextPath'
+	            #if ( $mainMenuCode )
+	            , mc: '$mainMenuCode'
+	            #end
+	            #if ( $subMenuCode )
+	            , sc: '$subMenuCode'
+	            #end
+	        })
+    	</script>
+    	<script type="text/javascript" src="$link.contextPath/assets/js/base.js"></script>
+		<script type="text/javascript" src="$link.contextPath/assets/js/page/common.js"></script>
+    </head>
+    <body>
+		#parse("common/header.vm")
+		<div class="km-loading-mask" style="display:none">
+			<div class="km-loading-img">
+				<img width="100%" height="100%" src="$link.contextPath/assets/img/ajax_loader_gray_128.gif" />
+			</div>
+		</div>		
+		<!-- Main content for a primary screen or call to action -->
+		#if(!$emptyBody)		
+			<!--页面内容包装器-->
+			#parse("common/mytodo.vm")
+			<div class="page-wrapper" id="page-wrapper">
+                <!--页面内容-->
+                <div class="right-blk">
+                    <div class="right-blk-head"></div>
+                    <div class="right-blk-body">
+						<div class="right-blk-content">
+							$screen_content
+						</div>
+						#parse("common/footer.vm")
+                    </div>
+					
+                </div>
+            </div>
+            <!--左菜单-->
+            <div id="mf-menu" class="menu">
+                <div class="menu-wrapper">
+	              #if(!$sec.isPlatformUser())
+    				 <div class="menu-index">
+						<a href="$link.contextPath/web/dashboard">
+        					<div class="menu-index-ico">
+                             <i class="fa fa-border fa-home"></i></h4>
+                            </div>
+        					<h4>首页</h4>
+						</a>
+        			 </div> 
+        		  #end 				
+					
+                </div>
+                <div class="submenu-wrapper">
+                    <a class="submenu-back submenu-blk-el" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left"></i></a>
+                    <div class="submenu-content">
+                    	<ul class="submenu-inner">
+                    	</ul>
+                    </div>
+                </div>
+            </div>
+        #else
+        	$screen_content			
+			#parse("common/footer.vm")
+		#end
+        <div class="is-dev hide">$config.isDevEnv()</div>
+    </body>
+</html>

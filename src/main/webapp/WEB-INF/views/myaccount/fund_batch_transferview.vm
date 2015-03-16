@@ -1,0 +1,66 @@
+#set($layout="common/emptyLayout.vm")
+<link href="$link.contextPath/assets/css/page/myaccount/fund_batch_transferview.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/myaccount/fund_batch_transferview.js" type="text/javascript"></script>
+<div class="info-panel">
+	<form class="form-horizontal" rol="form">
+		<div class="row form-header">
+            <i class="fa fa-upload"></i>&nbsp;批量数据上传
+        </div>
+    	<div class="row">
+    		<div class="col-sm-6">
+				<div class="form-group">
+                    <label class="col-sm-4 control-label required">上传文件</label>
+        			<div class="col-sm-8">
+        				<div class="file-upload"  data-validate="{required:true,extension:'xls,xlsx'}"></div>
+                    </div>
+                </div>
+            </div>
+    		<div class="col-sm-12 row-btn">
+                <button type="button" class="btn btn-mf-primary pull-right" id="btn-batch-transfer">提交转账申请</button>
+            </div>
+			
+		</div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+	<table class="dataTable" id="table-multi-result" cellspacing="0" cellpadding="0" border="0">
+		<thead>
+			<tr>
+				<th>付款交易账号</th>
+				<th>付款姓名</th>
+                <th>收款交易账号</th>
+                <th>收款姓名</th>
+                <th>划转金额（元）</th>
+				<th style="min-width:150px">备注</th>
+			</tr>
+		</thead>
+		<tbody id="result-list">
+			
+		</tbody>
+	</table>
+    </div>
+</div>
+##转账确认提示框
+<div class="modal fade modal-micro" id="modal-batch-confirm" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title">
+            						确认提示
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>是否确认提交批量转账申请？</p>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-batch-agree">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>

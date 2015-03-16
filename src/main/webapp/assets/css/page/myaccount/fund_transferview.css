@@ -1,0 +1,42 @@
+.info-panel{
+	padding-bottom:8px;
+}
+#btn-reset,
+#btn-transfer {
+	margin-left: 10px;
+}
+.hide-info {
+	display: none;
+}
+#type {
+	display: none;
+}
+.row-btn{
+	border-top: 1px dashed #ccc;
+	clear: left;
+	margin: 0;
+}
+.row-btn .btn{
+	margin-top:8px;
+}
+#btn-search{
+	position:relative;
+	float:right;
+	width:120px;
+}
+.row-search{
+	margin-bottom:10px;
+}
+#start-date, #end-date {
+	cursor: pointer;
+	background-color: #fff;
+	text-indent: 10px;
+}
+#btn-muti-transfer {
+	margin-top: 5px;
+	margin-right: 15px;
+	width: 120px;
+}
+.link {
+	cursor: pointer;
+}

@@ -1,0 +1,236 @@
+<link href="$link.contextPath/assets/css/page/myaccount/fund_transferview.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/myaccount/fund_transferview.js" type="text/javascript"></script>
+<div id="container-transfer">
+    <div class="info-panel">
+		<div class="panel-header row">
+			<div class="col-sm-10 col-bigger">
+                <i class="fa fa-cog fa-lg"></i>&nbsp;转账参数
+            </div>
+			<div class="col-sm-2 col-bigger">
+				<button type="button" class="btn btn-mf-primary pull-right" id="btn-muti-transfer">批量转账</button>
+			</div>
+        </div>
+    	<span id="type">$!type</span>
+    	<form class="form-horizontal" id="form" role="form" method="POST">
+    		<input type="hidden" name="useType" value='$!useType' />
+    		<div class="row">
+    			#if($!type == "PM")
+                <div class="col-sm-12">
+                    <div class="col-sm-4">
+    					<div class="form-group">
+            				<label class="col-sm-6 control-label required" for="acctType">转账类型</label>
+            				<div class="col-sm-6">
+                				<select class="form-control" name="acctType" data-acctno=$!platformAcctNo data-ignore="true" data-validate="{required:true}">
+        							<option value="IN" selected>转入</option>
+        							<option value="OUT">转出</option>
+                                </select>
+                			</div>
+        				</div>
+    				</div>
+    			</div>
+    			#end
+                <div class="col-sm-12 payer">
+        			<div class="col-sm-4">
+    						<div class="form-group">
+            				<label class="col-sm-6 control-label required" for="payerAcctNo">转出会员交易账号</label>
+            				<div class="col-sm-6">
+                				<input type="text" class="form-control" name="payerAcctNo" data-validate="{required:true}">
+                			</div>
+        				</div>
+    				</div>
+        			<div class="col-sm-4 hide-info">
+    					<div class="form-group">
+            				<label class="col-sm-4 control-label" for="bnkAcctName">会员姓名</label>
+            				<div class="col-sm-8">
+                				<input type="text" class="form-control" data-name="bnkAcctName" name="payerName" disabled data-ignore="true">
+                			</div>
+        				</div>
+    				</div>
+        			<div class="col-sm-4 hide-info">
+    					<div class="form-group">
+            				<label class="col-sm-4 control-label" for="bnkName">开户行名称</label>
+            				<div class="col-sm-8">
+                				<input type="text" class="form-control" name="bnkName" disabled data-ignore="true">
+                			</div>
+        				</div>
+    				</div>
+    			</div>
+                <div class="col-sm-12 payer">
+        			<div class="col-sm-4">
+    				</div>
+        			<div class="col-sm-4 hide-info">
+    					<div class="form-group">
+            				<label class="col-sm-4 control-label" for="bnkAcctNo">银行账号</label>
+            				<div class="col-sm-8">
+                				<input type="text" class="form-control" name="bnkAcctNo" disabled data-ignore="true">
+                			</div>
+        				</div>
+    				</div>
+        			<div class="col-sm-4 hide-info">
+    					<div class="form-group">
+            				<label class="col-sm-4 control-label" for="availableBal">可用余额</label>
+            				<div class="col-sm-8">
+    							<div class="input-group">
+                    				<input type="text" class="form-control" name="availableBal" disabled data-ignore="true" />
+                                    <label class="input-group-addon">元</label>
+    							</div>
+                			</div>
+        				</div>
+    				</div>
+    			</div>
+                <div class="col-sm-12 payee">
+        			<div class="col-sm-4">
+    					<div class="form-group">
+            				<label class="col-sm-6 control-label required" for="payeeAcctNo">转入会员交易账号</label>
+            				<div class="col-sm-6">
+                				<input type="text" class="form-control" name="payeeAcctNo" data-validate="{required:true}">
+                			</div>
+        				</div>
+    				</div>
+    				<div class="col-sm-4 hide-info">
+    					<div class="form-group">
+            				<label class="col-sm-4 control-label" for="bnkAcctName">会员姓名</label>
+            				<div class="col-sm-8">
+                				<input type="text" class="form-control" data-name="bnkAcctName" name="payeeName" disabled data-ignore="true">
+                			</div>
+        				</div>
+    				</div>
+        			<div class="col-sm-4 hide-info">
+    					<div class="form-group">
+            				<label class="col-sm-4 control-label" for="bnkName">开户行名称</label>
+            				<div class="col-sm-8">
+                				<input type="text" class="form-control" name="bnkName" disabled data-ignore="true">
+                			</div>
+        				</div>
+    				</div>
+    			</div>
+                <div class="col-sm-12 payee">
+        			<div class="col-sm-4">
+    				</div>
+        			<div class="col-sm-4 hide-info">
+    					<div class="form-group">
+            				<label class="col-sm-4 control-label" for="bnkAcctNo">银行账号</label>
+            				<div class="col-sm-8">
+                				<input type="text" class="form-control" name="bnkAcctNo" disabled data-ignore="true">
+                			</div>
+        				</div>
+    				</div>
+        			<div class="col-sm-4 hide-info">
+    					<div class="form-group">
+            				<label class="col-sm-4 control-label" for="availableBal">可用余额</label>
+            				<div class="col-sm-8">
+    							<div class="input-group">
+                    				<input type="text" class="form-control" name="availableBal" disabled data-ignore="true">
+        							<label class="input-group-addon">元</label>
+    							</div>
+    						</div>
+        				</div>
+    				</div>
+    			</div>
+                <div class="col-sm-12">
+        			<div class="col-sm-4">
+    					<div class="form-group">
+            				<label class="col-sm-6 control-label required" for="trxAmt">转账金额</label>
+            				<div class="col-sm-6">
+    							<div class="input-group">
+                    				<input type="text" class="form-control" name="trxAmt" maxlength="12" data-validate="{required:true,number:true,fixednumber:2,positiveNumber:true}">
+        							<label class="input-group-addon">元</label>
+    							</div>
+                			</div>
+        				</div>
+    				</div>
+    			</div>
+                <div class="col-sm-12">
+        			<div class="col-sm-12">
+    					<div class="form-group">
+    						<label class="col-sm-2 control-label" for="trxMemo">备注</label>
+            				<div class="col-sm-8">
+    							<textarea class="form-control" name="trxMemo" rows="3" maxlength="200"></textarea>
+                			</div>
+        				</div>
+    				</div>
+    			</div>
+    			<div class="col-sm-12 row-btn">
+                    <button type="button" class="btn btn-mf-default pull-right" id="btn-reset">重置</button>
+                    <button type="button" class="btn btn-mf-primary pull-right" id="btn-transfer">提交转账申请</button>
+                </div>
+    		</div>
+        </form>
+    </div>
+    <div class="info-panel">
+		<div class="panel-header">
+                <i class="fa fa-list-alt fa-lg"></i>&nbsp;转账申请结果
+        </div>
+        <div class="row row-search">
+			<input type="hidden" name="useType" value='$!useType' />
+        	<div class="col-sm-12">
+        		<div class="col-sm-10 col-bigger">
+        		<div class="col-sm-2 no-padding-left">
+        			<label class="control-label">
+        				起止日期
+        			</label>
+        		</div>
+                <div class="col-sm-3 no-padding-left">
+        			<div class="input-group">
+        				<input class="form-control datepicker" name="fromDate" id="start-date" readonly/>
+                        <label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+                    </div>
+        		</div>
+        		<div class="col-sm-3 no-padding-left">
+        			<div class="input-group">
+        				<input class="form-control datepicker" name="toDate" id="end-date" readonly/>
+                        <label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+                    </div>
+        		</div>
+                </div>
+        		<div class="col-sm-2 col-bigger">
+        			<button type="button" id="btn-search" class="btn btn-mf-primary pull-right"><i class="fa fa-search"></i>&nbsp;查询</button>
+                </div>
+        	</div>
+		</div>
+		<div class="row">
+            <div class="col-sm-12">
+        	<table class="display" id="table-result" cellspacing="0" cellpadding="0" border="0">
+        		<thead>
+        			<tr>
+        				<th data-mData="eventId" data-bSortable="false">事件编号</th>
+						<th data-mData="payerAcctNo">转出交易账号</th>
+						<th data-mData="payeeAcctNo">转入交易账号</th>
+        				<th data-mData="applDt" data-bSortable="false">申请时间</th>
+        				<th data-mData="trxAmt" data-sFormatType="thousand" data-bSortable="false">转账金额（元）</th>
+						<th data-mData="createOpid" data-bSortable="false">申请人</th>
+						<th data-mData="applStatus.text" data-bSortable="false">申请状态</th>
+						<th data-mRender="_fnEllipsisTre" data-bSortable="false">申请备注</th>
+						<th data-mRender="_fnEllipsisDeal" data-bSortable="false">审核备注</th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        		</tbody>
+        	</table>
+            </div>
+        </div>
+    </div>
+</div>
+##转账确认提示框
+<div class="modal fade modal-micro" id="modal-confirm" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						确认提示
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>是否确认提交该转账申请？</p>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-agree" data-dismiss="modal">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>

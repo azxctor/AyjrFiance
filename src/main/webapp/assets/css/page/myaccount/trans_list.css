@@ -1,0 +1,16 @@
+#search-start-date ,#search-end-date{
+    cursor: pointer;
+    background: #fff;
+}
+#search-wrapper .col-xs-5{
+    line-height:30px;
+}
+.btn-group button{
+    color: #FFF;
+    background-color: #C27724;
+    border-color: #A9651A;
+}
+.btn-group a{
+    font-size: 16px;
+    color: #FFF;
+}

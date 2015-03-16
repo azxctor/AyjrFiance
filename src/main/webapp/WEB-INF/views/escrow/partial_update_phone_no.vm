@@ -1,0 +1,96 @@
+<h3 class="page-header">手机号码</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" id="phone-number-wrapper">
+	<div class="initial-wrapper">
+		<div class="main">
+    		<form>
+            	<div class="row">
+                	<label class="control-label col-md-3"> 手机号码</label>
+				  
+                  <label class="sr-only" id="card-img-id" data-id="$!isIdCardImgNull"></label>
+    				<div class="form-group col-md-9">
+    					<div class="input-group">
+    						##<span class="show-form-control">$!mobile</span>
+    						<span class="input-group-addon"><i class="fa fa-mobile-phone"></i></span>
+        					  <input type="text" value="$!mobile" readonly class="form-control" id="mobile" name="mobile" data-validate="{required:true,mobilezh:true}"  maxlength="11" required placeholder="手机号码"/>
+						</div>
+                    </div>
+                </div>
+            	<div class="row">
+    				<div class="col-md-6 pull-right">
+    					<button type="button" data-target="#update-phone-number" data-parent="#phone-number-wrapper" class="btn btn-mf-primary btn-collapse" id="modify-phone">修改手机号</button>
+    				</div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div> 
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="card-img" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="project-modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+        					请上传身份证图片！
+                        </div>
+                    </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-mf-primary" data-dismiss="modal">确定</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" id="update-phone-number" style="display:none">
+  	  <div class="main-wrapper">
+	  		<div class="main">
+			
+  			 <form id="phone-number-form" role="form" method="POST" action="$link.contextPath/web/esw/account/updatemobile">
+				<div class="row">
+				  <label class="control-label col-md-3" for="mobile">手机号码</label>
+				  
+				  <div class="form-group col-md-9">
+    			 	  <div class="input-group has-feedback">
+    					  <span class="input-group-addon"><i class="fa fa-mobile-phone"></i></span>
+    					  <input type="text" class="form-control" id="mobile" name="mobile" data-validate="{required:true,mobilezh:true}"  maxlength="11" required placeholder="手机号码"/>
+    				  </div>
+                  </div>
+				</div>
+				<div class="row">
+				  <label class="control-label col-md-3" for="authCode">验证码</label>
+    			  <div class="form-grop col-md-9">
+    			 	  <div class="input-group has-feedback">
+    					<div class="col-xs-6 no-padding">
+    						<div class="form-group has-feedback">
+    							<input type="text" class="form-control" name="authCode"  data-validate="{required:true}" maxlength="100"  placeholder="手机验证码"/>
+    			        	</div>
+    			        </div>
+    			        <div class="col-xs-6">
+    			        	 <a class="btn btn-default ui-button captcha-link" disabled>获取手机验证码</a>
+    			        </div>
+    				  </div>
+                  </div>
+                </div>
+    			<div class="row row-button">
+    				<div class="col-md-4 pull-right">
+    					<button type="button"  data-parent="#update-phone-number" data-target="#phone-number-wrapper" class="btn btn-mf-default btn-collapse">取消</button>
+    					<button type="submit" class="btn btn-mf-primary">确定</button>
+                    </div>
+                </div>
+				</form>
+	  		</div>
+	  		<br/>
+	  		<br/>
+	  		<br/>
+  	   </div>
+  </div>
+</div>

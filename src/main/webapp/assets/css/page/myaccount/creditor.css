@@ -1,0 +1,7 @@
+a i{ color:#784d20;}
+.void-label{ width: 100%;}
+.transfer-wrapper .col-xs-3{ text-align: right; padding-bottom:20px; }
+.transfer-wrapper .col-xs-9{ text-align: left; }
+#modal-owe .modal-content,#modal-get .modal-content,#modal-agreement .modal-content{ width: 800px; margin-left: -100px; }
+.btn-group .btn{ background: #551f03; color:#FFF;}
+.btn-group .btn:first-child{ margin-left:12px; }

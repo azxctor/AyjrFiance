@@ -1,0 +1,131 @@
+<script src="$link.contextPath/assets/js/page/escrow/acct_balance_query.js" type="text/javascript"></script>
+<div class="row" style="margin-bottom:15px">
+		<form class="col-sm-offset-2 col-sm-6" id="search-form">
+			<label class="col-sm-4 control-label" style="text-align: right" >交易账号</label>
+			<div class="col-sm-4">
+				<div class="input-group">
+					<input type="text" class="form-control" name="acctNo" id="acct-no" data-validate="{required:true}"/>
+				</div>
+			</div>
+			<div class="col-sm-2 col-bigger">
+	            <button type="button" class="btn btn-mf-primary" id="btn-search"><i class="fa fa-search"></i>查询</button>
+			</div>
+		</form>
+</div>
+<div>
+	<h3 class="page-header" style="margin-top:0;padding-top:0 ">托管账户余额</h3>
+	<form class="form-horizontal" role="form" id="info-form">
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">托管账号</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="eswAcctNo"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class=form-group>
+					<label class="col-sm-4 control-label">托管子账号</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="eswSubAcctNo"></span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class=form-group>
+					<label class="col-sm-4 control-label">币种</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="curr"></span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class=form-group>
+					<label class="col-sm-4 control-label">余额</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="balance"></span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">发卡行</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="bankId"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class=form-group>
+					<label class="col-sm-4 control-label">发卡行名称</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="bankName"></span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">运营商</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="servProv"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h3 class="page-header" style="margin-top:0;padding-top:0 ">交易系统余额</h3>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-2">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">交易账号</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="acctNo"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class=form-group>
+					<label class="col-sm-4 control-label">余额</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="acctBal"></span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class=form-group>
+					<label class="col-sm-4 control-label">可用余额</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="avlAmt"></span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6  col-sm-offset-2">
+				<div class=form-group>
+					<label class="col-sm-4 control-label">可提现金额</label>
+					<div class="col-sm-8">
+						<span class="show-form-control" name="cashAbleAmt"></span> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+</div>

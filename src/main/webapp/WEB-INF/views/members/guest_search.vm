@@ -1,0 +1,105 @@
+#set($layout = "common/layout.vm")
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/jquery.dataTables.flat.css">
+<link rel="stylesheet" href="$link.contextPath/assets/vendor/bootstrap-datepicker/css/datepicker.css">
+<link rel="stylesheet" href="$link.contextPath/assets/css/form.css">
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/member/audit.css">
+<script src="$link.contextPath/assets/js/page/member/guest-search.js" type="text/javascript"></script>
+<script src="$link.contextPath/assets/js/page/member/member-log.js" type="text/javascript"></script>
+##parse("audit/audit_log.vm")
+<div id="table-wrapper">
+	<form id="guest-search-form-id">
+	<!-- 
+	<div class="clearfix agent-register-wrapper">
+         <a id="agent_register"  href="$link.contextPath/web/members/registeragent">点击进入代注册页面</a>
+    </div>
+     -->
+	<div id="guest_search_area" class="search-area">
+		<div class="row">
+			<input id="hidden_search_user_type" name="userType" type="hidden" value="PERSON"/>
+			<div class="col-sm-2">
+                <label>起始日期:</label>
+                <div class="full-oqp">
+                    <input id="member_start_time" name="fromDate" type="text" class="form-control datepicker"/>
+                </div>
+            </div>
+			
+			<div class="col-sm-2">
+                <label>结束日期:</label>
+                <div class="full-oqp">
+                    <input id="member_end_time" name="toDate" type="text" class="form-control datepicker"/>
+                </div>
+            </div>
+			<div class="col-sm-1">
+    			<label style="width:100%">&nbsp;</label>
+    			<div>
+                     <a id="guest_search_btn" class="btn btn-mf-primary"><i class="fa fa-search"></i>查询</a>
+                </div>
+    		</div>
+			<div class="col-sm-2">
+    			<label style="width:100%">&nbsp;</label>
+    			<div>
+        			<button type="button" class="btn btn-mf-primary pull-right" id="export-excel" style="">
+						<i class="fa fa-file-excel-o"></i>&nbsp;导出excel
+					</button>
+    			</div>
+    		</div>
+		</div>
+	</div>
+	</form>
+	<div class="col-sm-2 col-bigger sr-only">
+		<form id="form-export" method="post" action="$link.contextPath/web/search/memberinfoExcel">
+			<input type="hidden" id="use-types" name="userType"/>
+			<input type="hidden" id="from-date" name="fromDate"/>
+			<input type="hidden" id="to-date" name="toDate"/> 
+		</form>
+	</div>
+	<ul class="nav nav-tabs micro-nav-tabs">
+          <li class="active"><a href="#indiv" data-toggle="tab">个人</a></li>
+          <li><a href="#org" data-toggle="tab">机构</a></li>
+    </ul>
+
+	<div class="tab-content">
+		 <div class="tab-pane fade in active" id="indiv">
+				 <table id="personGuestTable" class="dataTable">
+            		<thead>
+                            <tr>
+								<th data-mData="username" data-bSortable="false">用户名</th>
+								<th data-mData="name" data-bSortable="false">姓名</th>
+								<th data-mData="personSex.text" data-bSortable="false">性别</th>
+                                <th data-mData="personAge" data-bSortable="false">年龄</th>
+								<th data-mData="region.fullText" data-bSortable="false">所在地区</th>
+                                <th data-mData="mobile" data-bSortable="false">手机</th>
+								<th data-mData="personQQ" data-bSortable="false">QQ</th>
+                                <th data-mData="createTs" data-bSortable="false">注册时间</th>
+            				</tr>
+                    </thead>
+            		<tbody>
+            		</tbody>
+       			 </table>
+		 </div>
+		 <div class="tab-pane fade" id="org">
+				 <table id="orgGuestTable" class="dataTable">
+            		<thead>
+                            <tr>
+								<th data-mData="username" data-bSortable="false">用户名</th>
+								<th data-mData="name" data-bSortable="false">企业名称</th>
+								<th data-mData="region.fullText" data-bSortable="false">所在地区</th>
+								<th data-mData="mobile" data-bSortable="false">联系人手机</th>
+                                <th data-mData="orgQQ" data-bSortable="false">联系人QQ</th>
+                                <th data-mData="createTs" data-bSortable="false">注册时间</th>
+            				</tr>
+                    </thead>
+            		<tbody>
+            		</tbody>
+       			 </table>
+		 </div>
+	</div>
+</div>
+<div  id="search-detail-wrapper" style="display:none" class="form-wrapper">
+	###parse("members/searchinfo_person.vm")
+	<div id="search-detail-content">
+		
+    </div>	
+    <span class="hide" id="hidden_original_data"></span>
+</div>	
+

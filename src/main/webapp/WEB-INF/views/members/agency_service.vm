@@ -1,0 +1,100 @@
+<div id="agency-service" class="agency-service $!hasPrefix" data-prefix="$!serviceCentorPrefix">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">合作形式</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="cooperationForm" name="cooperation_form"></span>
+					<input maxlength="25" type="text" class="form-control" name="cooperation_form" data-validate="{required:true}" />
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">注册地</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="registrationPlace" name="registration_place"></span>
+					<input maxlength="100" type="text" class="form-control" name="registration_place" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">注册时间</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="registrationDate" name="registration_date"></span>
+					<input maxlength="20" type="text" class="form-control datepicker" name="registration_date" />
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">注册资本</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="registrationCapital" name="registration_capital"></span>
+					<input maxlength="10" type="text" class="form-control" name="registration_capital" />
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">合作协议起始日</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="cooperationBeginDate"  name="cooperation_begin_date"></span>
+					<input maxlength="20" type="text" class="form-control datepicker" name="cooperation_begin_date" data-validate="{required:true}" />
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">合作协议截止日</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="cooperationEndDate" name="cooperation_end_date"></span>
+					<input maxlength="20" type="text" class="form-control datepicker" name="cooperation_end_date" data-validata="{required:true}"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">员工人数</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="employeeNo" name="employee_no"></span>
+					<input maxlength="10" type="text" class="form-control" name="employee_no" data-validate="{digits:true}"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">受理人</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="agent" name="agent"></span>
+					<input maxlength="25" type="text" class="form-control" #if ($dto.serviceFixedAgent) readonly #end name="agent" />	
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	#if($dto.displayServiceLevel())
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">等级</label>
+					<div class="col-sm-8">
+						<span class="hidden-form-control" name="level.text"></span>
+	                    <input maxlength="20" type="text" class="form-control" name="level.text" disabled  data-ignore="true" >
+					</div>
+				</div>
+			</div>
+		</div>
+	#end
+	
+</div>

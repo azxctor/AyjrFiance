@@ -1,0 +1,92 @@
+/*search-form*/
+#btn-finance-apply {
+	float: right;
+	margin-left: 10px;
+}
+#search-btn {
+	margin-left: 10px;
+}
+.btn-step {
+	float: right;
+	margin: 20px 0 0 20px;
+}
+/*product-list-table*/
+#table-search-result {
+	margin-top: 20px;
+}
+#table-search-result .btn-group {
+	min-width:50px;
+}
+
+/******************finance-apply****************/
+#productId {
+	display: none;
+}
+#finance-apply{
+	display: none;
+}
+.btn-choose-org {
+	float:right;
+}
+.term-days {
+	display: none;
+}
+
+/*��֤�𼰷���tab*/
+#table-cost td{
+	width: 25%;
+	border-top: 0px;
+}
+#table-cost i{
+	width: 16px;
+	height: 16px;
+	text-align: center;
+}
+.mypopover {
+	font-size: 12px;
+}
+/*�ʲ�ծ+���������tab*/
+.add-head-box {
+	margin: 10px 0;
+}
+.add-head-box label.control-label {
+	width: 60px;
+	text-align: left;
+}
+.add-table {
+	display: none;
+	width: 95%;
+	margin-left: 5%;
+	font-size: 12px;
+}
+.add-form {
+	display: none;
+}
+
+/*���Ͽ�tab*/
+#fileupload[type="file"] {
+	display: none;
+}
+#image-table {
+	display: none;
+	margin-top: 20px;
+}
+#image-table td{
+	width: 33%;
+}
+.bor-rs {
+	border-right: 1px #D7D7D7 solid;
+}
+.font-bold {
+	font-weight: bold;
+}
+/******************finance-details***************/
+#finance-details{
+	display: none;
+}
+#productlist {
+	display: none;
+}
+#image-table tbody td{
+	 word-break: break-all;
+}

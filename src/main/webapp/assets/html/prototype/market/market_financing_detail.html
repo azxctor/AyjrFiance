@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head lang="ZH">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="UTF-8">
+<title>Template</title>
+<!-- External CSS -->
+<link rel="stylesheet"
+	href="../../../vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="../../../vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../css/page/prototype/templ.css">
+<link rel="stylesheet" href="../../../css/page/prototype/market/market-detail.css">
+<script type="text/javascript" src="../../../js/require.js"></script>
+<!-- Global variable module which will take variables from sever side -->
+<script type="text/javascript">
+        define('global', {
+            context: '../../../../'
+        })
+    </script>
+<script type="text/javascript" src="../../../js/base.js"></script>
+</head>
+<body>
+	<!--页面顶部-->
+	<div class="top">
+		<img class="top-logo" src="../../../img/templ_img/logo.jpg">
+		<div class="top-time">
+			<span class="hours">18:35</span> <span class="dates"> <span
+				class="date">04-15</span> <span class="week">TUE</span>
+			</span>
+		</div>
+		<div class="top-logout">
+			<i class="fa fa-user"></i> <span class="user-name">Nick Jones
+			</span> <a href="javascript:void(0);">退出</a>
+		</div>
+	</div>
+
+	<div class="page-wrapper">
+		<!--页面内容-->
+		<div class="right-blk">
+			<div class="right-blk-head">
+				<!--此处更改标题-->
+				<span class="right-blk-head-title">行情</span> <span> > </span> <span
+					class="right-blk-head-subtitle">融资包详情</span>
+				<!--此处更改标题-->
+			</div>
+			<div class="right-blk-line"></div>
+			<div class="right-blk-body">
+				<div class="container-mk">
+					<div class="row">
+						<div class="col-sm-8">
+							<div class="thumbnail basic-info">
+								<div class="col-sm-12 header-title bgc">
+									<h4 class="fn-left">服装店融资</h4>
+								</div>
+								<div class="col-sm-12 ht1"></div>
+								<div class="col-sm-6 br1">
+									<h5>融资金额</h5>
+									<span class="fs30 c1">400万</span>
+								</div>
+								<div class="col-sm-3 br1">
+									<h5>年华利率</h5>
+									<!-- <em class="fs30">12.</em>50% -->
+									<span class="fs30 c1">12.</span><span class="fs14">50%</span>
+								</div>
+								<div class="col-sm-3">
+									<h5>还款期限</h5>
+									<span class="fs30 c1">36</span><span class="fs14">个月</span>
+								</div>
+								<div class="col-sm-12">
+									<h5>每月等额本息还款 $ 6550</h5>
+									<strong>借款用途说明 </strong>
+									<h5 class="lh">
+										客户公司位于重庆市,主营业务为劳务服务，本借款用于资金周转。本项借款已通过证大速贷及证东咨询并被推荐至有利网；推荐方提...<a
+											href="javascript:void(0)" class="check-link" data-type="ind">
+											[详情]</a>
+									</h5>
+								</div>
+								<div class="col-sm-12 ht1 bt1 bgc"></div>
+
+								<div class="col-sm-4 br1 bgc">
+									<div class="progress br0 pr">
+										<div class="progress-bar bc1" style="width: 65%;">
+											<span class="pa lf50">65%</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4 br1 bgc">时间剩余6天23小时57分</div>
+								<div class="col-sm-4 bgc">
+									<span class="fc">100%本息担保</span>
+								</div>
+								<div class="col-sm-12 ht1 bgc"></div>
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="thumbnail basic-info">
+
+								<div class="col-sm-6">
+									<h4 class="fn-left">投资金额</h4>
+								</div>
+								<div class="col-sm-6">
+									<h5 class="fn-right fc">可投 450,000元</h5>
+								</div>
+								<form role="form" class="form-mk">
+									<div class="col-sm-12 bgc bt1 pr">
+										<input type="text" class="form-control mk mt20 br0 ht2"> <span
+											class="tip pa">元</span>
+									</div>
+									<div class="col-sm-12 bgc yjsy">
+										<span class="fs14">预计收益</span><span class="fs14 c1 ml5">0.00</span>元
+									</div>
+									<div class="col-sm-5 bgc">
+										<input class="form-control mk br0 yzm" type="text">
+									</div>
+									<div class="col-sm-5 bgc">
+										<img id="captcha-img" class="img-responsive"
+											src="$link.contextPath/web/captcha" style="cursor: pointer;">
+									</div>
+									<div class="col-sm-2 bgc">
+										<span class="glyphicon glyphicon-refresh"></span>
+									</div>
+									<div class="col-sm-12 bgc checklabel">
+										<input class="checkbox fl br0" type="checkbox" checked /><span
+											class="fl fs12mr5">我同意《小微金融投资咨询与管理服务条例》</span>
+									</div>
+									<div class="col-sm-12">
+										<button type="button" class="btn btn-lg hero br0">立即投资</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="md-tabs col-sm-12">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#finacing-detail"
+									data-toggle="tab">融资明细</a></li>
+								<li><a href="#investment-record" data-toggle="tab">投资记录</a></li>
+
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane fade active in" id="finacing-detail">
+									<div class="col-sm-6 br1">
+										<div class="col-sm-12">
+											<h5 class="mt40">
+												<strong>个人信息</strong>
+											</h5>
+										</div>
+										<div class="col-sm-4 lh38">用户ID</div>
+										<div class="col-sm-8 lh38">176615</div>
+										<div class="col-sm-4 lh38">性别</div>
+										<div class="col-sm-8 lh38">男</div>
+										<div class="col-sm-4 lh38">年龄</div>
+										<div class="col-sm-8 lh38">49</div>
+										<div class="col-sm-4 lh38">学历</div>
+										<div class="col-sm-8 lh38">本科</div>
+										<div class="col-sm-4 lh38">是否结婚</div>
+										<div class="col-sm-8 lh38">已婚</div>
+										<div class="col-sm-4 lh38">子女状况</div>
+										<div class="col-sm-8 lh38">有</div>
+										<div class="col-sm-4 lh38">户籍城市</div>
+										<div class="col-sm-8 lh38">广东省佛山市</div>
+										<div class="col-sm-12 ht2 bb1"></div>
+										<div class="col-sm-12">
+											<h5 class="mt20">
+												<strong>个人资产及征信信息</strong>
+											</h5>
+										</div>
+										<div class="col-sm-4 lh38">月收入水平</div>
+										<div class="col-sm-8 lh38">1800元及以上</div>
+										<div class="col-sm-4 lh38">房产</div>
+										<div class="col-sm-8 lh38">无</div>
+										<div class="col-sm-4 lh38">车产</div>
+										<div class="col-sm-8 lh38">无</div>
+										<div class="col-sm-4 lh38">其他信用贷款</div>
+										<div class="col-sm-8 lh38">无</div>
+										<div class="col-sm-4 lh38">未销户信用卡</div>
+										<div class="col-sm-8 lh38">有</div>
+										<div class="col-sm-4 lh38">信用卡使用率</div>
+										<div class="col-sm-8 lh38">50%</div>
+										<div class="col-sm-12 ht2 bb1"></div>
+										<div class="col-sm-12">
+											<h5 class="mt20">
+												<strong>企业信息</strong>
+											</h5>
+										</div>
+										<div class="col-sm-4 lh38">企业所在地</div>
+										<div class="col-sm-8 lh38">湖南省长沙市</div>
+										<div class="col-sm-4 lh38">企业经营年段</div>
+										<div class="col-sm-8 lh38">3~5年</div>
+										<div class="col-sm-4 lh38">企业行业</div>
+										<div class="col-sm-8 lh38">其他</div>
+										<div class="col-sm-4 lh38">经营场所类型</div>
+										<div class="col-sm-8 lh38">民营</div>
+										<div class="col-sm-4 lh38">月均销售收入</div>
+										<div class="col-sm-8 lh38 mb40">30万~50万元</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="col-sm-12">
+											<h5 class="mt40">
+												<strong>担保机构</strong>
+											</h5>
+										</div>
+										<div class="col-sm-3 mt10">
+											<img src="../../../img/zaxy.png"></img>
+										</div>
+										<div class="col-sm-3 mt10">
+											<span class="ml20">身份证</span>
+										</div>
+										<div class="col-sm-3 mt10">
+											<span class="dbjgtext">2013.12.23</span>
+										</div>
+										<div class="col-sm-3 mt10">
+											<span class="glyphicon glyphicon-ok cg"></span><span
+												class="glyphicon-class cg ml5">认证通过</span>
+										</div>
+
+										<div class="col-sm-3 mt20">
+											<span class="ml20">信用报告</span>
+										</div>
+										<div class="col-sm-3 mt20">
+											<span class="dbjgtext">2013.12.23</span>
+										</div>
+										<div class="col-sm-3 mt20">
+											<span class="glyphicon glyphicon-ok cg"></span><span
+												class="glyphicon-class cg ml5">认证通过</span>
+										</div>
+
+										<div class="col-sm-3 mt20">
+											<span class="ml20">工作证明</span>
+										</div>
+										<div class="col-sm-3 mt20">
+											<span class="dbjgtext">2013.12.23</span>
+										</div>
+										<div class="col-sm-3 mt20">
+											<span class="glyphicon glyphicon-ok cg"></span><span
+												class="glyphicon-class cg ml5">认证通过</span>
+										</div>
+
+										<div class="col-sm-3 mt20 ">
+											<span class="ml20">收入证明</span>
+										</div>
+										<div class="col-sm-3 mt20">
+											<span class="dbjgtext">2013.12.23</span>
+										</div>
+										<div class="col-sm-3 mt20">
+											<span class="glyphicon glyphicon-ok cg"></span><span
+												class="glyphicon-class cg ml5">认证通过</span>
+										</div>
+
+										<div class="col-sm-12 mt20">
+											<span class="fico"><strong>Fico</strong></span><span>评分</span>
+										</div>
+										<div class="col-sm-3  mt20">
+											<div class="bgc1">
+												<div class="xydjd">信用等级</div>
+												<span class="xylevel">A</span>
+											</div>
+											<div class="xydj1">
+												<div class="zf">
+													总分<span class="cg num">272</span>分
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-9 mt20  radar ">
+											<canvas id="canvas" height="300" width="300"></canvas>
+										</div>
+										<div class="col-sm-12 mt20">
+											<span class=""><strong>小微金融融资记录</strong></span>
+										</div>
+										<div class="col-sm-12 mt20">
+											<table class="table table-bordered">
+												<thead class="bgc1">
+													<tr>
+														<th>共计借入</th>
+														<th>待还金额</th>
+														<th>逾期金额</th>
+														<th>严重逾期</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>120,000,00</td>
+														<td>63,971,13</td>
+														<td>0.00</td>
+														<td>0次</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="col-sm-12 mt20">
+											<table class="table table-bordered">
+												<thead class="bgc1">
+													<tr>
+														<th>发布借款笔数</th>
+														<th>成功借款笔数</th>
+														<th>还清笔数</th>
+														<th>逾期笔数</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>2笔</td>
+														<td>2笔</td>
+														<td>1笔</td>
+														<td>0次</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="col-sm-12 mt20">
+											<span> <img src="../../../img/wsjybzzx.png"></img>
+											</span>网上交易保障中心证明该项目的电子回单真实、有效、不可篡改
+
+										</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="investment-record">
+										<p>Food truck fixie locavore, accusamus mcsweeney's marfa
+											nulla single-origin coffee squid. Exercitation +1 labore
+											velit, blog sartorial PBR leggings next level wes anderson
+											artisan four loko farm-to-table craft beer twee. Qui photo
+											booth letterpress, commodo enim craft beer mlkshk aliquip
+											jean shorts ullamco ad vinyl cillum PBR. Homo nostrud
+											organic, assumenda labore aesthetic magna delectus mollit.
+											Keytar helvetica VHS salvia yr, vero magna velit sapiente
+											labore stumptown. Vegan fanny pack odio cillum wes anderson
+											8-bit, sustainable jean shorts beard ut DIY ethical culpa
+											terry richardson biodiesel. Art party scenester stumptown,
+											tumblr butcher vero sint qui sapiente accusamus tattooed echo
+											park.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--左菜单-->
+			<div class="menu">
+				<div class="menu-wrapper">
+
+					<div class="active on menu-blk-el">
+						<div class="menu-blk-el-ico">
+							<i class="fa fa-code-fork"></i>
+						</div>
+						<h4>行情展示</h4>
+						<span> > </span>
+						<div class="sub-content">
+							<ul>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 信息补录
+										</div>
+								</a></li>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 会员管理
+										</div>
+								</a></li>
+
+							</ul>
+						</div>
+						<div class="sub-on">
+							<div class="menu-blk-el-ico-mini">
+								<i class="fa fa-code-fork"></i>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-blk-el">
+						<div class="menu-blk-el-ico">
+							<i class="fa fa-book"></i>
+						</div>
+						<h4>正在融资</h4>
+						<span> > </span>
+						<div class="sub-content">
+							<ul>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 融资包管理
+										</div>
+								</a></li>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 融资管理
+										</div>
+								</a></li>
+
+							</ul>
+						</div>
+						<div class="sub-on">
+							<div class="menu-blk-el-ico-mini">
+								<i class="fa fa-code-fork"></i>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-blk-el">
+						<div class="menu-blk-el-ico">
+							<i class="fa fa-pagelines"></i>
+						</div>
+						<h4>订单管理</h4>
+						<span> > </span>
+						<div class="sub-content">
+							<ul>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 订单管理
+										</div>
+								</a></li>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 会员管理
+										</div>
+								</a></li>
+
+							</ul>
+						</div>
+						<div class="sub-on">
+							<div class="menu-blk-el-ico-mini">
+								<i class="fa fa-code-fork"></i>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-blk-el">
+						<div class="menu-blk-el-ico">
+							<i class="fa fa-briefcase"></i>
+						</div>
+						<h4>债权转让</h4>
+						<span> > </span>
+
+						<div class="sub-content">
+							<ul>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 信息补录
+										</div>
+								</a></li>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 会员管理
+										</div>
+								</a></li>
+
+							</ul>
+						</div>
+						<div class="sub-on">
+							<div class="menu-blk-el-ico-mini">
+								<i class="fa fa-code-fork"></i>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-blk-el">
+						<div class="menu-blk-el-ico">
+							<i class="fa fa-info"></i>
+						</div>
+						<h4>我的账户</h4>
+						<span> > </span>
+						<div class="sub-content">
+							<ul>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 账户信息
+										</div>
+								</a></li>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 会员管理
+										</div>
+								</a></li>
+
+							</ul>
+						</div>
+						<div class="sub-on">
+							<div class="menu-blk-el-ico-mini">
+								<i class="fa fa-code-fork"></i>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-blk-el">
+						<div class="menu-blk-el-ico">
+							<i class="fa fa-tasks"></i>
+						</div>
+						<h4>统计分析</h4>
+						<span> > </span>
+						<div class="sub-content">
+							<ul>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 统计操作
+										</div>
+								</a></li>
+								<li><a class="submenu-blk-el" href="#">
+										<div class="submenu-blk-el-ico">
+											<i class="fa fa-code-fork"></i> 会员管理
+										</div>
+								</a></li>
+
+							</ul>
+						</div>
+						<div class="sub-on">
+							<div class="menu-blk-el-ico-mini">
+								<i class="fa fa-code-fork"></i>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="submenu-wrapper">
+					<a class="submenu-back submenu-blk-el" href="javascript:void(0);"><i
+						class="fa fa-arrow-circle-o-left"></i></a>
+					<div class="submenu-content"></div>
+				</div>
+			</div>
+		</div>
+</body>
+
+<!-- JavaScript -->
+<script src="../../../vendor/jquery/jquery-1.11.0.js"></script>
+<script src="../../../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../vendor/Chart.js/Chart.js"></script>
+<script src="../../../js/page/prototype/templ.js"></script>
+<script src="../../../js/page/prototype/market/market-financing-detail.js"></script>
+
+
+</html>

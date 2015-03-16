@@ -1,0 +1,16 @@
+#form-maintain .row {
+	padding: 0 15px;
+}
+.overdue {
+	display: none;
+}
+.btn-box {
+	margin-top: 20px;
+}
+.btn-box button {
+	margin-left: 15px;
+}
+[name='overdueFlag']{
+	width: 15px;
+	height: 15px;
+}

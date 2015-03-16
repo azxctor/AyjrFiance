@@ -1,0 +1,70 @@
+*{
+	
+}
+
+.g_nav {
+	margin:0;
+	padding:0;
+	height: 26px;
+	line-height: 26px;
+	background: #81868b;
+}
+
+.container{
+	padding-top:100px;
+}
+
+h2{
+	font-size: 25px;
+	color: #313131
+}
+h2 i{
+	color:green;
+}
+.div-recharge{
+	margin: 10% 0 0 30%;
+	width: 400px;
+	height: 150px;
+	background-color:#ffffff;
+	border: none;
+	border-radius: 3px;
+}
+
+.recharge-btn{
+	margin:20px 0 0 44%;
+}
+
+.rec-success:hover, 
+.rec-success:focus,
+.rec-success:active
+{
+    color: #FFF;
+    background-color: #E29138;
+    border-color: #C27724;
+}
+
+.rec-success{
+	color:#fff;
+	background-color: #C27724;
+	border-color: #A9651A;
+}
+
+.rec-fail{
+	margin-left: 50px;
+}
+
+.rec-foot{
+	width:100%;
+	z-index: 4;
+	background-color: #211c18;
+	border: none;
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
+
+.font-one{
+	margin-left:30%;
+}
+.font-two{
+	margin-left:26%;
+}

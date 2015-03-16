@@ -1,0 +1,144 @@
+<link href="$link.contextPath/assets/css/page/escrow/transfer_mgt.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/netting/netting_mgt.js" type="text/javascript"></script>
+<div id="account-frozen">
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs micro-nav-tabs" role="tablist">
+	  <li role="presentation" class="active" ><a href="#deal" role="tab" data-toggle="tab">待处理</a></li>
+	  <li role="presentation"><a href="#done" role="tab" data-toggle="tab">已处理</a></li>
+	</ul>
+	
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="deal">
+			<div class="search-deal search">
+				<div class="row">
+				<div class="col-sm-12" id="form-transfer-search">
+				<div class="col-sm-10 col-bigger">
+				<div class="col-sm-1 no-padding-left">
+					<label class="control-label">
+							交易账号
+					</label>
+				</div>
+				<div class="col-sm-2 no-padding-left">
+					<div class="input-group">
+						<input type="text" class="form-control" name="acctNo"/>
+				  </div>
+				</div>
+				<div class="col-sm-1 no-padding-left">
+					<label class="control-label">
+							交易日期
+					</label>
+				</div>
+				<div class="col-sm-2 no-padding-left" >
+					<div class="input-group">
+						<input class="form-control datepicker trx-data" name="trxDate" value="$!{wordDate}" readonly/>
+				    <label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+				  </div>
+				</div>
+				</div>
+				<div class="col-sm-2 col-bigger">
+					<button type="button" class="btn btn-mf-primary" id="btn-search-deal"><i class="fa fa-search"></i>查询</button>
+					<button type="button" class="btn btn-mf-default btn-modal-netting" data-toggle="modal" data-target="#confirmModal" title="请输入交易日期"><i class="fa fa-random"></i>轧差</button>
+				</div>
+				</div>
+				</div>
+			</div>
+			<div class="content">
+				<table id="table-netting-mgt-deal">
+					<thead>
+						<tr>
+							<th data-mData="orderId" >指令编号</th>
+							<th data-mData="eventId" data-bSortable="false">事件编号</th>
+							<th data-mData="acctNo" data-bSortable="false">交易账号</th>
+							<th data-mData="userName" data-bSortable="false">会员名称</th>
+							<th data-mData="trxDate" data-bSortable="false">交易日期</th>
+							<th data-mRender="_fntrxAmt" data-bSortable="false">交易金额</th>
+							<th data-mData="trxMemo" data-bSortable="false">交易备注</th>
+							<th data-mData="useType.text" data-bSortable="false">资金用途</th>
+							<th data-mData="relBizId" data-bSortable="false">业务编号</th>
+							<th data-mData="seqId" data-bSortable="false">还款期号</th>
+							<th data-mData="nettingTsStr" data-bSortable="false">轧差时间</th>
+							<th data-mData="servProv" data-bSortable="false" style="width: 0px;">服务商</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="done">
+			<div class="search-done search">
+				<div class="row">
+				<div class="col-sm-12" id="form-transfer-search">
+				<div class="col-sm-10 col-bigger">
+				<div class="col-sm-1 no-padding-left">
+					<label class="control-label">
+							交易账号
+					</label>
+				</div>
+				<div class="col-sm-2 no-padding-left">
+					<div class="input-group">
+						<input type="text" class="form-control" name="acctNo"/>
+				  </div>
+				</div>
+				<div class="col-sm-1 no-padding-left">
+					<label class="control-label">
+							交易日期
+					</label>
+				</div>
+				<div class="col-sm-2 no-padding-left" >
+					<div class="input-group">
+						<input class="form-control datepicker trx-data" name="trxDate" value="$!{wordDate}" readonly/>
+				    <label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+				  </div>
+				</div>
+				</div>
+				<div class="col-sm-2 col-bigger">
+				<button type="button" class="btn btn-mf-primary" id="btn-search-done"><i class="fa fa-search"></i>查询</button>
+				</div>
+				</div>
+				</div>
+			</div>
+			<div class="content">
+				<table id="table-netting-mgt-done">
+					<thead>
+						<tr>
+							<th data-mData="orderId" data-bSortable="false" >指令编号</th>
+							<th data-mData="eventId" data-bSortable="false">事件编号</th>
+							<th data-mData="acctNo" data-bSortable="false">交易账号</th>
+							<th data-mData="userName" data-bSortable="false">会员名称</th>
+							<th data-mData="trxDate" data-bSortable="false">交易日期</th>
+							<th data-mRender="_fntrxAmt" data-bSortable="false">交易金额</th>
+							<th data-mData="trxMemo" data-bSortable="false">交易备注</th>
+							<th data-mData="useType.text" data-bSortable="false">资金用途</th>
+							<th data-mData="relBizId" data-bSortable="false">业务编号</th>
+							<th data-mData="seqId" data-bSortable="false">还款期号</th>
+							<th data-mData="nettingTsStr" data-bSortable="false">轧差时间</th>
+							<th data-mData="servProv" data-bSortable="false" style="width: 0px;">服务商</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal modal-micro fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">轧差</h4>
+      </div>
+      <div class="modal-body">
+			<div id="modal-confirm-info"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-mf-primary  btn-netting" data-dismiss="modal">确定</button>
+        <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

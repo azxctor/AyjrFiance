@@ -1,0 +1,382 @@
+##页面用到的枚举定义
+#set($CONFIRM="01")
+#set($APPROVE="02")
+#set($VIEW="03")
+#if($type!="01"&&$type!="02")
+	#set($layout="common/emptyLayout.vm")
+#end
+
+<link href="$link.contextPath/assets/css/page/myaccount/withddepappls_view.css"
+	rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/myaccount/withddepappls_view.js" type="text/javascript"></script>
+
+<!--充值记录-->
+<div class="col-sm-12">
+<div class="row row-withdraw-table">
+	<div class="col-sm-12 title-record">
+		<div class="col-sm-10 col-bigger">
+            <h4><i class="fa fa-list-alt fa-lg"></i>&nbsp; $!title</h4>
+        </div>
+		#if($type==$APPROVE)
+		<div class="col-sm-2 pa-t5 col-bigger">
+			<div class="btn-group" style="padding-left:0">
+              <button type="button" class="btn btn-mf-primary dropdown-toggle " data-toggle="dropdown" style="width:105px">
+					批量操作 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="javascript:void(0)" id="excel"><i class="fa fa-file-excel-o"></i> 导出excel</a>
+					<form id="export-form" method="post" class="sr-only" action="$link.contextPath/web/settlement/exportExcel">
+    					<input data-ignore="true" id="form-searchDate"  name="fromDate"/>
+    					<input data-ignore="true" id="to-searchDate"  name="toDate"/>
+    					<input data-ignore="true" id="form-bnkCd" name="bnkCd"/>
+					</form>
+				</li>
+				<li><a href="javascript:void(0)" id="audit"><i class="fa fa-check"></i> 工行批量审批</a></li>
+                
+               </ul> 
+                 
+			  	 <form id="export-form2" method="post" class="sr-only" action="$link.contextPath/web/myaccount/withDspPrintView">
+    					<input data-ignore="true" id="form-searchDate2"  name="fromDate"/>
+    					<input data-ignore="true" id="to-searchDate2"  name="toDate"/>
+    					<input data-ignore="true" id="form-cashPool2" name="cashPool"/> 
+    					<input data-ignore="true" id="form-status2" name="status"/>
+    					<input data-ignore="true" name="applStatusFlag" id="applStatusFlag" value='$applStatusOptions'/> 
+    					<input data-ignore="true" name="dealStatusFlag" id="dealStatusFlag" value='$dealStatusOptions'/>
+			     </form> 
+            </div>
+    		
+        </div>
+    	#end
+    	#if($type==$CONFIRM)
+    	
+		<div class="col-sm-1 pa-t5">
+			<button class="btn btn-mf-primary" id="batch-confirm">
+				<i class="fa fa-check"></i> 工行批量确认
+			</button>  
+        </div>
+        
+         <form id="export-form2" method="post" class="sr-only" action="$link.contextPath/web/myaccount/withDspPrintView">
+    					<input data-ignore="true" id="form-searchDate2"  name="fromDate"/>
+    					<input data-ignore="true" id="to-searchDate2"  name="toDate"/>
+    					<input data-ignore="true" id="form-cashPool2" name="cashPool"/> 
+    					<input data-ignore="true" id="form-status2" name="status"/>
+    					<input data-ignore="true" name="applStatusFlag" id="applStatusFlag" value='$applStatusOptions'/> 
+    					<input data-ignore="true" name="dealStatusFlag" id="dealStatusFlag" value='$dealStatusOptions'/>
+		 </form> 
+    	#end
+    </div>
+	<div class="col-sm-12 search-withdraw">
+		
+		<div class="col-sm-10 col-bigger">
+			#if($type==$CONFIRM)
+			<div class="col-sm-2 no-padding-left">
+				<label class="control-label">
+					申请起止日期
+				</label>
+			</div>
+			#else
+			<div class="col-sm-1 no-padding-left">
+				<label class="control-label">
+    				起止日期
+				</label>
+			</div>
+			#end
+            <div #if($type==$VIEW) class="col-sm-3 no-padding-left" #else class="col-sm-2 no-padding-left" #end>
+				<div class="input-group">
+					<input class="form-control datepicker" name="fromDate" id="start-date" readonly/>
+                    <label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+                </div>
+			</div>
+			<div #if($type==$VIEW) class="col-sm-3 no-padding-left" #else class="col-sm-2 no-padding-left" #end>
+				<div class="input-group">
+					<input class="form-control datepicker" name="toDate" id="end-date" readonly/>
+                    <label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+                </div>
+			</div>
+			#if($applStatusOptions)
+			<div class="col-sm-1 no-padding-left">
+				<label class="control-label">
+    				审批状态
+				</label>
+			</div>
+			<div class="col-sm-2 no-padding-left">
+				<select class="form-control" name="applStatus" id="status">
+					#foreach($status in $applStatus)
+						<option value="$!status.code"#if($type==$APPROVE&&$!status.code=="WAIT_APPROVAL")selected="selected"#end>$!status.text</option>
+					#end
+                </select>
+			</div>
+			#end
+			#if($dealStatusOptions)
+			<div class="col-sm-1 no-padding-left">
+				<label class="control-label">
+    				处理状态
+				</label>
+			</div>
+			<div class="col-sm-2 no-padding-left">
+				<select class="form-control" name="dealStatus" id="status">
+					#foreach($status in $dealStatus)
+						<option value="$!status.code" #if($type==$CONFIRM&&$!status.code=="DEALING")selected="selected"#end>$!status.text</option>
+					#end
+                </select>
+            </div>
+			#end
+			#if($type==$APPROVE || $type==$CONFIRM)
+			
+			##<div class="col-sm-1 no-padding-left">
+			##	<label class="control-label">
+    		##		开户银行
+			##	</label>
+			##</div>
+			##<div class="col-sm-2 no-padding-left">
+			##	<select class="form-control"  name="bnkCd" id="bank">
+			##		#foreach($bankStatus in $!bankList)
+			##			<option value="$!bankStatus.code">$!bankStatus.text</option>
+			##		#end
+			##	</select>	
+            ##</div>
+            
+            <div class="col-sm-1 no-padding-left">
+				<label class="control-label">
+    				资金池
+				</label>
+			</div>
+			<div class="col-sm-2 no-padding-left">
+				<select class="form-control"  name="cashPool" id="cashPool">
+					#foreach($cp in $!cashPoolItems)
+						<option value="$!cp">$!cp.text</option>
+					#end
+				</select>	
+            </div>
+			#end
+		</div>
+		
+		<div class="col-sm-2 col-bigger">
+            <button type="button" class="btn btn-mf-primary" id="btn-search"><i class="fa fa-search"></i>查询</button>
+		 #if($type==$APPROVE)
+		    #if($sec.hasPermission('product:financing:withdraw_print_approve')) 
+		       <button class="btn btn-mf-primary btn-modal-withddepappls-print"  style="margin-left:6px;">  
+				打印
+			  </button> 	 
+			#end
+		 #end
+    	#if($type==$CONFIRM)  
+    	  #if($sec.hasPermission('product:financing:withdraw_print2_approve'))  
+			<button class="btn btn-mf-primary btn-modal-withddepappls-print2"  style="margin-left:6px;">
+				打印
+			</button> 
+		  #end
+    	#end
+		</div>
+		
+    </div>
+	
+	<div class="col-sm-12">
+    	<table  class="withdraw-table" id="withdraw-table">
+            <thead>
+            <tr>
+                <th data-mData="applDt">申请日期</th>
+				#if($type!=$VIEW) 
+					<th data-mData="acctNo">交易账号</th>
+				#end
+				<th data-mData="trxAmt" data-sFormatType="thousand">提现金额（元）</th>
+				<th data-mData="bnkAcctNo" data-bSortable="false">银行卡号</th>
+                <th data-mData="bnkAcctName" data-bSortable="false">银行账户名</th>
+    			<th data-mData="bnkName" data-bSortable="false">开户银行</th>
+    			<th data-mData="cashPool.text" data-bSortable="false">资金池</th>
+    			<th data-mData="trxMemo" data-bSortable="false">申请理由</th>
+				#if($type==$APPROVE)
+					<th data-mData="applStatus.text">审批状态 </th>
+				#else
+					<th data-mData="dealStatus.text">处理状态 </th>
+				#end
+				
+				#if($type==$CONFIRM)
+    				<th data-mData="approveOpId" data-bSortable="false">审批人</th>
+    				<th data-mData="apprTs">审批日期 </th>
+					<th data-mRender="_fnOperateConfirm" data-bSortable="false" style="min-width:110px">操作</th>
+				#elseif($type==$APPROVE)
+					<th data-mRender="_fnOperateApprove" data-bSortable="false" style="min-width:110px">操作</th>
+				#end
+				#if($type!=$CONFIRM)
+					<th data-mData="memo" data-bSortable="false">备注</th>
+				#end
+            </tr>
+            </thead>
+            <tbody></tbody>
+			#if($type==$APPROVE || $type==$CONFIRM)
+			<tfoot class="tfoot">
+					<tr>
+						<td>&nbsp;</td>
+						<td>合计</td>
+        				<td data-mData="sumAmt" class="text-align-right"></td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						#if($type==$CONFIRM)
+						<td>&nbsp;</td>
+						#end
+                    </tr>
+			</tfoot>
+			#end
+        </table>
+        	<div class="modal fade modal-micro" id="modal-alert-formtip" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						操作提示
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <p id="modal-alert-formtip-content"> </p>
+                          </div>
+            			  <div class="modal-footer"> 
+            			    <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			</div>
+		#if($type==$APPROVE)
+			##同意提现申请Dialog
+			 <div class="modal fade modal-micro" id="modal-approve" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						确认提示
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>是否同意该提现申请？</p>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>
+			 ##拒绝提现申请Dialog
+			 <div class="modal fade modal-micro" id="modal-refuse" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						请填写拒绝理由
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+								<form id="form-reason">
+									<div class="form-group">
+                                        <label for="reason" class="control-label required">拒绝理由：</label>
+										<textarea id="reason" name="comments" class="form-control" data-validate="{required:true}" maxlength="100"></textarea>
+									</div>
+                                </form>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>
+			 ##提现申请批量审批Dialog
+			 <div class="modal fade modal-micro" id="modal-audit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						确认提示
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>是否确认批量审批起止日期为:<strong class="start_date"></strong>-<strong class="end_date"></strong>,开户行为<strong class="bnkname"></strong>的所有记录？</p>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			</div>
+		#end
+		#if($type==$CONFIRM)
+			##确认提现Dialog
+			<div class="modal fade modal-micro" id="modal-pay" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						确认提现
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                                <p>是否确定从交易账户<strong class="well well-sm" id="acctNo"></strong>提现<strong class="well well-sm" id="trxAmt"></strong>元？</p>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>
+			 ##驳回提现Dialog
+			  <div class="modal fade modal-micro" id="modal-dismiss" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						请填写拒绝理由
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+								<form id="form-reason">
+									<div class="form-group">
+                                        <label for="reason" class="control-label required">拒绝理由：</label>
+										<textarea id="reason" name="comments" class="form-control" data-validate="{required:true}" maxlength="100"></textarea>
+									</div>
+                                </form>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>
+		#end
+    </div>
+</div>
+#parse("myaccount\print_modal.vm")
+#parse("product\project_detail_model.vm")
+<input type="hidden"="hide" id="is-exchange-withdrawalAppl" value="$!{isExchangeWithdrawalAppl}"/>
+<span class="sr-only" id="role-type">$type</span>
+</div>

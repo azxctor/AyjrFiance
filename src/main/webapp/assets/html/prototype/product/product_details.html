@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head lang="ZH">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/page/prototype/templ.css">
+    <link rel="stylesheet" href="../../../css/page/prototype/product/product_details.css">
+    
+    <script type="text/javascript" src="../../../js/require.js"></script>
+    <!-- Global variable module which will take variables from sever side -->
+    <script type="text/javascript">
+        define('global', {
+            context: '../../../../'
+        })
+    </script>
+    <script type="text/javascript" src="../../../js/base.js"></script>
+</head>
+<body>
+<!--页面顶部-->
+<div class="top">
+    <img class="top-logo" src="../../../img/templ_img/logo.jpg">
+    <div class="top-time">
+        <span class="hours">18:35</span>
+            <span class="dates">
+                <span class="date">04-15</span>
+                <span class="week">TUE</span>
+            </span>
+    </div>
+    <div class="top-logout">
+        <i class="fa fa-user"></i> <span class="user-name">Nick Jones </span> <a href="javascript:void(0);" >退出</a>
+    </div>
+</div>
+
+<div class="page-wrapper">
+<!--页面内容-->
+<div class="right-blk">
+    <div class="right-blk-head">
+        <!--此处更改标题-->
+        <span class="right-blk-head-title">关于融资</span>
+        <span> > </span>
+        <span class="right-blk-head-subtitle">信息补录</span>
+        <!--此处更改标题-->
+    </div>
+    <div class="right-blk-line"></div>
+    <div class="right-blk-body">
+    	<div class="info-container">
+    		<div class="box info-line">
+    			<span class="title-box">沙县分店一期</span>
+    			<span class="pop-link">A8989787(刘勇)</span>
+    			<span class="fl-right pop-link pa-t10">合同</span>
+    		</div>
+    		<div class="box row">
+    			<div class="col-sm-7">
+    				<div class="row">
+    					<div class="col-sm-5">
+    						<h5>融资申请额</h5>
+    						<span class="font-s30">4000,000.00元</span>
+    					</div>
+    					<div class="col-sm-4">
+    						<h5>年利率</h5>
+    						<span class="font-s30">12.0%</span>
+    					</div>
+    					<div class="col-sm-3">
+    						<h5>融资期限</h5>
+    						<span class="font-s30">12个月</span>
+    					</div>
+    				</div>
+    				<div class="row ma-t15">
+    					<div class="col-sm-6">
+    						<span>还款方式：</span>
+    						<span>到期一次还本付息</span>
+    					</div>
+    					<div class="col-sm-6">
+    						<span>产品库：</span>
+    						<span>A</span>
+    					</div>
+    				</div>
+    				<div class="row">
+    					<div class="col-sm-6">
+    						<span>风险保障：</span>
+    						<span>本息担保</span>
+    					</div>
+    					<div class="col-sm-6">
+    						<span>担保机构：</span>
+    						<span>产品服务商</span>
+    					</div>
+    				</div>
+    				<div class="row ma-t15">
+    					<div class="col-sm-12">
+	    					<span>用途：</span>
+	    					<span>国家的符合国家的恢复该回家看合适的机会飞机上的飞机让他也try突然也让他同一人吐又吐岩</span>
+    					</div>
+    				</div>
+    			</div>
+    			<!-- <div class="col-sm-5 bdl-show operate-btn-box">
+    				<div class="col-sm-6 col-sm-offset-2"><button type="button" class="btn btn-mf-primary" id="btn-accept">审批通过</button></div>
+    				<div class="col-sm-4"><button type="button" class="btn btn-mf-default" id="btn-reject">驳回</button></div>
+    			</div>
+    			<div class="col-sm-5 bdl-show operate-btn-box">
+    				<div class="col-sm-6 col-sm-offset-2"><button type="submit" class="btn btn-mf-primary" id="btn-trans-settings">确定</button></div>
+    				<div class="col-sm-4"><button type="button" class="btn btn-mf-default btn-status-back">退回</button></div>
+    			</div>
+    			<div class="col-sm-5 bdl-show operate-btn-box">
+    				<div class="col-sm-12 col-sm-offset-5"><button type="button" class="btn btn-mf-primary" id="order-cancellation">撤单</button></div>
+    			</div> -->
+    			<div class="col-sm-5 bdl-show pa-t25">
+   					<form class="form-horizontal" role="form">
+					  <div class="form-group">
+					    <label class="col-sm-5 control-label">融资服务合同保证金:</label>
+					    <label class="col-sm-3 control-label">100.00 元</label>
+					    <div class="col-sm-4">
+					      <div class="input-group">
+			                  <input class="form-control" placeholder="冻结金额" id="real-frozenFee-margin" data-validate="{number:true}">
+			    			  <span class="input-group-addon">元</span>
+			              </div>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label class="col-sm-5 control-label">担保公司还款保证金:</label>
+					    <label class="col-sm-3 control-label">20,000.00 元</label>
+					    <div class="col-sm-4">
+					      <div class="input-group">
+			                  <input class="form-control" placeholder="#if($!{productDetails.cashDeposit.warrantPercentage})$!{productDetails.cashDeposit.warrantPercentage} #else $!{productDetails.warrantFeePer} #end" id="real-warrant-margin" data-validate="{number:true}">
+			                  <span class="input-group-addon">%</span>
+						  </div>
+					    </div>
+					  </div>
+					  <div class="form-group">
+						<div class="col-sm-3 col-sm-offset-3">
+							<button type="button" class="btn btn-mf-primary" id="btn-freeze">冻结</button>
+			            </div>
+						<div class="col-sm-2">
+			    			<button type="button" class="btn btn-mf-default btn-status-back">退回</button>
+			    		</div>
+					  </div>
+					</form>
+    			</div>
+    		</div>
+    	</div>
+    	
+    	<div class="info-container">
+    		<div class="box info-line">
+    			<span class="font-s20"><i class="fa fa-cubes"></i> 风险评级</span>
+    		</div>
+    		<div class="box row">
+    			<div class="col-sm-11 col-sm-offset-1">
+	    			<div class="col-sm-3 icon-st">
+	    				<i class="fa fa-cubes"></i>
+				    </div>
+					<div class="col-sm-9">
+						<div class="col-sm-6">
+							<h5>项目总评级：</h5>
+							<span class="font-s20 pa-l60">优质项目(10分)</span>
+						</div>
+						<div class="col-sm-6">
+							<h5>产品评级：</h5>
+							<span class="font-s20 pa-l60">A(4分)</span>
+						</div>
+						<div class="col-sm-6">
+							<h5>融资人评级：</h5>
+							<span class="font-s20 pa-l60">A(2分)</span>
+						</div>
+						<div class="col-sm-6">
+							<h5>担保机构评级：</h5>
+							<span class="font-s20 pa-l60">A(4分)</span>
+						</div>
+					</div>
+				</div>
+    		</div>
+    	</div>
+    	<div class="info-container">
+    		<div class="box info-line">
+    			<span class="font-s20"><i class="fa fa-usd"></i> 保证金及费用</span>
+    		</div>
+    		<div class="box row">
+    			<div class="col-sm-11 col-sm-offset-1">
+					<div class="col-sm-9">
+						<div class="col-sm-6">
+							<h5>融资服务合同保证金：</h5>
+							<span class="font-s20 pa-l60">8,333.33元</span>
+						</div>
+						<div class="col-sm-6">
+							<h5>担保公司还款保证金：</h5>
+							<span class="font-s20 pa-l60">1.00% (10,000.00元)</span>
+						</div>
+						<div class="col-sm-6">
+							<h5>借款合同履约保证金：</h5>
+							<span class="font-s20 pa-l60">1.00% (10,000.00元)</span>
+						</div>
+						<div class="col-sm-6">
+							<h5>风险管理费：</h5>
+							<span class="font-s20 pa-l60">12,000.00元</span>
+						</div>
+						<div class="col-sm-6">
+							<h5>融资服务费：</h5>
+							<span class="font-s20 pa-l60">36,000.00元</span>
+						</div>
+					</div>
+	    			<div class="col-sm-3 icon-st">
+	    				<i class="fa fa-usd"></i>
+				    </div>
+				</div>
+    		</div>
+    	</div>
+    	<div class="info-container">
+    		<div class="box info-line">
+    			<span class="font-s20"><i class="fa fa-cubes"></i> 风险评级</span>
+    		</div>
+    		<div class="box row">
+    			<div class="col-sm-12">
+    				<form class="form-horizontal" role="form" method= "POST" action="$link.contextPath/web/product/evaluate" id="form-risk">
+		              <div class="form-group">
+		                <label class="col-sm-2 control-label required">产品评级：</label>
+						<div class="col-sm-4">
+		                    <select class="form-control" id="product-rating" name="productGrage" data-validate="{required:true}">
+								<option value=4>A（4分）</option>
+								<option value=3.5>A-（3.5分）</option>
+								<option value=3>B（3分）</option>
+								<option value=2.5>B-（2.5分）</option>
+								<option value=2>C（2分）</option>
+								<option value=1.5>C-（1.5分）</option>
+								<option value=1>D（1分）</option>
+							</select>
+						</div>
+		                <div class="col-sm-5">
+		                  <textarea class="form-control risk-description" name="productGrageComment" placeholder="说明">#if($!{productDetails.productGrageComment})$!{productDetails.productGrageComment}#end</textarea>
+		                </div>
+		              </div>
+					  <div class="form-group">
+		                <label class="col-sm-2 control-label required">融资人评级：</label>
+						<div class="col-sm-4">
+		                    <select class="form-control" id="financiers-rating" name="financierGrage" data-validate="{required:true}">
+								<option value=2>A（2分）</option>
+								<option value=1.75>A-（1.75分）</option>
+								<option value=1.5>B（1.5分）</option>
+								<option value=1.25>B-（1.25分）</option>
+								<option value=1>C（1分）</option>
+								<option value=0.75>C-（0.75分）</option>
+								<option value=0.5>D（0.5分）</option>
+							</select>
+						</div>
+		                <div class="col-sm-5">
+		                  <textarea  class="form-control risk-description" name="financierGrageComment" placeholder="说明">#if($!{productDetails.financierGrageComment})$!{productDetails.financierGrageComment}#end</textarea>
+		                </div>
+		              </div>
+					  <div class="form-group">
+		                <label class="col-sm-2 control-label required">担保机构评级：</label>
+						<div class="col-sm-4">
+		                    <select class="form-control" id="guarantee-agency-rating" name="warrantGrage" data-validate="{required:true}" value="">
+								<option value=4>A（4分）</option>
+								<option value=3.5>A-（3.5分）</option>
+								<option value=3>B（3分）</option>
+								<option value=2.5>B-（2.5分）</option>
+								<option value=2>C（2分）</option>
+								<option value=1.5>C-（1.5分）</option>
+								<option value=1>D（1分）</option>
+							</select>
+						</div>
+		                <div class="col-sm-5">
+		                  <textarea class="form-control risk-description" name="warrantGrageComment" placeholder="说明">#if($!{productDetails.warrantGrageComment})$!{productDetails.warrantGrageComment}#end</textarea>
+		                </div>
+		              </div>
+					  <div class="form-group">
+		                <label class="col-sm-2 control-label required">项目总评级：</label>
+						<label class="col-sm-4 control-label" id="total-score" name="totalGrage">优质项目(10分)</label>
+		                <div class="col-sm-5">
+		                  <textarea class="form-control risk-description" name="totalGrageComment" placeholder="说明">#if($!{productDetails.totalGrageComment})$!{productDetails.totalGrageComment}#end</textarea>
+		                </div>
+		              </div>
+					  <div class="row">
+							<div class="col-sm-1 col-sm-offset-9">
+								<button type="submit" class="btn btn-mf-primary">确定</button>
+		                    </div>
+		    				<div class="col-sm-1">
+								<button type="button" class="btn btn-mf-default btn-status-back">退回</button>
+		            		</div>
+		    			</div>
+		            </form>
+				</div>
+    		</div>
+    	</div>
+    	
+    	
+    </div>
+</div>
+<!--左菜单-->
+<div class="menu">
+<div class="menu-wrapper">
+
+    <div class="active on menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-code-fork"></i>
+        </div>
+        <h4>行情展示</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 信息补录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div   class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-book"></i>
+        </div>
+        <h4>正在融资</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 融资包管理
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 融资管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div   class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-pagelines"></i>
+        </div>
+        <h4>订单管理</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 订单管理
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-briefcase"></i>
+        </div>
+        <h4>债权转让</h4>
+        <span> > </span>
+
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 信息补录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div  class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-info"></i>
+        </div>
+        <h4>我的账户</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 账户信息
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div  class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-tasks"></i>
+        </div>
+        <h4>统计分析</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 统计操作
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="submenu-wrapper">
+    <a class="submenu-back submenu-blk-el" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left"></i></a>
+    <div class="submenu-content"></div>
+</div>
+</div>
+</div>
+</body>
+
+<!-- JavaScript -->
+<script src="../../../js/page/prototype/templ.js"></script>
+
+</html>

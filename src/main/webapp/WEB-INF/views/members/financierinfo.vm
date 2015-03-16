@@ -1,0 +1,155 @@
+<link href="$link.contextPath/assets/css/page/member/complete_base.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="$link.contextPath/assets/js/page/member/financierinfo.js"></script>
+#parse("members/financier_protocol_modal.vm")	
+<div class="step-wrapper">
+    <div class="row">
+        <div class="step-blk col-sm-3">
+            <span class="step-i">1</span>
+            <span class="step-content">基本信息提交</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">2</span>
+            <span class="step-content">基本信息审核通过</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">3</span>
+            <span class="step-content">融资权限信息提交</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">4</span>
+            <span class="step-content">融资权限申请成功</span>
+        </div>
+    </div>
+</div>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+欢迎您拨打我们的客服热线 <Strong>400-999-7327</Strong> 提交您的融资需求信息，我们将竭诚为您服务！
+</div>
+#if($financierInfo.oldFinancier)
+	#set($hasPrefix = "hasPrefix")
+	#set($financierPrefix = "oldFinancier.")
+    <form class="form-horizontal view-mode" role="form" id="pre-info-form">
+    	<a class="btn btn-default go-back"><i class="fa fa-reply"></i>&nbsp;返回</a>
+        <div>
+            <h3>基本信息</h3>
+    		#if($member.containsPerson())
+        		#parse("members\basicinfo_person.vm")
+        	#elseif($member.containsOrg())
+        		#parse("members\basicinfo_org.vm")
+    		#end
+    		<h3>融资信息</h3>
+        	#if($member.containsPerson())
+    			#parse("members\financierinfo_person.vm") 
+        	#elseif($member.containsOrg())
+        		#parse("members\financierinfo_org.vm")
+        	#end
+        </div>
+    </form>	
+#end
+<div id="financier-info-full">
+	#set($hasPrefix = "")
+	#set($financierPrefix = "")
+    #if($financierInfo.oldFinancier)<a href="javascript:void(0)" id="show-pre-info">当前资料</a>#end
+    <h3 id="toggle-basicinfo">
+    	基本信息
+		 #if($financierInfo.hasMemberInfo)
+			<span class="fa fa-angle-up"></span>
+		   #else
+			<span class="fa fa-angle-down"></span>
+		  #end
+    </h3>
+    #set($fromPage = "finance")
+    
+    #if($financierInfo.hasMemberInfo)
+    	<form id="basicinfo-form" class="form-horizontal view-mode" role="form" method="POST">
+        	#if($member.containsPerson())
+				<div class="invest_toggle_slide" style="display:none">
+					#parse("members\basicinfo_person.vm")
+                </div>
+        	#elseif($member.containsOrg())
+				<div class="invest_toggle_slide" style="display:none">
+					#parse("members\basicinfo_org.vm")
+                </div>
+        	#end
+        </form>
+    #else
+		<div class="invest_toggle_slide">
+			#parse("members\basicinfo_no_submit.vm")
+        </div>	
+    #end
+    
+    <h3>融资信息</h3>
+    <form class="form-horizontal $!financierInfo.formMode" role="form" method="POST" id="financierinfo-form"
+    	action="$link.contextPath/web/members/financierinfo" 
+    	data-save-action="$link.contextPath/web/members/financierinfo/save">
+    	
+		#if($financierInfo.rejectLastTime)
+			<div class="row">
+                <div class="alert alert-danger">
+    				<i class="fa fa-exclamation-triangle fa-lg"></i>
+                    <strong>您的申请被拒绝，拒绝理由：</strong>
+    				<span class="" name="commonts">$!financierInfo.comments</span>
+    			</div>
+			</div>
+		#end
+		
+    	#if($member.containsPerson())
+    		#parse("members\financierinfo_person.vm") 
+    	#elseif($member.containsOrg())
+    		#parse("members\financierinfo_org.vm")
+    	#end
+    	
+		 <div class="row">
+        	<div class="col-sm-6">
+        		<div class="form-group">
+        			<div class="col-sm-4">
+        				<input type="checkbox" id="open-account-agg" data-ignore="true" name="aggcheck" class="pull-right" checked  #if($financierInfo.hasMemberInfo && $!financierInfo.formMode.text!="view-mode")"" #else disabled #end/>
+        			</div>
+        			<div class="col-sm-8">
+        				<span>同意
+							<a data-toggle="modal" data-target="#financierProModal" title="融资会员协议">《融资会员协议》</a>
+							#*<a href="$link.contextPath/assets/doc/financierprotocol.docx" title="下载">下载</a>*# 
+							<a href="$link.contextPath/web/downloadFile/financerprotocol" title="下载">下载</a>
+						</span>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+		
+    	<!-- 提交重置Button -->
+    	<div class="row row-button">
+    		#if(!$financierInfo.isViewMode())
+        		<div class="col-sm-5 col-sm-offset-6">
+        			<div class="col-sm-4 col-xs-12">
+        				#if($financierInfo.isUncommit())
+        					<button type="submit" class="btn form-btn-save">保存</button>
+        				#end
+        			</div>
+        			<div class="col-sm-4 col-xs-12">
+        				<button type="reset" class="btn form-btn-reset">重置</button>
+        			</div>
+        			<div class="col-sm-4 col-xs-12">
+        				<button type="submit" class="btn form-btn-submit" id="financier-info-submit" #if(!$financierInfo.hasMemberInfo) disabled #end>提交申请</button>
+        			</div>
+        		</div>
+    		#elseif($financierInfo.canEdit)
+        		<div class="col-sm-2 col-sm-offset-9 form-area-edit">
+        			<a href="$link.contextPath/web/members/financierinfo?mode=edit-mode&from=$!fromPage" class="btn form-btn-edit">编辑</a>
+        		</div>
+    		#elseif($financierInfo.isPendding())
+    			<div class="alert alert-warning">
+					<ul class="fa-ul">
+						<li >
+							<i class="fa fa-info-circle fa-lg"> </i>
+							信息审核中！
+                        </li>
+                    </ul>
+				</div>
+    		#end
+    	</div>
+    	<span data-type="json" id="financier-json-string" data-ignore="true" style="display:none">#toJson($financierInfo)</span>
+    	<span data-type="json" id="basic-json-string" data-ignore="true" style="display:none">#toJson($member)</span>
+    </form>
+</div>

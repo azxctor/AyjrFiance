@@ -1,0 +1,10 @@
+#set( $layout = "common/emptyLayout.vm" )
+<center><h3>Exception occurred!</h3></center>
+<br />
+<br />
+<br />
+<b>Exception message: </b>$exception.message
+<br />
+<br />
+	
+<b>Detail: </b>$exception

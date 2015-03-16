@@ -1,0 +1,19 @@
+#set($layout = "common\emptyLayout.vm")
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/packet_repay_search.css">
+<script src="$link.contextPath/assets/js/page/packet/month_report_detail.js" type="text/javascript"></script>
+
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="detail-frame0" class="kmfex-frame" scrolling="no"></iframe>
+</div>	
+
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="detail-frame1" class="kmfex-frame" scrolling="no"></iframe>
+</div>	
+
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="detail-frame2" class="kmfex-frame" scrolling="no"></iframe>
+</div>	
+
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="detail-frame3" class="kmfex-frame" scrolling="no"></iframe>
+</div>	

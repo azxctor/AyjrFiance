@@ -1,0 +1,176 @@
+<h3 class="page-header">银行信息</h3>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" >
+  	  <div class="main-wrapper">
+	  		<div class="main">
+	  			 <form id="bank-info-form" role="form" method="POST" #if($bindingState.code=="2") action="$link.contextPath/web/esw/editbinding" #else action="$link.contextPath/web/esw/binding" #end >
+                    #if($bindingState.code=="0")
+					<div class="row">
+            			<label class="col-md-3 control-label required">银行账号</label>
+    					<div class="form-group col-md-7">
+                			<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-credit-card fa-fw"></i></span>
+                				<input maxlength="25" data-validate='{required:true}' type="text" value="$!bankDto.bankCardNo" class="form-control" id="bankcardnum" name="bankCardNo" #if($bindingState.code!="0") disabled #end />
+                				<!--<span class="input-group-addon" id="browse-btn" #if($bindedBankSize.code=="0") disabled #end>绑卡记录</span>-->
+                			</div>
+                        </div>
+                        <div class="col-md-2">
+							<button type="button" class="btn btn-mf-default" id="browse-btn" #if($bindedBankSize.code=="0") disabled #end>绑卡记录</button>
+						</div>
+                    </div>
+					#else
+					<div class="row">
+            			<label class="col-md-3 control-label required">银行账号</label>
+    					<div class="form-group col-md-9">
+                			<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-credit-card fa-fw"></i></span>
+                				<input maxlength="25" data-validate='{required:true}' type="text" value="$!bankDto.bankCardNo" class="form-control" name="bankCardNo" #if($bindingState.code!="0") disabled #end />
+                			</div>
+                        </div>
+                    </div>
+					#end
+					<div class="row">
+            			<label class="col-md-3 control-label required">银行账户名</label>
+    					<div class="form-group col-md-9">
+                			<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                				<input maxlength="25" data-validate='{required:true}' type="text" value="$!bankDto.bankCardName" class="form-control" id="bankname" name="bankCardName" #if($bindingState.code!="0") readonly #end >
+                			</div>
+                        </div>
+                    </div>
+					
+					<div class="row">
+        				<label class="col-md-3 control-label required">开户银行</label>
+    					<div class="form-group col-md-9">
+            				<div class="input-group">
+								
+        						<div class="col-sm-4 col-bigger"> 
+            						<select class="form-control" name="bankTypeCode" id="bankTypeCode" placeholder="请选择银行"
+                						#if($bindingState.code!="0")) disabled #end>
+                						#foreach($bank in $bankList)
+                							<option value="$!bank.payeebankid" #if($!bankDto&&$!bankDto.bankTypeCode==$bank.payeebankid)selected#end>$!bank.payeebankname</option>
+                						#end
+            						</select>
+                				</div>
+        						
+        						
+            					<div class="col-sm-4 col-bigger">
+                					<select class="form-control" name="provinceCode" id="bank-province" #if($bindingState.code!="0") disabled #end placeholder="请选择省份" >
+        							##  #if($!bankDto)
+                                    ##        <option value="$!bankDto.provinceCode">$!bankDto.provinceName</option>
+        							##	#end
+        								#foreach($province in $provinceList)
+                							<option value="$province.provincecode" #if($!bankDto&&$bankDto.provinceCode==$province.provincecode)selected#end>$province.provincename</option>
+        								#end
+                                    </select>
+            					</div>
+        						
+            					<div class="col-sm-4 col-bigger">
+            						<select class="form-control"  id="bank-city" data-val="$!bankDto.cityCode" name="cityCode" #if($bindingState.code!="0") disabled #end placeholder="请选择城市">
+            							#if($!bankDto)
+                                            <option value="$!bankDto.cityCode">$!bankDto.cityName</option>
+        								#end
+                                    </select>
+            					</div>
+        						
+            					<div class="col-sm-12 col-bigger">
+                					<select placeholder="支行/营业所" class="form-control" data-val="$bankDto.bankCode" name="bankCode" id="subBank" #if($bindingState.code!="0") disabled #end>
+        								#if($!bankInfo)
+        									#foreach($bank in $bankInfo.bankList)
+        										<option value="$bank.bankcode" #if($!bankDto.bankCode==$bank.bankcode)selected#end>$bank.bankname</option>
+        									#end
+        								#end
+        							</select>
+        							<input type="hidden" name="bankId" value="$!bankInfo.bankId" id="bankId"/>
+        							<input type="hidden" name="bankName" value="" id="bankName"/>
+                                </div>
+								
+                            </div>
+        				</div>
+                    </div>
+					
+					#if($bindingState.code=="2")
+    					<div class="row row-button" id="view-row">
+							<div class="col-md-4 pull-right">
+								<button type="button" class="btn btn-mf-default btn-collapse" id="remove-card-btn" data-toggle="modal" >解除绑卡</button>
+								<button type="button" class="btn btn-mf-primary btn-collapse" data-target="#edit-row" data-parent="#view-row">修改</button>
+                            </div>
+						</div>
+						<div class="row row-button" id="edit-row" style="display:none">
+    						<div class="col-md-4 pull-right">
+        						<button type="button" class="btn btn-mf-default btn-collapse" data-parent="#edit-row" data-target="#view-row">取消</button>
+            					<button type="submit" class="btn btn-mf-primary">确定</button>
+                            </div>
+    					</div>
+					#elseif($bindingState.code=="1")
+    						<div class="alert alert-warning col-md-9 col-md-offset-3">
+                                <p>绑卡中,请耐心等候托管方处理绑卡操作</p>
+                            </div>
+					#elseif($bindingState.code=="0")
+    					<div class="row row-button" id="edit-row">
+    						<div class="col-md-4 pull-right">
+        						<button type="button" class="btn btn-mf-default" id="cancle-reset-btn">重置</button>
+            					<button type="submit" class="btn btn-mf-primary">确定</button>
+                            </div>
+    					</div>
+					#end
+				</form>
+	  		</div>
+	  		
+  	   </div>
+  </div>
+</div>
+	
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="remove-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body" id="modal-body">
+					是否确定解除绑卡？
+				</div>
+				<div class="modal-footer" id="modal-footer">
+					<button type="button" class="btn btn-mf-primary" id="remove-binding">确定</button>
+					<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->
+
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="browse-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body" id="browse-mod-body">
+					<div class="info-area" id="list-table-area">
+    					<div class="right-blk-body-in">
+    						<table id="browse-table">
+    							<thead>
+    								<tr>
+    									<th data-mData="bankCardNo" data-bSortable="false">银行账号</th>
+    									<th data-mData="bankName" data-bSortable="false">发卡行名称</th>
+    									<th data-mRender="_banketailButton" data-bSortable="false" style="min-width: 80px;">操作</th>
+    								</tr>
+    							</thead>
+    							<tbody>
+    							</tbody>
+    						</table>
+    					</div>
+					</div>
+				</div>
+				<div class="modal-footer" id="">
+					<!--button type="button" class="btn btn-mf-primary" id="remove-binding">确定</button-->
+					<button type="button" class="btn btn-mf-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->

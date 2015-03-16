@@ -1,0 +1,73 @@
+<link href="$link.contextPath/assets/css/page/packet/report_common.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/member_trace_property.js" type="text/javascript"></script>
+<div id="search">
+	<form id="member-subscribe-search" action="$link.contextPath/web/report/getmembersubscribe">
+		<div class="row">
+			<div class="col-sm-4">
+				<label>关键字</label>
+				<div>
+					<input class="form-control" name="keyWord" type="text" placeholder="输入姓名、交易账号模糊查询...">
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<label>用户类型</label>
+				<div>
+					<select class="form-control" name="memberType">
+							<option value="NULL">全部</option>
+						#foreach($!memberType in $!memeberTypeList)
+							<option value=$!{memberType.code}>#if ($!{memberType.code} != "PRODUCTSERVICE") $!{memberType.text}会员  #else $!{memberType.text} #end</option>
+						#end
+					</select>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<label>可用最小余额</label>
+				<div class="input-group">
+					<input class="form-control" name="availableAmount" data-validate="{noThousandNumber:true,min:0,fixednumber:2}">
+					<span class="input-group-addon">元</span>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<label>可提现最小余额</label>
+				<div class="input-group">
+					<input class="form-control" name="withdrawAmount" data-validate="{noThousandNumber:true,min:0,fixednumber:2}">
+					<span class="input-group-addon">元</span>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<label>冻结最小金额</label>
+				<div class="input-group">
+					<input class="form-control" name="frozenAmount" data-validate="{noThousandNumber:true,min:0,fixednumber:2}">
+					<span class="input-group-addon">元</span>
+				</div>
+			</div>
+		</div>
+		<div class="row mt10">
+			<!--<div class="col-sm-2">
+				<label>签约会员</label>
+				<select class="form-control" name="isSigned">
+					<option value="">全部</option>
+					<option value="Y">是</option>
+					<option value="N">否</option>
+				</select>
+			</div>-->
+			<div class="col-sm-2">
+				<label>渠道</label>
+				<select class="form-control" name="cashPool">
+					#foreach($!channel in $!channelList)
+						<option value=$!{channel.code}>$!{channel.text}</option>
+					#end
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label class="auto-width">&nbsp;</label>
+				<a class="btn btn-mf-primary" id="subscribe-search-btn">
+					<i class="fa fa-search"></i>&nbsp查询
+				</a>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="member-frame" class="kmfex-frame"></iframe>
+</div>

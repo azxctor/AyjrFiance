@@ -1,0 +1,122 @@
+<h3 class="page-header">支付密码</h3>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3" id="password-wrapper">
+		<div class="row">
+			<div class="col-md-4 pull-right">
+				<button type="button" data-target="#update-password" data-parent="#password-wrapper" class="btn btn-mf-primary  btn-collapse">修改支付密码</button>
+			</div>
+        </div>
+		<div>
+    		<a id="forget-pwd" href="javascript:void(0);" class="for-pwd">忘记密码？</a>
+    	</div>
+    </div>
+	
+	<div class="col-md-6 col-md-offset-3" id="update-password" style="display:none;">
+  	  <div class="main-wrapper">
+	  		<div class="main">
+	  			 <form id="password-form" role="form" method="POST" action="$link.contextPath/web/esw/account/updatepaypwd">
+					<div class="row">
+						<label class="control-label col-md-3" for="originalPayPwd">原支付密码</label>
+						<div class="form-group col-md-9">
+					 	  <div class="input-group has-feedback">
+							  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							  <input type="password" class="form-control" id="originalPayPwd" name="originalPayPwd" minlength="1" maxlength="20" required placeholder="支付密码"/>
+						  </div>
+                        </div>
+                    </div>
+					<div class="row">
+						<label class="control-label col-md-3" for="newPayPwd">新支付密码</label>
+						<div class="form-group col-md-9">
+					 	  <div class="input-group has-feedback">
+							  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							  <input type="password" class="form-control" id="newPayPwd" name="newPayPwd" minlength="1" maxlength="20" required placeholder="支付密码"/>
+						  </div>
+                        </div>
+					</div>
+					<div class="row">
+						  <label class="control-label col-md-3" for="confirmPassword">确认新支付密码</label>
+						  <div class="form-group col-md-9">
+    						  <div class="input-group has-feedback">
+    							  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+    							  <input type="password" class="form-control" id="confirmPayPwd" name="confirmPayPwd" equalTo="#newPayPwd" minlength="1" maxlength="20" required placeholder="确认支付密码"/>
+    						  </div>
+                          </div>
+                    </div>
+					<div class="row hide">
+						  ##<label class="control-label col-md-3" for="mobile">手机号码</label>
+					 	  <div class="input-group col-md-9 form-item has-feedback" >
+							  <span class="input-group-addon"><i class="fa fa-mobile-phone"></i></span>
+							  <input type="text" class="form-control" id="mobile" value="$!mobile" data-ignore=true name="mobile" data-validate="{required:true,mobilezh:true}"  maxlength="11" required placeholder="手机号码"/>
+						  </div>
+                    </div>
+					
+					<div class="row">
+					   <label class="control-label col-md-3" for="authCode">验证码</label>
+					   <div class="form-group col-md-9">
+					 	  <div class="input-group has-feedback">
+							<div class="col-xs-6 no-padding">
+								<div class="form-group has-feedback">
+									<input type="text" class="form-control" name="authCode"  data-validate="{required:true}" maxlength="100"  placeholder="手机验证码"/>
+					        	</div>
+					        </div>
+					        <div class="col-xs-6">
+					        	 <a class="btn btn-default ui-button captcha-link">获取手机验证码</a>
+					        </div>
+						</div>
+                       </div>
+                    </div>
+					
+					<div class="row row-button">
+						  <div class="col-md-4 pull-right">
+								<button type="button" data-parent="#update-password" data-target="#password-wrapper" class="btn btn-mf-default btn-collapse">取消</button>
+								<button type="submit" class="btn btn-mf-primary">确定</button>
+                          </div>
+                    </div>
+				</form>
+	  		</div>
+	  		<br/>
+	  		<br/>
+	  		<br/>
+  	   </div>
+  </div>
+</div>
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="pswd-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="pwd-modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">重置支付密码</h4>
+				</div>
+				
+				<form id="reset-pwd-form" role="form" method="POST" action="$link.contextPath/web/esw/account/resetpaypwd">
+    				<div class="modal-body" id="pwd-modal-body">
+        					<div class="row">
+        					   <label class="control-label col-md-3" for="authCode">验证码</label>
+        					   <div class="form-group col-md-9">
+        					 	  <div class="input-group has-feedback">
+        							<div class="col-xs-6 no-padding">
+        								<div class="form-group has-feedback">
+        									<input type="text" class="form-control" name="authCode"  data-validate="{required:true}" maxlength="100"  placeholder="手机验证码"/>
+        					        	</div>
+        					        </div>
+        					        <div class="col-xs-6">
+        					        	 <a class="btn btn-default ui-button captcha-link">获取手机验证码</a>
+        					        </div>
+        						</div>
+                               </div>
+                            </div>
+    				</div>
+				<!--	<div>
+						<button type="submit" class="btn btn-mf-primary">重置</button>
+					</div>
+                </form>-->
+    				<div class="modal-footer" id="pwd-modal-footer">
+    					<button type="submit" class="btn btn-mf-primary" id="pwd-reset-btn">重置</button>
+    					<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+    				</div>
+				</form>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->

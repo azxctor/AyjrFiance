@@ -1,0 +1,19 @@
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="package-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="package-modal-header">
+					
+				</div>
+				 <form class="form-horizontal modal-form" role="form" method= "POST" id="form-modal">
+    				<div class="modal-body" id="package-modal-body">
+                      
+    				</div>
+    				<div class="modal-footer" id="package-modal-footer">
+						
+    				</div>
+				</form>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->

@@ -1,0 +1,323 @@
+<div id="pro-product-details">
+#set($layout="common/emptyLayout.vm")
+#set($defaultValue = "--")
+<link rel="stylesheet" href="$link.contextPath/assets/vendor/bootstrap-datatimepicker/css/bootstrap-datetimepicker.css">
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/product/transaction_params_edit.css">
+##		<div class="fixed">
+##			剩余融资申请额：<span id="remain_sum">0</span>
+##		</div>
+    #parse("product\project_basic_info.vm")
+	#parse("product\project_more_details.vm")
+    <form id="transactionparams-form" role="form" method="post" action="$link.contextPath/web/product/financingpackage/edit">
+        <div class="row basic-info params-setting">
+            <div class="sub-title">
+                参数设置
+            </div>
+            <div class="list list-1">
+                #foreach($productFee in $productFeeList)
+					#set($index=($foreach.count - 1))
+                    <div class="row basic-info-context package" data-name="productFeeList">
+                        <div class="col-sm-6">
+                            <div class="row content-margin">
+                                <label class="col-sm-5 control-label required">
+									${productFee.feeDto.feeName}
+                                </label>
+                                <div class="col-sm-6">
+			                           		<div class="col-sm-6 tocover">
+			                           			<span class="feeName"></span>
+					                           	<span>元</span>
+			                           		</div>
+			                           		<div class="col-sm-6 tocover">
+					                               <div class="input-group">
+			                                       <input class="form-control" name="feeRt" type="text"  data-value="$!{productFee.feeRt}" data-error-field="productFeeList[$index].feeRt"
+			                                           value="$!{productFee.feeRt}" required #if($!statusFlag) readonly #end data-validate="{required:true,number:true,min:0,maxlength:8,fixednumber:6}"/>
+			                                           <span class="input-group-addon">
+			                                               %
+			                                           </span>
+			                                   </div>
+					                           </div>
+			                           </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="feeId" value="$!{productFee.feeId}"/>
+                        
+                        <div class="col-sm-6">
+		                       <div class="row content-margin">
+		                       		<div class="form-group">
+		                       			<label class="col-sm-4 control-label required">
+		                               付款方式
+		                             </label>
+		                             <div class="col-sm-6">
+			                               <select class="form-control" name="payMethod" #if($!statusFlag) disabled #end  data-validate="{required:true}" data-error-field="productFeeList[$index].payMethod">
+												<option value="NULL")></option>
+										#foreach($staticOption in $staticOptions)
+                                        <option value="$!{staticOption.code}" #if($!{staticOption.code}==$!{productFee.payMethod})selected#end>$!{staticOption.text}</option>
+                                       #end
+                                    </select>
+			                           </div>
+		                       		</div>
+		                       </div>
+		                   </div>
+                    </div>
+                #end
+            </div>
+            <div class="row flat basic-info-context">
+				<input type="hidden" name="productId" value="$!{productId}"/>
+                <div class="col-sm-6">
+                
+                    <div class="row content-margin">
+                        <label class="col-sm-5 control-label required">
+								借款合同还款保证金
+                        </label>
+                        	<div class="col-sm-6">
+                        
+                        		<div class="col-sm-6 tocover">
+                         			<span class="performanceBondRate"></span>
+                           			<span>元</span>
+                         		</div>
+                         		<div class="col-sm-6 tocover">
+                               		<div class="input-group">
+                                	<input class="form-control" name="performanceBondRate" type="text"  data-value="$!{performanceBondRate}" data-error-field="performanceBondRate"
+                                    	value="$!{performanceBondRate}" required #if($!statusFlag) readonly #end data-validate="{required:true,number:true,min:0,maxlength:8}"/>
+                                    	<span class="input-group-addon">
+                                        %
+                                    	</span>
+                               		</div>
+                           		</div>
+                          	</div>
+                      </div>
+                     
+                   </div>                   
+                </div>
+                <div class="row basic-info-context">
+                    <div class="col-sm-6">
+                        <div class="col-sm-5">
+                            <div class="control-label">
+                                <label class="checkbox inline control-label">
+                                    <input id="chk-unpaking" name="itemized" type="checkbox" value="false" disabled #if(${packageList.size()}>1) checked="checked" #end/>
+                                    &nbsp;分项挂单
+                                </label>
+                            </div>
+                        </div>
+						#if(${packageList.size()}>1)
+                        <div class="col-sm-7 content-margin">
+                            <div id="unpaking-num" class="form-group">
+                                <label class="col-sm-7 control-label">
+										分项挂单份数
+                                </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="itemCount" type="text" value="$!{packageList.size()}" readonly/>
+                                </div>
+                            </div>
+                        </div>
+						#end
+                    </div>
+					#if(${packageList.size()}>1)
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-8 avg-unpaking">
+                                <label class="checkbox inline control-label">
+                                    <input type="checkbox" id="chk-avgunpaking" name="average"  value="false" #if($!{avgPkgFlg}) checked="checked" #end #if($!{statusFlag})disabled#end/>
+                                    &nbsp;平均分项挂单
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+					#end
+                </div>
+                <div id="is-unpaking"  class="list list-2">
+					#set($size=${packageList.size()})
+                    #foreach($package in $packageList)
+						#set($index1=($foreach.count - 1))
+                        <div class="row basic-info-context" id="unpaking-content">
+                            <div class="rzb package" data-name="packageList">
+									<input type="hidden" name="id" value="$!{package.id}"/>
+									<input type="hidden" name="versionCount" value="$!{package.versionCount}"/>
+                            		<span class="group-value">#toJson(${package.aipGroupList})</span>
+                            		<input class="package-status" type="hidden" value="$!{package.updateStatus}"/>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h4>$!{productDetails.productName}<span class="amount-count">&nbsp;$foreach.count</span>期&nbsp;&nbsp;$!{package.status.text}</h4> 
+                                    </div>
+                                </div>
+                                <input class="package-index" name="index" type="hidden" value="$foreach.count">
+                                    <div class='row'>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label pake required"> 
+													融资包<span class="amount-count">$foreach.count</span>金额(元)
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control contract-templ" name="packageQuota" type="text" data-error-field="packageList[$index1].packageQuota" value="$!{package.packageQuota}" #if($!{statusFlag}||$size==$foreach.count) readonly #end data-validate="{required:true,number:true,min:0,maxlength:13}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="form-group" data-role="$foreach.count">
+                                                    <label class="col-sm-4 control-label required">
+															预挂单时间
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                            <div class="input-group date tocover">
+                                <input class="form-control order-time js-time-primary" name="prePublicTime" type="text"
+                                    value="$!{package.prePublicTime}" onkeypress="return false" data-role="$foreach.count"  data-error-field="packageList[$index1].prePublicTime" data-value="$!{package.prePublicTime}"  data-name="order-time" data-validate="{required:true}"  #if($!{package.status}=="WAIT_SUBSCRIBE") disabled #end/>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row content-margin">
+                                        <div class="col-sm-6">
+                                            <div class="form-group" data-role="$foreach.count">
+                                                <label class="col-sm-5 control-label required">
+														发布起始时间
+                                                </label>
+                                                <div class="col-sm-6">
+             											<div class="input-group date tocover">
+                                <input class="form-control start-time js-time-primary" name="supplyStartTime" type="text" data-error-field="packageList[$index1].supplyStartTime" 
+                                    value="$!{package.supplyStartTime}" onkeypress="return false" data-value="$!{package.supplyStartTime}" data-name="start-time" data-validate="{required:true}"/>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    </div>
+                                                </div>
+                                            </div>
+                                            #* hidden auto subscribe block *#
+                                            <div class="form-group" data-role="$foreach.count" style="display:none;">
+                                                <label class="col-sm-5 control-label content-margin">
+														委托自动申购
+                                                </label>
+                                                <div class="col-sm-7 content-margin auto-purchase">
+													#set($flag = ${package.autoSubscribeFlag})
+                                                    #if($flag)
+															已开启
+															#elseif("$!flag"=="")
+																已关闭
+                                                        #else
+															  <label class="inline control-label">
+                                                                    <input class="auto-sub rdo-hand-apply" type="radio" name="uselessName$foreach.count" data-ignore="true" value="false" checked="checked" #if($!{package.status}=="SUBSCRIBE") disabled #end/>
+                                                                    	对外手工申购
+                                                                </label>
+                                                                <label class="inline control-label">
+                                                                    <input class="auto-sub rdo-auto-apply" type="radio"  name="uselessName$foreach.count"  data-ignore="true" value="true" #if($!{package.status}=="SUBSCRIBE") disabled #end/>
+    																	委托自动申购
+                                                                </label>
+                                                    #end
+                                                    <input type="hidden"  name="autoSubscribeFlag" value="$!{package.autoSubscribeFlag}"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" data-role="$foreach.count">
+                                                <div class="col-sm-5 control-label">
+                                                    <label class="checkbox inline control-label">
+                                                        <input class="chk-vote" name="aipFlag" type="checkbox" data-role="$foreach.count" value="$!{package.aipFlag}" #if($!{package.aipFlag})checked="checked" #end #if($!{package.updateStatus}>1)disabled#end/>
+                                                            &nbsp;定向发行
+                                                    </label>
+                                                </div>
+                                                <div class="col-sm-6 vote-content required aip-group-ids" data-role="$foreach.count">
+                                                    <input type="hidden" name="aipGroupIds" value="$!{package.aipGroupIds}"/>
+                                                    <select class="vote-group" id="vote-group-$foreach.count" name="vote-group-$foreach.count" data-error-field="packageList[$index1].aipGroupIds"  data-ignore="true" multiple="multiple" #if($!{package.status}=="SUBSCRIBE")disabled#end data-validate="{required:true}">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="form-group" data-role="$foreach.count">
+                                                    <label class="col-sm-4 control-label">
+															发布截止时间
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                            <div class="input-group tocover">
+                                <input class="form-control end-time js-time-primary" name="supplyEndTime" type="text" data-error-field="packageList[$index1].supplyEndTime" 
+                                    value="$!{package.supplyEndTime}" data-name="end-time" onkeypress="return false" data-date-format="yyyy-mm-dd" data-validate="{required:true}"/>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+											#if($!{package.updateStatus}==1)
+                                            <div class="form-group data-role" data-role="$foreach.count">
+						                          <div class="col-sm-5 control-label no-padding">
+						                              <label class="checkbox inline control-label">
+						                                   <input class="auto-sub data-role immediate" name="instantPublish" type="checkbox" data-role="$foreach.count" value="false"/>
+						                                            &nbsp;即时发布
+						                               </label>
+						                          </div>
+						                    </div>
+											#end
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group vote-content" data-role="$foreach.count">
+                                                <label class="col-sm-5 control-label required">
+														定向起始时间
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <div class="input-group tocover">
+                                <input class="form-control start-time-aipStartTime js-time-primary" name="aipStartTime" type="text" data-error-field="packageList[$index1].aipStartTime" 
+                                    value="$!{package.aipStartTime}" onkeypress="return false" data-name="start-time-aipStartTime" data-date-format="yyyy-mm-dd" data-validate="{required:true}" readonly />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    </div>    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="form-group vote-content" data-role="$foreach.count">
+                                                    <label class="col-sm-4 control-label required">
+															定向截止时间
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                            <div class="input-group tocover">
+                                <input class="form-control end-time-aipEndTime js-time-primary" name="aipEndTime" type="text" data-error-field="packageList[$index1].aipEndTime" 
+                                   value="$!{package.aipEndTime}" onkeypress="return false" data-name="end-time-aipEndTime" data-date-format="yyyy-mm-dd" data-validate="{required:true}"/>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            #end
+                        </div>
+                    <hr/>
+                    <!--Modal警告-->
+                    <div class="modal fade modal-micro" id="modal-alert" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+											警告
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <label class="control-form" id="msg">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.modal警告-->
+                </div>
+				#parse("product\project_operate.vm")
+</form>
+<script src="$link.contextPath/assets/js/page/product/transaction_params_edit.js"></script>
+</div>

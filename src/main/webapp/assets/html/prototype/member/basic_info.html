@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head lang="ZH">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/page/prototype/templ.css">
+    <link rel="stylesheet" href="../../../css/page/prototype/member/basic_info.css">
+
+    <script type="text/javascript" src="../../../js/require.js"></script>
+    <!-- Global variable module which will take variables from sever side -->
+    <script type="text/javascript">
+        define('global', {
+            context: '../../../../'
+        })
+    </script>
+    <script type="text/javascript" src="../../../js/base.js"></script>
+</head>
+<body>
+<!--页面顶部-->
+<div class="top">
+    <img class="top-logo" src="../../../img/templ_img/logo.jpg">
+    <div class="top-time">
+        <span class="hours">18:35</span>
+            <span class="dates">
+                <span class="date">04-15</span>
+                <span class="week">TUE</span>
+            </span>
+    </div>
+    <div class="top-logout">
+        <i class="fa fa-user"></i> <span class="user-name">Nick Jones </span> <a href="javascript:void(0);" >退出</a>
+    </div>
+</div>
+
+<div class="page-wrapper">
+<!--页面内容-->
+<div class="right-blk">
+    <div class="right-blk-head">
+        <!--此处更改标题-->
+        <span class="right-blk-head-title">会员信息</span>
+        <span> <i class="fa fa-angle-right"></i> </span>
+        <span class="right-blk-head-subtitle">基本信息</span>
+        <!--此处更改标题-->
+    </div>
+    <div class="right-blk-line"></div>
+    <div class="right-blk-body">
+    	 <div class="basic-info" id="basic-info">  		
+    		<div class="row basic-box-border">
+    			<div class="col-md-2">
+    				<img class="img-thumbnail avatar" src="../../../img/templ_img/member/avatar.jpg" alt="张三" >
+    			</div>
+    			<div class="col-md-5">
+    				<!--table class="table table-basic">
+                        <tbody>
+                            <tr>
+                                <td><strong>姓名</strong>:</td>
+                                <td>张三 <i class="fa fa-male basic-male" tile="男"></i></td>
+                            </tr>
+                            <tr>
+                                <td><strong>出生年月</strong>:</td>
+                                <td>1980年12月1日</td>
+                            </tr>
+                            <tr>
+                                <td><strong>QQ</strong>:</td>
+                                <td>5556887</td>
+                            </tr>
+                             <tr>
+                                <td><strong>职业</strong>:</td>
+                                <td>金融分析员</td>
+                            </tr>
+                             <tr>
+                                <td><strong>学历</strong>:</td>
+                                <td>硕士研究生</td>
+                            </tr>
+                        </tbody>
+                    </table-->
+                    <div class="usr-first-line">
+                    	<div class="col-sm-3 usr-box usr-first-box">
+                    		<label>姓名</label>
+                    		<div class="usr-info">张三</div>
+                    	</div>
+                    	<div class="col-sm-5 usr-box">
+                    		<label>出生年月</label>
+                    		<div class="usr-info">1980-12-1</div>
+                    	</div>
+                    	<div class="col-sm-4 usr-box">
+                    		<label>QQ</label>
+                    		<div class="usr-info">5556887</div>
+                    	</div>
+                    </div>
+                    <div class="usr-second-line">
+                    	<div class="col-sm-6 usr-box usr-first-box">
+                    		<label>职业</label>
+                    		<div class="usr-info">金融分析员</div>
+                    	</div>
+                    	<div class="col-sm-6 usr-box">
+                    		<label>学历</label>
+                    		<div class="usr-info">硕士研究生</div>
+                    	</div>
+                    </div>
+    			</div>
+    			<div class="col-md-5  contact">				
+					<address class="basic-contact">
+						<ul> 
+							<li><i class="fa fa-map-marker"></i>&nbsp;&nbsp;浙江省杭州市西湖区西园1路18号J1写字楼5楼, 310030</li>
+							<li><i class="fa fa-mobile"></i>&nbsp;&nbsp;15888888888</li>
+							<li><i class="fa fa-phone"></i>&nbsp;&nbsp;0571-89985036</li>
+							<li><i class="fa fa-envelope"></i>&nbsp;&nbsp;5556887@hengtiansoft.com</li>
+						</ul>
+					</address>
+				</div>
+    		</div>
+    		  
+    		<!--div class="row idc-info basic-box-border">  			
+    			<h3 class="basic-subtitle"><i class="fa fa-credit-card"></i>身份证号：<strong>300122198012010055</strong></h3>
+    			<div class="col-md-6">
+    				<h5>个人信息所在面</h5>
+    				<img class="img-thumbnail" src="pic/idc-1.png" alt="布里兰特"/>
+    			</div>
+    			<div class="col-md-6"></div>
+    				<h5>国徽所在面</h5>
+    				<img class="img-thumbnail" src="pic/idc-2.png" alt="布里兰特"/>
+    		</div-->  
+    		<div class="row detail-info basic-box-border"> 
+    				
+    			<div class="col-md-6 bank-account">   
+    				<div class="visual">
+						<i class="fa fa-credit-card"></i>
+					</div>
+    				<table class="table table-account">
+                        <tbody>                        
+                            <tr>
+                                <td class="right-align"><strong>银行账号</strong>:</td>
+                                <td><strong>45123191331569713354<strong></td>
+                            </tr>
+                            <tr>
+                                <td class="right-align"><strong>账户名</strong>:</td>
+                                <td>张三</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align"><strong>开户行</strong>:</td>
+                                <td>工商银行 </td>
+                            </tr>
+                             <tr>
+                                <td class="right-align"><strong>开户网点</strong>:</td>
+                                <td>浙江省杭州市紫金港分行</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align"><strong>银行卡扫描图</strong>:</td>
+                                <td><img src="../../../img/templ_img/member/ghzyvj-158.gif" alt="布里兰特"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+    			</div>	
+    			<div class="col-md-6 idc-info">   				
+    				<table class="table table-idc">
+                        <tbody>                        
+                            <tr>
+                                <td class="right-align"><strong>身份证号</strong>:</td>
+                                <td>300122198012010055</td>
+                            </tr>
+                            <tr>
+                                <td class="right-align"><strong>个人信息所在面</strong>:</td>
+                                <td><img class="img-thumbnail" src="../../../img/templ_img/member/idc-1.png" alt="布里兰特"/></td>
+                            </tr>
+                            <tr>
+                                <td class="right-align"><strong>国徽所在面</strong>:</td>
+                                <td><img src="../../../img/templ_img/member/idc-2.png" alt="布里兰特"/> </td>
+                            </tr>
+                        </tbody>
+                    </table>   					
+    			</div>
+    		</div>
+        </div>
+    </div>
+</div>
+<!--左菜单-->
+<div class="menu">
+<div class="menu-wrapper">
+
+    <div class="active on menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-code-fork"></i>
+        </div>
+        <h4>行情展示</h4>        
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 信息补录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div   class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-book"></i>
+        </div>
+        <h4>正在融资</h4>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 融资包管理
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 融资管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div   class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-pagelines"></i>
+        </div>
+        <h4>订单管理</h4>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 订单管理
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-briefcase"></i>
+        </div>
+        <h4>债权转让</h4>
+
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 信息补录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div  class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-info"></i>
+        </div>
+        <h4>我的账户</h4>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 账户信息
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div  class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-tasks"></i>
+        </div>
+        <h4>统计分析</h4>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 统计操作
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="submenu-wrapper">
+    <a class="submenu-back submenu-blk-el" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left"></i></a>
+    <div class="submenu-content"></div>
+</div>
+</div>
+</div>
+</body>
+
+<!-- JavaScript -->
+<!--[if lt IE 9]>
+   <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+   <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="../../../js/page/prototype/templ.js"></script>
+
+</html>

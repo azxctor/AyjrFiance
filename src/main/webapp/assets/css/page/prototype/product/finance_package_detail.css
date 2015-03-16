@@ -1,0 +1,35 @@
+.content {
+	margin-bottom: 0;
+	padding-left: 50px	
+}
+div.control-label.col-sm-6 { text-align: left }
+div.control-label.col-sm-6.vote-group { margin-top: 6px }
+.sub-title {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 10px
+}
+#counter-guarantee {
+	position: relative;
+}
+#counter-guarantee .nav {
+	position: absolute;
+	width: 10%;
+	text-align: center;
+}
+#counter-guarantee .tab-content {
+	padding-left: 10%;
+}
+.tab-content {
+	margin: 20px;
+	padding:0 20px 20px;
+}
+#panel-heading{
+	cursor: pointer;
+	background-color: #FFF
+}
+#collapseOne{
+	padding-left: 50px;
+	padding-top: 10px;
+}
+div.panel.panel-default { border-color:#FFF }

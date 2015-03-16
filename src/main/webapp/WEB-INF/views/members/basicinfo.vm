@@ -1,0 +1,171 @@
+<link href="$link.contextPath/assets/css/page/member/complete_base.css" rel="stylesheet">
+<script type="text/javascript"
+        src="$link.contextPath/assets/js/page/member/basicinfo.js"></script>
+
+#if($member.oldMember)
+<form class="form-horizontal view-mode" role="form" id="pre-info-form">
+    #set($hasPrefix = "hasPrefix")
+    #set($personPrefix = "oldMember.")
+    #set($orgPrefix = "oldMember.")
+    <a class="btn btn-default go-back"><i class="fa fa-reply"></i>&nbsp;返回</a>
+    <div>
+        #if($member.containsPerson())
+            #parse("members\basicinfo_person.vm")
+        #end
+        	#if($member.containsOrg())
+        #parse("members\basicinfo_org.vm")
+    #end
+    </div>
+</form>
+#end
+
+
+#set($hasPrefix = "")
+#set($personPrefix = "")
+#set($orgPrefix = "")
+<div class="step-wrapper">
+    <div class="row">
+        <div class="step-blk col-sm-3">
+            <span class="step-i">1</span>
+            <span class="step-content">基本信息提交</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">2</span>
+            <span class="step-content">基本信息审核通过</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">3</span>
+            <span class="step-content">投融资权限申请</span>
+        </div>
+        <div class="step-blk col-sm-3">
+            <span class="step-i">4</span>
+            <span class="step-content">账户激活</span>
+        </div>
+    </div>
+</div>
+
+<div id="basic-info-full">
+    #if($member.oldMember)<a href="javascript:void(0)" id="show-pre-info">当前资料</a>#end
+    <!-- 选择会员类型 -->
+    <form class="form-horizontal $!member.formMode.text" role="form" id="form-user-type">
+        #if($member.rejectLastTime)
+            <div class="">
+                <div class="alert alert-danger">
+                    <i class="fa fa-exclamation-triangle fa-lg"></i>
+                    <strong>您的申请被拒绝，拒绝理由：</strong>
+                    <span class="" name="commonts">$!member.comments</span>
+                </div>
+            </div>
+		#end
+		<h3>身份信息</h3>
+        <div class="row" id='group-user-type'>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">会员类别</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" name="user_type.text"></span>
+                        <select class="form-control" id="user-type" data-ignore="true" name="user_type" #if($member.isEditMode()) disabled #end>
+                            <option value="PERSON" #if($member.containsPerson()) selected #end>个人</option>
+                            <option value="ORGANIZATION" #if(!$member.containsPerson()) selected #end>机构</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">会员类型</label>
+                    <div class="col-sm-8">
+                        <span class="show-form-control" name="member_type.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    #if($member.containsPerson())
+        <!-- 会员信息表单 -->
+        <form class="form-horizontal $!member.formMode.text" role="form" id="form-person"  style="display:none"
+              method="POST"
+              action="$link.contextPath/web/members/basicinfo/person?from=$!fromPage"
+              data-save-action="$link.contextPath/web/members/basicinfo/person/save?from=$!fromPage">
+
+            #parse("members\basicinfo_person.vm")
+            <!-- 提交重置Button -->
+            <div class="row row-button">
+                #if(!$member.isViewMode())
+                    <div class="col-sm-5 col-sm-offset-6">
+                        <div class="col-sm-4 col-xs-12">
+                            #if($member.isUncommit())
+                                <a  class="btn form-btn-save">保存</a>
+                            #end
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <button type="button" class="btn form-btn-reset">重置</button>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <button type="submit" class="btn form-btn-submit">提交申请</button>
+                        </div>
+                    </div>
+                #elseif($member.canEdit)
+                    <div class="col-sm-2 col-sm-offset-9 form-area-edit">
+                        <a href="$link.contextPath/web/members/basicinfo?mode=edit-mode&from=$!fromPage" class="btn form-btn-edit">编辑</a>
+                    </div>
+                #elseif($member.isPendding())
+                    <div class="alert alert-warning">
+                        <ul class="fa-ul">
+                            <li >
+                                <i class="fa fa-info-circle fa-lg"> </i>
+                                信息审核中！
+                            </li>
+                        </ul>
+                    </div>
+                #end
+            </div>
+
+        </form>
+    #end
+    #if($member.containsOrg())
+        <!-- 会员信息表单 -->
+        <form class="form-horizontal $!member.formMode.text" role="form" id="form-org"  style="display:none"
+              method="POST"
+              action="$link.contextPath/web/members/basicinfo/organization?from=$!fromPage"
+              data-save-action="$link.contextPath/web/members/basicinfo/organization/save?from=$!fromPage">
+
+            #parse("members\basicinfo_org.vm")
+            <!-- 提交重置Button -->
+            <div class="row row-button">
+                #if(!$member.isViewMode())
+                    <div class="col-sm-5 col-sm-offset-6">
+                        <div class="col-sm-4 col-xs-12">
+                            #if($member.isUncommit())
+                                <a  class="btn form-btn-save">保存</a>
+                            #end
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <button type="button" class="btn form-btn-reset">重置</button>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <button type="submit" class="btn form-btn-submit">提交申请</button>
+                        </div>
+                    </div>
+                #elseif($member.canEdit)
+                    <div class="col-sm-2 col-sm-offset-9 form-area-edit">
+                        <a href="$link.contextPath/web/members/basicinfo?mode=edit-mode&from=$!fromPage" class="btn form-btn-edit">编辑</a>
+                    </div>
+                #elseif($member.isPendding())
+                    <div class="alert alert-warning">
+                        <ul class="fa-ul">
+                            <li >
+                                <i class="fa fa-info-circle fa-lg"> </i>
+                                信息审核中！
+                            </li>
+                        </ul>
+                    </div>
+                #end
+            </div>
+
+        </form>
+    #end
+
+    <span data-type="json" id="json-string" data-ignore="true" style="display:none;">#toJson($member)</span>
+</div>

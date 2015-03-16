@@ -1,0 +1,54 @@
+.basic-info,.basic-last {
+	margin: 0;
+	padding: 20px;
+	background-color: #FFF;
+	border-bottom:1px dashed #ddd;
+}
+.basic-last{
+	border:none;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:0;
+}
+
+.tab-content{
+	border-left:1px solid #ddd;
+	border-right:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+}
+.text-number{
+	width:120px;
+}
+.alert{
+	margin-bottom:0;
+}
+.alert-success{
+	margin-top:10px;
+}
+
+form.view-mode .form-control{
+	display:block !important;
+}
+
+.group{
+	position:relative;
+	float:left;
+	border:1px solid #ccc;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+label.no-padding-left{
+	padding-left:0;
+}
+#info-tip{
+	color: #426DB9;
+	font-size: 21px;
+}
+.popoverx{
+	max-width: none;
+}
+.required:before{
+	content:"*";
+	color:red;
+}

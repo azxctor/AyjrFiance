@@ -1,0 +1,60 @@
+<link href="$link.contextPath/assets/css/page/packet/packet_manage.css" rel="stylesheet"/>
+<script src="$link.contextPath/assets/js/page/packet/report_pay.js" type="text/javascript"></script>
+<div id="main-wrapper">
+    <div class="row search-wrapper" id="search-wrapper">
+        <form method="POST" action="$link.contextPath/web/dailyrisk/exportcompensatoryExcel">
+            <div class="col-xs-2">
+                <label>查询时间</label>
+                <div class="input-group">
+                    <input type="text" name="startDate" id="search-start-date" class="form-control" value="$selectDate" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+                <label>&nbsp;</label>
+                <div class="input-group">
+                    <input type="text" name="endDate" id="search-end-date" class="form-control" value="$selectDate" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <label class="void-label">&nbsp;</label>
+                    <button class="btn btn-mf-primary" type="submit" id="btn-export">导出Excel</button>
+                </div>
+            </div>
+        </form>
+        <div class="col-xs-2">
+            <div class="form-group">
+                <label class="void-label">&nbsp;</label>
+                <button class="btn btn-mf-primary" id="btn-search">
+                    <i class="fa fa-search"></i>
+                    查询</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-wrapper" id="table-wrapper">
+                <table  class="packet-manage-table" id="packet-manage-table">
+                    <thead>
+                    <tr>
+
+                        <th data-mData="sequenceId" data-bSortable="false">序列号</th>
+                        <th data-mData="lastPayTs" data-bSortable="false">还款日</th>
+                        <th data-mData="signTs" data-bSortable="false">签约日</th>
+                        <th data-mData="paymentDate" data-bSortable="false">应还日</th>
+                        <th data-mData="wrtrNameShow" data-bSortable="false">发包机构</th>
+                        <th data-mData="packageId" data-bSortable="false">包号</th>
+                        <th data-mData="packageName" data-bSortable="false">名称</th>
+						<th data-mData="cmpnsTs" data-bSortable="false">代偿日期</th>
+                        <th data-mData="cmpnsPdAmt" data-bSortable="false">代偿金额</th>
+                        <th data-mData="item" data-bSortable="false">期数</th>
+                     </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

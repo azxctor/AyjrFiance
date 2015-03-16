@@ -1,0 +1,53 @@
+<div class="agency-provider" id="agency-provider">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">特许经营许可证</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="productPrivilegeLic"></span> <input type="text"
+						class="form-control">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">服务地区范围</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="productServiceRegion.fullText"></span> 
+					<select class="form-control">
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">服务行业范围</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="productServiceRegionIndustry.text"></span> <select
+                    class="form-control">
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">受理人</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="productServiceAgent"></span> <input type="text"
+						class="form-control">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">担保公司简介</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="desc"></span> <input type="text"
+						class="form-control">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

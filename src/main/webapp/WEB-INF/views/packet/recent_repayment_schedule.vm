@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/recent_repayment_schedule.css"/>
+<script src="$link.contextPath/assets/js/page/packet/recent_repayment_schedule.js" type="text/javascript"></script>
+<div id="main-wrapper">
+    <div id="search-area">
+		  <form id="recent-repayment-form" action="$link.contextPath/web/report/getrecentrepaymentschedule" method="post">
+        		<div class="row">
+                        <div class="col-sm-4">
+                            <label>关键字</label>
+                            <div class="full-oqp">
+                                <input type="text" name="keyWord" id="input-key-word" class="form-control" title="输入融资包编号、简称、融资人名称、交易账号、担保机构搜索..." placeholder="输入融资包编号、简称、融资人名称、交易账号、担保机构搜索..."/>
+                            </div>
+                        </div>
+            			<div class="col-sm-2">
+                            <label>还款状态</label>
+                            <div>
+                                <select class="form-control" id="pay-status" name="payStatus">
+            						<option value="NULL">全部</option>
+            					#foreach($!stauts in $!payStatusList)
+            						<option value=$!{stauts.code}>$!{stauts.text}</option>
+            					#end
+            					</select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <label>应还款日期</label>
+                            <div class="input-group">
+                                <input type="text" name="startDate" value=$!selectDate id="search-start-date" class="form-control" readonly="readonly"/>
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <label>&nbsp;</label>
+                            <div class="input-group">
+                                <input type="text" name="endDate"  value=$!selectDate id="search-end-date" class="form-control" readonly="readonly"/>
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+        		</div>
+		
+        		<div class="row mgt10">
+        			<div class="col-sm-2">
+                        <label>签约日期</label>
+                        <div class="input-group">
+                            <input type="text" name="signingStartDate" class="signin-start-date form-control"  value=$!selectDate  readonly="readonly"/>
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                	
+					<div class="col-sm-2">
+                        <label>&nbsp;</label>
+                        <div class="input-group">
+                            <input type="text" name="signingEndDate" class="signin-end-date form-control"  value=$!selectDate  readonly="readonly"/>
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+					
+					
+                    <div class="col-sm-2">
+                        <label style="width:100%">&nbsp;</label>
+                        <div>
+                            <a  class="btn btn-mf-primary" id="recent-repayment-search-btn">
+                                <i class="fa fa-search"></i>查询</a>
+                        </div>
+                    </div>
+                </div>
+		  </form>
+    </div>
+    <div class="iframe-wrapper">
+        <iframe  width="100%" id="recent-repayment-frame" class="kmfex-frame" scrolling="no"></iframe>
+    </div>
+</div>

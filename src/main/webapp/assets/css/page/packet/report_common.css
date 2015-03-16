@@ -1,0 +1,14 @@
+#search { margin-bottom: 20px; }
+
+#search-start-date { background:#fff; cursor: pointer; }
+
+#search-end-date { background:#fff; cursor: pointer; }
+
+.auto-width { width:100% }
+
+.ui-multiselect { width:165px !important; height:30px }
+
+button.ui-multiselect.ui-widget.ui-state-default.ui-corner-all { background:#fff; }
+
+.mt10 { margin-top:10px; }
+

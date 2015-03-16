@@ -1,0 +1,37 @@
+#set($layout = "common\emptyLayout.vm")
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/packet_repay_search.css">
+<script src="$link.contextPath/assets/js/page/packet/member_statistics_detail_pac.js" type="text/javascript"></script>
+<div id="search-area" class="row">
+	<form id="detail-form" action="$link.contextPath/web/report/getmemberstatisticspackage" method="post">
+	    <div class="col-sm-3">
+    		<label>关键字</label>
+    		<div class="full-oqp">
+    			<input type="text" name="keyWord" class="form-control" placeholder="输入投资人交易账号模糊查询..."/>
+            </div>	
+        </div>
+        	<div class="col-sm-2 hide">
+        		<label class="detail-time">签约日期</label>
+        			<div class="input-group">
+                            <input type="text" name="startDate" id="search-start-date" class=" mem-detail form-control obligations-start-date" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                     </div>
+            </div>
+        	
+        	<div class="col-sm-2 hide">
+        		<label>&nbsp;</label>
+        			<div class="input-group">
+                            <input type="text" name="endDate" id="search-end-date" class="mem-detail form-control obligations-end-date" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                     </div>
+            </div>	    	
+
+    	
+        <div class="col-sm-2">
+        	<label style="width:100%">&nbsp;</label>
+        	<div>
+                <a  class="btn btn-mf-primary" id="btn-search-detail"><i class="fa fa-search"></i>查询</a>
+            </div>	
+        </div>
+    </form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="detail-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>	

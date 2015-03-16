@@ -1,0 +1,39 @@
+#set($layout = "common\emptyLayout.vm")
+
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/packet_repay_search.css">
+<script src="$link.contextPath/assets/js/page/packet/member_payback_detail.js" type="text/javascript"></script>
+<div id="detail-wrapper">
+<div id="search-area" class="row">
+	<form id="payback-form" action="$link.contextPath/web/report/getpaymentdetail" method="post">
+    	    	
+    	<div class="col-sm-3">
+    		<label>关键字</label>
+    		<div class="full-oqp">
+    			<input type="text" name="keyWord" class="form-control" placeholder="输入融资包编号模糊查询..."/>
+            </div>	
+        </div>
+
+    	
+    	<div class="col-sm-3">
+    		<label class="type-time-wrapper">还款状态</label>
+    		<div class="full-oqp">
+            <select  class="form-control" name="payStatus">   
+                        #foreach($!payStatus in $!payStatusList)
+                            <option value=$!{payStatus.code}>#if($!{payStatus.text}=="")全部 #else $!{payStatus.text}#end</option>
+                  #end
+               </select> 
+          </div>
+        </div>    	 
+        
+        <div class="col-sm-2">
+        	<label style="width:100%">&nbsp;</label>
+        	<div>
+                <a  class="btn btn-mf-primary" id="btn-search"><i class="fa fa-search"></i>查询</a>
+            </div>	
+        </div>
+    </form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="payback-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>	
+</div>

@@ -1,0 +1,475 @@
+<div id="indiv-basic-info">
+    <h3 class="inner-form-title">
+	身份信息
+    </h3>
+    <form class="form-horizontal view-mode">
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- 姓名 -->							
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">姓名</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="person.real_name"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <!-- 性别 -->
+                <div class=form-group>
+                    <label class="col-sm-4 control-label required">性别:</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"  data-prop="person.gender.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- 职业 -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">职业</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"  data-prop="person.job.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <!-- 学历 -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">学历状况</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"  data-prop="person.education.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- 手机 -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">手机</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="person.mobile"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <!-- 座机 -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">座机</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="person.phone"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- 所在区域 -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">所在区域</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="person.region.fullText"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <!-- 常住地址 -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">常住地址</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="person.address"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- 邮编 -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">邮编</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="person.postcode"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <!-- QQ -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">QQ</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="person.qq"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- Email -->
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Email</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"  data-prop="person.email"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">身份证号</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"  data-prop="person.id_card_number"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">身份证正面扫描图</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="pid-cardf" data-prop="person.id_card_front_img_url"></img>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">手持身份证照片(<a href="javascript:void(0)" class="image-example-popoverx" data-content="loading..." data-src="$link.contextPath/assets/img/IDCard_s.jpg">图例</a>)</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="pid-cardb" data-prop="person.id_card_back_img_url"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">出生年月</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="person.birthday"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">年龄</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"  data-prop="person.age"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		
+		#* <h3 class="inner-form-title">
+    	银行信息
+        </h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">银行账号</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"   data-prop="person.bank_account"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">银行账户名</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"  data-prop="person.bank_account_name"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">开户银行</label>
+					<div class="col-sm-8">
+						<div class="form-area">
+							<span class="" data-prop="person.bank_province.text"></span>
+							&nbsp;<span class="" data-prop="person.bank_city.text"></span>
+							&nbsp;<span class="" data-prop="person.bank_name.text"></span> 
+							&nbsp;<span class="" data-prop="person.bank_branch"></span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">银行卡正面扫描图</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" data-prop="person.bank_card_front_img_url"></img>
+                    </div>
+                </div>
+            </div>
+        </div> *#
+        
+        <div class="row  check-row">
+            <div class="col-sm-6 col-sm-offset-6">
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-4">
+                        <a id="indiv_basic_audit" data-prop="NULL" class="btn  audit-btn" style="float:right" data-toggle="modal" data-target="#checkModal">审核</a>
+					</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--
+    <form id="indiv-basicinfo-check" class="form-horizontal">
+    #parse("members/audit_check.vm")
+    </form>
+    -->
+</div>
+<div id="indiv-invest-info" style="display:none">
+    <h3 class="inner-form-title">
+        投资信息
+    </h3>
+    <form class="form-horizontal view-mode">
+			<div class="row">
+					<div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">授权服务中心</label>
+                            <div class="col-sm-8">
+                                <span class="hidden-form-control"  data-prop="investorInfo.auth_center.name"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" >
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">经办人</label>
+                            <div class="col-sm-8">
+                                <span class="hidden-form-control"  data-prop="investorInfo.agentName"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6"  style="display:none">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">受理人</label>
+                            <div class="col-sm-8">
+                                <span class="hidden-form-control"  data-prop="investorInfo.agent"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">会员申请表第一页</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="appl-first" data-prop="investorInfo.application_img_first_url">
+				    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                	<label class="col-sm-4 control-label">会员申请表第二页</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="appl-second" data-prop="investorInfo.application_img_second_url">
+					</div>
+                </div>
+            </div>
+                
+                <div class="row check-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">投资等级</label>
+                            <div class="col-sm-8">
+                                <select id="indiv-investor-level-select"  style="display:none">
+                                </select>
+								<span id="indiv-investor-level-span" class="hidden-form-control" data-prop="investorInfo.investorLevel.text" style="display:none">普通</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 audit-row">
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-4 audit-row">
+                                <a id="indiv_investor_audit" data-prop="INVESTOR"  class="btn  audit-btn" style="float:right" data-toggle="modal" data-target="#checkModal">审核</a>
+								 <span id="indiv_investor_tip" style="display:none" class="audit-tip label label-danger"><i class="fa fa-exclamation"></i>&nbsp;基本信息未审核</span>
+							</div>
+                        </div>
+                    </div>
+                </div>
+</form>
+<!-- <form id="indiv-invest-check" class="form-horizontal">
+#parse("members/audit_check.vm")
+</form>
+-->
+        </div>
+        <div id="indiv-financing-info" style="display:none">
+            <h3 class="inner-form-title">
+                融资信息
+            </h3>
+            <form class="form-horizontal view-mode">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">会员申请表第一页</label>
+                            <div class="col-sm-8">
+                                <img class="hidden-form-control" id="financeimg-first" data-prop="financierInfo.application_img_first_url">
+</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">会员申请表第二页</label>
+                                <div class="col-sm-8">
+                                    <img class="hidden-form-control" id="financeimg-second" data-prop="financierInfo.application_img_second_url">
+</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        #*
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">受理人</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.agent"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">征信记录</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.credit_hist.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">经营所在地居住时间</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.residence.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">家庭状况</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.family_status.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">企业成立年限/核心管理层从业经营</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.found_age.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">借款人家庭及企业资产总值</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.total_assert.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">借款人家庭及企业资产负债比</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.debt_radio.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">授信期限内主营业务收入与期限内到期债务比</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.income_debt_ratio.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">单一客户集中度</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.concentra.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">利润率</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.profit_ratio.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">主营业务收入增长率</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.revenue_growth.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">主营业务下游客户分布的地域范围</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.customer_dist.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">社会地位</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.social_status.text"></span>
+                                    </div>
+                                </div>
+                            </div>
+							 <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">授权服务中心</label>
+                                    <div class="col-sm-8">
+                                        <span class="hidden-form-control" data-prop="financierInfo.auth_center.name"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        *#
+                        
+                        <div class="row check-row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">融资等级</label>
+                                    <div class="col-sm-8">
+                                        <select  id="indiv-financier-level-select" style="display:none">
+                                        </select>
+										<span id="indiv-financier-level-span" class="hidden-form-control" data-prop="financierInfo.financierLevel.text" style="display:none">普通</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-4 audit-row">
+                                        <a id="indiv_financier_audit"  data-prop="FINANCER"   class="btn  audit-btn" style="float:right" data-toggle="modal" data-target="#checkModal">审核</a>
+										 <span  id="indiv_financier_tip" style="display:none" class="audit-tip label label-danger"><i class="fa fa-exclamation"></i>&nbsp;基本信息未审核</span>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+</form>
+                </div>

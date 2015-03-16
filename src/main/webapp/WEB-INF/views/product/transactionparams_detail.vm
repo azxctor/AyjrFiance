@@ -1,0 +1,315 @@
+<div id="pro-product-details">
+#set($layout="common/emptyLayout.vm") 
+#set($defaultValue = "--")
+<script src="$link.contextPath/assets/js/page/product/transactionparams_detail.js" type="text/javascript"></script>
+<link rel="stylesheet" href="$link.contextPath/assets/vendor/bootstrap-datatimepicker/css/bootstrap-datetimepicker.css"/>
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/product/transactionparams_detail.css"/>
+#parse("product\project_basic_info.vm")
+#parse("product\project_more_details.vm")
+<form id="transactionparams-form" role="form" method="post" action="$link.contextPath/web/product/financingpackage/save">
+    <input type="hidden" id="market_open_flag" value="$!{isMarketOpen}"/>
+    <div class="row basic-info params-setting">
+        <div class="sub-title">
+            参数设置
+        </div>
+        <div class="list list-1">
+            #foreach($fee in $feeList)
+                <div class="row basic-info-context package" data-name="productFeeList">
+                    <div class="col-sm-6">
+                        <div class="row content-margin">
+                            <label class="col-sm-5 control-label required">
+                                $!{fee.feeName}
+                            </label>
+                            <div class="col-sm-6">
+                                <div class="col-sm-6 tocover">
+                                    <span class="feeName"></span>
+                                    <span>元</span>
+                                </div>
+                                <div class="col-sm-6 tocover">
+                                    <div class="input-group" data-error-prop="true">
+                                        #set($index=($foreach.count - 1))
+                                        <input class="form-control rate-control" name="feeRt" type="text" data-value="$!{fee.feeRate}" data-error-field="productFeeList[$index].feeRt"
+                                            value="$!{fee.feeRate}" data-validate="{required:true,number:true,min:0,maxlength:8,fixednumber:6}"/>
+                                            <span class="input-group-addon">
+                                                %
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="feeId" value="$!{fee.id}"/>
+                    <div class="col-sm-6">
+                        <div class="row content-margin">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label required">
+                                    付款方式
+                                </label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" name="payMethod" data-validate="{required:true}" data-error-field="productFeeList[$index].payMethod">
+										<option value="NULL")></option>
+                                        #foreach($staticOption in $staticOptions)
+                                            <option value="$!{staticOption.code}" #if($!{staticOption.code}==$!{productFee.payMethod})selected#end>$!{staticOption.text}</option>
+                                        #end
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            #end
+        </div>
+        <div>
+            <div class="row flat basic-info-context">
+                <div class="col-sm-6">
+                    
+                    <div class="row content-margin">
+                   
+                        <label class="col-sm-5 control-label required">
+                           借款合同还款保证金
+                        </label>
+                        <div class="col-sm-6" data-validate="{required:true,number:true}">
+                            <div class="col-sm-6 tocover">
+                                <span class="performanceBondRate"></span>
+                                <span>元</span>
+                            </div>
+                            <div class="col-sm-6 tocover">
+                                <div class="input-group">
+                                    <input class="form-control" name="performanceBondRate" type="text"  data-value="$!{loanMarginRate}" data-error-field="performanceBondRate"
+                                        value="$!{loanMarginRate}" data-validate="{required:true,number:true,min:0,maxlength:8,fixednumber:1}"/>
+                                        <span class="input-group-addon">
+                                            %
+                                        </span>
+                                        <input type="hidden" value="${productDetails.productId}" name="productId"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row basic-info-context">
+            <div class="col-sm-6">
+                <div class="col-sm-5">
+                    <div class="control-label">
+                        <label class="checkbox inline control-label">
+                            <input id="chk-unpaking" name="itemized" type="checkbox" value="false"/>
+                            &nbsp;分项挂单
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-7 content-margin">
+                    <div id="unpaking-num" class="form-group">
+                        <label class="col-sm-7 control-label">
+                            分项挂单份数
+                        </label>
+                        <div class="col-sm-4">
+                            <input class="form-control" id="txt-unpaking-num" name="itemCount" type="text" readonly/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-8 avg-unpaking">
+                        <label class="checkbox inline control-label">
+                            <input type="checkbox" id="chk-avgunpaking" name="average"  value="false"/>
+                            &nbsp;平均分项挂单
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="is-unpaking" class="list list-2">
+            <div class="row basic-info-context" id="unpaking">
+            </div>
+            <div class="row basic-info-context" id="unpaking-content">
+                <div class="package package-all-index" data-name="packageList">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h4>
+                                <span class="product-name">$!{productDetails.productName}</span>
+                                <span class=""></span></h4>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <div class="col-sm-10">
+                                <div class="btn-group btn-group-xs">
+                                    <button type="button" class="btn btn-mf-primary btn-delete-data add-package data-role" data-role="0">
+                                        <i class="fa fa-plus-square" title="添加"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="package-index" name="index" type="hidden" value="1">
+                        <div class='row'>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label pake required">
+                                        融资包<span class="amount-count">1</span>
+                                        金额(元)
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control contract-templ" name="packageQuota" type="text"
+                                            readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="form-group data-role" data-role="0">
+                                        <label class="col-sm-4 control-label required">
+                                            预挂单时间
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <div class="input-group tocover">
+                                                <input class="form-control order-time js-time-primary" name="prePublicTime" type="text"
+                                                    data-role="0" data-name="order-time" onkeypress="return false" data-date-format="yyyy-mm-dd" data-validate="{required:true}"/>
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row content-margin">
+                            <div class="col-sm-6">
+                                <div class="form-group data-role" data-role="0">
+                                    <label class="col-sm-5 control-label required">
+                                        发布起始时间
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div class="input-group tocover">
+                                            <input class="form-control start-time js-time-primary" name="supplyStartTime" type="text"
+                                                data-role="0" data-name="start-time" onkeypress="return false" data-date-format="yyyy-mm-dd" data-validate="{required:true}"/>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--
+                                <div class="form-group data-role" data-role="0">
+                                    <label class="col-sm-5 control-label content-margin">
+                                        委托自动申购
+                                    </label>
+                                    <div class="col-sm-7 content-margin auto-purchase">
+                                        <label class="inline control-label">
+                                            <input class="auto-sub rdo-hand-apply" type="radio" name="uselessName" data-ignore="true" value="false" checked="checked" />
+                                            对外手工申购
+                                        </label>
+                                        <label class="inline control-label">
+                                            <input class="auto-sub rdo-auto-apply" type="radio"  name="uselessName"  data-ignore="true" value="true"/>委托自动申购
+                                        </label>
+                                        <input type="hidden"  name="autoSubscribeFlag" value="false"/>
+                                    </div>
+                                </div>
+                                -->
+                                <div class="form-group data-role" data-role="0">
+                                    <div class="col-sm-5 control-label">
+                                        <label class="checkbox inline control-label">
+                                            <input class="chk-vote data-role" name="aipFlag" type="checkbox" data-role="0" value="false"/>
+                                            &nbsp;定向发行
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6 vote-content required aip-group-ids data-role" data-role="0">
+                                        <input type="hidden" name="aipGroupIds" value=""/>
+                                        <select class="vote-group requ" name="votegroup" data-ignore="true" multiple="multiple" data-validate="{required:true}">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="form-group data-role" data-role="0">
+                                        <label class="col-sm-4 control-label required">
+                                            发布截止时间
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <div class="input-group tocover">
+                                                <input class="form-control end-time js-time-primary" name="supplyEndTime" type="text"
+                                                    data-role="0" data-name="end-time" onkeypress="return false" data-date-format="yyyy-mm-dd" data-validate="{required:true}"/>
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group data-role" data-role="0">
+                                    <div class="col-sm-5 control-label">
+                                        <label class="checkbox inline control-label">
+                                            <input class="auto-sub data-role immediate" name="instantPublish" type="checkbox" data-role="0" value="false"/>
+                                            &nbsp;即时发布
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group vote-content data-role" data-role="0">
+                                    <label class="col-sm-5 control-label required">
+                                        定向起始时间
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div class="input-group tocover">
+                                            <input class="form-control start-time-aipStartTime js-time-primary" name="aipStartTime" type="text"
+                                                data-role="0" data-name="start-time-aipStartTime" onkeypress="return false" data-date-format="yyyy-mm-dd" data-validate="{required:true}" readonly />
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="form-group vote-content data-role" data-role="0">
+                                        <label class="col-sm-4 control-label required">
+                                            定向截止时间
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <div class="input-group tocover">
+                                                <input class="form-control end-time-aipEndTime js-time-primary" name="aipEndTime" type="text"
+                                                    data-role="0" data-name="end-time-aipEndTime" onkeypress="return false" data-date-format="yyyy-mm-dd" data-validate="{required:true}"/>
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <!--Modal警告-->
+            <div class="modal fade modal-micro" id="modal-alert" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                警告
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <label class="control-form" id="msg">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    #parse("product\project_operate.vm")
+</form>
+</div>

@@ -1,0 +1,324 @@
+<link href="$link.contextPath/assets/css/page/myaccount/print_modal.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/myaccount/print_modal.js" type="text/javascript"></script>
+<div class="modal modal-micro fade" id="modal-print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:760px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">打印确认</h4>
+      </div>
+      <div class="modal-body">
+		<div id="print-content">
+            <div class="title">
+    			<span class="print-title"></span>
+    		</div>
+    		<div class="type">
+                <span class="print-type"></span>
+    		</div>
+    		<div class="logo">
+    			<img class="wt-p100" src="$link.contextPath/assets/img/printlogo.png"/>
+    		</div>
+            <div class="text-center ma-10">
+                <span>日期：</span>
+    			<span data-mData="trxDt"></span>
+    		</div>
+            <table id="print-table" class="wt-p100" border="1px solid" cellspacing="0" cellpadding="0">
+                <tr>
+    				<td rowspan="3"  class="wt-p15 text-center">交易<br/>账户<br/>信息</td>
+    				<td class="wt-p15 text-center">户名</td>
+                    <td><span data-mData="bnkAcctName"></span></td>
+    			</tr>
+    			<tr>
+    				<td class="wt-p15 text-center">交易账号</td>
+                    <td>（<span data-mData="acctNo"></span>）<span data-mData="bnkAcctNo"></span></td>
+    			</tr>
+    			<tr>
+    				<td class="wt-p15 text-center">开户银行</td>
+                    <td><span data-mData="bnkName"></span></td>
+    			</tr>
+    			<tr>
+    				<td  class="wt-p15 text-center">金额</td>
+                    <td colspan="2" style="height:28px;">人民币（大小写）<span data-mData="rmbStr" class="ma-r30 ma-l15"></span> ￥<span data-mData="trxAmt" data-sFormatType="thousand"></span></td>
+    			</tr>
+    			<tr>
+    			   <td  class="wt-p15 text-center">摘要</td>
+                    <td colspan="2" style="height:28px;"><span data-mData="trxMemo"></span></td>
+    			</tr>
+    		</table>
+            <div class="pa-10">
+    			<div class="ft-r">
+                    <span class="ma-r50">
+        				<span>经办：</span>
+        				<span data-mData="handler"></span>
+        			</span>
+        			<span class="ma-r50">
+        				<span>复核：</span>
+        				<span data-mData="checker"></span>
+        			</span>
+        			<span>
+        				<span>打印时间：</span>
+        				<span class="print-date"></span>
+        			</span>
+                </div>
+    		</div>
+        </div>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-mf-primary btn-modal-agree">确定</button>
+        <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+ 
+<!-- 手工转账复核打印-->
+<div class="modal modal-micro fade" id="modal-transfer-print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:760px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">打印确认</h4>
+      </div>
+      <div class="modal-body">
+		<div id="print-transfer-content">
+            <div class="title">
+    			<span class="print-title"></span>
+    		</div>
+    		<div class="logo">
+    			<img class="wt-p100" src="$link.contextPath/assets/img/printlogo.png"/>
+    		</div>
+            <div class="text-center ma-10">
+                <span>日期：</span>
+    			<span data-mData="dt"></span>
+    		</div>
+            <table id="print-transfer-table" class="wt-p100" border="1px solid" cellspacing="0" cellpadding="0">
+                <tr>
+    				<td rowspan="3"  class="wt-p5 text-center">付<br/>款<br/>人</td>
+    				<td class="wt-p15 text-center">户名</td>
+                    <td><span data-mData="payerName"></span></td>
+    				<td rowspan="3" class="wt-p5 text-center">收<br/>款<br/>人</td>
+    				<td class="wt-p15 text-center">户名</td>
+    				<td><span data-mData="payeeName"></span></td>
+    			</tr>
+    			<tr>
+    				<td class="wt-p15 text-center">会员交易号</td>
+    				<td><span data-mData="payerAcctNo"></span></td>
+    				<td class="wt-p15 text-center">会员交易号</td>
+                    <td><span data-mData="payeeAcctNo"></span></td>
+    			</tr>
+    			<tr>
+    				<td class="wt-p15 text-center">银行账号</td>
+    				<td><span data-mData="payerBnkAcctNo"></span></td>
+    				<td class="wt-p15 text-center">银行账号</td>
+                    <td><span data-mData="payeeBnkAcctNo"></span></td>
+    			</tr>
+    			<tr>
+    				<td colspan="2" class="wt-p30 text-center">金额</td>
+                    <td colspan="4">人民币（大小写）<span data-mData="trxAmtStr" class="ma-r30 ma-l15"></span> ￥<span data-mData="trxAmt" data-sFormatType="thousand"></span></td>
+    			</tr>
+    			<tr>
+                    <td colspan="6" class="ht-50">摘要：<span data-mData="trxMemo"></span></td>
+    			</tr>
+    		</table>
+            <div class="pa-10">
+    			<div class="ft-r">
+                    <span class="ma-r50">
+        				<span>经办：</span>
+        				<span data-mData="handler"></span>
+        			</span>
+        			<span class="ma-r50">
+        				<span>复核：</span>
+        				<span data-mData="checker"></span>
+        			</span>
+        			<span class="ma-r50">
+        				<span>主管：</span>
+        				<span class="supervisor"></span>
+        			</span>
+                </div>
+    		</div>
+        </div>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-mf-primary btn-modal-agree">确定</button>
+        <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--签约借据打印-->
+<div class="modal modal-micro fade" id="modal-signed-iou-print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:760px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">打印确认</h4>
+      </div>
+      <div class="modal-body">
+		<div id="print-iou-content">
+    		<div id="print-finance-iou-content">
+				<div class="logo-left">
+        			<img class="wt-p100" src="$link.contextPath/assets/img/printlogo.png"/>
+        		</div>
+                <div class="title-16">
+        			<span class="print-title">安益金融交易服务有限公司-<span data-mData="title"></span>融资借据</span>
+        		</div>
+    			<div class="text-center ma-10"style="width: 675px;">
+                    <span>签发日期：</span>
+        			<span data-mData="signDt"></span>
+        		</div>
+        		
+    			<div class="debt-id text-center">
+    				<div class="ma-b7">第<span data-mDate="serialNo" class="pa-lr15"></span>号</div>
+    				<div><span>借据编号：</span><span data-mData="debtId"></span></div>
+    			</div>
+    			
+                <table id="print-finance-iou-table" class="wt-p100" border="1px solid" cellspacing="0" cellpadding="0">
+                    <tr>
+        				<td rowspan="3"  class="wt-p5 text-center">融<br/>资<br/>人</td>
+        				<td class="wt-p10 text-center">户名</td>
+                        <td><span data-mData="fncrAcctName"></span></td>
+        				<td rowspan="3" class="wt-p5 text-center">投<br/>资<br/>人</td>
+        				<td class="wt-p10 text-center">户名</td>
+        				<td>投资人(<span data-mData="invrAcctName"></span>人)</td>
+        			</tr>
+        			<tr>
+        				<td class="wt-p10 text-center">账号</td>
+        				<td><span data-mData="fncrAcctNo"></span></td>
+        				<td class="wt-p10 text-center">账号</td>
+                        <td class="wt-p30"><span data-mData="invrAcctNo"></span></td>
+        			</tr>
+        			<tr>
+        				<td class="wt-p10 text-center">开户行</td>
+        				<td><span data-mData="fncrOpenBnk"></span></td>
+        				<td class="wt-p10 text-center">开户行</td>
+                        <td><span data-mData="invrOpenBnk"></span></td>
+        			</tr>
+        			<tr>
+        				<td colspan="2" class="wt-p30 text-center">金额</td>
+                        <td colspan="4">人民币（大小写）<span data-mData="fncrAmtStr" class="ma-r30 ma-l15"></span> ￥<span data-mData="fncrAmt" data-sFormatType="thousand"></span></td>
+        			</tr>
+    				<tr>
+    					<td colspan="6" class="wt-p15">
+							年利率:<span data-mData="intrRate" class="ma-r15"></span>
+    						贷款到期日:<span data-mData="debtEndDt" class="ma-r15"></span>
+    						<span data-mData="payMethod" class="ma-r15"></span>
+    						计息方式:<span data-mData="termTypeStr"></span>(<span data-mData="termLength"></span><span data-mData="termType"></span>)
+    					</td>
+    				</tr>
+        			<tr>
+    					<td colspan="3">备注：风险管理费 ￥<span data-mData="trxMemo" data-sFormatType="thousand"></span></td>
+    					<td colspan="2" class="wt-p15 text-center">担保合同号</td>
+    					<td></td>
+        			</tr>
+        		</table>
+                <div class="pa-10">
+        			<div class="ft-r">
+                        <span class="ma-r50">
+            				<span>经办：</span>
+            				<span data-mData="handler"></span>
+            			</span>
+            			<span class="ma-r50">
+            				<span>复核：</span>
+            				<span data-mData="checker"></span>
+            			</span>
+            			<span class="ma-r50">
+            				<span>打印时间：</span>
+            				<span class="print-date"></span>
+            			</span>
+                    </div>
+        		</div>
+            </div>
+    		<div id="print-signed-evidence-content" class="ma-t50">
+				<div class="logo-left">
+        			<img class="wt-p100" src="$link.contextPath/assets/img/printlogo.png"/>
+        		</div>
+                <div class="title-16">
+        			<span class="print-title">安益金融交易服务有限公司-<span data-mData="title"></span>凭证</span>
+        		</div>
+    			<div class="text-center ma-10" style="width: 675px;">
+                    <span>签发日期：</span>
+        			<span data-mData="signDt"></span>
+        		</div>
+                <table id="print-signed-evidence-table" class="wt-p100" border="1px solid" cellspacing="0" cellpadding="0">
+                    <tr>
+        				<td rowspan="3"  class="wt-p5 text-center">融<br/>资<br/>人</td>
+        				<td class="wt-p10 text-center">户名</td>
+                        <td><span data-mData="fncrAcctName"></span></td>
+        				<td rowspan="3" class="wt-p5 text-center">投<br/>资<br/>人</td>
+        				<td class="wt-p10 text-center">户名</td>
+        				<td>投资人(<span data-mData="invrAcctName"></span>人)</td>
+        			</tr>
+        			<tr>
+        				<td class="wt-p10 text-center">账号</td>
+        				<td><span data-mData="fncrAcctNo"></span></td>
+        				<td class="wt-p10 text-center">账号</td>
+                        <td class="wt-p30"><span data-mData="invrAcctNo"></span></td>
+        			</tr>
+        			<tr>
+        				<td class="wt-p10 text-center">开户行</td>
+        				<td><span data-mData="fncrOpenBnk"></span></td>
+        				<td class="wt-p10 text-center">开户行</td>
+                        <td><span data-mData="invrOpenBnk"></span></td>
+        			</tr>
+        			<tr>
+        				<td colspan="2" class="wt-p30 text-center">金额</td>
+                        <td colspan="4">人民币（大小写）<span data-mData="intrAmtStr" class="ma-r30 ma-l15"></span> ￥<span data-mData="intrAmt" data-sFormatType="thousand"></span></td>
+        			</tr>
+        			<tr>
+                        <td colspan="6">摘要：<span data-mData="abstractStr"></span></td>
+        			</tr>
+        		</table>
+                <div class="pa-10">
+        			<div class="ft-r">
+                        <span class="ma-r50">
+            				<span>经办：</span>
+            				<span data-mData="handler"></span>
+            			</span>
+            			<span class="ma-r50">
+            				<span>复核：</span>
+            				<span data-mData="checker"></span>
+            			</span>
+            			<span class="ma-r50">
+            				<span>打印时间：</span>
+            				<span class="print-date"></span>
+            			</span>
+                    </div>
+        		</div>
+            </div>
+		</div>
+      </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-mf-primary btn-modal-agree">确定</button>
+        <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+ 
+<!--提现审批 打印-->
+<div class="modal modal-micro fade" id="modal-withddepappls-print" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:1200px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">打印确认</h4>
+      </div>
+      <div class="modal-body">
+		<div id="print-withddep-content">
+    		<div id="print-withddepappls-content"> 
+        	 
+                <table id="print-withddepappls-table"  border="1"> 
+         		</table>     
+                
+            </div>
+ 		</div>
+      </div>
+	  <div class="modal-footer">   
+		<button type="button" class="btn btn-mf-primary btn-modal-agree-withddepappls" id="btn-modal-agree-withddepappls">确定 </button>
+        <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

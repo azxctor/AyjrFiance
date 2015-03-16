@@ -1,0 +1,102 @@
+/*finance-product*/
+
+#table-search-result {
+	margin-top: 20px;
+}
+#btn-finance-apply {
+	float: right;
+}
+.submit {
+	float: right;
+	margin: 20px 0 0 20px;
+}
+.form-group .input-group {
+	padding: 0 15px;
+}
+
+/*finance-apply*/
+
+#finance-apply{
+	display: none;
+}
+.btn-choose-org {
+	float:right;
+}
+/***tabs***/
+.tab-content {
+	margin-top: 20px;
+}
+.tab-apply > li > a,
+.tab-apply > li > a:hover,
+.tab-apply > li > a:focus {
+  color: #fff;
+  cursor: default;
+  background-color: #ccc;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.tab-apply > li.active > a,
+.tab-apply > li.active > a:hover,
+.tab-apply > li.active > a:focus {
+  color: #fff;
+  cursor: default;
+  background-color: #732808;
+}
+.tab-details > li > a,
+.tab-details > li > a:hover,
+.tab-details > li > a:focus {
+    color: #000;
+	cursor: pointer;
+}
+.tab-details > li.active > a,
+.tab-details > li.active > a:hover,
+.tab-details > li.active > a:focus {
+    color: #fff;
+	background-color: #732808;
+}
+/*资产及负债tab*/
+.checkbox-box {
+	min-height:50px;
+}
+/*反担保情况tab*/
+.add-house-details {
+	margin: 10px 0;
+	padding: 10px 0;
+	border: 1px solid #ddd;
+	background-color:#eee;
+}
+.btn-delete-house{
+	margin-top:10px;
+	float:right;
+}
+#counter-guarantee {
+	position: relative;
+}
+#counter-guarantee .nav {
+	position: absolute;
+	width: 10%;
+	text-align:center;
+}
+#counter-guarantee .tab-content {
+	padding-left: 10%;
+}
+.add-box {
+	margin-bottom: 15px;
+}
+.add-content {
+	margin-top:10px;
+	border: 1px solid #fff;
+}
+.add-close-btn {
+	float:right;
+}
+/*资料库tab*/
+.file-upload[type="file"] {
+	display: none;
+}
+
+/*finance-details*/
+
+#finance-details{
+	display: none;
+}

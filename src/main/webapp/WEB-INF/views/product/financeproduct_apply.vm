@@ -1,0 +1,826 @@
+#set($layout = "common\emptyLayout.vm")
+<script src="$link.contextPath/assets/js/page/product/financeproduct_apply.js" type="text/javascript"></script>
+<form class="form-horizontal clearfix" id="form-apply" method="POST" role="form">
+	<div class="col-xs-6">
+		<div class="form-group">
+			<label class="col-sm-4 control-label required" for="productName">项目简称</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="productName" maxlength="30" data-validate='{required:true}'/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label required" for="appliedQuota">融资申请额</label>		
+			<div class="col-sm-8">
+				<div class="input-group">
+    			  <input type="text" class="form-control" name="appliedQuota" maxlength="12" data-validate="{required:true,fixednumber:2,max:10000000000,min:1}"/>
+    			  <span class="input-group-addon">元</span>
+                </div>
+			</div>
+		</div>
+		<!--<div class="form-group">
+			<label class="col-sm-4 control-label" for="lastestFundDate">最迟资金到账日</label>
+			<div class="col-sm-8 input-group">
+				<input type="text" class="form-control" id="last-fund-date" name="lastestFundDate" />
+				<span class="input-group-addon"><i class="fa fa-th"></i></span>
+			</div>
+		</div>-->
+		<div class="form-group">
+			<label class="col-sm-4 control-label required" for="rate">年利率</label>				
+			<div class="col-sm-8">
+				<div class="input-group">
+    			  <input type="text" class="form-control" name="rate" data-validate="{required:true,fixednumber:6,min:0.1}"/>
+    			  <span class="input-group-addon">%</span>
+                </div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label required" for="termLength">融资期限</label>
+			<div class="col-sm-8">
+				<select class="form-control maturity-select" name="termLength" data-validate="{required:true}">
+					<option value="1" selected>1个月</option>
+					<option value="2">2个月</option>
+					<option value="3">3个月</option>
+					<option value="4">4个月</option>
+					<option value="5">5个月</option>
+					<option value="6">6个月</option>
+					<option value="7">7个月</option>
+					<option value="8">8个月</option>
+					<option value="9">9个月</option>
+					<option value="10">10个月</option>
+					<option value="11">11个月</option>
+					<option value="12">12个月</option>
+					<option value="13">按日计息</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group term-days">
+			<label class="col-sm-4 control-label required" for="termToDays">计息天数</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" data-ignore="true" maxlength="3" name="termToDays" data-validate="{required:true,positiveInteger:true}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label" for="payMethod">还款方式</label>
+			<div class="col-sm-8">
+				<select class="form-control pay-method" name="payMethod">
+					<option value="ONCE_FOR_ALL" selected>到期一次还本付息</option>
+					<option value="MONTH_INTEREST">按月等额还息，到期一次还本</option>
+					<option value="MONTH_PRINCIPAL_INTEREST">按月等本等息</option>
+					<option value="MONTH_AVERAGE_INTEREST">按月等额本息</option>
+					
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label" for="libId">产品库</label>
+			<div class="col-sm-8">
+				<select class="form-control" name="libId">
+					<option value=""></option>
+					#foreach($resultType in $productLibList)
+					<option value="$!resultType.libId">$!resultType.libName </option>
+					#end
+				</select>
+			</div>			
+		</div>
+	</div>
+	<div class="col-xs-6">
+		<div class="form-group">
+			<label class="col-sm-4 control-label required" for="financierName">融资会员名称</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control financier-name" name="financierName"  value="$!{financierName}"  #if($financierApplication)disabled#end/>
+    		</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label required" for="acctNo">融资人账号</label>
+			<div class="col-sm-8">
+				<!--<div id="financier" name="finacierName"></div>-->
+				<input type="text" class="form-control acctno" name="acctNo" maxlength="15" value="$!{accountNo}" data-validate="{required:true}" disabled/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label" for="financierMobile">联系方式</label>
+			<div class="col-sm-8">
+				<input type="tel" class="form-control" name="financierMobile" placeholder="手机" maxlength="11" data-validate="{mobilezh:true,}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label" for="financierIndustryType">行业</label>
+			<div class="col-sm-8">
+				<select class="form-control" name="financierIndustryType" data-ignore="true">
+					#foreach($resultType in $industryList)
+					<option value="$!resultType.code">$!resultType.text </option>
+					#end
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label required" for="warrantyType">风险保障</label>
+			<div class="col-sm-8">
+				<select class="form-control" name="warrantyType" data-validate="{required:true}">
+					#if($financierApplication)
+						<option value="MONITORASSETS">资产监管</option>
+					#else
+					<option value="PRINCIPALINTEREST" selected>本息担保</option>
+					<option value="PRINCIPAL">本金担保</option>
+					<option value="MONITORASSETS">资产监管</option>
+					<option value="NOTHING">无担保</option>
+					#end
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label required" for="loanPurpose">用途</label>
+			<div class="col-sm-8">
+				<textarea class="form-control" name="loanPurpose" rows="3" maxlength="200" data-validate="{required:true}"></textarea>
+			</div>
+		</div>
+	</div>
+</form>
+<div class="col-xs-12">
+	<!-- Nav tabs -->
+		<ul class="nav nav-tabs micro-nav-tabs" id="main-tab">
+			<li class="active"><a href="#margin-cost" data-toggle="tab">保证金及费用参考值</a></li>
+			<li><a href="#counter-guarantee" data-toggle="tab">反担保情况</a></li>
+			<li><a href="#asset-liabilities" data-toggle="tab">资产及负债</a></li>
+			<li><a href="#data-bank" data-toggle="tab">资料库</a></li>
+			<li><a href="#remark" data-toggle="tab">备注</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content micro-tab-content" id="main-content">
+			<div class="tab-pane clearfix active" id="margin-cost">
+				<div class="row">
+                    <div class="col-sm-6 bor-rs">
+						<div class="row">
+							<label class="col-sm-6 control-label" >融资服务合同保证金 <i id="financeFee-rule" class="fa fa-question-circle"></i></label>
+                            <div class="col-sm-6">
+								<span id="financeFee"></span>
+							</div>
+                        </div>
+                        <div class="row">
+							<label class="col-sm-6 control-label" >融资会员席位费 <i id="financierSeatFee-rule" class="fa fa-question-circle"></i></label>
+                            <div class="col-sm-6">
+								<span id="financierSeatFee"></span>
+							</div>
+						</div>
+                        <!--
+						<div class="row">
+							<label class="col-sm-6 control-label" >担保公司还款保证金 <i id="warrantFee-rule" class="fa fa-question-circle"></i></label>
+                            <div class="col-sm-6">          
+								<span id="warrantFee"></span>
+							</div>
+                        </div>
+						<div class="row">
+							<label class="col-sm-6 control-label" >借款合同履约保证金 <i id="contractFee-rule" class="fa fa-question-circle"></i></label>
+                            <div class="col-sm-6">
+								<span id="contractFee"></span>
+							</div>
+                        </div>
+                        -->
+					</div>
+					<div class="col-sm-6">
+                        <div class="row">
+							<label class="col-sm-6 control-label" >融资服务费 <i id="serviceFee-rule" class="fa fa-question-circle"></i></label>
+                            <div class="col-sm-6">
+								<span id="serviceFee"></span>
+							</div>
+						</div>
+						<div class="row">
+							<label class="col-sm-6 control-label" >风险管理费 <i id="riskFee-rule" class="fa fa-question-circle"></i></label>
+                            <div class="col-sm-6">
+								<span id="riskFee"></span>
+							</div>
+						</div>
+						<!--
+						<div class="row">
+							<label class="col-sm-6 control-label" >融资会员席位费 <i id="financierSeatFee-rule" class="fa fa-question-circle"></i></label>
+                            <div class="col-sm-6">
+								<span id="financierSeatFee"></span>
+							</div>
+						</div>
+						-->
+					</div>
+                </div>
+			</div>
+			<div class="tab-pane" id="counter-guarantee">
+                <div class="panel-group" id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#guaranty">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#guaranty" class="font-bold">
+							抵押产品
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="guaranty" class="panel-collapse collapse">
+                      <div class="panel-body">
+						<div class="col-xs-12 add-head-box">
+							<label class="control-label" for="">房屋</label>	
+							<button id="link-add-house" class="btn btn-mf-primary" type="button">添加</button>
+                        </div>
+                        <table class="table table-bordered add-table" id="add-house-table">
+                        	<thead>
+                        		<tr>
+						            <th data-name="mortgageType">类型</th>
+						            <th data-name="location">房屋地址</th>
+						            <th data-name="area">建筑面积(平方)</th>
+						            <th data-name="premisesPermitNo">产权证号</th>
+						            <th data-name="registDate">登记时间</th>
+						            <th data-name="owner">房屋所有权人</th>
+						            <th data-name="ownerType">共有权情况</th>
+						            <th data-name="coOwner">共有人姓名</th>
+						            <th data-name="coOwnerAge">共有人年龄</th>
+						            <th data-name="purchasePrice">购买价格(万元)</th>
+						            <th data-name="evaluatePrice">市场评估价值(万元)</th>
+						            <th data-name="marketPrice">市场价格(万元)</th>
+						            <th data-name="delete">删除</th>
+						          </tr>
+                        	</thead>
+                        	<tbody></tbody>
+                        </table>
+						<!-- form 房屋 -->
+						<form class="col-xs-12 add-form form-horizontal" method="POST" id="add-house-form">
+    						<div class="col-xs-12">
+    						  <div class="col-xs-4">
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="mortgageType">类型</label>
+    							  	<div class="col-xs-7">
+    									<select class="form-control" name="mortgageType" data-validate="{required:true}">
+    										#foreach($houseType in $hoseTypeList)
+    										<option value="$!houseType.code">$!houseType.text </option>
+                    					#end
+    									</select>
+    								</div>
+    						  	</div>
+                              </div>
+    						  <div class="col-xs-4">					  	
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="location">房屋地址</label>
+    							  	<div class="col-xs-7">
+    									<input type="text" class="form-control" name="location"/>
+    								</div>
+    						  	</div>
+                              </div>
+    						  <div class="col-xs-4">								  	
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="area">建筑面积</label>
+    							  	<div class="col-xs-7">
+    									<div class="input-group">
+        									<input type="text" class="form-control" name="area" maxlength="8" data-validate="{fixednumber:2,positiveNumber:true}"/>
+        									<span class="input-group-addon">平方</span>
+                                        </div>
+    								</div>
+    						  	</div>
+                              </div>
+                            </div>
+							<div class="col-xs-12">
+    						  <div class="col-xs-4">
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="premisesPermitNo">产权证号</label>
+    							  	<div class="col-xs-7">
+    									<input type="text" class="form-control" placeholder="唯一标识号" name="premisesPermitNo" maxlength="20" />
+    								</div>
+    						  	</div>
+                              </div>
+    						  <div class="col-xs-4">
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="registDate">登记时间</label>
+    							  	<div class="col-xs-7">
+    									<div class="input-group">
+        									<input type="text" class="form-control datepicker" name="registDate" />
+        									<label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+    									</div>
+                                    </div>
+    						  	</div>
+                              </div>
+    						  <div class="col-xs-4">
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="owner">房屋所有权人</label>
+    							  	<div class="col-xs-7">
+    									<input type="text" class="form-control" name="owner" maxlength="25"/>
+    								</div>
+    						  	</div>
+                              </div>
+                            </div>
+							<div class="col-xs-12">
+    						  <div class="col-xs-4">
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="ownerType">共有权情况</label>
+    							  	<div class="col-xs-7">
+    									<select class="form-control coowner-type" name="ownerType">
+    										<option value="INDEPENDENT" selected>单独所有</option>
+    										<option value="SHARE">共同所有</option>
+    									</select>
+    								</div>
+    							</div>
+                              </div>
+    						  <div class="col-xs-4">
+    						  	<div class="form-group house-co-owner">
+    								<label class="col-xs-5 control-label" for="coOwner">共有人姓名</label>
+    							  	<div class="col-xs-7">
+    									<input type="text" class="form-control coower-hide" name="coOwner" maxlength="25" disabled/>
+    								</div>
+    						  	</div>
+                              </div>
+    						  <div class="col-xs-4">
+    						  	<div class="form-group house-co-owner">
+    								<label class="col-xs-5 control-label" for="coOwnerAge">共有人年龄</label>
+    							  	<div class="col-xs-7">
+    									<div class="input-group">
+        									<input type="text" class="form-control coower-hide" name="coOwnerAge" disabled maxlength="3" data-validate="{positiveInteger:true}"/>
+        									<span class="input-group-addon">周岁</span>
+                                        </div>
+    								</div>
+    						  	</div>
+                              </div>
+                            </div>
+							<div class="col-xs-12">
+    						  <div class="col-xs-4">
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="purchasePrice">购买价格</label>
+    							  	<div class="col-xs-7">
+    									<div class="input-group">
+        									<input type="text" class="form-control" name="purchasePrice" maxlength="14" data-validate="{fixednumber:4}"/>
+        									<span class="input-group-addon">万元</span>
+    									</div>
+    								</div>
+    							</div>
+    						  </div>
+    						  <div class="col-xs-4">
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="evaluatePrice">市场评估价值</label>
+    							  	<div class="col-xs-7">
+    									<div class="input-group">
+        									<input type="text" class="form-control" name="evaluatePrice" maxlength="14" data-validate="{fixednumber:4}"/>
+        									<span class="input-group-addon">万元</span>
+    									</div>
+    								</div>
+    							</div>
+    						  </div>
+    						  <div class="col-xs-4">
+    						  	<div class="form-group">
+    							  	<label class="col-xs-5 control-label" for="marketPrice">市场价格</label>
+    							  	<div class="col-xs-7">
+    									<div class="input-group">
+        									<input type="text" class="form-control" name="marketPrice" maxlength="14" data-validate="{fixednumber:4}"/>
+        									<span class="input-group-addon">万元</span>
+                                        </div>
+    								</div>
+    						  	</div>										
+    						  </div>
+                            </div>
+						  <div class="col-xs-3 col-xs-offset-9">
+							<button id="btn-cancel-house" class="btn btn-mf-default" type="button">取消</button>
+							<button id="btn-add-house" class="btn btn-mf-primary" type="button">插入</button>
+						  </div>						
+						</form><!-- form 房屋 -->
+                      	<div class="col-xs-12 add-head-box">
+							<label class="control-label" for="">车辆</label>	
+							<button id="link-add-car" class="btn btn-mf-primary" type="button">添加</button>
+                        </div>
+                      	<table class="table table-bordered add-table" id="add-car-table">
+                        	<thead>
+                        		<tr>
+						            <th data-name="owner">机动车所有人</th>
+						            <th data-name="registNo">机动车登记编号</th>
+						            <th data-name="registInstitution">登记机关</th>
+						            <th data-name="registDt">登记时间</th>
+						            <th data-name="brand">车辆品牌</th>
+						            <th data-name="type">车辆型号</th>
+						            <th data-name="delete">删除</th>
+						          </tr>
+                        	</thead>
+                        	<tbody></tbody>
+                        </table>
+						<!-- form 车辆 -->
+						<form class="col-xs-12 add-form form-horizontal" method="POST" id="add-car-form">
+						  <div class="col-xs-4">
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="owner">机动车所有人</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="owner" maxlength="25" data-validate="{required:true}"/>
+								</div>
+						  	</div>														  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="registDt">登记日期</label>
+							  	<div class="col-xs-7">
+									<div class="input-group">
+    									<input type="text" class="form-control datepicker" name="registDt" />
+    									<label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+                                    </div>
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-4">				  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="registNo">登记编号</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="registNo" placeholder="唯一标识号" maxlength="12" />
+								</div>
+						  	</div>								  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="brand">车辆品牌</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="brand" maxlength="20" />
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-4">								  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="registInstitution">登记机关</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="registInstitution" maxlength="40" />
+								</div>
+						  	</div>						  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="type">车辆型号</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="type" maxlength="20" />
+								</div>
+						  	</div>									
+						  </div>
+						  <div class="col-xs-3 col-xs-offset-9">
+							<button id="btn-cancel-car" class="btn btn-mf-default" type="button">取消</button>
+							<button id="btn-add-car" class="btn btn-mf-primary" type="button">插入</button>
+						  </div>						
+						</form><!-- form 车辆 -->
+						<div class="col-xs-12 add-head-box">
+                      		<label class="control-label" for="otherMortgage">其它抵押</label>
+                      		<textarea class="form-control other-mortgage" name="otherMortgage" rows="3" maxlength="40" ></textarea>
+                      	</div>
+                      </div><!-- panel-body -->
+                    </div><!-- panel-collapse -->
+                  </div><!-- panel -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#pledge">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#pledge" class="font-bold">
+							质押产品
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="pledge" class="panel-collapse collapse">
+                      <div class="panel-body">
+						<div class="col-xs-12 add-head-box">
+							<label class="control-label" for="">动产质押</label>	
+							<button id="link-add-movable" class="btn btn-mf-primary" type="button">添加</button>
+                        </div>
+                        <table class="table table-bordered add-table" id="add-movable-table">
+                        	<thead>
+                        		<tr>
+						            <th data-name="name">质押物名称</th>
+						            <th data-name="pledgeClass">品种</th>
+						            <th data-name="type">型号</th>
+						            <th data-name="count">数量</th>
+						            <th data-name="price">价格(万元)</th>
+						            <th data-name="location">存放地</th>
+						            <th data-name="notes">其他</th>
+						            <th data-name="delete">删除</th>
+						        </tr>
+                        	</thead>
+                        	<tbody></tbody>
+                        </table>
+                        <!-- form 动产 -->
+						<form class="col-xs-12 add-form form-horizontal" method="POST" id="add-movable-form">
+						  <div class="col-xs-4">
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="name">质押物名称</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="name" maxlength="25" data-validate="{required:true}"/>
+								</div>
+						  	</div>														  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="count">数量</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="count" maxlength="3" data-validate="{positiveInteger:true}"/>
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-4">				  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="pledgeClass">品种</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="pledgeClass" maxlength="20" />
+								</div>
+						  	</div>								  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="price">价格</label>
+							  	<div class="col-xs-7">
+									<div class="input-group">
+    									<input type="text" class="form-control" name="price" maxlength="14" data-validate="{fixednumber:4}"/>
+    									<span class="input-group-addon">万元</span>
+                                    </div>
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-4">
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="type">型号</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="type" maxlength="20" />
+								</div>
+						  	</div>														  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="location">存放地</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="location" maxlength="20" />
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-10">
+                       	  	<div class="form-group">
+								<label class="col-xs-2 control-label" for="notes">描述</label>
+								<div class="col-xs-10">
+									<textarea class="form-control" name="notes" rows="3" maxlength="100" ></textarea>
+								</div>
+							</div>
+						  </div>
+						  <div class="col-xs-3 col-xs-offset-9">
+							<button id="btn-cancel-movable" class="btn btn-mf-default" type="button">取消</button>
+							<button id="btn-add-movable" class="btn btn-mf-primary" type="button">插入</button>
+						  </div>					
+						</form><!-- form 动产-->		  				  
+                     	  <div class="col-xs-12 add-head-box">
+                    		<label class="control-label" for="otherPledge">其它质押</label>
+                    		<textarea class="form-control other-pledge" name="otherPledge" rows="3" maxlength="100" ></textarea>
+                    	  </div>
+                      </div><!-- panel-body -->
+                    </div><!-- panel-collapse -->
+                  </div><!-- panel -->
+                  <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#certificate">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#certificate" class="font-bold">
+							保证担保
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="certificate" class="panel-collapse collapse">
+                      <div class="panel-body">
+						<div class="col-xs-12 add-head-box">
+							<label class="control-label" for="">自然人</label>	
+							<button id="link-add-natural" class="btn btn-mf-primary" type="button">添加</button>
+                        </div>
+                        <table class="table table-bordered add-table" id="add-natural-table">
+                        	<thead>
+                        		<tr>
+						            <th data-name="name">姓名</th>
+						            <th data-name="idNo">身份证号码</th>
+						            <th data-name="job">职业</th>
+						            <th data-name="notes">其它必要描述</th>
+						            <th data-name="delete">删除</th>
+						          </tr>
+                        	</thead>
+                        	<tbody></tbody>
+                        </table>
+                        <!-- form 自然人 -->
+						<form class="col-xs-12 add-form form-horizontal" method="POST" id="add-natural-form">
+						  <div class="col-xs-4">
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="name">姓名</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="name" maxlength="25" data-validate="{required:true}"/>
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-4">				  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="idNo">身份证号码</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="idNo" maxlength="18" data-validate='{idcard:true}'/>
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-4">
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="job">职业</label>
+							  	<div class="col-xs-7">
+                                    <select class="form-control" name="job" >
+									#foreach($resultType in $jobList)
+										<option value="$!resultType.code">$!resultType.text </option>
+                					#end
+									</select>
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-10">
+                       	  	<div class="form-group">
+								<label class="col-xs-2 control-label" for="notes">描述</label>
+								<div class="col-xs-10">
+									<textarea class="form-control" name="notes" rows="3" maxlength="200" ></textarea>
+								</div>
+							</div>
+						  </div>
+						  <div class="col-xs-3 col-xs-offset-9">
+							<button id="btn-cancel-natural" class="btn btn-mf-default" type="button">取消</button>
+							<button id="btn-add-natural" class="btn btn-mf-primary" type="button">插入</button>
+						  </div>					
+						</form><!-- form 自然人-->
+						<div class="col-xs-12 add-head-box legal-head-box">
+							<label class="control-label" for="">法人</label>	
+							<button id="link-add-legal" class="btn btn-mf-primary" type="button">添加</button>
+                        </div>
+                        <table class="table table-bordered add-table" id="add-legal-table">
+                        	<thead>
+                        		<tr>
+						            <th data-name="enterpriseName">企业名称</th>
+						            <th data-name="enterpriseLicenceNo">营业执照号码</th>
+						            <th data-name="enterpriseIndustry">行业</th>
+						            <th data-name="enterpriseNotes">其它必要描述</th>
+						            <th data-name="delete">删除</th>
+						          </tr>
+                        	</thead>
+                        	<tbody></tbody>
+                        </table><!-- form 法人 -->
+						<!-- form 法人-->
+						<form class="col-xs-12 add-form form-horizontal" method="POST" id="add-legal-form">
+						  <div class="col-xs-4">
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="enterpriseName">企业名称</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="enterpriseName" maxlength="25" data-validate="{required:true}" />
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-4">				  	
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="enterpriseLicenceNo">营业执照号码</label>
+							  	<div class="col-xs-7">
+									<input type="text" class="form-control" name="enterpriseLicenceNo" maxlength="30"/>
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-4">
+						  	<div class="form-group">
+							  	<label class="col-xs-5 control-label" for="enterpriseIndustry">行业</label>
+							  	<div class="col-xs-7">
+                                    <select class="form-control" name="enterpriseIndustry" >
+										#foreach($resultType in $industryList)
+                    					<option value="$!resultType.code">$!resultType.text </option>
+                    					#end
+									</select>
+								</div>
+						  	</div>
+						  </div>
+						  <div class="col-xs-10">
+                       	  	<div class="form-group">
+								<label class="col-xs-2 control-label" for="enterpriseNotes">描述</label>
+								<div class="col-xs-10">
+									<textarea class="form-control" name="enterpriseNotes" rows="3" maxlength="100" ></textarea>
+								</div>
+							</div>
+						  </div>
+						  <div class="col-xs-3 col-xs-offset-9">
+							<button id="btn-cancel-legal" class="btn btn-mf-default" type="button">取消</button>
+							<button id="btn-add-legal" class="btn btn-mf-primary" type="button">插入</button>
+						  </div>					
+						</form><!-- form 法人-->
+                      </div><!-- panel-body -->
+                    </div><!-- panel-collapse -->
+                  </div><!-- panel -->
+                </div>
+		    </div>
+			<div class="tab-pane clearfix" id="asset-liabilities">
+				<div class="col-xs-12 add-head-box">
+					<label class="control-label" for="">资产</label>	
+					<button id="link-add-asset" class="btn btn-mf-primary" type="button">添加</button>
+                </div>
+                <table class="table table-bordered add-table" id="add-asset-table">
+                	<thead>
+                		<tr>
+				            <th data-name="type">类型</th>
+				            <th data-name="assertAmount">资产额(万元)</th>
+				            <th data-name="notes">说明</th>
+				            <th data-name="delete">删除</th>
+				        </tr>
+                	</thead>
+                	<tbody></tbody>
+                </table>
+                <!-- form 房产负债 -->
+				<form class="col-xs-12 add-form form-horizontal" method="POST" id="add-asset-form">
+				  <div class="col-xs-4">
+				  	<div class="form-group">
+					  	<label class="col-xs-5 control-label" for="type">类型</label>
+					  	<div class="col-xs-7">
+						  	<select class="form-control" name="type" data-validate="{required:true}">
+            					#foreach($assetType in $assetTypeList)
+									<option value="$!assetType.code">$!assetType.text </option>
+                				#end
+            				</select>
+						</div>
+				  	</div>			  	
+				  	<div class="form-group">
+					  	<label class="col-xs-5 control-label" for="assertAmount">资产额</label>
+						<div class="col-xs-7">
+							<div class="input-group">
+    							<input type="text" class="form-control" name="assertAmount" maxlength="14" data-validate="{fixednumber:4}"/>
+    							<span class="input-group-addon">万元</span>
+                            </div>
+						</div>
+				  	</div>
+				  </div>
+				  <div class="col-xs-8">	
+				  	<div class="form-group">
+					  	<label class="col-xs-2 control-label" for="notes">说明</label>
+					  	<div class="col-xs-6">
+							<textarea class="form-control" name="notes" rows="3" maxlength="200" ></textarea>
+						</div>
+				  	</div>		
+				  </div>
+				  <div class="col-xs-3 col-xs-offset-9">
+					<button id="btn-cancel-asset" class="btn btn-mf-default" type="button">取消</button>
+					<button id="btn-add-asset" class="btn btn-mf-primary" type="button">插入</button>
+				  </div>					
+				</form><!-- form 房产负债-->
+				<div class="col-xs-12 add-head-box">
+					<label class="control-label" for="">负债</label>	
+					<button id="link-add-liability" class="btn btn-mf-primary" type="button">添加</button>
+                </div>
+                <table class="table table-bordered add-table" id="add-liability-table">
+                	<thead>
+                		<tr>
+				            <th data-name="type">类型</th>
+				            <th data-name="debtAmount">负债额(万元)</th>
+				            <th data-name="monthlyPayment">每月还款额(元)</th>
+				            <th data-name="notes">说明</th>
+				            <th data-name="delete">删除</th>
+				        </tr>
+                	</thead>
+                	<tbody></tbody>
+                </table>
+                <!-- form 机动车负债 -->
+				<form class="col-xs-12 add-form form-horizontal" method="POST" id="add-liability-form">
+				  <div class="col-xs-4">
+				  	<div class="form-group">
+					  	<label class="col-xs-5 control-label" for="type">类型</label>
+					  	<div class="col-xs-7">
+						  	<select class="form-control" name="type" data-validate="{required:true}">
+            					#foreach($debtType in $debtTypeList)
+									<option value="$!debtType.code">$!debtType.text </option>
+                				#end
+            				</select>
+						</div>
+				  	</div>								  	
+				  	<div class="form-group">
+					  	<label class="col-xs-5 control-label" for="debtAmount">负债额</label>
+					  	<div class="col-xs-7">
+							<div class="input-group">
+    							<input type="text" class="form-control" name="debtAmount" maxlength="14" data-validate="{fixednumber:4}"/>
+    							<span class="input-group-addon">万元</span>
+                            </div>
+						</div>
+				  	</div>
+				  	<div class="form-group">
+					  	<label class="col-xs-5 control-label" for="monthlyPayment">每月还款额</label>
+					  	<div class="col-xs-7">
+							<div class="input-group">
+    							<input type="text" class="form-control" name="monthlyPayment" maxlength="9"  data-validate="{fixednumber:2}"/>
+    							<span class="input-group-addon">元</span>
+                            </div>
+						</div>
+				  	</div>
+				  </div>
+				  <div class="col-xs-8">	
+				  	<div class="form-group">
+					  	<label class="col-xs-2 control-label" for="notes">说明</label>
+					  	<div class="col-xs-6">
+							<textarea class="form-control" name="notes" rows="3" maxlength="200" ></textarea>
+						</div>
+				  	</div>			
+				  </div>
+				  <div class="col-xs-3 col-xs-offset-9">
+					<button id="btn-cancel-liability" class="btn btn-mf-default" type="button">取消</button>
+					<button id="btn-add-liability" class="btn btn-mf-primary" type="button">插入</button>
+				  </div>					
+				</form><!-- form 机动车负债-->
+			</div>
+			<div class="tab-pane clearfix" id="data-bank">
+				<form class="form-horizontal clearfix">
+					<div class="col-xs-12 image-data-box">
+						<input id="fileupload" type="file" name="files" multiple>
+                        <button id="btn-file-upload" class="btn btn-mf-primary" data-extension="jpg,jpeg,png,gif,pdf,doc,docx" type="button" >上传图片</button>
+    				</div>
+				</form>
+				<table class="table table-bordered" id="image-table">
+					<thead>
+						<tr>
+							<th>文件名</th>
+							<th>预览</th>
+							<th>删除</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane" id="remark">
+				<textarea class="form-control notes" name="notes" rows="5" maxlength="600" ></textarea>
+				<!-- <button type="button" class="col-xs-1 btn btn-mf-primary btn-step nextstep">下一步</button>
+				<button type="button" class="col-xs-1 btn btn-mf-default btn-step laststep">上一步</button>-->
+			</div>
+		</div>
+</div>
+<div class="col-xs-12">
+    <button type="button" class="col-xs-1 btn btn-mf-default btn-step" id="form-btn-cancel">取消</button>
+    <button type="button" class="col-xs-1 btn btn-mf-primary btn-step" id="form-btn-submit">提交</button>
+    <button type="button" class="col-xs-1 btn btn-mf-default btn-step" id="form-btn-save">保存</button>
+</div>

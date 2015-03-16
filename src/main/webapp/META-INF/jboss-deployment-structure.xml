@@ -1,0 +1,14 @@
+<jboss-deployment-structure>
+    <deployment>
+        <!-- Exclusions allow you to prevent the server from automatically adding some dependencies     -->
+        <exclusions>
+        	<!-- exclude slf4j as we already include it and we need logback loaded instead of slf4j.impl -->
+            <module name="org.slf4j" />
+            <module name="org.slf4j.impl" />
+        </exclusions>
+        <exclude-subsystems>
+            <subsystem name="webservices" />
+        </exclude-subsystems>
+    </deployment>
+    <!-- test branch -->
+</jboss-deployment-structure> 

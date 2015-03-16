@@ -1,0 +1,17 @@
+<form id="account-form" method="PUT" action="$link.contextPath/web/users/$!user.username">
+	
+	<input class="form-control" type="text" name="username" required value="$!user.username"> <br/>
+	<input class="form-control" type="text" name="email" required value="$!user.email"> <br/>
+	<input class="form-control" type="text" name="firstName" required value="$!user.firstName"> <br/>
+	<input class="form-control" type="text" name="lastName" required value="$!user.lastName"> <br/>
+	<input class="form-control" type="text" name="addr" required value="$!user.addr"> <br/>
+	<input class="form-control" type="text" name="zip" required value="$!user.zip"> <br/>
+	<input class="form-control" type="text" name="country" required value="$!user.country"> <br/>
+	<input class="form-control" type="text" name="phone" required value="$!user.phone"> <br/>
+	<input class="form-control" type="text" name="sex" required value="$!user.sex"> <br/>
+	
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+	<a id="delete" class="btn btn-lg btn-danger btn-block" action="$link.contextPath/web/users/$!user.username" href="javascript:void(0);">Delete</a>
+	<a class="btn btn-lg btn-primary btn-block" href="./">Cancel</a>
+</form>
+<script src="$link.contextPath/assets/js/page/account/viewAccount.js" type="text/javascript"></script>

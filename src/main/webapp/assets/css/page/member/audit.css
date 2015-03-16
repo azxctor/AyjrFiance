@@ -1,0 +1,124 @@
+.table-link{
+	cursor: pointer;
+}
+.table-link span{
+	font-size: 12px;
+}
+.full-oqp{
+	width:100%;
+}
+.f12{
+	font-size: 12px;
+}
+#search-indiv-wrapper .check-row{
+	display: none;
+}
+#search-org-wrapper .check-row{
+	display: none;
+}
+.search-area{
+	margin-bottom: 20px;
+}
+.audit-btn{
+	border-radius:0;
+	height:34px;
+	padding:5px 24px;
+	color: #FFF;
+	background-color: #C27724;/*#F08000*/
+    border-color: #A9651A;/*#E65E12*/
+}
+.audit-btn:hover{
+	color: #FFF;
+    background-color: #E29138;/*#F79032*/
+    border-color: #C27724;/*#E65E12*/
+}
+
+.tab-content{
+	/* padding-top:5px; */
+}
+.go-back{
+	padding:6px 18px;
+	border-radius:0px;
+}
+.check-row select{
+	width:100%;
+	height: 34px;
+}
+
+.btn-group > .btn:first-child {
+	border-radius: 0;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+	margin-left: 0;
+	border-right: 0;
+}
+
+.btn-group > .btn:last-child {
+	border-radius: 0;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+	margin-right: 0;
+	border-left: 0;
+}
+
+.btn.btn-silk {
+	line-height: 14px;
+	padding: 5px 8px;
+	color: #444;
+	background-color: #fff;
+	background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #ffffff), color-stop(50%, #f6f6f6), color-stop(52%, #eeeeee), color-stop(100%, #f4f4f4));
+	background: -webkit-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+	background: -moz-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+	background: -o-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+	background: linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+	background-clip: padding-box;
+	border: 1px solid #aaa;
+	box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	font-size: 12px;
+}
+.search-save-row{
+	display: none;
+}
+.search-save-row .form-group{
+	margin-right: -15px;
+	margin-left: -15px;
+}
+.audit-row{
+	line-height: 35px;
+}
+.audit-tip{
+	float:right;
+	margin-right: 10px;
+	margin-top: 8px;
+}
+#logModal .modal-dialog{
+	width:704px;
+}
+#col-radio input{
+	height: auto;
+}
+.mt10{
+	margin-top: 10px;
+}
+#agent_register{
+	color:#F79032;
+}
+.agent-register-wrapper{
+	margin-bottom: 10px;
+}
+.search-info-tip{
+	position: absolute;
+	right: -4px;
+	top: 8px;
+	font-size: 18px;
+	color: #426DB9;
+	z-index: 3;
+}
+.auth-center{
+	padding:0px;
+}
+.agency-procrd-link{
+	line-height: 33px;
+	margin-left: 12px;
+}

@@ -1,0 +1,523 @@
+<div class="info-panel">
+    #set($defaultValue = "--")
+  <div class="row">
+    <div class="sub-title col-sm-12">基本信息</div>
+    <div class="basic-info-context">
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-sm-5 control-label">融资编号</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.id}</span>
+                </div>
+            </div>
+			<div class="row">
+                <label class="col-sm-5 control-label" >逾期转代偿期限</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.overdue2CmpnsDays}天</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >融资额</label>
+                <div class="col-sm-7">
+                    <span>$!number.formatMoney($!{dto.packageDetailsDto.packageQuota})元</span>
+                </div>
+            </div>
+			<div class="row">
+                <label class="col-sm-5 control-label" >融资人</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.financierName}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label">担保机构</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.wrtrNameShow}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label">还款方式</label>
+                <div class="col-sm-7">
+                    <span id="finance-amount">$!{dto.packageDetailsDto.payMethod.text}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >风险保障</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.warrantyType.text}</span>
+                </div>
+            </div>
+            <div class="row">
+			#if($!{dto.statusAfterWaitLoadApproal})
+                <label class="col-sm-5 control-label" >
+    			       合同
+                </label>
+        		<div class="col-sm-7">
+					<span class="link" id="contract-list" data-contract="$!{dto.lotId}" data-id="$!{detailsDto.contractTemplateId}" data-productId=$!{dto.productId}>预览或下载</span>
+        		</div>
+	        #else
+    			<label class="col-sm-5 control-label" >
+    	                            合同模板 
+				</label>
+				<div class="col-sm-7">
+					<span class="link" id="contract-link" data-contract="$!{dto.contractTemplateId}" data-productId=$!{dto.productId}>预览或下载</span>
+        		</div>
+			#end
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-sm-5 control-label" >项目简称</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.packageName}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >状态</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.tradeStatus.text}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >行业</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.productDetailsDto.DfinancierIndustryType.text}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >融资期限</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.duration}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >年利率</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.rate}%</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >用途</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.loanPurpose}</span>
+                </div>
+            </div>
+			<div class="row">
+                <label class="col-sm-5 control-label" >担保机构营业执照</label>
+				<div class="col-sm-7">
+			#if($!{dto.guaranteeLicenseNoImgUrl}!="")
+                     <img class="hidden-form-control image-control" width="80" height="60" src="$!{dto.guaranteeLicenseNoImgUrl}" />
+			#end
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="basic-info-context">
+        <div class="sub-title col-sm-12">
+            <hr/>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-sm-5 control-label">融资项目级别</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.productDetailsDto.productLevel.textShort}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label">融资会员信用积分</label>
+                <div class="col-sm-7">
+                    <span id="finance-amount">$!{dto.productDetailsDto.financierLevel}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-sm-5 control-label" >担保机构信用积分</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.productDetailsDto.warrantorLevel}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="basic-info-context">
+        <div class="sub-title col-sm-12">
+            <hr/>
+        </div>
+        <div class="col-sm-6">
+           <div class="row">
+                <label class="col-sm-5 control-label" >申购进度</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.subsPercent}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >起始时间</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.supplyStartTime}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-sm-5 control-label" >剩余融资额</label>
+                <div class="col-sm-7">
+                    <span>$!number.formatMoney($!{dto.leftAmount})元</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-5 control-label" >截止时间</label>
+                <div class="col-sm-7">
+                    <span>$!{dto.packageDetailsDto.supplyEndTime}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default" id="panel-default">
+        <div class="panel-heading" id = "panel-heading">
+            <h4 class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse-more-detail">
+                <i class="fa fa-caret-down" id ="fa-icon"></i>
+                <span class="sub-title">更多详情</span>
+            </h4>
+        </div>
+        <div id="collapse-more-detail" class="panel-collapse collapse tab_box">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs micro-nav-tabs">
+                <li class="active"><a href="#counter-guarantee-detail" data-toggle="tab" >反担保情况</a></li>
+                <li><a href="#activos-pasivos-detail" data-toggle="tab">资产及负债</a></li>
+                <li><a href="#activos-note-detail" data-toggle="tab">备注</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content micro-tab-content">
+                <div class="tab-pane active" id="counter-guarantee-detail">
+                    <div class="panel-group" id="sub-accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title" data-toggle="collapse" data-parent="#sub-accordion" href="#guaranty-detail">
+										抵押产品
+                                </h4>
+                            </div>
+                            <div id="guaranty-detail" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    #set($hasGuaranty = "false")
+                                    #if($!{dto.productDetailsDto.productMortgageResidentialDetailsDtoList} != [])
+                                        #set($hasGuaranty = "true")
+                                        <label class="tab-in-title" >房产 <i class="fa fa-home"></i>
+                                        </label>
+                                        #foreach($house in $!{dto.productDetailsDto.productMortgageResidentialDetailsDtoList})
+                                            <div class="house-box">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >建筑面积</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{house.area}) $!{house.area}平方 #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >购买价格</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{house.purchasePrice}) $!{house.purchasePrice}万元  #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >市场评估价格</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{house.evaluatePrice}) $!{house.evaluatePrice}万元  #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >市场价格</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{house.marketPrice}) $!{house.marketPrice}万元 #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                        #end
+                                    #end
+                                    <!-- ---- -->
+                                    #if($!{dto.productDetailsDto.productMortgageVehicleDetailsDtoList})
+                                        #set($hasGuaranty = "true")
+                                        <label class="tab-in-title" >车辆 <i class="fa fa-truck"></i>
+                                        </label>
+                                        #foreach($car in $!{dto.productDetailsDto.productMortgageVehicleDetailsDtoList})
+                                            <div class="house-box">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >车辆品牌</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{car.brand}) $!{car.brand} #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >车辆型号</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{car.type}) $!{car.type} #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                        #end
+                                    #end
+                                    <!-- ---- -->
+                                    #if($!{dto.productDetailsDto.otherMortgage})
+                                        #set($hasGuaranty = "true")
+                                        <label class="tab-in-title" >其它 <i class="fa fa-plus-square"></i>
+                                        </label>
+                                        <div class="form-group">
+                                            <div class="col-xs-10">
+                                                <span>$!{dto.productDetailsDto.otherMortgage}</span>
+                                            </div>
+                                        </div>
+                                    #end
+                                    #if($hasGuaranty == "false")
+                                        <span>无抵押产品</span>
+                                    #end
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title" data-toggle="collapse" data-parent="#sub-accordion" href="#pledge-detail">
+										质押产品
+                                </h4>
+                            </div>
+                            <div id="pledge-detail" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    #set($hasPledge = "false")
+                                    #if($!{dto.productDetailsDto.productPledgeDetailsDtoList} != [])
+                                        #set($hasPledge = "true")
+                                        <label class="tab-in-title" >动产质押 <i class="fa fa-money"></i>
+                                        </label>
+                                        #foreach($pledge in $!{dto.productDetailsDto.productPledgeDetailsDtoList})
+                                            <div class="house-box">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >质押物名称</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{pledge.name}) $!{pledge.name} #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >品种</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{pledge.pledgeClass}) $!{pledge.pledgeClass} #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >型号</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{pledge.type}) $!{pledge.type} #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >数量</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{pledge.count}) $!{pledge.count} #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >价格</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{pledge.price}) $!{pledge.price}万元 #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label class="col-sm-4 control-label" >存放地</label>
+                                                            <div class="col-sm-8">
+                                                                <span>#if($!{pledge.location}) $!{pledge.location} #else $!defaultValue #end</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                        #end
+                                    #end
+                                    <!-- ---- -->
+                                    #if($!{dto.productDetailsDto.otherPledge})
+                                        #set($hasPledge = "true")
+                                        <label class="tab-in-title" >其它 <i class="fa fa-plus-square"></i>
+                                        </label>
+                                        <div class="form-group">
+                                            <div class="col-xs-10">
+                                                <span>$!{dto.productDetailsDto.otherPledge}</span>
+                                            </div>
+                                        </div>
+                                    #end
+                                    #if($hasPledge == "false")
+                                        <span>无质押产品</span>
+                                    #end
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title" data-toggle="collapse" data-parent="#sub-accordion" href="#certificate-detail">
+										保证担保
+                                </h4>
+                            </div>
+                            <div id="certificate-detail" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <!-- ---- -->
+                                    #if(${dto.productDetailsDto.productWarrantPersonDtoList} != []|| ${dto.productDetailsDto.productWarrantEnterpriseDtoList} != [])		
+                                        #if(${dto.productDetailsDto.productWarrantPersonDtoList})
+                                            <label class="tab-in-title" >自然人 <i class="fa fa-male"></i>
+                                            </label>
+                                            #foreach($natural in $!{dto.productDetailsDto.productWarrantPersonDtoList})
+                                                <div class="house-box">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <label class="col-sm-4 control-label" >姓名</label>
+                                                                <div class="col-sm-8">
+                                                                    <span>#if($!{natural.name}) $!{natural.name} #else $!defaultValue #end</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                            #end
+                                        #end
+                                        #if(${dto.productDetailsDto.productWarrantEnterpriseDtoList} != [])
+                                            <label class="tab-in-title" >法人 <i class="fa fa-gavel"></i>
+                                            </label>
+                                            #foreach($enterprise in $!{dto.productDetailsDto.productWarrantEnterpriseDtoList})
+                                                <div class="house-box">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <label class="col-sm-4 control-label" >企业名称</label>
+                                                                <div class="col-sm-8">
+                                                                    <span>#if($!{enterprise.enterpriseName}) $!{enterprise.enterpriseName} #else $!defaultValue #end</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr/>
+                                            #end
+                                        #end
+                                        #else
+                                            <span>无保证担保</span>
+									#end
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="activos-pasivos-detail">
+                    <label class="tab-in-title" >负债 <i class="fa fa-minus-circle"></i>
+                    </label>
+                    #if(${dto.productDetailsDto.productDebtDtoList} != [])
+                        #foreach($debt in $!{dto.productDetailsDto.productDebtDtoList})
+                            <div class="house-box">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" >类型</label>
+                                            <div class="col-sm-8">
+                                                <span>
+                                                    #if(${debt.dtype}) $!{debt.dtype.text} #elseif(${debt.type}) $!{debt.type} #else $!defaultValue #end
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" >每月还款额</label>
+                                            <div class="col-sm-8">
+                                                <span>#if($!{debt.monthlyPayment}) $!{debt.monthlyPayment}元  #else $!defaultValue #end</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" >负债额</label>
+                                            <div class="col-sm-8">
+                                                <span>#if($!{debt.debtAmount}) $!{debt.debtAmount}万元  #else $!defaultValue #end</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <label class="col-sm-2 control-label" >说明</label>
+                                            <div class="col-sm-10">
+                                                <span>#if($!{debt.notes}) $!{debt.notes} #else $!defaultValue #end</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                        #end
+                    #else
+                        <div class="house-box">
+                            <span>无负债</span>
+                        </div>
+                        <hr/>
+                    #end
+                    <!-- ---- -->
+                    <label class="tab-in-title" >资产 <i class="fa fa-plus-circle"></i></label>
+                    #if(${dto.productDetailsDto.productAssetDtoList} != [])
+                        #foreach($assets in $!{dto.productDetailsDto.productAssetDtoList})
+                            <div class="house-box">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" >类型</label>
+                                            <div class="col-sm-8">
+                                                <span>
+                                                	#if(${assets.dtype}) $!{assets.dtype.text} #elseif(${assets.type}) $!{assets.type} #else $!defaultValue #end
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label" >资产额</label>
+                                            <div class="col-sm-8">
+                                                <span>#if($!{assets.assertAmount}) $!{assets.assertAmount}万元 #else $!defaultValue #end</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <label class="col-sm-2 control-label" >说明</label>
+                                            <div class="col-sm-10">
+                                                <span>#if($!{assets.notes}) $!{assets.notes} #else $!defaultValue #end</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+						#end
+					 #else
+                        <div class="house-box">
+                            <span>无资产</span>
+                        </div>
+                        <hr/>
+                    #end
+					
+                </div>
+                <div class="tab-pane" id="activos-note-detail">
+                	<textarea readonly style="width:100%;height:114px;">#if($!{dto.productDetailsDto.notes}) $!{dto.productDetailsDto.notes} #else 无备注 #end</textarea>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

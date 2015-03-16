@@ -1,0 +1,22 @@
+<link href="$link.contextPath/assets/css/page/product/project_finance_package.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/product/project_finance_package.js" type="text/javascript"></script>
+<div class="package-table">
+	<table id="package">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>融资包编号</th>
+				<th>融资包简称</th>
+			</tr>
+		</thead>
+		<tbody>
+			#foreach($package in $!{productDetails.productPackageDtoList})
+				<tr>
+                    <td>$velocityCount</td>
+					<td>${package.id}</td>
+					<td class="link package-name-link" data-package-id="$!{package.id}">$!{package.packageName}</td>
+				</tr>
+			#end
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,5 @@
+#set($layout = "common\emptyLayout.vm")
+<script src="$link.contextPath/assets/js/page/packet/repayment_schedule.js" type="text/javascript"></script>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="repayment-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>	

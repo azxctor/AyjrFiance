@@ -1,0 +1,77 @@
+#set($emptyBody=true)
+#set($layout = "common/emptyLayout.vm")
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>安益金融</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href="$link.contextPath/assets/img/favicon.ico" rel="icon" type="image/x-icon"/>
+    <!-- Bootstrap core CSS -->
+    <link href="$link.contextPath/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+#parse("common/simple_header.vm")
+<div class="blk-body">
+    <div class="content-wrapper">
+        <style>
+            body{ background: #fff;font-family: 'microsoft yahei'; }
+            .browsers {
+                text-align:center;
+                margin:150px auto;
+            }
+            .browsers ul {
+                width:80%;
+                margin:70px auto;
+            }
+            .browsers ul li {
+                width:25%;
+                float:left;
+                list-style-type:none;
+            }
+            .browsers ul li img {
+                width:120px;
+            }
+            ul li img:hover {
+                margin-top: 10px;
+            }
+            .blk-body {
+                background: none;
+                float: none;
+                position: static;
+            }
+            .copy-right{
+                bottom: 10px;
+                left: 50%;
+                margin-left: -249px;
+                position: absolute;
+                visibility: visible;
+            }
+        </style>
+        <div class="container">
+            <div class="browsers">
+                <h1>安益金融目前只支持以下浏览器</h1>
+                <ul>
+                    <li><a href="https://www.google.com/chrome/" target="_blank"><img src="$link.contextPath/assets/img/chrome.png"/></a><p>Chrome</p></li>
+                    <li><a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank"><img src="$link.contextPath/assets/img/firefox.png"/></a><p>Firefox</p></li>
+                    <li><a href="https://www.apple.com/safari/" target="_blank"><img src="$link.contextPath/assets/img/Safari.png"/></a><p>Safari</p></li>
+                    <li><a href="http://www.microsoft.com/zh-cn/download/internet-explorer-9-details.aspx" target="_blank"><img src="$link.contextPath/assets/img/IE.png"/></a><p>Internet Explorer<br/><small>(9.0及以上)</small></p></li>
+                </ul>
+            </div>
+        </div>
+        #parse("common/footer.vm")
+    </div>
+</div>
+</body>
+</html>

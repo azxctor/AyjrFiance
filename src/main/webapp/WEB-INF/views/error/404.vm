@@ -1,0 +1,74 @@
+#set($emptyBody=true)
+#set($layout = "common/simple_layout.vm")
+<style>
+    body{ background: #fff; }
+    p a{ text-decoration: underline; }
+    p{ margin-top: 32px; line-height: 26px; font-family: sans-serif; }
+    p span{ font-size:22px; font-weight:bold; font-family: 'Microsoft Yahei';}
+    .container{ padding-top: 100px;}
+    .tit1{ color:#717171; font-family: verdana; font-weight: bold;}
+    .tit1 span{ color:#e85c45;}
+    .tit2{ color:#313131;  }
+    .tit3{ color:#333333; margin-top: 0px; margin-bottom: 33px;}
+    .tit3 span{ color:#eb735b; }
+    .img-wrapper{ position: relative;}
+    .img-wrapper .star1{ position: absolute; left: 72px; top: 228px;}
+	.blk-body {
+        background: none;
+        float: none;
+        position: static;		
+    }
+	.copy-right{
+		bottom: 10px;
+		left: 50%;
+        margin-left: -187px;
+		position: absolute;
+		visibility: visible;
+	}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-1">
+            <h2 class="tit2">您要访问的页面请假了...</h2>
+            <h1 class="tit3">听说<span>是要去参加一项理财计划</span>？！</h1>
+            <h4 class="tit4">很抱歉，您所访问的页面未能找到或者出现了未知错误...</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-1">
+            <p>
+                您可以稍后再尝试<a class="refresh" id="refresh" onclick="window.location.reload();" href="javascript:void(0)">刷新页面</a>，或者<a href="$link.contextPath/web/dashboard">跳转到首页</a>。<br/>
+                如有任何问题请联系您的客户经理，或者拨打客服专员热线<br/>
+                <span><i class="fa fa-phone"></i>  400-999-7327</span>
+
+            </p>
+        </div>
+        <div class="col-sm-5">
+            <div class="img-wrapper">
+
+#*                <object class="star1" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="100" height="100" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0">
+                    <param name="movie" value="$link.contextPath/assets/flash/star.swf">
+                    <param name="quality" value="high">
+                    <param name="menu" value="false">
+                    <param name="FlashVars" value="">
+                    <param name="wmode" value="transparent">
+                    <param name="allowScriptAccess" value="sameDomain">
+                    <embed src="$link.contextPath/assets/flash/star.swf" width="100" height="100" align="middle" quality="high" menu="false" play="true" wmode="transparent" loop="true" flashvars="" allowscriptaccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer">
+                </object>*#
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        #if( !$config.isProdEnv())
+        <style>
+            body{
+                overflow-y:auto ;
+            }
+            .copy-right{
+                display:none;
+            }
+        </style>
+        <p class="tit4">详细错误信息：<br>$!errorMessage</p>
+        #end
+    </div>
+</div>

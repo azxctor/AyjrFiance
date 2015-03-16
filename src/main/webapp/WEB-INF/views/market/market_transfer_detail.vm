@@ -1,0 +1,480 @@
+<link href="$link.contextPath/assets/css/page/market/market-detail.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/market/market-transfer-detail.js" type="text/javascript"></script>
+<div class="container-mk">
+    #set($pkg=$itemDto.pkg)
+    #set($product=$itemDto.product)
+    <input type="hidden" id="hidden-package-id" value="$!pkg.id"></input> 
+    <input type="hidden" id="hidden-package-name" value="$!pkg.packageName"></input> 
+    <input type="hidden" id="hidden-package-closed" value="$!itemDto.closed"></input> 
+    <input type="hidden" id="hidden-package-transfered" value="$!itemDto.transfered"></input> 
+    <div class="row">
+        <div #if($isUserTourist) class="col-sm-7" #else class="col-sm-12" #end>
+            <div class="thumbnail basic-info div-radius" data-name="$!pkg.packageName">
+            <div class="col-sm-12 header-title bgc title-radius">
+                <h4 class="fn-left"><strong>NO.$!pkg.id   $!pkg.packageName -- <span class="status" id="package-status">$!pkg.status.text</span></strong></h4>
+            </div>
+            <div class="col-sm-12 ht1"></div>
+            <div class="col-sm-4 br1 le_1">
+                <h5 class="lab-font">融资额（元）</h5>
+                <span class="fs30 c1">$!number.formatMoney($!pkg.packageQuota)</span>
+            </div>
+            <div class="col-sm-4 br1 le_2">
+                <h5  class="rate lab-font" data-id="$!product.rate" data-pay-method="$!product.payMethod.code" data-term="$!product.termLength">年利率</h5>
+                <!-- <em class="fs30">12.</em>50% -->
+                <span class="fs30 c1">$!{product.ratePercent[0]}.</span><span class="fs14">$!product.ratePercent[1]%</span>
+            </div>
+            <div class="col-sm-4 le_3">
+                <h5 class="term lab-font" data-id="$!product.termToDays">融资期限</h5>
+                <span class="fs30 c1">$!product.termLength</span><span class="fs14">$!product.termType.text</span>
+            </div>
+            <div class="col-sm-12 txt">
+                <div class="c6 col-sm-6 lab-font">融资人：<span class="c2 mr50">$!product.user.maskChineseName</span></div>
+                <div class="c6 col-sm-6 lab-font">行业：<span class="c2 mr50">$!product.financierIndustryType.text</span></div>
+                <div class="c2 col-sm-6 lab-font">还款方式：<span class="c2  mr50">$!product.payMethod.text</span></div>
+                <div class="c2 col-sm-6 lab-font">逾期转代偿天数：<span class="c2">$!{product.overdue2CmpnsGracePeriod}天</span></div> 
+    			<div class="c6 col-sm-12 lab-font">担保机构#if($!{itemDto.product.wrtrCreditDesc})(<a id="wrtr-credit-desc"  data-wrdesc="$!{itemDto.product.wrtrCreditDesc}">简介</a>)#end：#if($!{product.guaranteeLicenseNoImgUrl}&&$!{product.guaranteeLicenseNoImgUrl}!="")
+    				<span class="c2">$!{product.guaranteeInstitutionShow}</span><a class="" href="$!{product.guaranteeLicenseNoImgUrl}" target="_blank" title="点击查看营业执照扫描图"><span class="mr50">(营业执照扫描图)</span></a>#else <span class="c2 mr50">$!{product.guaranteeInstitutionShow}</span> #end 
+    			</div>
+                <div class="c6 col-sm-12 lab-font">
+    				#if($!{itemDto.product.wrtrCreditFile})		
+    				<span class="ml121 lab-font">担保机构信用披露：</span>
+    				<a target="_blank" href="$link.contextPath/web/product/details/$!{itemDto.product.wrtrCreditFile}">查看</a>
+    				#end
+    			</div>
+    			<div class="ht3 col-sm-12"><span class="c6 lab-font">借款用途说明: </span>
+    				<span class="c2" id = "loan-purpose">$!product.loanPurpose
+    				</span><a id = "loan" href="javascript:void(0)" class="check-link" data-type="ind" data-content="loading..." style="display:none">[详情]</a>
+    			</div>
+    
+    		</div>
+            
+            <div class="col-sm-12 ht1 bt1 bgc"></div>
+
+            <div class="col-sm-8 br1 bgc">
+                最后还款日：<span class="c2 mr50">$!{itemDto.maturityDateStr}</span>
+            </div>
+            <div class="col-sm-4 bgc center">
+                <span class="fc">$!product.warrantyType.text</span>
+            </div>
+            <div class="col-sm-12 ht1 bgc"></div>
+        </div>
+    </div>
+    #if($isUserTourist)
+    <div class="col-sm-5">
+        <div class="thumbnail basic-info ">
+			<div class="clearfix header-title pd15">
+                <div class="pull-left">
+                    <h4 class="fn-left">投资金额</h4>
+                </div>
+                <div class="pull-right">
+                    <h5 class="fn-right fc">剩余本息$!{itemDto.remainingAmountStr}元</h5>
+                </div>
+            </div>	
+            <form role="form" class="form-mk" data-id='$!itemDto.transferId'>
+				#if($investorFlag && !$!itemDto.transfered && !$!itemDto.closed)	
+                <p class="transfer-warning-message shadow-meg">$!itemDto.reason</p>
+				#end
+                <div class="col-sm-12">
+                    <span class="tran-buy-lab">买入价格</span><span class="c1 ml5 mrjg" id="trans-mrjg">$!itemDto.priceStr</span>元
+                </div>
+                <div class="col-sm-12 bgc yjsy">
+                    <span class="tran-buy-lab">手续费</span><span class="c1 ml5 sxf" id="trans-sxf">$!itemDto.transferFeeStr</span>元
+                </div>
+                <div class="col-sm-12 bgc yjsy">
+                    <span class="tran-buy-lab">预期收益 
+                    ##<i class="fa fa-question-circle" id="xqsy-tip"></i>
+                    </span><span class="c1 ml5 sxf">$!itemDto.expectedReturnStr</span>元
+                </div>
+                <div class="col-sm-12 bgc yjsy">
+                    <span class="tran-buy-lab">预期年化收益率</span><span class="c1 ml5 sxf">$!itemDto.expectedReturnRate</span>
+                </div>
+                #if($investorFlag)
+				
+                <div class="col-sm-12 bgc checklabel">
+                    <input class="checkbox fl br0" id="contract-accept" type="checkbox" checked #if($itemDto.closed) disabled #end/><span
+                        class="fl fs12mr5">我同意<span class="link" id="contract-link" data-contract="$!{product.contractTemplateId}">《安益金融借款合同》</span></span>
+                </div>
+                <div class="col-sm-12">
+                    <span class="notice shadow-meg">#if($marketClose) 已经闭市，请等待开市后购买 #end</span>
+                </div>
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-mf-primary hero br0 #if($itemDto.closed) disabled #end" id="purchase">立即买入</button>
+                </div>
+                #else
+                <div class="col-sm-12 bgc yjsy text-center">
+                    <h5 class="danger shadow-meg">您还没有投资权限！</h5>
+                    <span>点击<a href="$link.contextPath/web/members/investorinfo">这里</a>申请成为投资会员</span>
+                </div>
+                #end
+            </form>
+        </div>
+    </div>
+    #end
+ </div>
+
+<div class="row">
+   <!-- <div class="md-tabs col-sm-12">-->
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="finacing-detail">
+                <div class="col-sm-7 lh35">
+					<div class="basic-info thumbnail div-radius"><!-- -->
+                        <div class="col-sm-12 header-title title-radius">
+                            <h4 class=""><!--class mt40-->
+                                <strong>抵押产品</strong>
+                            </h4>
+                        </div>
+                        <div class="col-sm-12">
+							<h5 class="lab-font">
+								<i class="fa fa-home fa-font-color i1"></i>
+								<strong>房产抵押</strong>
+							</h5>
+						</div>
+                        <div class="col-sm-12 "><table class="table table-bordered">
+                            <thead class="bgc1">
+                            <tr>
+                                <th>建筑面积（平米）</th>
+                                <th>购买价格（万元）</th>
+                                <th>市场评估值（万元）</th>
+                                <th>市场价格（万元）</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            #if($product.productMortgageResidentialDetailsDtoList && !$product.productMortgageResidentialDetailsDtoList.isEmpty())
+                            #foreach($item in $product.productMortgageResidentialDetailsDtoList)
+                            <tr>
+                                <td>$!number.formatToThousands($!{item.area})</td>
+                                <td>$!number.formatMoneyWithoutDecimal($!{item.purchasePrice})</td>
+                                <td>$!number.formatMoneyWithoutDecimal($!{item.evaluatePrice})</td>
+                                <td>$!number.formatMoneyWithoutDecimal($!{item.marketPrice})</td>
+                            </tr>
+                            #end
+                            #else
+                            <tr>
+                                <td colspan="4">未找到记录</td>
+                            </tr>
+                            #end
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="col-sm-12 ">
+							<h5 class="lab-font">
+								<i class="fa fa-car fa-font-color"></i>
+								<strong>车辆抵押</strong>
+							</h5>
+						</div>
+                        <div class="col-sm-12 "><table class="table table-bordered">
+                            <thead class="bgc1">
+                            <tr>
+                                <th>车辆品牌</th>
+                                <th>车辆型号</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            #if($product.productMortgageVehicleDetailsDtoList && !$product.productMortgageVehicleDetailsDtoList.isEmpty())
+                            #foreach($item in $product.productMortgageVehicleDetailsDtoList)
+                            <tr>
+                                <td>$!{item.brand}</td>
+                                <td>$!{item.type}</td>
+                            </tr>
+                            #end
+                            #else
+                            <tr>
+                                <td colspan="2">未找到记录</td>
+                            </tr>
+                            #end
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="col-sm-12 ht2 bb1"></div>
+    
+                        <div class="col-sm-12">
+                            <h4 class="mt20">
+                                <strong>质押产品</strong>
+                            </h4>
+                        </div>
+                        <div class="col-sm-12  "><h5 class="lab-font"><strong>动产质押</strong></h5></div>
+                        <div class="col-sm-12 "><table class="table table-bordered">
+                            <thead class="bgc1">
+                            <tr>
+                                <th>质押物名称</th>
+                                <th>品种</th>
+                                <th>型号</th>
+                                <th>数量</th>
+                                <th>价格（万元）</th>
+                                <th>存放地</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            #if($product.productPledgeDetailsDtoList && !$product.productPledgeDetailsDtoList.isEmpty())
+                            #foreach($item in $product.productPledgeDetailsDtoList)
+                            <tr>
+                                <td>$!{item.name}</td>
+                                <td>$!{item.pledgeClass}</td>
+                                <td>$!{item.type}</td>
+                                <td>$!{item.count}</td>
+                                <td>$!number.formatMoneyWithoutDecimal($!{item.price})</td>
+                                <td>$!{item.location}</td>
+                            </tr>
+                            #end
+                            #else
+                            <tr>
+                                <td colspan="6">未找到记录</td>
+                            </tr>
+                            #end
+                            </tbody>
+                        </table>
+                        </div>
+						<div class="col-sm-12">
+                            <h5 class="lab-font"><strong>其它质押</strong></h5>
+						</div>
+						<div class="c6 col-sm-12 lab-font">
+							<span class="c2 mr50">#if(!$!{product.otherPledge})未找到记录#else$!{product.otherPledge}#end</span>
+						</div>
+                        <div class="col-sm-12 ht2 bb1"></div>
+    
+                        <div class="col-sm-12">
+                            <h4 class="mt20">
+                                <strong>保证担保</strong>
+                            </h4>
+                        </div>
+                        <div class="col-sm-12 "><h5 class="lab-font"><strong>自然人：</strong></h5><div class="col-sm-8 ">$!{itemDto.warrantPersonStr}</div></div>
+                        <div class="col-sm-12 "><h5 class="lab-font"><strong>法人：</strong></h5><div class="col-sm-8 ">$!{itemDto.warrantEnterpriseStr}</div></div>
+                        <div class="col-sm-12 ht2 "></div>
+                    </div><!-- -->
+                </div>
+                <div class="col-sm-5">
+					<div class="basic-info thumbnail div-radius"><!-- -->
+                        <div class="col-sm-12 header-title title-radius"><!-- class mt40-->
+                            <h4 class="mgt0"><strong>风险概况</strong></h4>
+                        </div>
+                        <div class="col-sm-4  mt20 text-center ri-pad">
+                            <label class="lab-font">融资项目级别</label>
+                            <div class="risklevel">
+    							#if($!itemDto.riskLevel.code != "Z")
+    								<!--$!itemDto.riskLevel.textShort<span style="font-size:16px;margin-left: 5px;">级</span> -->
+    								##<i class="fa fa-question-circle level-tip" data-code="$!itemDto.riskLevel.code" id="level-tip"></i>
+    								<div class="mythumbs">
+            							#if($!itemDto.riskLevel.code == "A")
+    										<i class="fa fa-heart"></i>
+    										<i class="fa fa-heart"></i>
+    										<i class="fa fa-heart"></i>
+    										<i class="fa fa-heart"></i>
+    									#elseif($!itemDto.riskLevel.code == "B")
+    										<i class="fa fa-heart"></i>
+    										<i class="fa fa-heart"></i>
+    										<i class="fa fa-heart"></i>
+    									#elseif($!itemDto.riskLevel.code == "C")
+    										<i class="fa fa-heart"></i>
+    										<i class="fa fa-heart"></i>
+    									#elseif($!itemDto.riskLevel.code == "D")
+    										<i class="fa fa-heart"></i>
+    									#end	
+    									
+            						</div>
+    							#else
+    								--
+    							#end	
+                            </div>
+                             <label class="lab-font">融资会员信用积分</label>
+                            <div class="risklevel">
+    							#if($!itemDto.riskLevel.code != "Z")
+                                $!product.financierLevel
+    							#else
+    								--
+    							#end	
+                            </div>
+                            <label class="lab-font">担保机构信用积分</label>
+                            <div class="risklevel">
+    							#if($!itemDto.riskLevel.code != "Z")
+                                $!product.warrantorLevel
+    							#else
+    								--
+    							#end	
+                            </div>
+                        </div>
+                        <div class="col-sm-2 r-imgs">
+                            <div class="risk-img">
+    							<img src="$link.contextPath/assets/img/risk_img1.png">
+    						</div>
+    						<div class="risk-img">
+    							<img src="$link.contextPath/assets/img/risk_img2.png">
+    						</div>
+    						<div class="risk-img">
+    							<img src="$link.contextPath/assets/img/risk_img3.png">
+    						</div>
+    					</div>
+                        <!--<div class="col-sm-9 mt20  radar " data-id="$!itemDto.riskLevel.code,$!product.financierLevel,$!product.warrantorLevel" data-level="$!itemDto.riskLevel.textShort" >
+                            #if($!itemDto.riskLevel.code != "Z")
+    						<canvas id="canvas" height="400" width="400"></canvas>
+    						#end
+    					</div>-->
+                        <div class="col-sm-12 mt20">
+                            <span class="lab-font"><strong>个人资产情况</strong></span>
+                        </div>
+                        <div class="col-sm-12 mt20">
+                            <table class="table table-bordered">
+                                <thead class="bgc1">
+                                <tr>
+                                    <th>资产类型</th>
+                                    <th>资产额（万元）</th>
+                                    <th>说明</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                #if($product.productAssetDtoList && !$product.productAssetDtoList.isEmpty())
+                                #foreach($item in $product.productAssetDtoList)
+                                <tr>
+                                    <td>$!item.dtype.text</td>
+                                    <td>$!number.formatMoneyWithoutDecimal($!{item.assertAmount})</td>
+                                    <td>$!item.notes</td>
+                                </tr>
+                                #end
+                                #else
+                                <tr>
+                                    <td colspan="3">未找到记录</td>
+                                </tr>
+                                #end
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-12 mt20">
+                            <span class="lab-font"><strong>个人负债情况</strong></span>
+                        </div>
+                        <div class="col-sm-12 mt20">
+                            <table class="table table-bordered">
+                                <thead class="bgc1">
+                                <tr>
+                                    <th>负债类型</th>
+                                    <th>负债额（万元）</th>
+                                    <th>每月还款额（元）</th>
+                                    <th>说明</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                #if($product.productDebtDtoList && !$product.productDebtDtoList.isEmpty())
+                                #foreach($item in $product.productDebtDtoList)
+                                <tr>
+                                    <td>$!item.dtype.text</td>
+                                    <td>$!number.formatMoneyWithoutDecimal($!item.debtAmount)</td>
+                                    <td>$!number.formatMoney($!{item.monthlyPayment})</td>
+                                    <td>$!item.notes</td>
+                                </tr>
+                                #end
+                                #else
+                                <tr>
+                                    <td colspan="4">未找到记录</td>
+                                </tr>
+                                #end
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- -->
+                </div>
+				
+            </div>
+        </div>
+    <!--</div>-->
+
+</div>
+
+<div class="row">
+    <div class="md-tabs col-sm-12">
+        <div class="tab-content memo-wrappers thumbnail basic-info div-radius">
+            <div class="col-sm-6 br1">
+				<div class="col-sm-12">
+                    <h4>
+                        <strong>已还款列表</strong>
+					</h4>
+                   <table class="table table-bordered mg-t20">
+                        <thead class="bgc1">
+                        <tr>
+                            <th>期次</th>
+                            <th>应还日期</th>
+                            <th>实还日期</th>
+                            <th>应还金额(元)</th>
+                            <th>实还金额(元)</th>
+                            <th>还款状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        #if($paymentList && !$paymentList.isEmpty())
+                        #foreach($payment in $paymentList)
+                        <tr>
+                            <td>$!payment.sequenceId</td>
+                            <td>$!payment.paymentDate</td>
+                            <td>$!payment.lastPayDateStr</td>
+                            <td>$!payment.amount</td>
+                            <td>$!payment.payAmount</td>
+                            <td>$!payment.status.text</td>
+                        </tr>
+                        #end
+                        #else
+                        <tr>
+                            <td colspan="6">未找到记录</td>
+                        </tr>
+                        #end
+                        </tbody>
+                    </table>
+                </div>	
+            </div>
+			<div class="col-sm-6">
+				<div class="col-sm-12">
+                <h4>
+                    <strong>备注</strong>
+                </h4>
+                <p class="mg-t20">#if($product.notes)
+                    $product.notes
+                    #else
+                    暂无备注信息
+                    #end
+                </p>
+                </div>
+            </div>
+			
+        </div>
+    </div>
+</div>
+	
+<!-- Modal -->
+    <div class="modal fade modal-micro" id="transfer-info-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="modal-form" method="POST">
+                <div class="modal-content" id="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="modal-title">提醒</h4>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                        <div class="alert alert-danger" role="alert">转让不存在或已卖出！</div>
+                    </div>
+                    <div id="modal-footer-wrapper" class="modal-footer">
+						<button type="button" class="btn btn-mf-primary" id="transfer-submit" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </form><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<div class="modal fade modal-micro" id="buy-confirm-modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">确定?</h4>
+                  </div>
+                  <div class="modal-body" >
+                    <h4 id="confirm-content">请核对您的买入信息，无误请点击<span style="color:#F79032">确定</span></h4>
+        			<div class="confirm-wrapper">
+                        <p>融资编号：<span id="buy-confirm-id"></span></p>
+                        <p>项目简称：<span id="buy-confirm-name"></span></p>
+                        <p>买入价格：<span id="buy-confirm-price"></span></p>
+                        <p>转让手续费：<span id="buy-confirm-fee"></span></p>
+        			</div>
+                  </div>
+                  <div class="modal-footer">
+        			<button type="button" class="btn btn-mf-primary" id="buy-packet-confirm">确定</button>
+                    <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->	 

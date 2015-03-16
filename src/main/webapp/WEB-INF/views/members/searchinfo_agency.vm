@@ -1,0 +1,718 @@
+#set($layout = "common/emptyLayout.vm")
+<form class="form-horizontal view-mode" id="agencybasic-update-form" action="$link.contextPath/web/search/updateAgencyBasicInfo/$!agency.userId" method="POST">
+	<div>
+    <h3 class="inner-form-title">
+    	基本信息
+    </h3>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">企业名称</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.name">$!agency.name</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">企业性质</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgNature.text">$!agency.orgNature.text</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">所在区域</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.region.fullText">$!agency.region.fullText</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">企业地址</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgAddress">$!agency.orgAddress</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">邮编</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgPostCode">$!agency.orgPostCode</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">企业座机</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgPhone">$!agency.orgPhone</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">传真号</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.fax">$!agency.fax</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">联系人</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.contact">$!agency.contact</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">联系人手机</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.contactMobile">$!agency.contactMobile</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">联系人座机</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.contactPhone">$!agency.contactPhone</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">联系人传真</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.contactFax">$!agency.contactFax</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">联系人QQ</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.contactQQ">$!agency.contactQQ</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">联系人Email</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.contactEmail">$!agency.contactEmail</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">法人代表</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgLegalPerson">$!agency.orgLegalPerson</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">法人联系电话</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgLeagalPersonPhone">$!agency.orgLeagalPersonPhone</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">法人QQ</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgLeagalPersonQQ">$!agency.orgLeagalPersonQQ</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">法人Email</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgLeagalPersonEmail">$!agency.orgLeagalPersonEmail</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">法人身份证号</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgLegalPersonIdCardNumber">$!agency.orgLegalPersonIdCardNumber</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">法人身份证正面扫描图</label>
+						<div class="col-sm-7">
+                            #if($stringUtil.isPdf($!agency.orgLegalPersonIdCardFrontImgUrl))
+                                <img class="hidden-form-control" src="$link.contextPath/assets/img/pdf.jpg" data-pdfpath="$!agency.orgLegalPersonIdCardFrontImgUrl"/>
+                            #else
+                                <img class="hidden-form-control" src="$!agency.orgLegalPersonIdCardFrontImgUrl"/>
+                            #end
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">法人手持身份证(<a href="javascript:void(0)" class="image-example-popoverx" data-content="loading..." data-src="$link.contextPath/assets/img/IDCard_s.jpg">图例</a>)</label>
+						<div class="col-sm-7">
+                            #if($stringUtil.isPdf($!agency.orgLegalPersonIdCardBackImgUrl))
+                                <img class="hidden-form-control" src="$link.contextPath/assets/img/pdf.jpg" data-pdfpath="$!agency.orgLegalPersonIdCardBackImgUrl"/>
+                            #else
+                                <img class="hidden-form-control" src="$!agency.orgLegalPersonIdCardBackImgUrl"/>
+                            #end
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		#*
+		#if($!agency && $!agency.status.code=="O")
+		<div id="agency_bank_edit" style="display:none">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label view-mode-required">银行账号</label>
+						<div class="col-sm-8">
+							<input maxlength="25" class="hidden-form-control" name="bankAccount" value="$!agency.bankAccount"></input> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label view-mode-required">银行账户名</label>
+						<div class="col-sm-8">
+							<input maxlength="25" class="hidden-form-control" name="bankAccountName" value="$!agency.bankAccountName"></input>
+        					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                                <i class="fa fa-exclamation-triangle fa-lg"></i>
+                                <strong>注：请使用本人开户银行卡认证</strong>
+        					</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label view-mode-required">开户银行</label>
+						<div class="col-sm-8">
+							<div class="col-sm-4 col-bigger">
+								<select class="form-control" style="display:block !important" name="bankOpenProvince.code" id="select_bank_province" data="$!agency.bankOpenProvince.code">
+									#foreach($province in $provinceList)
+		    							<option value="$province.code">$province.text</option>
+		    						#end
+		                        </select>
+							</div>
+							<div class="col-sm-4 col-bigger">
+								<select class="form-control" style="display:block !important" name="bankOpenCity.code" id="select_bank_city"  data="$!agency.bankOpenCity.code">
+									
+                        		</select>
+							</div>
+							<div class="col-sm-4 col-bigger">
+								<select class="form-control" style="display:block !important" name="bankShortName.code" id="select_bankname" data="$!agency.bankShortName.code"> 
+	    								#foreach($bank in $bankList)
+			    							<option value="$!bank.code">$!bank.text</option>
+			    						#end
+	    						</select>
+		    				</div>
+							<div class="col-sm-12 col-bigger">
+								<input maxlength="50" class="hidden-form-control" name="bankOpenBranch" value="$!agency.bankOpenBranch"></input> 
+		                    </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label view-mode-required">银行卡正面扫描图</label>
+						<div class="col-sm-8">
+		                     <div class="file-upload" style="display:block !important" name="bankCardFrontImg" data-error-prop="true" pop="$!agency.bankCardFrontImg" data-validate="{required:true,extension:'jpg,jpeg,png,gif,pdf'}"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		#end
+		
+		<div id="agency_bank_view">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">银行账号</label>
+						<div class="col-sm-8">
+							<span class="hidden-form-control" name="agency.bankAccount"  title="$!agency.bankAccount" >$!agency.bankAccount</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">银行账户名</label>
+						<div class="col-sm-8">
+							<span class="hidden-form-control" name="agency.bankAccountName"  title="">$!agency.bankAccountName</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">开户银行</label>
+						<div class="col-sm-8">
+							<div class="col-sm-4 col-bigger">
+								<span class="hidden-form-control" name="agency.bankOpenProvince.text">$!agency.bankOpenProvince.text</span>
+							</div>
+							<div class="col-sm-4 col-bigger">
+								<span class="hidden-form-control" name="agency.bankOpenCity.text">$!agency.bankOpenCity.text</span>
+							</div>
+							<div class="col-sm-4 col-bigger">
+								<span class="hidden-form-control" title="$!agency.bankShortName.text" name="agency.bankShortName.text">$!agency.bankShortName.text</span>
+		    				</div>
+							<div class="col-sm-12 col-bigger">
+								<span class="hidden-form-control" name="agency.bankOpenBranch">$!agency.bankOpenBranch</span>
+		                    </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">银行卡正面扫描图</label>
+						<div class="col-sm-8">
+		                     #if($stringUtil.isPdf($!agency.bankCardFrontImgUrl))
+                                <img class="hidden-form-control" name="agency.bankCardFrontImgUrl" src="$link.contextPath/assets/img/pdf.jpg" data-pdfpath="$!agency.bankCardFrontImgUrl"/>
+                            #else
+                                <img class="hidden-form-control" name="agency.bankCardFrontImgUrl" src="$!agency.bankCardFrontImgUrl"/>
+                            #end
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			*#
+
+			
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">组织机构代码</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.orgNo">$!agency.orgNo</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">组织机构代码扫描图</label>
+						<div class="col-sm-7">
+                            #if($stringUtil.isPdf($!agency.orgNoImgUrl))
+                                <img class="hidden-form-control" src="$link.contextPath/assets/img/pdf.jpg" data-pdfpath="$!agency.orgNoImgUrl"/>
+                            #else
+                                <img class="hidden-form-control" src="$!agency.orgNoImgUrl"/>
+                            #end
+
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">营业执照代码</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.licenceNo">$!agency.licenceNo</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">营业执照代码扫描图</label>
+						<div class="col-sm-7">
+                            #if($stringUtil.isPdf($!agency.licenceNoImgUrl))
+                                <img class="hidden-form-control" src="$link.contextPath/assets/img/pdf.jpg" data-pdfpath="$!agency.licenceNoImgUrl"/>
+                            #else
+                                <img class="hidden-form-control" src="$!agency.licenceNoImgUrl"/>
+                            #end
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">税务登记号码</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!agency.taxNo">$!agency.taxNo</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">税务登记证扫描图</label>
+						<div class="col-sm-7">
+                            #if($stringUtil.isPdf($!agency.taxNoImgUrl))
+                                <img class="hidden-form-control" src="$link.contextPath/assets/img/pdf.jpg" data-pdfpath="$!agency.taxNoImgUrl"/>
+                            #else
+                                <img class="hidden-form-control" src="$!agency.taxNoImgUrl"/>
+                            #end
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">开户时间</label>
+						<div class="col-sm-7">
+						<span class="hidden-form-control" title="$!account.createTs">$!account.createTs</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">交易账号</label>
+						<div class="col-sm-7">
+						<span class="hidden-form-control" title="$!account.acctNo">$!account.acctNo</span> 
+						</div>
+					</div>
+				</div>
+		  </div>
+		</div>
+		#* 2015-01-12 安益金融无需编辑功能
+		#if(($!agency.status.code=="O")&& $sec.canUpdateProdServInfo() )
+		<div class="row search-edit-row-age">
+		        <div class="col-sm-6 col-sm-offset-6">
+		            <div class="form-group">
+		                <div class="col-sm-7 col-sm-offset-4 ">
+		                    <button type="button" class="btn audit-btn" style="float:right">编辑</button>
+		                </div>
+		            </div>
+		        </div>
+		 </div>
+		 #end
+		 #if(($!agency.status.code=="O")&& $sec.canUpdateProdServInfo() )
+			<div class="row row-button search-save-row-age" style="display:none">
+		        <div class="col-sm-6 col-sm-offset-6">
+		            <div class="form-group">
+		                <div class="col-sm-7 col-sm-offset-4 ">
+		                    <button type="submit" class="btn audit-btn" style="float:right">提交</button>
+		                </div>
+		            </div>
+		        </div>
+			 </div>
+		 #end
+		 *#
+</form>
+
+#if($!productProvider)
+<form class="form-horizontal view-mode" id="agencypro-update-form" action="$link.contextPath/web/search/updateProductProviderInfo/$!agency.userId" method="POST">
+	<div>
+	    <h3 class="inner-form-title">
+	    	担保机构
+	    </h3>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label required">特许经营许可证</label>
+					<div class="col-sm-7">
+						<span class="hidden-form-control" title="$!productProvider.privilegeLic">$!productProvider.privilegeLic</span> 
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label required">服务地区范围</label>
+					<div class="col-sm-7">
+						<span class="hidden-form-control" title="$!productProvider.servRegionCd.fullText">$!productProvider.servRegionCd.fullText</span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label required">服务行业范围</label>
+					<div class="col-sm-7">
+						<span class="hidden-form-control" title="$!productProvider.servIndustryCd.text">$!productProvider.servIndustryCd.text</span> 
+					</div>
+				</div>
+			</div>
+			#if($!productProvider.status.code=="O")
+				<div class="col-sm-6" id="agency_proagent_edit" style="display:none">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">受理人</label>
+						<div class="col-sm-7">
+							<input maxlength="25" class="hidden-form-control" type="text" name="agent" value="$!productProvider.agent"></input>
+						</div>
+					</div>
+				</div>
+			#end
+			<div class="col-sm-6" id="agency_proagent_view">
+				<div class="form-group">
+					<label class="col-sm-4 control-label required">受理人</label>
+					<div class="col-sm-7">
+						<span class="hidden-form-control" name="productProvider.agent" title="$!productProvider.agent">$!productProvider.agent</span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			#if($!productProvider.status.code=="O")
+				<div class="col-sm-6" id="agency_prolevel_edit" style="display:none">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">担保机构等级</label>
+                        <div class="col-sm-7">
+                       		 <select class="form-control" style="display:block !important" name="level.code" id="sleect_proSeverLevel" data="$!productProvider.proSeverLevel.code"> 
+								#foreach($memberLevel in $prodServLevelList)
+									<option value="$!{memberLevel.code}">$!{memberLevel.text}</option>
+								#end
+    						</select>
+                        </div>
+                    </div>
+                </div>
+            #end
+			<div class="col-sm-6" id="agency_prolevel_view">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">担保机构等级</label>
+                    <div class="col-sm-7">
+                   	 <span class="hidden-form-control" name="productProvider.proSeverLevel.text" title="$!productProvider.proSeverLevel.text">$!productProvider.proSeverLevel.text</span>
+                    </div>
+                </div>
+            </div>
+            #if($!productProvider.status.code=="O")
+               <div class="col-sm-6" id="agency_procrd_edit" style="display:none">
+                 <div class="form-group">
+	                 <label class="col-sm-4 control-label">担保机构信用披露</label>
+					 <div class="col-sm-7">
+	                    <div class="file-upload" name="wrtrCreditFile" data-validate="{docextension:'doc,docx'}" pop="$!{productProvider.wrtrCreditFile}"></div>
+					 </div>
+				 </div>
+               </div>
+            #end
+            <div class="col-sm-6" id="agency_procrd_view">
+                <div class="form-group">
+	                <label class="col-sm-4 control-label">担保机构信用披露</label>
+					<div class="col-sm-7">
+						<span class="hidden-form-control agency-procrd-info"  style="#if($!{productProvider.wrtrCreditFile})display:none #end">未上传</span> 
+						<a target="_blank" class="agency-procrd-link" href="$link.contextPath/web/product/details/$!{productProvider.wrtrCreditFile}" style="#if(!$!{productProvider.wrtrCreditFile})display:none #end">查看</a>
+					</div>
+				</div>
+            </div>
+        </div>
+	    <div class="row">
+            <div class="col-sm-6" id="agency_prodesc_view">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">担保公司简介</label>
+                    <div class="col-sm-7">
+                   	 <span class="hidden-form-control" style="height:auto;word-break:break-all;white-space:normal;" name="productProvider.desc" title="$!productProvider.desc">&nbsp; $!productProvider.desc</span>
+                    </div>
+                </div>
+            </div>
+	    </div>
+	</div>
+	#if(($!productProvider.status.code=="O")&& $sec.canUpdateProdServInfo() )
+		<div class="row search-edit-row-pro">
+		        <div class="col-sm-6 col-sm-offset-6">
+		            <div class="form-group">
+		                <div class="col-sm-7 col-sm-offset-4 ">
+		                    <button type="button" class="btn audit-btn" style="float:right">编辑</button>
+		                </div>
+		            </div>
+		        </div>
+		 </div>
+	 #end
+	 #if(($!productProvider.status.code=="O")&& $sec.canUpdateProdServInfo() )
+		<div class="row row-button search-save-row-pro" style="display:none">
+		        <div class="col-sm-6 col-sm-offset-6">
+		            <div class="form-group">
+		                <div class="col-sm-7 col-sm-offset-4 ">
+		                    <button type="submit" class="btn audit-btn" style="float:right">提交</button>
+		                </div>
+		            </div>
+		        </div>
+		 </div>
+	 #end
+</form>
+#end
+
+#if($!serviceCenter)
+<form class="form-horizontal view-mode" id="agencyser-update-form" action="$link.contextPath/web/search/updateServiceCenterInfo/$!agency.userId" method="POST">
+	<div>
+    <h3 class="inner-form-title">
+    	服务中心
+    </h3>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">合作形式</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!serviceCenter.cooperationForm">$!serviceCenter.cooperationForm</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">注册地</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!serviceCenter.registrationPlace">$!serviceCenter.registrationPlace</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">注册时间</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!serviceCenter.registrationDate">$!serviceCenter.registrationDate</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">注册资本</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!serviceCenter.registrationCapital">$!serviceCenter.registrationCapital</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">合作协议起始日</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!serviceCenter.cooperationBeginDate">$!serviceCenter.cooperationBeginDate</span> 
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">合作协议截止日</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!serviceCenter.cooperationEndDate">$!serviceCenter.cooperationEndDate</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">员工人数</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" title="$!serviceCenter.employeeNo">$!serviceCenter.employeeNo</span> 
+						</div>
+					</div>
+				</div>
+				#if($!serviceCenter.status.code=="O")
+					<div class="col-sm-6" id="agency_seragent_edit" style="display:none">
+						<div class="form-group">
+							<label class="col-sm-4 control-label required">受理人</label>
+							<div class="col-sm-7">
+								<input maxlength="25" class="hidden-form-control" type="text" name="agent" value="$!serviceCenter.agent"></input>
+							</div>
+						</div>
+					</div>
+				#end
+				<div class="col-sm-6" id="agency_seragent_view">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">受理人</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" name="serviceCenter.agent" title="$!serviceCenter.agent">$!serviceCenter.agent</span> 
+						</div>
+					</div>
+				</div>
+		  </div>
+			<div class="row">
+				#if($!serviceCenter.status.code=="O")
+				<div class="col-sm-6" id="agency_serlevel_edit" style="display:none">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">服务中心等级</label>
+                        <div class="col-sm-7">
+                        	 <select class="form-control" style="display:block !important" name="level.code" id="sleect_serviceCenterLevel" data="$!serviceCenter.level.code"> 
+    								#foreach($memberLevel in $serviceCenterLevelList)
+										<option value="$!{memberLevel.code}">$!{memberLevel.text}</option>
+									#end
+	    						</select>
+                        </div>
+                    </div>
+                </div>
+               	#end
+				<div class="col-sm-6" id="agency_serlevel_view">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">服务中心等级</label>
+                        <div class="col-sm-7">
+                       	 <span class="hidden-form-control" name="serviceCenter.level.text" title="$!{serviceCenter.level.text}">$!{serviceCenter.level.text}</span>
+                        </div>
+               		 </div>
+				</div>
+				
+				#if($!serviceCenter.status.code=="O")
+					<div class="col-sm-6" id="agency_seragentdesc_edit" style="display:none">
+						<div class="form-group">
+							<label class="col-sm-4 control-label required">服务中心名称</label>
+							<div class="col-sm-7">
+								<input maxlength="25" class="hidden-form-control" type="text" name="serviceCenterDesc" value="$!serviceCenter.serviceCenterDesc"></input>
+							</div>
+						</div>
+					</div>
+				#end
+				<div class="col-sm-6" id="agency_seragentdesc_view">
+					<div class="form-group">
+						<label class="col-sm-4 control-label required">服务中心名称</label>
+						<div class="col-sm-7">
+							<span class="hidden-form-control" name="serviceCenter.serviceCenterDesc" title="$!serviceCenter.serviceCenterDesc">$!serviceCenter.serviceCenterDesc</span> 
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	#if(($!serviceCenter.status.code=="O")&& $sec.canUpdateProdServInfo() )
+		<div class="row search-edit-row-ser">
+		        <div class="col-sm-6 col-sm-offset-6">
+		            <div class="form-group">
+		                <div class="col-sm-7 col-sm-offset-4 ">
+		                    <button type="button" class="btn audit-btn" style="float:right">编辑</button>
+		                </div>
+		            </div>
+		        </div>
+		 </div>
+	 #end
+	 #if(($!serviceCenter.status.code=="O")&& $sec.canUpdateProdServInfo() )
+		<div class="row row-button search-save-row-ser" style="display:none">
+		        <div class="col-sm-6 col-sm-offset-6">
+		            <div class="form-group">
+		                <div class="col-sm-7 col-sm-offset-4 ">
+		                    <button type="submit" class="btn audit-btn" style="float:right">提交</button>
+		                </div>
+		            </div>
+		        </div>
+		 </div>
+	 #end
+</form>
+#end

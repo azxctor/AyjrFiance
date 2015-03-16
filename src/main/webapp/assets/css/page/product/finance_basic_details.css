@@ -1,0 +1,27 @@
+.basic-info {
+	margin: 50px 0 20px;
+	padding: 20px;
+	margin-top: 20px;
+	background-color: #FFF;
+	border-radius: 4px;
+}
+.sub-title {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom:10px;
+}
+.right-blk-body .control-label {
+	font-weight:bold;
+}
+
+.basic-info-context {
+	padding: 0 30px;
+	margin: 0 50px;
+}
+.link {
+	cursor: pointer;
+	color: #428bca;
+}
+.row span {
+	word-wrap: break-word;
+}

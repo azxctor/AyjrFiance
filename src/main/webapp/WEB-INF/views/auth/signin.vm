@@ -1,0 +1,33 @@
+<link href="$link.contextPath/assets/css/page/signin.css" rel="stylesheet">
+
+<form id="signin-form" role="form" method="POST" 
+	action="$link.contextPath/web/signin">
+	<div class="logo">
+		<img src="$link.contextPath/assets/img/logo.png" alt="Logo" title="JPet Store">
+	</div>
+	<hr/>
+	<div class="general-error alert alert-warning"></div>
+	<div class="form-group has-feedback">
+		<input class="form-control" type="text" name="userName" minlength="4"
+				autofocus="" required value="" placeholder="User name">
+	</div>
+	<div class="form-group has-feedback">
+		<input class="form-control" type="password" name="password" minlength="4"
+				required value="" placeholder="Password">
+	</div>
+	<div class="row captcha-row">
+		<div class="col-xs-8">
+			<div class="form-group has-feedback">
+        		<input class="form-control" type="text" name="captcha" required placeholder="Captcha">
+        	</div>
+        </div>
+        <div class="col-xs-4">
+        	<img id="captcha-img" class="img-responsive" src="$link.contextPath/web/captcha" style="cursor:pointer;" >
+        </div>
+	</div>
+	<label class="checkbox"><input type="checkbox" name="rememberMe" value="true"> Remember me</label>
+	<a href="$link.contextPath/web/members/register" >Register</a> 
+	<a href="$link.contextPath/web/members/signin" >Actual Sign In Page</a>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+<script src="$link.contextPath/assets/js/page/auth/signin.js" type="text/javascript"></script>

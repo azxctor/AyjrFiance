@@ -1,0 +1,432 @@
+<form class="form-horizontal $!mode" id="form-auto-apply$!formId" role="form" method="post"
+	action="$link.contextPath/web/autosubscribe/save"
+	data-relieve-action="$link.contextPath/web/autosubscribe/relieve"
+	data-launch-action ="$link.contextPath/web/autosubscribe/launch">
+	<div class="row basic-info">
+    		<div class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h5><strong>自动申购温馨提示：</strong></h5>
+             <p> 1. 以下参数是系统为您进行自动申购的重要依据，请谨慎设置</p>
+             <p>2. 系统自动申购的时间为每个交易日休市以后</p>
+              <p>3. 当满足条件的申购金额大于融资金额时系统将以随机抽签的方式抽选会员</p>
+            </div>
+    		#if (${renderMessage})
+    		<div class="alert alert-success">
+    			$!{message}
+    		</div>
+    		#end
+	</div>
+	<div class="row basic-info">
+		<legend>
+            <h5 ><strong  id="risk-level" class="required" data-toggle="tooltip">可自动申购项目的风险评级</strong>&nbsp;(可多选)</h5>
+			<div id="riskMessage" name="riskMessage" data-error-prop="true"></div>
+		</legend>
+		<div class="col-sm-2">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.riskA)
+					<input type="checkbox" name="riskA" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="riskA" disabled/>
+				#end
+				A级</label>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.riskB)
+					<input type="checkbox" name="riskB" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="riskB" disabled/>
+				#end
+				B级</label>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.riskC)
+					<input type="checkbox" name="riskC" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="riskC" disabled/>
+				#end
+				C级</label>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.riskD)
+					<input type="checkbox" name="riskD" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="riskD" disabled/>
+				#end
+				D级</label>
+			</div>
+		</div>
+		
+	</div>
+	<div class="row basic-info">
+		<legend>
+			<h5><strong class="required">可自动申购项目的期限及利率</strong>&nbsp;(可多选)</h5>
+			<div id="aprMessageD1" name="aprMessageD1" data-error-prop="true"></div>
+			<div id="aprMessageD2" name="aprMessageD2" data-error-prop="true"></div>
+			<div id="aprMessageM1" name="aprMessageM1" data-error-prop="true"></div>
+			<div id="aprMessageM2" name="aprMessageM2" data-error-prop="true"></div>
+		</legend>
+		<div class="col-md-5 col-sm-6 no-padding-left day-rz-pro">
+			<div class="thumbnail group">
+				<fieldset>
+					<legend>
+                        <input type="checkbox" class="chk-range" name="range-date" data-ignore="true" #if($!dto.minDateRange=="0")"" #else checked #end disabled></input>&nbsp;期限以日计的融资项目
+					</legend>
+					<div class="form-group">
+            			<label class="control-label col-sm-3">
+        					最小天数
+        				</label>
+    					<div class="col-sm-8">
+            				<div class="input-group">
+                				<input type="text" name="minDateRange" id="minDateRange" data-validate="{positiveInteger:true}" class="form-control" value="$!dto.minDateRange" disabled maxlength="3"/>
+                                <label class="input-group-addon">天</label>
+                            </div>
+                        </div>
+                    </div>
+					<div class="form-group">
+            			<label class="control-label col-sm-3">
+        					最大天数
+        				</label>
+						<div class="col-sm-8">
+            				<div class="input-group">
+            				<!-- data-validate="{number:true,laterThan:'#minDateRange'} -->
+                				<input type="text" name="maxDateRange" id="maxDateRange" data-validate="{positiveInteger:true}" class="form-control" value="$!dto.maxDateRange" disabled maxlength="3"/>
+                                <label class="input-group-addon">天</label>
+                            </div>
+                        </div>
+                    </div>
+					<div class="form-group">
+        				<label class="control-label col-sm-3">
+        					最小年利率
+                        </label>
+						<div class="col-sm-8">
+            				<div class="input-group">
+            					<input type="text" name="minAPRForDate" id="minAPRForDate" data-validate="{min:0,fixednumber:6}" class="form-control" value="$!dto.minAPRForDate" disabled/>
+                                <label class="input-group-addon">%</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+			</div>
+		</div>
+		<div class="col-md-5 col-sm-6 no-padding-left month-rz-pro">
+			<div class="thumbnail group">
+				<fieldset>
+					<legend>
+						<input type="checkbox" class="chk-range" name="range-month" data-ignore="true" disabled 
+						#if($!dto.minMonthRange==0)"" #else checked #end ></input>&nbsp;期限以月计的融资项目
+					</legend>
+    				<div class="form-group">
+    					<label class="control-label col-sm-3">
+        					最小月数
+                        </label>
+						<div class="col-sm-8">
+            				<div class="input-group">
+            					 <!-- <input type="text" name="minMonthRange" id="minMonthRange" data-validate="{number:true}" class="form-control" value="$!dto.minMonthRange" disabled maxlength="3"/> --> 
+            					<select name="minMonthRange" id="minMonthRange" class="form-control" disabled>
+            						<option value="0"> </option>
+            						<option value="1" #if(1==$!dto.minMonthRange) selected #else "" #end>1</option>
+            						<option value="2" #if(2==$!dto.minMonthRange) selected #else "" #end>2</option>
+            						<option value="3" #if(3==$!dto.minMonthRange) selected #else "" #end>3</option>
+            						<option value="4" #if(4==$!dto.minMonthRange) selected #else "" #end>4</option>
+            						<option value="5" #if(5==$!dto.minMonthRange) selected #else "" #end>5</option>
+            						<option value="6" #if(6==$!dto.minMonthRange) selected #else "" #end>6</option>
+            						<option value="7" #if(7==$!dto.minMonthRange) selected #else "" #end>7</option>
+            						<option value="8" #if(8==$!dto.minMonthRange) selected #else "" #end>8</option>
+            						<option value="9" #if(9==$!dto.minMonthRange) selected #else "" #end>9</option>
+            						<option value="10" #if(10==$!dto.minMonthRange) selected #else "" #end>10</option>
+            						<option value="11" #if(11==$!dto.minMonthRange) selected #else "" #end>11</option>
+            						<option value="12" #if(12==$!dto.minMonthRange) selected #else "" #end>12</option>
+            					</select>
+                                <label class="input-group-addon">个月</label>
+                                <input type="hidden" id="minMonthValue" value="$!dto.minMonthRange" />
+                            </div>
+                        </div>
+                    </div>
+    				<div class="form-group">
+    					<label class="control-label col-sm-3">
+        					最大月数
+                        </label>
+						<div class="col-sm-8">
+            				<div class="input-group">
+            					 <!-- <input type="text" name="maxMonthRange" data-validate="{number:true,laterThan:'#minMonthRange'}" class="form-control" value="$!dto.maxMonthRange" disabled maxlength="3"/> -->
+            					<select name="maxMonthRange" id="maxMonthRange" class="form-control" disabled>
+            						<option value="0"> </option>
+            						<option value="1" #if(1==$!dto.maxMonthRange) selected #else "" #end>1</option>
+            						<option value="2" #if(2==$!dto.maxMonthRange) selected #else "" #end>2</option>
+            						<option value="3" #if(3==$!dto.maxMonthRange) selected #else "" #end>3</option>
+            						<option value="4" #if(4==$!dto.maxMonthRange) selected #else "" #end>4</option>
+            						<option value="5" #if(5==$!dto.maxMonthRange) selected #else "" #end>5</option>
+            						<option value="6" #if(6==$!dto.maxMonthRange) selected #else "" #end>6</option>
+            						<option value="7" #if(7==$!dto.maxMonthRange) selected #else "" #end>7</option>
+            						<option value="8" #if(8==$!dto.maxMonthRange) selected #else "" #end>8</option>
+            						<option value="9" #if(9==$!dto.maxMonthRange) selected #else "" #end>9</option>
+            						<option value="10" #if(10==$!dto.maxMonthRange) selected #else "" #end>10</option>
+            						<option value="11" #if(11==$!dto.maxMonthRange) selected #else "" #end>11</option>
+            						<option value="12" #if(12==$!dto.maxMonthRange) selected #else "" #end>12</option>
+            					</select>
+                                <label class="input-group-addon">个月</label>
+                                <input type="hidden" id="maxMonthValue" value="$!dto.maxMonthRange" />
+                            </div>
+                        </div>
+                    </div>
+    				<div class="form-group">
+        				<label class="control-label col-sm-3">
+        					最小年利率
+                        </label>
+						<div class="col-sm-8">
+            				<div class="input-group">
+                				<input type="text" name="minAPRForMonth" id="minAPRForMonth" data-validate="{min:0,fixednumber:6}" class="form-control" value="$!dto.minAPRForMonth" disabled />
+                				<label class="input-group-addon">%</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+			</div>
+		</div>
+		
+	</div>
+	<div class="row basic-info check-group">
+		<legend>
+			<h5><strong class="required">可自动申购项目的还款方式</strong>&nbsp;(可多选)</h5>
+			<div id="repayMessage" name="repayMessage" data-error-prop="true"></div>
+		</legend>
+		<div class="col-sm-3">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.repaymentA)
+					<input type="checkbox" name="repaymentA" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="repaymentA" disabled/>
+				#end
+				按月等额本息</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.repaymentB)
+					<input type="checkbox" name="repaymentB" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="repaymentB" disabled/>
+				#end
+				按月等本等息</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.repaymentC)
+					<input type="checkbox" name="repaymentC" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="repaymentC" disabled/>
+				#end
+				按月还息，到期还本</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.repaymentD)
+					<input type="checkbox" name="repaymentD" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="repaymentD" disabled/>
+				#end
+				到期一次还本付息</label>
+			</div>
+		</div>
+		
+	</div>
+	<div class="row basic-info">
+		<legend>
+			<h5><strong class="required">可自动申购项目的风险保障形式</strong>&nbsp;(可多选)</h5>
+			<div id="guaranteeMessage" name="guaranteeMessage" data-error-prop="true"></div>
+		</legend>
+		<div class="col-sm-3">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.guaranteeA)
+					<input type="checkbox" name="guaranteeA" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="guaranteeA" disabled/>
+				#end
+				本金担保</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.guaranteeB)
+					<input type="checkbox" name="guaranteeB" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="guaranteeB" disabled/>
+				#end
+				本息担保</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="row">
+				<label class="control-label">
+				#if ($dto.guaranteeD)
+					<input type="checkbox" name="guaranteeD" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="guaranteeD" disabled/>
+				#end
+				无担保</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="checkbox">
+				<label class="control-label">
+				#if ($dto.guaranteeC)
+					<input type="checkbox" name="guaranteeC" checked="checked" disabled/>
+				#else
+					<input type="checkbox" name="guaranteeC" disabled/>
+				#end
+				资产监管</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row basic-info">
+		<legend>
+			<h5><strong>其他信息</strong></h5>
+			<div id="minBalance" name="minBalance" data-error-prop="true"></div>
+			<div id="maxSubscribeRate" name="maxSubscribeRate" data-error-prop="true"></div>
+		</legend>
+		<div class="col-sm-6 no-padding-left">
+            <label class="control-label col-sm-4 no-padding-left" style="text-align:left"><i class="fa fa-question-circle" id="info-tip" data-content="loading"></i>&nbsp;&nbsp;资金账户保留额 </label>
+			<div class="col-sm-6 no-padding-left">
+				<div class="input-group">
+					<input type="text" data-validate="{number:true}" class="form-control" name="minBalance" value="$!dto.minBalance" disabled maxlength="10" />
+    				<label class="input-group-addon">元 </label>
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 no-padding-left">
+            <label class="control-label col-sm-4 no-padding-left" style="text-align:left">单笔申购最大金额 </label>
+			<div class="col-sm-6 no-padding-left">
+				<div class="input-group">
+					<input type="text" data-validate="{number:true}" class="form-control" name="maxSubscribeAmount" value="$!dto.maxSubscribeAmount" disabled maxlength="10"/>
+					<label class="input-group-addon">元 </label>
+                </div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row basic-last">
+		#if ($dto.isPending())
+			#if ($editable)
+				<div class="col-sm-1"><button class="btn btn-mf-primary btn-submit-params" type="submit">提交</button></div>
+				<div class="col-sm-1"><a class="btn btn-mf-default" href="$link.contextPath/web/autosubscribe">取消编辑</a></div>
+			#else
+				<div class="col-sm-1"><a class="btn btn-mf-primary" href="$link.contextPath/web/autosubscribe/edit#Pending" #if ($!dto.getRelieve() == "P") disabled #end >修改设置</a></div>
+			#end
+		#else
+			#if ($editable)
+				<div class="col-sm-1"><button class="btn btn-mf-primary btn-submit-params" type="submit">提交</button></div>	
+				<div class="col-sm-1"><a class="btn btn-mf-default" href="$link.contextPath/web/autosubscribe">取消编辑</a></div>
+			#else
+				#if ($dto.getRelieve() == "N")
+					<div class="col-sm-2"><button class="btn btn-mf-primary btn-relieve" type="submit">解除自动申购</button></div>
+				#end
+				#if (!$dto.isExistPending())
+					<div class="col-sm-2"><a class="btn btn-mf-primary" href="$link.contextPath/web/autosubscribe/edit#Pending" #if ($!dto.getRelieve() == "P") disabled #end>修改设置</a></div>
+				#end
+			#end
+		#end
+		#*
+			<div class="col-sm-1 col-sm-offset-1"><button class="btn btn-mf-primary btn-launch" type="submit">启动数据-仅为T+1测试使用</button></div>
+		*#
+	</div>
+	
+  <!--Modal警告-->
+  #if ($dto.firstTime)
+  <div class="modal fade modal-micro" id="modal-log" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      &times;
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+                      自动申购业务风险提示书
+                  </h4>
+              </div>
+              <div class="modal-body">
+                  <p><strong>尊敬的投资人会员：</strong></p>
+                  <p>为了使您清楚的了解“自动申购业务”所存在的风险，根据有关投融资交易法律、法规规定及安益金融的交易规则，特向您出具此风险提示书，请您认真详细阅读，并确保完全理解、认可本风险提示书之全部内容，以保证您在自身所能够承受的风险范围内向安益金融申请开通该业务。</p>
+                  <p> 风险提示如下，请您仔细阅读：</p>
+                  <p> 一、您成功开通“自动申购业务”后，并不能确保申购成功，由此将存在资金在您的交易账户闲置，无法获得您的预期收益的情况。</p>
+                  <p> 二、通过自动申购成功申购的项目与您手动申购的项目一样，该项目可能产生的一切亏损、法律责任等将由您自行承担。</p>
+                  <p>  三、系统处理自动申购后有可能对您账户的相应资金进行暂时冻结，您将无法撤消该申购，也无法单方解除或撤销因申购成交后所订立的全部或部分项目有关合同。</p>
+                  <p>  四、在您通过系统自动申购成交后，可能发生由于债务人原因，不予履行有关合同约定的还款义务，将使您产生不可预计的损失风险。</p>
+                  <p> 五、在因不可预知因素（包括但不限于诸如地震、台风、火灾、水灾、战争、瘟疫、社会动乱、设备系统故障、网络故障、电力故障等不可预知或无法控制的不可抗力等因素）导安益金融交易系统瘫痪的，将会使您的交易委托无法成交，或资金不能及时到账等，造成您的损失，您将自行承担。自行承担包括但不限于政策风险、商业风险等。</p>
+                  <p> 六、您应当根据自身的经济条件和承受能力等自身情况申请本业务，并自行承担由此带来的一切风险。</p>
+              </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-mf-primary btn-agree" data-dismiss="modal">同意</button>
+				<button type="button" class="btn btn-mf-default btn-refuse" data-dismiss="modal">拒绝</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--/.modal警告-->
+  #end
+  
+  <div class="modal fade modal-micro" id="modal-success" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      &times;
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+						系统提示
+                  </h4>
+              </div>
+              <div class="modal-body">
+                  <p id="message">自动申购参数设置成功！将在下一交易日生效！</p>
+              </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-primary btn-mf-primary" data-dismiss="modal">确定</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="modal fade modal-micro" id="modal-confirm" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      &times;
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+						用户确认
+                  </h4>
+              </div>
+              <div class="modal-body">
+                  <p>是否解除自动申购？</p>
+              </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-primary btn-mf-primary btn-confirm-relieve" data-dismiss="modal">确定</button>
+				<button type="button" class="btn btn-primary btn-mf-default" data-dismiss="modal">取消</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>

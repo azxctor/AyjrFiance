@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/member/agencyfee_contracts.css">
+<script src="$link.contextPath/assets/js/page/member/agencyfee_authzdctr_list.js" type="text/javascript"></script>
+
+<div id="main-wrapper">
+	<div id="search-area">
+		<form id="trade-fee-form" method="post" action="$link.contextPath/web/report/tradefee/lot/qry/excel">
+	    	<div class="row">
+	    		<div class="col-sm-2">
+	        		<label>关键字</label>
+	        		<div class="input-group">
+	        			<input type="text" name="keyword" id="keyword-input" class="form-control" title="名称/交易号" placeholder="名称/交易号"/>		
+	                 </div>	
+	            </div>
+	        	
+				
+				<div class="col-sm-2">
+	        		<label >统计区间</label>
+						 <div class="input-group">
+	                            <input type="text" style="cursor:auto"  name="beginDate" id="search-start-date" class="form-control search-date"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+	                     </div>	
+				</div>
+				
+				<div class="col-sm-2">
+	        		<label >&nbsp;</label>
+						 <div class="input-group">
+	                            <input type="text"  style="cursor:auto" name="endDate" id="search-end-date" class="form-control search-date"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+	                     </div>	
+				</div>
+				<div class="col-sm-4">
+                	<label style="width:100%">&nbsp;</label>
+                	<div>
+                        <a class="btn btn-mf-primary" id="authzdctr-search-btn"><i class="fa fa-search"></i>查询</a>
+                    </div>	
+                </div>
+	        </div>
+	    </form>
+	</div>
+	 <table id="authzdCtrTable" class="dataTable">
+    		<thead>
+                    <tr> 
+                        <th data-mData="name" data-bSortable="false">服务中心名称</th>
+                        <th data-mData="fullName" data-bSortable="false">服务中心全称</th>
+                        <th data-mData="acctNo" data-bSortable="true">交易账号</th>
+                        <th data-mData="contractNums" data-bSortable="true">合同数量</th>
+                        <th data-mData="createTs" data-bSortable="true">开户日期</th>
+                        <th data-mData="startDt" data-bSortable="false">当前合同起始日期</th>
+                        <th data-mData="endDt" data-bSortable="false">当前合同终止日期</th>
+                        <th data-mData="contractType.text" data-bSortable="false">当前合同类型</th>
+						<th data-mRender="_fnAgencyBtnRender" data-bSortable="false">操作</th>
+    				</tr>
+            </thead>
+    		<tbody>
+    		</tbody>
+    		
+      </table>
+      
+</div>
+#parse("members/agencyfee_authzdctr_contract_list.vm") 

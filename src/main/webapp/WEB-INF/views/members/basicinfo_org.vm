@@ -1,0 +1,432 @@
+<div id="basicinfo-org" class="info-organization $!hasPrefix" data-prefix="$!orgPrefix">
+<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业名称</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="org_name"></span> <input  maxlength="50" type="text" data-validate='{required:true}'
+						class="form-control" name="org_name">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">所在区域</label>
+				<div class="col-sm-8">
+    				<span class="hidden-form-control" name="region.fullText"></span>
+    				<div class="data-binder" id="org-region" name="region.code" data-error-prop="true" data-val="">
+    					<div class="col-sm-4 col-bigger">
+        					<select id="org-province" name="org_province" id="org-province" placeholder="请选择省份"
+        						class="form-control no-side-padding" data-ignore="true" data-validate="{required:true}">
+        						#foreach($province in $provinceList)
+        							<option value="$province.code">$province.text</option>
+        						#end
+        					</select>
+        				</div>
+        				<div class="col-sm-4 col-bigger">
+        					<select name="org_city" id="org-city" style="display:none;" placeholder="请选择城市"
+        						id="org-city" class="form-control no-side-padding" data-ignore="true" data-validate="{required:true}">
+        					</select>
+        				</div>
+        				<div class="col-sm-4 col-bigger">
+        					<select name="org_county" id="org-county" style="display:none;"
+        						id="org-county"	class="form-control  no-side-padding" data-ignore="true">
+        					</select>
+        				</div>
+					</div>
+                </div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业地址</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="address"></span> <input  maxlength="100" type="text" data-validate='{required:true}'
+						class="form-control" name="address">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">邮编</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="postcode"></span> <input maxlength="6" type="text" data-validate="{postcodezh:true}"
+						class="form-control" name="postcode">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业性质</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="nature.text"></span> 
+					<input type="hidden" name="nature.code" data-validate='{required:true}' id="org-type" class="select2-hidden">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">所属行业</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="industry.text"></span> <select data-validate='{required:true}'
+						class="form-control" name="industry.code">
+						#foreach($industry in $industryList)
+							<option value="$industry.code">$industry.text</option>
+						#end
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业类型</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="org_type.text"></span> <select data-validate='{required:true}'
+						class="form-control" name="org_type.code">
+						#foreach($orgType in $orgTypeList)
+							<option value="$orgType.code">$orgType.text</option>
+						#end
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">主营业务</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="main_business"></span>
+					<input  maxlength="100" type="text" class="form-control" name="main_business" data-validate='{required:true}'>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">联系人</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact"></span> <input type="text"  maxlength="25"
+						class="form-control" name="contact" data-validate='{required:true,minlength:2}'>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">联系人座机</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_phone"></span> <input  maxlength="20" type="text" data-validate='{phonezh:true}'
+						class="form-control" name="contact_phone">
+						#if(!$member.fixedInput&&!$member.isViewMode())
+    					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                            <i class="fa fa-exclamation-triangle fa-lg"></i>
+                            <strong>示例：087164647100</strong>
+    					</div>
+    					#end
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">联系人手机</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_mobile"></span>
+					<input type="text" name="contact_mobile" maxlength="11" class="form-control #if($!member.fixedStatus.mobileFixed) masked-ignore #end" #if($!member.fixedStatus.mobileFixed || $member.isEditMode()) disabled #end  data-validate='{required:true,mobilezh:true}'>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">联系人传真</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_fax"></span> <input type="text"  maxlength="20"
+						class="form-control" name="contact_fax">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">联系人Email</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="contact_email"></span> <input type="text"  maxlength="50"
+						class="form-control" name="contact_email" data-validate='{email:true}'>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">企业座机</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="phone"></span> <input type="text"  maxlength="20"
+						class="form-control" name="phone" data-validate='{required:true,phonezh:true}'>
+						#if(!$member.fixedInput&&!$member.isViewMode())
+    					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                            <i class="fa fa-exclamation-triangle fa-lg"></i>
+                            <strong>示例：087164647100</strong>
+    					</div>
+    					#end
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">传真号</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="fax"></span> <input  maxlength="20" type="text"
+						class="form-control" name="fax">
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">法人代表</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_person"></span> <input  maxlength="25"
+						class="form-control" name="legal_person" data-validate='{required:true}'>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">法人性别</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_gender.text"></span> <select data-validate='{required:true}'
+						class="form-control" name="legal_gender">
+						#foreach($gender in $genderList)
+							<option value="$!gender.code">$!gender.text</option>
+						#end
+					</select>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">法人手机</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_mobile"></span>
+					<input maxlength="11" type="text" name="legal_mobile" data-validate='{required:true,mobilezh:11}' class="form-control #if($!member.fixedStatus.mobileFixed) masked-ignore #end" #if($!member.fixedStatus.mobileFixed) disabled #end />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人学历状况</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_education.text"></span> 
+					<select class="form-control" name="legal_education.code">
+						#foreach($education in $educationList)
+							<option value="$!education.code">$!education.text</option>
+						#end
+					</select>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人QQ</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="qq"></span> <input maxlength="12" type="text" data-validate='{isqq:true}'
+						class="form-control" name="qq">
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人Email</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_email"></span> <input maxlength="50" type="text" data-validate='{email:true}'
+						class="form-control" name="legal_email" value="$!member.email">
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">法人身份证号</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_id_card"></span> <input maxlength="18" type="text" data-validate='{required:true,idcard:true}'
+						class="form-control" name="legal_id_card" id="legal-id-card" />
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人身份证正面扫描图</label>
+				<div class="col-sm-8">
+					<img class="hidden-form-control" name="legal_id_card_front_img_url"></img> 
+					<div class="file-upload" id="legal_id_card_front_img" name="legal_id_card_front_img" data-validate="{extension:'jpg,jpeg,png,gif,pdf'}"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人手持身份证(<a href="javascript:void(0)" class="image-example-popoverx" data-content="loading..." data-src="$link.contextPath/assets/img/IDCard_s.jpg">图例</a>)</label>
+				<div class="col-sm-8">
+					<img class="hidden-form-control" name="legal_id_card_back_img_url"></img>
+					<div class="file-upload" id="legal_id_card_back_img" name="legal_id_card_back_img" data-validate="{extension:'jpg,jpeg,png,gif,pdf'}"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人出生年月</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_birthday"></span> <input maxlength="20" type="text"
+						class="form-control" name="legal_birthday" id="legal-birthday" readonly>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">法人年龄</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="legal_age"></span> <input maxlength="10" type="text"
+						class="form-control" name="legal_age" id="legal-age" readonly>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+    #* <h3>银行信息</h3>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">银行账号</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="bank_account"></span>
+					<input maxlength="25" type="text" name="bank_account" data-validate='{required:true}' class="form-control #if($!member.fixedStatus.bankCardFixed) masked-ignore #end"  #if($member.fixedInput || $!member.fixedStatus.bankCardFixed) disabled #end>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">银行账户名</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="bank_account_name"></span> <input maxlength="25" type="text" data-validate='{required:true}'
+						class="form-control" name="bank_account_name" #if($member.fixedInput) readonly #end>
+					#if(!$member.fixedInput&&!$member.isViewMode())
+    					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                            <i class="fa fa-exclamation-triangle fa-lg"></i>
+                            <strong>注：请使用本人开户银行卡认证</strong>
+    					</div>
+					#end
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">开户银行</label>
+				<div class="col-sm-8">
+					<div class="col-sm-4 col-bigger">
+						<span class="hidden-form-control" name="bank_province.text"></span>
+    					<select class="form-control" name="bank_province.code" id="org-bank-province" #if($member.fixedInput) disabled #end placeholder="请选择省份" >
+							#foreach($province in $provinceList)
+    							<option value="$province.code">$province.text</option>
+    						#end
+                        </select>
+					</div>
+					<div class="col-sm-4 col-bigger">
+						<span class="hidden-form-control" name="bank_city.text"></span>
+						<select class="form-control"  id="org-bank-city" name="bank_city.code" #if($member.fixedInput) disabled #end placeholder="请选择城市">
+							
+                        </select>
+					</div>
+					<div class="col-sm-4 col-bigger">
+						<span class="hidden-form-control" title="$!member.bankShortName.text" name="bank_name.text"></span> 
+						<select class="form-control" name="bank_name.code" placeholder="请选择银行"
+    						#if($member.fixedInput) disabled #end>
+    						#foreach($bank in $bankList)
+    							<option value="$!bank.code">$!bank.text</option>
+    						#end
+						</select>
+						<i class="fa fa-question-circle basic-info-tip"  style="right:-22px" data-content="loading"></i>
+    				</div>
+					<div class="col-sm-12 col-bigger">
+						<span class="hidden-form-control" name="bank_branch"></span> 
+    					<input maxlength="50" placeholder="支行/营业所" type="text" class="form-control" name="bank_branch" #if($member.fixedInput) readonly #end>
+                    </div>
+					#if(!$member.fixedInput&&!$member.isViewMode())
+					<div class="alert alert-warning" style="margin-bottom:0;clear:left;">
+                        <i class="fa fa-exclamation-triangle fa-lg"></i>
+                        <strong>注：若所在地有招商银行建议使用招商银行卡以确保您的资金出入效率，无招商银行建议使用工商银行卡，不建议使用其他银行卡</strong>
+					</div>
+					#end
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">银行卡正面扫描图</label>
+				<div class="col-sm-8">
+                    #if ($!member.fixedInput || $!member.fixedStatus.bankCardFixed)
+						<input type="hidden" name="bank_card_front_img" >
+						<img class="show-form-control" name="bank_card_front_img_url"></img>
+					#else
+						<img class="hidden-form-control" name="bank_card_front_img_url"></img>
+						<div class="file-upload" id="bank_card_front_img" name="bank_card_front_img" data-validate="{required:true,extension:'jpg,jpeg,png,gif,pdf'}"></div>
+					#end
+				</div>
+			</div>
+		</div>
+	</div> *#
+
+	#if($member.account)
+		<h3>账户信息</h3>
+    	<div class="row">
+    		<div class="col-sm-6">
+    			<div class="form-group">
+    				<label class="col-sm-4 control-label required">开户时间</label>
+    				<div class="col-sm-8">
+                       <span class="hidden-form-control" name="account.create_time"></span> <input maxlength="20" type="text" data-validate='{required:true}'
+						class="form-control" name="account.create_time" disabled data-ignore="true" >
+    				</div>
+    			</div>
+    		</div>
+    		<div class="col-sm-6">
+    			<div class="form-group">
+    				<label class="col-sm-4 control-label required">交易账号</label>
+    				<div class="col-sm-8">
+    					<span class="hidden-form-control" name="account.number"></span> <input maxlength="20" type="text" data-validate='{required:true}'
+						class="form-control" name="account.number" disabled  data-ignore="true" >
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+	#end
+</div>

@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/member/pwreset.css">
+<script src="$link.contextPath/assets/js/page/member/member-log.js" type="text/javascript"></script>
+<script src="$link.contextPath/assets/js/page/member/search-pwreset.js" type="text/javascript"></script>
+
+#parse("audit/audit_log.vm")
+<div id="main-wrapper">
+	<form id="search-form-id">
+		<div id="search_area" class="row search-area">
+	   		<div class="col-sm-2">
+	   			<label>用户名:</label>
+	   			<div class="full-oqp">
+	   				<input id="member_userid" name="user_name" type="text" class="form-control"/>	
+	               </div>	
+	        </div>
+	   		
+	   		<div class="col-sm-2">
+	   			<label  id="search-name">姓名:</label>
+	   			<div class="full-oqp">
+	   				<input id="member_username" name="name" type="text" class="form-control"/>	
+	               </div>	
+	        </div>
+	   		<div class="col-sm-2">
+	   			<label  id="search-name">交易号:</label>
+	   			<div class="full-oqp">
+	   				<input id="trans_no" name="trans_no" type="text" class="form-control"/>	
+	               </div>	
+	        </div>
+	   		
+			<div class="col-sm-2">
+				<label style="width:100%">&nbsp;</label>
+				<div>
+	                 <a id="member_search" class="btn btn-mf-primary"><i class="fa fa-search"></i>查询</a>
+	            </div>	
+			</div>
+			
+		</div>
+	</form>
+		
+	 <table id="table-wrapper" class="dataTable PWResetTable">
+		<thead>
+                <tr>
+					<th data-mData="userName">用户名</th>
+					<th data-mData="accountNo" data-bSortable="false">交易账号</th>
+					<th data-mData="name" data-bSortable="false">姓名</th>
+					<th data-mData="region.fullText" data-bSortable="false">所在区域</th>
+					<th data-mData="earliestTs">创建日期</th>
+                    <th data-mData="userRole.text" data-bSortable="false">会员类型</th>
+                    <th data-mData="activeStatus.text" data-bSortable="false">会员状态</th>
+                    <th data-mRender="_fnSrhPerBtnRender2" data-fnCreatedCell="_fnSrhPerBtnRender3" data-bSortable="false">操作</th>
+                    <th data-mRender="_fnRenderlog" data-bSortable="false">日志</th>
+				</tr>
+        </thead>
+		<tbody>
+		</tbody>
+	 </table>
+</div>
+
+
+<div class="modal fade modal-micro" id="serviceCheckModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="submit-form" action='$link.contextPath/web/members/password/reset/do' method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">密码重置</h4>
+                </div>
+                <div class="modal-body">
+                    <input id="user_id" name="userId" type="hidden"/>
+                    <input id="new_password" name="newPassword" type="hidden"/>
+                    <span>将用户:"<lable id="selected_user" class="password-reset-tips"></lable>"的登录密码重置为：<lable id="selected_password" class="password-reset-tips"></lable></span>
+                </div>
+                <div class="modal-footer">
+					  <button type="submit" class="btn btn-primary btn-confirm">提交</button>
+                    <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+.wrapper{
+	width:960px;
+	margin: 0 auto;
+}
+.text-center{
+	text-align: center;
+}
+.text-right{
+	text-align: right;
+}
+p{
+	margin: 0 0 10px;
+}
+.text-indent{
+	text-indent: 30px;
+	line-height: 28px;
+}
+.text-indent-mul{
+	text-indent: 60px;
+}
+.text-bold{
+	font-weight: bold;
+}

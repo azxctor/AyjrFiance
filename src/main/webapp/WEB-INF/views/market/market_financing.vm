@@ -1,0 +1,135 @@
+<link href="$link.contextPath/assets/vendor/ickeck/skins/minimal/minimal.css" rel="stylesheet">
+<link href="$link.contextPath/assets/vendor/ickeck/skins/minimal/orange.css" rel="stylesheet">
+<link href="$link.contextPath/assets/css/page/market/market.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/market/market-financing.js" type="text/javascript"></script>	
+<div class="row header"> 
+                <input type="hidden" id="is-market-close" value="$marketClose"></input>
+				#if($marketClose) 
+                 
+                  <div class="col-sm-12 alert alert-danger"  role="alert">当前为闭市时间，请等待开市后再申购</div> 
+				 <!--     
+				 <div class="alert alert-danger alert-dismissible"  role="alert">
+				     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  				     <p class="market-transfer-warning" > 
+					 	<i class="fa fa-exclamation-triangle"></i>
+					 	1、尊敬的客户：为提高您安益金融账户中闲置资金的收益，即日起，安益金融每个交易日均会发布“稳盈隔夜”融资项目。该项目<span style='font-weight:bold;color:red;font-size:16px;'>还款时间</span>通常为交易日<span  style='font-weight:bold;color:red;font-size:16px;'>10:00</span>前，您可以正常申购新的项目,敬请关注！
+                         </p> 
+  				      <p style="text-indent: 42px;"> 
+  				   	2、尊敬的客户：从2014年11月10日起，每日下午融资项目的预发布时间由原来13:00调整为12:00，申购起始时间由14:00调整为13:00。特此公告。
+                        </p>
+				 	</div>
+				 -->
+				#end
+				#if(!$marketClose)
+				   #* <div class="alert alert-danger alert-dismissible"  role="alert">
+  				   * <p class="market-transfer-warning"  > 
+					 *	<i class="fa fa-exclamation-triangle"></i>
+					 *	1、尊敬的客户：为提高您安益金融账户中闲置资金的收益，即日起，安益金融每个交易日均会发布“稳盈隔夜”融资项目。该项目<span style='font-weight:bold;color:red;font-size:16px;'>还款时间</span>通常为交易日<span  style='font-weight:bold;color:red;font-size:16px;'>10:00</span>前，您可以正常申购新的项目,敬请关注！
+                     *    </p> 
+  				    * <p style="text-indent: 42px;"> 
+  					 *	2、尊敬的客户：从2014年11月10日起，每日下午融资项目的预发布时间由原来13:00调整为12:00，申购起始时间由14:00调整为13:00。特此公告。
+                    *  </p>
+					</div>*#
+ 				#end
+				    <div class="col-sm-12"></div>
+			    <div class="col-sm-12 search" id="search_area">
+				<div class="col-sm-12 col-bigger info-panel search-form" data-id="$marketClose" data-hide-sub="$hideSub" data-investor-flag="$investorFlag">
+				<div class="col-sm-2 mt5 fs15">
+					<span>申购中</span>
+					<input type="checkbox" value="true" name="topurchase">
+				</div>
+				<div class="col-sm-2 mt5 fs15">
+					<span>待申购</span>
+					<input type="checkbox" value="true" id="prerelease" name="prerelease">
+				</div>
+				<div class="col-sm-2 mt5 fs15">
+					<span>待签约</span>
+					<input type="checkbox" value="false" id="hasexpired" name="hasexpired">
+				</div>
+				<div class="col-sm-2 mt5 fs15">
+					<span>全部</span>
+					<input type="checkbox" value="false" id="all" data-beignored="true">
+				</div>
+				<div class="col-sm-4 fs15">
+					<button class="btn btn-mf-primary" id="search">
+								<i class="fa fa-search"></i> 查询
+							</button>
+				</div>
+				</div>
+				</div> 
+				<!-- <div class="col-sm-12">
+				<span class="message">有新发布融资信息<a class="cp">5</a>条</span>
+				</div> -->
+				<div class="col-sm-12 change-view-wrapper" id="change-view-area"> 
+					<div class="pull-right">
+                        <span class="view-selected" data-target-area="#list-table-area" id="btn-list"><i class="fa fa-align-justify"></i></span>
+                        <span data-target-area="#square-view" id="btn-square"><i class="fa fa-th"></i></span>
+                    </div>	
+                </div>	
+				<div class="col-sm-12 info-area" id="list-table-area">
+					<div class="right-blk-body-in">
+						<table id="market-table">
+							<thead>
+								<tr>
+									<th data-mData="id">编号</th>
+									<th data-mRender="_fnflag" data-fnCreatedCell="_fnaipflag" style="min-width: 110px;" data-bSortable="false">项目名称</th>
+									<th data-mRender="_fnrenderButton4"  style="min-width: 76px;">融资项目级别</th>
+									<th data-mData="product.warrantyType.text" data-bSortable="false">风险保障</th>
+									<th data-mData="product.ratePercentage">年利率</th>
+									<th data-mRender="_fndetailButton3" data-mData="packageQuotaStr" style="min-width: 65px;">融资额（元）</th>
+									<th data-mData="product.term">融资期限</th>
+									<!--<th data-mData="product.payMethod.text" data-bSortable="false">还款方式</th>-->
+									<!-- <th data-mData="product.warrantor">担保机构</th> -->
+									<th data-mData="subscribeStartTimeStr">起始时间</th>
+									<th data-mRender="_fnrenderButton2" data-bSortable="false" style="min-width: 109px;">申购进度</th>
+									<th data-mRender="_fndetailButton" data-fnCreatedCell="_fnbuyButton"  style="min-width: 80px;" data-bSortable="false" >操作</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+
+
+					</div>
+</div>
+
+    <div class="modal fade modal-micro" id="market-status-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true" data-keyboard="false">
+        <div class="modal-dialog">
+            <form id="modal-form" method="POST">
+                <div class="modal-content" id="modal-content">
+                    <div class="modal-header">                       
+                        <h4 class="modal-title" id="modal-title">通知</h4>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                       
+                    </div>
+                    <div id="modal-footer-wrapper" class="modal-footer">
+						<button type="button" class="btn btn-mf-primary" id="market-status-confirm" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </form><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<div class="square-view info-area" id="square-view">
+	<div id="container">
+    	
+    </div>
+	
+	<div id="page-area">
+		
+    </div>	
+	 <script type="text/template"  id="tpl">
+	 	<div class="dataTables_paginate paging_full_numbers" id="market-square_paginate">
+			<a tabindex="0" class="first paginate_button paginate_button_disabled" id="market-square_first">首页</a>
+			<a tabindex="0" class="previous paginate_button paginate_button_disabled" id="market-square_previous">前一页</a>
+			 <% _.each(page_index, function(index){ %>
+				<span><a tabindex="0" class="paginate_button <% if (index == current_page) { %>paginate_active<%}%>"><%=index%></a></span>
+			 <% }) %>
+			<a tabindex="0" class="next paginate_button paginate_button_disabled" id="market-square_next">后一页</a>
+			<a tabindex="0" class="last paginate_button paginate_button_disabled" id="market-square_last">尾页</a>
+		</div>
+     </script>
+</div>
+	

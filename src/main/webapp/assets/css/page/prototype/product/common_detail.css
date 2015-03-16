@@ -1,0 +1,137 @@
+#counter-guarantee-detail {
+	position: relative;
+}
+#counter-guarantee-detail .nav {
+	position: absolute;
+	width: 10%;
+	text-align:center;
+}
+#counter-guarantee-detail .tab-content {
+	padding-left: 10%;
+}
+.tab-content {
+	margin:20px;
+	padding:0 20px 20px;
+}
+/* .file-upload[type="file"] {
+	display: none;
+} */
+/* .form-guarantee-org .box-guarantee-org {
+	width: 100%;
+	margin-top: 20px;
+	border: 1px solid #ccc;
+	background-color: #eee;
+} */
+/* .btn-modal-submit {
+	width:100%;
+	text-align:right;
+	margin-top:20px;
+} */
+/* .btn-modal-submit .btn{
+	margin: 0 5px;
+} */
+/* .submit {
+	float: right;
+	margin: 20px 20px 0 0;
+} */
+/* .add-box {
+	margin-bottom: 15px;
+} */
+/* .add-content {
+	margin-top: 10px;
+	border: 1px solid #fff;
+} */
+/* .add-close-btn {
+	float: right;
+} */
+.house-box {
+	margin-left: 50px;
+}
+#activos-pasivos-detail {
+	margin-left: 50px;
+}
+#panel-heading {
+	cursor: pointer;
+	background-color: #FFF;
+}
+#fa-icon {
+	margin-right: 10px;
+}
+#panel-default {
+	border-color: #fff;
+}
+#collapseOne {
+	padding-left: 60px;
+	padding-top: 10px;
+}
+
+
+
+
+
+
+.dialog-box {
+	margin-top: 300px;
+}
+.handle {
+	margin-bottom: 20px;
+	padding-left: 50px;
+}
+.sub-title {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom:10px;
+}
+
+
+
+
+.sub-title {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom:10px;
+}
+/* .handle-select {
+	padding-left: 40px;
+	margin-bottom: 20px;
+} */
+/* .status-1,
+.status-2,
+.status-3,
+.status-4,
+.status-5,
+.status-6,
+.status-3-4 {
+	display: none;
+} */
+/* .status-audit-platform,
+.status-ratings,
+.status-freeze,
+.status-loan,
+.status-trading,
+.status-risk,
+.status-guarantee,
+.status-cancellation,
+.status-terminate,
+.status-repayment
+.status-parameter-setting */ {
+	display: none;
+} 
+/* .nav > .status-risk {
+	display: none;
+} */
+
+
+
+/* .finance-package > label {
+	font-weight: bold;
+} */
+
+/* .back-table {
+	margin:-10px 0 15px 10px;
+} */
+
+
+.right-blk-body .control-label {
+	font-weight:bold;
+}

@@ -1,0 +1,18 @@
+
+#search-start-date, #search-end-date{ 
+	background:#fff; 
+	cursor: pointer; 
+}
+#search-area .signin-start-date, #search-area .signin-end-date{ 
+	background:#fff; 
+	cursor: pointer; 
+}
+.iframe-wrapper{
+	margin-top:15px;
+}
+.mgt10{
+	margin-top: 10px;
+}
+.tooltip-inner{
+	text-align: left;
+}

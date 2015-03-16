@@ -1,0 +1,204 @@
+<link href="$link.contextPath/assets/css/page/packet/packet_manage.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/packet_manage_investor.js" type="text/javascript"></script>
+<div id="main-wrapper">
+<!--    <div class="row">
+        <div class="col-xs-12">
+            <div class="alert alert-success">
+                     申购本金总额：<strong>$!number.formatMoney($!{totalPrincipal})</strong> &nbsp;  剩余本息总额：<strong>$!number.formatMoney($!{totalRestAmt})</strong> &nbsp;下期预期总收益：<span class="next-get text-danger">$!number.formatMoney($!{totalNextPayAmt})</span>
+            </div>
+        </div>
+    </div>-->
+    <!--
+	<div class="alert alert-danger alert-dismissible clearfix" role="alert">
+           <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		  <div class="pull-left" style="margin-right: 80px;">
+                <p>债权转让规则：</p>
+				<ul>
+					<li>债权转让仅限当日有效，当天未成交的债权，在休市后将自动撤消 </li>
+					<li>最高转让价格为融资项目的剩余本息；最低转让价格为融资项目剩余本金的70% </li>
+					<li>债权转让成交后将按照成交价格收取2‰手续费</li>
+					<li>融资项目累计持有人数不超200人</li>
+                </ul>
+           </div>
+		   
+		    <div class="pull-left">
+                <p>不可进行债权转让的融资项目：</p>
+				<ul>
+					<li>当天到期融资项目 </li>
+					<li>应还款当天的融资项目</li>
+					<li>债权持有期限不满5个交易日（含5日）的融资项目</li>
+					<li>融资期限小于（包含）15天的融资项目 </li>
+					<li>逾期中的融资项目 </li>
+					<li>安益金融认为有必要停牌的情况</li>
+                </ul>
+           </div>
+     
+		 <i class="fa fa-exclamation-triangle"></i> 以下列表为您目前持有的所有债权，若债权到期前您需要获得流动性，可以通过债权转让方式进行债权的转让，具体的交易规则请参看｛债权转让规则｝&nbsp;<i class="fa fa-question-circle" id="transfer-role-tip"></i>
+		 <div id="transfer-role-area" class="clearfix transfer-role-area" style="display:none">
+			<div class="pull-left" style="margin-right: 80px;">
+                <p>债权转让规则：</p>
+				<ul>
+					<li>债权转让仅限当日有效，当天未成交的债权，在休市后将自动撤消 </li>
+					<li>最高转让价格为：剩余本金+上一应还款日（或签约日）至转让日实际持有天数的应计利息</li>
+					<li>最低转让价格为：（剩余本金-已回收利息）*90% </li>
+					<li>债权转让成交后将按照成交价格收取2‰手续费</li>
+					<li>同一债权累计持有人数不超过200人，达到200人的债权限制转让</li>
+                </ul>	
+           </div>
+		   
+		    <div class="pull-left">
+                <p>不可进行转让的债权：</p>
+				<ul>
+					<li>当天到期的债权 </li>
+					<li>应还款当天的债权</li>
+					<li>债权持有期限小于等于5个交易日的债权</li>
+					<li>融资期限小于（包含）15天的债权</li>
+					<li>目前处于逾期中的债权 </li>
+					<li>债权累计持有人数达到200人</li>
+					<li>安益金融认为有必要限制转让的债权</li>
+                </ul>	
+           </div>
+         </div>	
+       
+	</div>
+	-->
+    <div class="row search-wrapper" id="search-wrapper">
+        <div class="col-xs-4">
+            <label class="control-label" id="search-date-label" for="search-investor">签约起止时间</label>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input class="form-control" id="search-start-date" name="startDate"  type="text"/> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="input-group" >
+                        <input class="form-control" id="search-end-date" name="endDate"   type="text"/> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="control-label" for="keyword">关键字查询</label>
+                <input  class="form-control" id="keyword" placeholder="输入融资项目编号，简称，融资人，担保机构模糊查询..." name="keyword"  type="text"/>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <div class="form-group">
+                <label class="control-label">还款状态</label>
+                <select  class="form-control" name="payStatus">
+                    #foreach($!payStatus in $!payStatusList)
+                    <option value=$!{payStatus.code}>$!{payStatus.text}</option>
+                    #end
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="form-group">
+                <label class="void-label">&nbsp;</label>
+                <button class="btn btn-mf-primary" id="btn-search"><i class="fa fa-search"></i> 查询</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-wrapper" id="table-wrapper">
+                <table  class="packet-manage-table investor-table" id="packet-manage-table">
+				<span style="display:none" id="hidden_span">
+                </span>
+                    <thead>
+                    <tr>
+                        <th data-mData="pkgId" class="">融资编号</th>
+                        <th data-mRender="btn_detail" data-bSortable="false">项目简称</th>
+                        <th data-mData="financierName" data-bSortable="false">融资人</th>
+                        <th data-mData="rate" class="th-rate" data-sFormatType="aprate">年利率</th>
+                        <th data-mData="term" class="">融资期限</th>
+                        <th data-mData="payMethod.text" data-bSortable="false">还款方式</th>
+                        <th data-mData="warrantyType.text" data-bSortable="false">担保方式</th>
+                        <th data-mData="amount" data-bSortable="false" data-sFormatType="thousand">申购金额(元)</th>
+                        <th data-mData="signContractTime" class="">签约时间</th>
+                        <th data-mData="remTermLength" data-bSortable="false">剩余期数</th>
+                        <th data-mData="lastAmount" data-bSortable="false" data-sFormatType="thousand">剩余本息合计(元)</th>
+                        <th data-mData="nextPayDay" data-bSortable="false">下期收益日</th>
+                        <th data-mRender="returnNextPayAmount" data-bSortable="false">下期预期还款额(元)</th>
+                        <th class="oper" data-mRender="btn_oper" data-bSortable="false">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+
+                    <tfoot class="tfoot" style="background: #fff">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>合计</td>
+                        <td class="text-right" style="font-weight: bold;"><span id="span-totalPrincipal"></span></td>
+                        <td>&nbsp;</td>
+						<td>&nbsp;</td>
+                        <td class="text-right" style="font-weight: bold;"><span id="span-totalRestAmt"></span></td>
+                        <td>&nbsp;</td>
+                        <td class="text-right" style="font-weight: bold;"><span id="span-totalNextPayAmt"></span></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-micro" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <form id="form-trans" method="post">
+        <div class="modal-dialog">
+            <form id="modal-form" method="POST">
+                <div class="modal-content" id="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="modal-title">确认终止</h4>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                    </div>
+                    <div id="modal-footer-wrapper">
+                    </div>
+                </div>
+            </form><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    </form>
+</div><!-- /.modal -->
+
+
+<div class="modal fade modal-micro" id="confirm-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">确定?</h4>
+          </div>
+          <div class="modal-body" >
+            <h4 id="confirm-content">请核对您的转让信息，无误请点击<span style="color:#F79032">确定</span></h4>
+			<div class="confirm-wrapper">
+                <p>融资编号：<span id="confirm-packet-id"></span></p>
+                <p>项目简称：<span id="confirm-packet-name"></span></p>
+                <p>卖出价格：<span id="confirm-packet-price"></span></p>
+                <p>转让手续费：<span id="confirm-packet-fee"></span></p>
+                <p class="text-danger text-imt">转让盈亏：<span id="confirm-packet-money"></span></p>
+			</div>
+          </div>
+          <div class="modal-footer">
+			<button type="button" class="btn btn-mf-primary" id="sell-packet-confirm">确定</button>
+            <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->	 
+
+<div  id="details-wrapper" style="display:none" class="form-wrapper">
+</div>

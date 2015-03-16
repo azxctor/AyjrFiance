@@ -1,0 +1,113 @@
+<div id="investorinfo-person" class="info-person $!hasPrefix" data-prefix="$!investorPrefix">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">授权服务中心</label>
+				<div class="col-sm-8">
+					#if (!$!investorInfo.registerByAgentScenario)
+						<span class="hidden-form-control" name="auth_center.desc">$!investorInfo.authCenter.desc</span>
+						<select class="form-control auth_center" name="auth_center.userId"  #if($investorInfo.fixedAgency) disabled #end value="$!investorInfo.authCenter.desc">
+                            <option value=""></option>
+							#foreach($option in $serviceCenterList)
+								<option value="$!option.agencyApplication.userId" #if($!investorInfo.authCenter.userId == $!option.agencyApplication.userId) selected #end >$!option.serviceCenterDesc</option>
+							#end
+						</select>
+					#else
+						<span class="hidden-form-control" name="auth_center.desc" style="display:block">$!investorInfo.authCenter.desc</span>
+					#end
+					#* 
+					<input class="form-control auth_center" type="text" name="auth_center.desc" #if($investorInfo.fixedAgency) disabled #end
+						 id="auth-center" data-provide="typeahead" data-ignore="true" autocomplete="off" value="$!investorInfo.authCenter.desc" />
+						
+					<input type="hidden" name="auth_center.userId" id="auth-center-uid" />	 
+					<label  class="invalid" style="display:none" id="auth-center-msg">请从列表中选择授权服务中心 !</label>
+					*#
+					<div class="alert alert-warning alert-auth-center" style="margin-bottom:0;clear:left;">
+                            <i class="fa fa-exclamation-triangle fa-lg"></i>
+                            <strong>注：服务中心是安益金融授权的服务网点，我们建议您就近选择一家服务中心，以便为您提供更好的服务</strong>
+    				</div>
+				</div>
+			</div>
+		</div>
+
+##	 	#if ($!investorInfo.registerByAgentScenario) 
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">经办人</label>
+					<div class="col-sm-8">
+						<span class="hidden-form-control" name="agentName"></span>
+						#if (!$!investorInfo.registerByAgentScenario)
+							<input maxlength="25" type="text" class="form-control agent" name="agentName" #if($investorInfo.fixedAgency) disabled #end/>
+      					#else
+							#if ($!investorInfo.fixedStatus.agentNameFixed)
+								<input maxlength="25" type="text" class="form-control agent" name="agentName" disabled />
+							#else
+								<input maxlength="25" type="text" class="form-control agent" name="agentName"/>
+							#end
+						#end
+					</div>
+				</div>
+			</div>
+##       #end 
+
+		<div class="col-sm-6" style="display:none;">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">受理人</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="agent"></span>
+					<input maxlength="25" type="text" class="form-control agent" name="agent" #if($investorInfo.fixedAgency) value="$!investorInfo.agent" disabled #end>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">会员申请表下载</label>
+				<div class="col-sm-8">
+					#*<a href="$link.contextPath/assets/doc/applicationform.doc">点击下载</a>*#
+					<a href="$link.contextPath/web/downloadFile/applicationform2">点击下载</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">会员申请表第一页</label>
+				<div class="col-sm-8">
+					<img name="application_img_first_url" class="hidden-form-control"></img>  
+					<div class="file-upload" #if ($!investorInfo.fixedStatus.applicationFormFixed) data-disabled="true" #end id="investor_application_img_first" name="application_img_first" data-validate="{docextension:'jpg,jpeg,png,gif,pdf,doc,docx'}"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">会员申请表第二页</label>
+				<div class="col-sm-8">
+					<img name="application_img_second_url" class="hidden-form-control"></img>  
+					<div class="file-upload" #if ($!investorInfo.fixedStatus.applicationFormFixed) data-disabled="true" #end id="investor_application_img_second" name="application_img_second" data-validate="{docextension:'jpg,jpeg,png,gif,pdf,doc,docx'}"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	#if($investorInfo.hasLevel())
+    	<div class="row">
+    		<div class="col-sm-6">
+    			<div class="form-group">
+    				<label class="col-sm-4 control-label required">会员等级</label>
+    				<div class="col-sm-8">
+    					<span class="hidden-form-control" name="investorLevel.text"></span>
+						<select type="text" disabled
+        						class="form-control" name="investorLevel.code">
+        						#foreach($option in $investorLevelList)
+        							<option value="$option.code">$option.text</option>
+        						#end
+                        </select>
+    				</div>
+    			</div>
+    		</div>
+            <div class="col-sm-6"></div>
+        </div>
+	#end
+</div>

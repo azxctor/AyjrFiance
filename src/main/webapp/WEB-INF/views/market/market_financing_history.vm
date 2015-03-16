@@ -1,0 +1,57 @@
+<link href="$link.contextPath/assets/css/page/market/market_financing_history.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/market/market_financing_history.js" type="text/javascript"></script>
+<div class="search-wrapper" id="search-wrapper">
+
+
+    <div class="col-xs-12 info-panel">
+        <div class="col-xs-2">
+            <label class="control-label">最近一周</label>
+            <input type="radio" name="period" checked="checked" value="ONEWEEK">
+        </div>
+        <div class="col-xs-2">
+            <label class="control-label">最近两周</label>
+            <input type="radio" name="period" value="TWOWEEK">
+        </div>
+        <div class="col-xs-2">
+            <label class="control-label">最近一个月</label>
+            <input type="radio" name="period" value="ONEMONTH">
+        </div>
+        <div class="col-xs-2">
+            <label class="control-label">全部</label>
+            <input type="radio" name="period" value="ALL">
+        </div>
+
+        <div class="col-xs-2">
+                <button class="btn btn-mf-primary" id="btn-search-history"><i class="fa fa-search"></i> 查询</button>
+        </div>
+        #if($!{canPutBigScreen})
+        <div class="col-xs-2">
+        		<a href="$link.contextPath/web/market/financing/history/bigscreen" target="_blank" title="为获得较佳的投影效果，建议调整电脑分辨率到1024*768。" class="btn btn-mf-primary"><i class="fa fa-play"></i> 大屏预览</a>
+        </div>
+        #end
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-wrapper" id="table-wrapper">
+            <table  class="packet-manage-table" id="packet-manage-table">
+                <thead>
+                <tr>
+                    <th data-mData="id">编号</th>
+                    <th data-mRender="_fnflag" data-fnCreatedCell="_fnaipflag" style="min-width: 110px;" data-bSortable="false">项目名称</th>
+                    <th data-mRender="_fnrenderButton4" data-mData="product.riskLevel.text" style="min-width: 65px;">融资项目级别</th>
+                    <th data-mData="product.warrantyType.text" data-bSortable="false">风险保障</th>
+                    <th data-mData="product.ratePercentage">年利率</th>
+                    <th data-mRender="_fndetailButton3" data-mData="packageQuotaStr" style="min-width: 65px;">融资额（元）</th>
+                    <th data-mData="product.term">融资期限</th>
+                    <th data-mData="subscribeStartTimeStr">起始时间</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

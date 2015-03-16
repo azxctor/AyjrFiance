@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/packet_repay_search.css">
+<script src="$link.contextPath/assets/js/page/packet/month_report.js" type="text/javascript"></script>
+<style>
+	.modal-body{
+		position:relative;
+	}
+	.datepicker{
+		
+	}
+</style>
+<div id="main-wrapper">
+<div id="search-area" class="row">
+	<form id="main-form" action="$link.contextPath/web/report/getinvestormonthreport" method="post">
+    	    	
+    	<div class="col-sm-3">
+    		<label>关键字</label>
+    		<div class="full-oqp">
+    			<input type="text" name="keyWord" class="form-control" placeholder="输入交易账号模糊查询..."/>
+    			
+            </div>	
+        </div>
+        <div class="col-sm-2">
+    		<label >状态</label>
+    		     <div class="full-oqp">
+    					<select  class="form-control" name="applicationStatus">
+    					 <option value="NULL">全部</option>
+    						 #foreach($!memeberStatus in $!memeberStatusList)    						 
+                             <option value=$!{memeberStatus.code}>$!{memeberStatus.text}</option>
+                            #end
+        				</select>
+                 </div>
+        </div>
+        <div class="col-sm-2">
+        	<label style="width:100%">&nbsp;</label>
+        	<div>
+                <a  class="btn btn-mf-primary" id="btn-search"><i class="fa fa-search"></i>查询</a>
+            </div>	
+        </div>
+    </form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="main-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>	
+</div>
+<span class="id-wrapper hide"></span>
+<span class="month-wrapper hide"></span>
+
+
+
+<!-- Modal -->
+<div class="modal fade modal-micro" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+		<form id="modal-form" method="POST">
+        <div class="modal-content" id="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modal-title">选择日期</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+				 <select id="query-year">
+				 	<option value="2014">2014</option>
+				 </select>
+				  <select id="query-month">
+				  	<option value="01">01</option>
+	 
+				  						
+				 </select>
+					 <a  class="btn btn-mf-primary" id="btn-search-month"><i class="fa fa-search"></i>查询</a>
+
+            </div>
+
+        </div>
+        </form><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

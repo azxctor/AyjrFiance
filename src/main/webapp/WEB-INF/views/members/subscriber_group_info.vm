@@ -1,0 +1,128 @@
+<div class="modal fade modal-micro" id="configModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+   <form class="form-horizontal $!basicMode" role="form" id="subscriber-group-form"
+		method="POST" 
+		action="$link.contextPath/web/subscriber/groupinfo/save">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				  <h4 class="modal-title" id="myModalLabel">新增</h4>
+      </div>
+      <div class="modal-body">
+		 <div id="baseinfo">
+			<div class="row">
+						<div class="form-group">
+							<label class="col-sm-2 control-label required">组名称</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="group-name" name="groupName"  maxlength="100" />
+							</div>
+						</div>
+			</div>
+				
+			<div class="row">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">描述</label>
+							<div class="col-sm-9">
+                                <textarea class="form-control" name="groupDescribe" id="group-desc"  maxlength="255" ></textarea>
+							</div>
+						</div>
+						<input type="hidden" id="group-id">
+			</div>	
+			
+			<div class="row">
+				<div name="renderUser" id="renderUser" data-error-prop="true"></div>
+			</div>
+		
+        </div>
+		<!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist" id="add-tab">
+                      <li class="active"><a href="#singal-add" role="tab" data-toggle="tab">单个添加</a></li>
+                      <li><a href="#batch-add" role="tab" data-toggle="tab">批量添加</a></li>
+                    </ul>
+		 <!-- Tab panes -->
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="singal-add">
+							<div class="row" style="position:relative">
+			    <div class="col-md-5">
+					<div id="serch">
+        						<select class="search-type">
+        							<option value="investorName">姓名</option>
+									<!-- <option value="accountNo">交易账号</option>				
+        							<option value="serviceCenterName">授权服务中心</option> -->
+                                </select>	
+        						<input name="investorName" placeholder="" class="inner-left-input"/><a class="btn btn-default inner-left-btn" id="serchbt">查询</a>
+        					</div>
+        					
+        					<table cellpadding="0" cellspacing="0" border="0" class="dataTable" id="leftTable" width="100%">
+            					<thead>
+        							<tr>
+            							<th data-mData="userId" data-mRender="_fnRenderBtn1" data-bSortable="false"><input type="checkbox" class="select-all"  data-tar="#leftTable"></th>
+            							<th data-mData="userName"  data-bSortable="false" style="width: 80px;">组员</th>
+            							<th data-mData="accountNo"  data-bSortable="false">交易账号</th>
+            							<th data-mData="authorizedCenterName" data-bSortable="false">授权服务中心</th>
+                                        <th data-mData="level" data-bSortable="false">等级</th>
+            						</tr>
+            					</thead>
+            					<tbody>
+            						
+            					</tbody>
+            				</table>
+                </div>
+    			<div class="v-center">
+    				<div>
+    					<a class="btn btn-mf-primary" id="go-right">></a>
+    				</div>
+    				<div>
+    					<a class="btn btn-mf-primary"  id="go-left"> <</a>
+    			    </div>
+    			</div>
+    		
+    			
+    			<div class="col-md-5 col-md-offset-2" >
+    				<table cellpadding="0" cellspacing="0" border="0" class="dataTable" id="rightTable" width="100%">
+    					<thead>
+							<tr>
+    							<th><input type="checkbox" class="select-all" data-tar="#rightTable"></th>
+    							<th style="width: 80px;">组员</th>
+    							<th>交易账号</th>
+    							<th>授权服务中心</th>
+    							<th>等级</th>
+    						</tr>
+    					</thead>
+    					<tbody>
+						
+    					</tbody>
+    				</table>
+    			  </div>
+                </div>
+			 </div>
+                      <div class="tab-pane" id="batch-add">
+							<div class="row">
+								<div class="col-sm-6">
+        							<select class="form-control auth_center" name="auth_center.userId"  #if($investorInfo.fixedAgency) disabled #end value="$!investorInfo.authCenter.desc">
+                                        <option value=""></option>
+            							 #foreach($option in $serviceCenterList)
+            								<option value="$!option.agencyApplication.userId" #if($!investorInfo.authCenter.userId == $!option.agencyApplication.userId) selected #end >$!option.serviceCenterDesc</option>
+            							 #end
+        							</select>
+        							
+        							<a  id="addsc2group" class="btn btn-mf-primary pull-right">加入定投组</a>
+                                </div>	
+								
+								<div class="col-md-6">
+									<div id="sc-area" class="ac-area clearfix">
+									</div>	
+                                </div>	
+                            </div>	
+					  </div>
+                    </div>
+			
+       </div>
+     <div class="modal-footer">
+		<a  class="btn  btn-mf-primary btn-confirm">提交</a>
+		<button type="button" class="btn btn-mf-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div><!-- /.modal-content -->
+    </form>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

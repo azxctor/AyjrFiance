@@ -1,0 +1,96 @@
+#print-iou-content {
+	font-size:13px;
+}
+.title {
+	text-align:center; 
+	font-size: 20px;
+	font-weight: 700;
+}
+.title-16 {
+	text-align:center; 
+	font-size: 16px;
+	font-weight: 700;	
+	/* margin-bottom: 30px; */
+	width: 618px;
+}
+.notitle-17 {
+	text-align:center; 
+	font-size: 17px;
+	font-weight: 700;
+}
+.type {
+	float:left; 
+	font-size:40px; 
+	font-weight: 700;
+	margin-top: -40px;
+}
+.logo {
+	width: 75px;
+	float: right;
+	margin-top: -33px;
+	margin-bottom:5px;
+}
+.logo-left {
+	width: 75px;
+	float: left;
+	margin-top: 0;
+	margin-bottom:5px;
+}
+.debt-id {
+	float: right;
+	margin-top: -40px;
+}
+td {
+	padding:7px;
+}
+text-center {
+	text-align: center;
+}
+.ma-10 {
+	margin:10px;
+}
+.ma-r50 {
+	margin-right:50px;
+}
+.ma-r30 {
+	margin-right: 30px;
+}
+.ma-r15 {
+	margin-right: 15px;
+}
+.ma-l15 {
+	margin-left: 15px;
+}
+.ma-b7 {
+	margin-bottom:7px;
+}
+.ft-r {
+	float:right;
+}
+.pa-10 {
+	padding:10px 0;
+}
+.pa-lr15 {
+	padding:0 15px;
+}
+.wt-p15 {
+	width:15%;
+}
+.wt-p10 {
+	width:10%;
+}
+.wt-p5 {
+	width:5%;
+}
+.wt-p100 {
+	width:100%;
+}
+.wt-p30 {
+	width:30%;
+}
+.ht-50 {
+	height:50px;
+}
+.ma-t50 {
+	margin-top:90px;
+}

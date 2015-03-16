@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/financing_cost_statistics.css">
+<script src="$link.contextPath/assets/js/page/packet/financing_cost_statistics.js" type="text/javascript"></script>
+<div id="main-wrapper">
+<div id="search-area" class="row">
+	<form id="finance-statistics-form">
+    	<div class="col-sm-2">
+    		<label>签约起止日期</label>
+    			<div class="input-group">
+                        <input type="text" value="$!selectDate" name="startDate" id="search-start-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+    	
+    	<div class="col-sm-2">
+    		<label>&nbsp;</label>
+    			<div class="input-group">
+                        <input type="text" value="$!selectDate" name="endDate" id="search-end-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+    	<div class="col-sm-4">
+    		<label>关键字</label>
+    		<div class="full-oqp">
+    			<input type="text" name="keyWord" class="form-control" placeholder="输入融资人、融资包编号、简称模糊搜索"/>
+            </div>	
+        </div>
+        <div class="col-sm-2">
+        	<label style="width:100%">&nbsp;</label>
+        	<div>
+                <a  class="btn btn-mf-primary" id="member-audit-btn"><i class="fa fa-search"></i>查询</a>
+            </div>	
+        </div>
+    </form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="member-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>	
+</div>

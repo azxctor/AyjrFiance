@@ -1,0 +1,77 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:repository="http://www.springframework.org/schema/data/repository"
+	xsi:schemaLocation="
+	 http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/jdbc
+     http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd
+     http://www.springframework.org/schema/data/jpa
+     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+     http://www.springframework.org/schema/data/repository
+     http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd">
+
+<!-- 	<jdbc:embedded-database id="dataSource"> -->
+<!-- 		<jdbc:script location="classpath:test/database/hsqldb-schema.sql" /> -->
+<!-- 		<jdbc:script location="classpath:test/database/hsqldb-dataload.sql" /> -->
+<!-- 	</jdbc:embedded-database> -->
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@172.17.3.18:1521:orcl" />
+		<property name="username" value="ayjr_dev" />
+		<property name="password" value="ayjrAbc " />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="3" />
+		<property name="maxIdle" value="10" />
+		<property name="minIdle" value="5" />
+	</bean>
+	
+	<bean id="jbpmDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@172.17.3.33:1521:orcl" />
+		<property name="username" value="dev_jbpm" />
+		<property name="password" value="kmfexPWabc" />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="3" />
+		<property name="maxIdle" value="10" />
+		<property name="minIdle" value="5" />
+	</bean>	
+
+	<jpa:repositories base-package="com.hengxin.platform"
+		entity-manager-factory-ref="entityManagerFactory">
+		<repository:include-filter type="regex"
+			expression=".*\.[^.]*Repository" />
+	</jpa:repositories>
+
+	<tx:annotation-driven />
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.hengxin.platform" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="ORACLE" />
+				<property name="showSql" value="true" />
+<!-- 				<property name="generateDdl" value="true" /> -->
+			</bean>
+		</property>
+		<property name="persistenceUnitName" value="default" />
+	</bean>
+</beans>

@@ -1,0 +1,7 @@
+<a href="$link.contextPath/web/users/create">Create</a>
+
+#foreach( $user in $users )
+	<p>
+		<a href="$link.contextPath/web/users/$!user.username">$!user.username</a>
+	</p>
+#end

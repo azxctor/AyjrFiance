@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="ZH">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/page/prototype/templ.css">
+	<link href="../css/page/prototype/product/common_detail.css"
+	rel="stylesheet">
+    <style>
+    	.container {
+    		padding-top: 58px;
+			width: 100%;
+			height: 100%;
+			background: #e6e6ee;
+    	}
+    	.browsers {
+    		text-align:center;
+    		margin:150px auto;		
+    	}
+    	.browsers ul {
+    		width:70%;
+    		margin:70px auto;
+    	}
+    	.browsers ul li {
+    		width:200px;
+    		float:left;
+    		list-style-type:none;
+    	}
+    	.browsers ul li img {
+    		width:120px;
+    	}
+    	img:hover {
+    		margin-top:10px;
+    	}
+    </style>
+    <script type="text/javascript" src="../../../js/require.js"></script>
+    <!-- Global variable module which will take variables from sever side -->
+    <script type="text/javascript">
+        define('global', {
+            context: '../../../../'
+        })
+    </script>
+    <script type="text/javascript" src="../js/base.js"></script>
+</head>
+<body>
+<!--页面顶部-->
+<div class="top">
+    <img class="top-logo" src="../img/templ_img/logo.jpg">
+    <div class="top-time">
+        <span class="hours">18:35</span>
+            <span class="dates">
+                <span class="date">04-15</span>
+                <span class="week">TUE</span>
+            </span>
+    </div>
+    <div class="top-logout">
+        <i class="fa fa-user"></i> <span class="user-name">Nick Jones </span> <a href="javascript:void(0);" >退出</a>
+    </div>
+</div>
+
+<div class="container">
+	<div class="browsers">
+		<h1>小微金融目前只支持以下浏览器</h1>
+		<ul>
+			<li><a href="https://www.google.com/chrome/" target="_blank"><img src="../img/chrome.png" class=""/></a><p>Chrome</p></li>
+			<li><a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank"><img src="../img/firefox.png" class=""/></a><p>Firefox</p></li>
+			<li><a href="https://www.apple.com/safari/" target="_blank"><img src="../img/Safari.png" class=""/></a><p>Safari</p></li>
+			<li><a href="http://www.microsoft.com/zh-cn/download/internet-explorer-9-details.aspx" target="_blank"><img src="../img/IE.png" class=""/></a><p>Internet Explorer<br/><small>(9.0及以上)</small></p></li>
+		</ul>
+	</div>
+</div>
+</body>
+
+
+</html>

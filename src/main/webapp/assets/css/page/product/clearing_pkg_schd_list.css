@@ -1,0 +1,18 @@
+#form-repayment-search {
+	margin-bottom: 20px;
+}
+#form-repayment-search button {
+	margin-left:20px;
+}
+.void-label{
+	display:block;
+}
+.col-xs-6.custom-left{
+	padding-left: 0;
+}
+
+#search-start-date,
+#search-end-date{
+     cursor: pointer;
+     background: #fff;
+}

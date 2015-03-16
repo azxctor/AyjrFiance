@@ -1,0 +1,260 @@
+/* 忙鈩⒙┾偓拧忙篓隆氓录锟矫β犅访ヂ硷拷 */
+form .hidden-form-control,
+form .show-form-control{
+	display:none;
+	width: 100%;
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border-radius: 2px;
+	/* border-bottom:1px solid #732808; */
+}
+img[src=""] {
+   display: none !important;
+}
+form .show-form-control{
+	display:block;
+	text-indent: 10px;
+	text-overflow:ellipsis;
+	overflow: hidden;
+}
+form .hidden-form-control{
+	text-indent: 10px;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	white-space:nowrap;
+}
+
+/**disabled**/
+form .hidden-form-control[disabled]{
+    cursor: not-allowed;
+    background-color: #EEE;
+    opacity: 1;
+}
+
+form .data-binder{
+	width:100%茂录鈥�
+}
+
+form img.hidden-form-control,
+form img.show-form-control{
+	border-bottom:none;
+	cursor:pointer;
+	width:80px;
+	height:60px;
+	height:auto;
+}
+.row-button{
+	margin-top:10px;
+	padding-top: 10px;
+	border-top:1px dashed #ccc;
+}
+form .form-btn-save,
+form .form-btn-reset,
+form .form-btn-submit,
+form .form-btn-edit
+{
+	width:100%;
+	height:100%;
+	color: white;
+}
+
+form .form-btn-save:hover,
+form .form-btn-reset:hover,
+form .form-btn-submit:hover,
+form .form-btn-edit:hover{
+	background-color: #c27724;
+	border-color: #a9651a;
+	color: white;
+}
+
+form.form-horizontal input,
+form.form-horizontal select,
+form.form-horizontal textarea{
+	border: 1px solid #999;
+	border-radius:0;
+}
+
+form.form-horizontal label {
+	color:#646464;
+}
+form.form-horizontal label[class="invalid"]{
+	position:relative;
+	float:left;
+}
+@media (min-width:768px){
+	div.no-padding-right {
+		padding-right: 0px;
+	}
+	div.no-padding-left {
+		padding-left: 0px;
+	}
+	div.col-bigger{
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	.form-group .no-side-padding{
+		padding-right: 0px;
+	}
+}
+@media (max-width:768px){
+	div.col-bigger{
+		padding-right: 0px;
+		padding-left: 0px;
+		margin-top: 5px;
+	}
+	div.no-padding-left {
+		padding-left: 0px;
+		margin-top: 5px;
+	}
+	div.no-padding-right {
+		padding-right: 0px;
+		margin-top: 5px;
+	}
+}
+
+.form-btn-save,
+.form-btn-reset,
+.form-btn-submit,
+.form-btn-edit {
+	background-color: #a9651a;
+	border-color: #E65E12; 
+	color: white;
+	margin-top:5px;
+	font-weight: bold;
+	font-size: 13px;
+	border: 0px;
+}
+
+form label.required:before{
+	content:"*";
+	color:red;
+}
+
+form .file-upload{
+	width: 100%;
+	height: 30px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border:1px solid #999;
+	border-radius:0;
+}
+
+/* 氓锟铰幻β∶ヂ硷拷忙聽路氓录锟�*/
+form.view-mode .hidden-form-control{
+	display:block;
+}
+form.view-mode label.required:before{
+	content:"";
+}
+
+form.view-mode label.view-mode-required:before{
+	content:"*";
+	color:red;
+}
+
+form.view-mode .form-control,
+form.view-mode .file-upload,
+form.view-mode .form-btn-save,
+form.view-mode .form-btn-reset,
+form.view-mode .form-btn-submit,
+form.view-mode .select2-container
+{
+	display:none !important;
+}
+
+form.form-horizontal i.form-control-feedback{
+	position: absolute;
+	display: block;
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	z-index: 100;
+	top: 2px;
+	right: 12px;
+}
+.search-area input,
+.search-area select{
+	border-color: #999;
+	/* background-color: #CABAAB;
+	color:#302218; */
+	border-radius:0;
+}
+/* .search-area a.btn{
+	border-radius:0;
+	height:34px;
+	padding:5px 24px;
+	color: #FFF;
+	background-color: #F08000;
+	border-color: #E65E12;
+} */
+.modal-btn{
+	padding: 6px 23px;
+}
+.modal-footer .btn-confirm{
+	padding-top: 4px;
+    padding-bottom: 4px;
+    color: #FFF;
+  background-color: #C27724;
+    border-color: #A9651A; 
+}
+.modal-footer .btn-confirm:hover{
+	color: #FFF;
+    background-color: #E29138;
+    border-color: #C27724;
+}
+.modal-footer .btn-cancel{
+	padding-top: 4px;
+    padding-bottom: 4px;    
+    color: #333;
+    background-color: #FFF;
+    border-color: #CECECE;
+}
+.modal-footer .btn-cancel:hover{
+	color: #333;
+    background-color: #F6F5F5;
+    border-color: #CECECE;
+}
+.inner-form-title{
+	padding-bottom: 8px;
+	border-bottom: 2px solid #E65E12;
+}
+.modal .modal-header .close{
+	color:white;
+	filter: alpha(opacity=50);
+	opacity: .5;
+}
+.modal .modal-header .close:hover{
+	filter: alpha(opacity=80);
+	opacity: .8;
+}
+.modal .modal-header .close:active{
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+.form-area{
+	background-color:#fff;
+	min-height:30px;
+	color:#555;
+}
+form .form-header{
+	margin-top:-15px;
+	margin-bottom: 10px;
+	text-indent: 15px;
+	border-bottom: 1px solid #D6B49C;
+	font-size:18px;
+	height:38px;
+	line-height:38px;
+}
+.auth-loading{
+	position: absolute;
+	right: 18px;
+	top: 3px;
+}

@@ -1,0 +1,40 @@
+
+.form-item {
+	margin-bottom: 12px;
+}
+
+.input-group .form-control{
+	height:34px !important;
+}
+
+#esw-view .btn-mf-primary,.btn-mf-default{
+	float:right;
+}
+
+.btn-mf-default{
+	margin-left:8px;
+}
+
+.control-label{
+	margin-top:5px;
+	text-align:right;
+}
+
+.fa-mobile-phone{
+	font-size:20px;
+}
+
+.no-padding{
+	padding-left:0px;
+	padding-right:0px;
+}
+.label-info{
+	height:30px;
+	line-height:30px;
+}
+
+.for-pwd{
+	float: right;
+	margin-right: 10px;
+	margin-top: 5px;
+}

@@ -1,0 +1,16 @@
+<form id="account-form" method="POST" action="$link.contextPath/web/users">
+	
+	<input class="form-control" type="text" name="username" value=""> <br/>
+	<input class="form-control" type="text" name="email" required value=""> <br/>
+	<input class="form-control" type="text" name="firstName" required value=""> <br/>
+	<input class="form-control" type="text" name="lastName" required value=""> <br/>
+	<input class="form-control" type="text" name="addr" required value=""> <br/>
+	<input class="form-control" type="text" name="zip" required value=""> <br/>
+	<input class="form-control" type="text" name="country" required value=""> <br/>
+	<input class="form-control" type="text" name="phone" required value=""> <br/>
+	<input class="form-control" type="text" name="sex" required value=""> <br/>
+	
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+	<a class="btn btn-lg btn-primary btn-block" href="./">Cancel</a>
+</form>
+<script src="$link.contextPath/assets/js/page/account/createAccount.js" type="text/javascript"></script>

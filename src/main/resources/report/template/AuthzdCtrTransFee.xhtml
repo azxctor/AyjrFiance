@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Report</title>
+<link href="resources/css/pdf.css" rel="stylesheet" type="text/css" media="print" />
+<style type="text/css">
+	@page {
+		size: landscape;
+	}
+</style>
+</head>
+<body style="font-family: 'AR PL UMing CN'">
+	<table width="100%" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr>
+				<th width="11%">会员姓名</th>
+				<th width="14%">交易账号</th>
+				<th width="13%">融资包编号</th>
+				<th width="11%">交易类型</th>
+				<th width="11%">交易日期</th>
+				<th width="11%">转让手续费</th>
+				<th width="6%">介绍人</th>
+				<th width="11%">授权服务中心</th>
+				<th width="12%">授权编号</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach{pagedData : getFees()} @if{ pagedData != empty }
+			@foreach{fee : pagedData}
+			<tr>
+				<td>@{fee.userName}</td>
+				<td>@{fee.acctNo}</td>
+				<td>@{fee.pkgId}</td>
+				<td>@{fee.trxType}</td>
+				<td>@{fee.trxDt}</td>
+				<td align="right">@{getAmtForDisplay(fee.trxAmt)}</td>
+				<td>@{fee.agentName == null ? '' : fee.agentName}</td>
+				<td>@{fee.authzdCtrName}</td>
+				<td>@{fee.authzdCtrAcctNo}</td>
+			</tr>
+			@end{} @end{} @end{}
+			
+			<tr>
+				<td colspan="4"></td>
+				<td align="right">合计：</td>
+				<td align="right">@{totalFee}</td>
+				<td colspan="3"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

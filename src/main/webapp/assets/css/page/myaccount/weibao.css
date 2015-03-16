@@ -1,0 +1,131 @@
+.detail-wrapper .info{
+	height:246px;
+}
+.detail-wrapper  .info-title{
+	font-size:22px;
+    color:#909598;
+    margin-left: 10px;
+    margin-top: 28px;
+    letter-spacing:2px;
+}
+.info-wrapper {
+	margin:0 0 26px;
+}
+.detail-wrapper  .info-title span{
+	font-weight: normal;
+	font-size: 30px;
+	color: #5f615c;
+}
+.detail-wrapper  .info-subtitle{
+	font-size:16px;
+	color:#d9a655;
+	margin-left: 10px;
+}
+
+.info-wrapper .info-left{
+    background: url(../../../img/cashbag.png) 336px 0 no-repeat;
+    background-color: #feffef;
+    height:100%;
+    border-right: 1px solid #ddd;
+}
+.info-wrapper .info-right{
+	background:#fff;
+	height:100%;
+}
+.info-wrapper .info-right-content{
+	margin-left:20px; 
+	margin-top:20px;
+}
+.info-wrapper .info-right h3{
+	margin-top:14px;
+	color:#dd772f;
+}
+.info-wrapper .info-right h4.info-right-content-his{
+	margin-top:20px;
+	display:inline-block;
+}
+.info-wrapper .info-right h3 span{
+	font-size:14px;
+	color:#000;
+}
+.info-wrapper .info-right .info-right-content-his-yuan{
+	display:inline-block;
+}
+.info-wrapper .btn-mf-primary{
+	margin-left:20px;
+	margin-top:20px;
+}
+.info-wrapper .btn-mf-default{
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+.history-wrapper {	
+	background: none repeat scroll 0 0 #FFF;
+	padding: 20px;
+} 
+.history-head {
+	border-right: 1px solid #D5D5D5;
+	text-align: center;
+	margin-top: 5px;
+}
+.history-date input{
+	height: 27px;
+	line-height: 27px;
+}
+.history-date .btn-mf-primary {
+	margin-left: 20px;
+}
+.history-wrapper .row {
+	margin-bottom: 10px;
+}
+.history-label{
+    line-height: 30px;
+    text-align: right;
+}
+
+span#total-amount{
+    font-size:39px;
+    color:#f37800;
+}
+
+span#total-profit{
+    font-size:20px;
+    color:#f37800;
+}
+.modal .col-xs-5{
+	text-align:right;
+	padding:5px;
+}
+.modal .col-xs-7{
+	padding:5px;
+}
+.modal-total-label{
+	line-height:35px;
+}
+.modal-total-amount{
+	font-size:25px;
+	color:#f37800;
+}
+#search-start-date,#search-end-date{
+    cursor:pointer;
+    background: #fff;
+}
+.col-xs-1{
+    padding:0 3px;
+    line-height:30px;
+}
+select{
+    height:25px;
+    margin-top: 4px;
+}
+
+#weibao-table #table-date{
+    width:191px !important;
+}
+.trx-gold{
+    min-width: 150px;
+}
+.trx-memo{
+    min-width: 400px;
+}

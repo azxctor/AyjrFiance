@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/member/mymessages.css">
+<script src="$link.contextPath/assets/js/page/member/mymessages.js"></script>
+<div id="content">
+	<ul class="nav nav-tabs micro-nav-tabs" role="tablist" id="message-tabs">
+	  <!--
+	  <li #if ($!{type} == 'NOTICE') class="active" #end><a href="#notice-tab" role="tab" data-toggle="tab" data-type="notice">通知</a></li>
+	  -->
+	  <li #if ($!{type} == 'M' || $!{type} == "type") class="active" #end><a href="#message-tab" role="tab" data-toggle="tab" data-type="message">消息</a></li>
+	  <li #if ($!{type} == 'T') class="active" #end><a href="#todo-tab" role="tab" data-toggle="tab" data-type="todo">待办</a></li>
+	</ul>
+
+	<div class="tab-content"> 
+	  <div #if ($!{type} == 'NOTICE') class="tab-pane active search-withNotice" #else class="tab-pane search-withNotice" #end id="notice-tab">
+	  	<div class="info-panel">
+		  	<div class="row mlr" >   
+		  	  <div class="col-sm-2">  
+	        		  <input type="text"  class="form-control" name="keyword" id="keyword-q"  placeholder="关键字"/>		
+ 	                            
+               </div>
+		  	  <div class="col-sm-1">  
+	        		   <button class="btn btn-mf-primary" id="btn-search"><i class="fa fa-search"></i> 查询</button>
+                     
+               </div>
+	           
+		  	</div>
+		  	<div class="row">
+	       	<div class="col-sm-6" id="notice-list">
+	       		<table id="notice-table" >
+	       			<thead> 
+	       				<th data-mData="_fnNoticeTitle" data-bSortable="false"></th>
+	       				<th data-mData="createTs" data-bSortable="false"></th>
+	       			</thead>
+	       			<tbody>
+	       			</tbody>
+	       		</table>
+	       		<span class="notice-list-span"><strong id="notice-hide-right"><i class="fa fa-caret-right fa-lg"></i></strong></span>
+	       	</div>
+	       	
+	       	<div class="col-sm-6" id="notice-content">
+	       		<h4>
+	       			<small></small>
+	       		</h4>
+	       		<hr>
+	       		<p></p>
+	       	</div>	
+	      </div>
+      </div>
+       
+	  </div>
+
+	   
+	  <div #if ($!{type} == 'M' || $!{type} == "type") class="tab-pane active" #else class="tab-pane" #end id="message-tab">
+	  	<div class="info-panel">
+		  	<div class="row ml">
+		  		<input id="message-selectAll" type="checkbox">&nbsp;全选
+		  		<a class="btn btn-mf-primary" id="message-read-true">标记成已读</a>
+		  		<a class="btn btn-mf-primary" id="message-read-false">标记成未读</a>
+		  		<a class="btn btn-mf-primary" id="message-remove">删除</a>
+		  	</div>
+		  	<br/>
+		  	<div class="row">
+	       	<div class="col-sm-6" id="message-list">
+	       		<table id="message-table" >
+	       			<thead>
+	       				<th data-mData="_fnCheckBox" width="65px"></th>
+	       				<th data-mData="_fnMessageTitle" data-bSortable="false"></th>
+	       				<th data-mData="createTs" data-bSortable="false"></th>
+	       			</thead>
+	       			<tbody>
+	       			</tbody>
+	       		</table>
+	       		<span class="message-list-span"><strong id="message-hide-right"><i class="fa fa-caret-right fa-lg"></i></strong></span>
+	       	</div>
+	       	<div class="col-sm-6" id="message-content">
+	       		<h4>
+	       			<small></small>
+	       		</h4>
+	       		<hr>
+	       		<p></p>
+	       	</div>	
+	      </div>
+      </div>
+	  </div>
+	  <div #if ($!{type} == 'T') class="tab-pane active" #else class="tab-pane" #end id="todo-tab">
+	  	<div class="info-panel">
+		  	<div class="row ml">
+		  		<input id="todo-selectAll" type="checkbox">&nbsp;全选
+		  		<a class="btn btn-mf-primary" id="todo-read-true">标记成已读</a>
+		  		<a class="btn btn-mf-primary" id="todo-read-false">标记成未读</a>
+		  		<a class="btn btn-mf-primary" id="todo-remove">删除</a>
+		  	</div>
+		  	<br/>
+		  	<div class="row">
+	       	<div class="col-sm-6" id="todo-list">
+	       		<table id="todo-table" >
+	       			<thead>
+	       				<th data-mData="_fnCheckBox" width="65px"></th>
+	       				<th data-mData="_fnToDoTitle" data-bSortable="false"></th>
+	       				<th data-mData="createTs" data-bSortable="false"></th>
+	       			</thead>
+	       			<tbody>
+	       			</tbody>
+	       		</table>
+	       		<span class="todo-list-span"><strong id="todo-hide-right"><i class="fa fa-caret-right fa-lg"></i></strong></span>
+	       	</div>
+	       	
+	       	<div class="col-sm-6" id="todo-content">
+	       		<h4>
+	       			<small></small>
+	       		</h4>
+	       		<hr>
+	       		<p></p>
+	       	</div>	
+	      </div>
+      </div>
+	  </div>
+	</div>
+</div>
+<span class="hide" id="hide-wrap" data-id=$!{id} data-page=$!{currentPage}>$!{type}</span>
+<!--Modal提示-->
+<div class="modal fade modal-micro" id="message-alert" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+				提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <label class="control-form" id="msg">
+                	是否确定删除？
+                </label>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-mf-primary remove" data-dismiss="modal">确定</button>
+            	<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/.modal提示-->

@@ -1,0 +1,99 @@
+<link href="$link.contextPath/assets/css/page/batch/job_work_list.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/batch/job_work_list.js" type="text/javascript"></script>
+<div id="day-end-processe">
+	<div class="row ma-b10">
+		<div class="col-sm-8">
+        	<form class="form-inline" role="form" id="batch-task" method="post" action="$link.contextPath/web/$!workDto.retUrl">
+              <div class="form-group ma-r25">
+                <label for="taskGroupId">任务组</label>
+                <select class="form-control" name="taskGroupId" id="task-group-id">
+        			#foreach($groupId in $!{tskGroupOptions})
+        			<option value="$!{groupId.code}" #if($!{workDto.taskGroupId}==$!{groupId.code}) selected #end>$!groupId.text </option>
+        			#end
+        		</select>	
+              </div>
+              <div class="form-group ma-r25">
+                <label for="workDate">工作日期</label>
+                <div class="input-group date-select">
+                    <label class="sr-only" id="now-date">$!{date.format($!workDto.currentWorkDate)}</label>
+            		<input type="text" class="form-control" id="work-date" name="workDate" value="$!{date.format($!workDto.workDate)}" />
+            		<label class="input-group-addon input-fa"><i class="fa fa-calendar"></i></label>
+            	</div>
+              </div>
+              <button type="submit" class="btn btn-mf-primary" id="batch-task-search">查询</button>
+            </form>
+        </div>
+    	<div class="col-sm-3 col-sm-offset-1">
+    	    <label class="sr-only" id="create-enable">$!{workDto.createBtnEnable}</label>
+    		<button type="button" class="btn btn-mf-primary" id="end-day-task-create" data-toggle="modal" data-target="#create-modal">创建任务</button>
+            <label class="sr-only" id="exec-enable">$!{workDto.execBtnEnable}</label>
+    		<button type="button" class="btn btn-mf-primary" id="end-day-task-execution" data-toggle="modal" data-target="#execution-modal">执行任务</button>
+        </div>
+    </div>
+	<table id="batch-task-list">
+		<thead>
+			<tr>
+			    <th data-mData="jobId">任务编号</th>
+				<th data-mData="jobName">任务名称</th>
+				<th data-mData="seqNum">执行顺序</th>
+				<th data-mData="startTime">开始时间</th>
+				<th data-mData="endTime">结束时间</th>
+				<th data-mData="execStatus">执行结果</th>
+				<th data-mData="execResult">备注信息</th>
+			</tr>
+		</thead>
+		<tbody>
+		   #foreach($item in $workDto.list)
+		    <tr>
+		       <td>$!{item.jobId}</td>
+		       <td>$!{item.jobName}</td>
+		       <td>$!{item.seqNum}</td>
+			   <td>$!{item.startTime}</td>
+			   <td>$!{item.endTime}</td>
+		       <td>$!{item.execStatus.text} <span class="extc-reslut-fa">#if($!{item.execStatus.code} == "S") <i class="fa fa-check-circle color-s"></i> #elseif($!{item.execStatus.code} == "F") <i class="fa fa-times-circle color-f"></i> #elseif($!{item.execStatus.code} == "R") <i class="fa fa-minus-circle color-r"></i> #elseif($!{item.execStatus.code} == "E")<i class="icon-spinner icon-spin color-e"></i> #end </span> </td>
+		       <td>$!{item.execResult}</td>
+		    </tr>
+		   #end 
+		</tbody>
+	</table>
+</div>
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="execution-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="project-modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body" id="project-modal-body">
+					是否确定执行日终任务？
+				</div>
+				<div class="modal-footer" id="project-modal-footer">
+					<button type="button" class="btn btn-mf-primary" id="execute-btn-execution">确定</button>
+					<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->
+
+
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="create-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="project-modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body" id="project-modal-body">
+					是否确定创建任务？
+				</div>
+				<div class="modal-footer" id="project-modal-footer">
+					<button type="button" class="btn btn-mf-primary" id="create-btn-execution">确定</button>
+					<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->

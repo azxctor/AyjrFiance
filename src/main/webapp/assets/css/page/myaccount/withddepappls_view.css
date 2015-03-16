@@ -1,0 +1,73 @@
+.row-withdraw-table{
+	margin-top:15px;
+	border: 1px solid #E1E1E1;
+	background-color:#FFF;
+	padding-bottom:10px;
+	margin-left:0;
+	margin-right:0;
+}
+
+.title-record{
+	border-bottom:1px solid #D6B49C;
+}
+
+.search-withdraw{
+	padding:15px;
+}
+.search-withdraw .control-label{
+	line-height:30px;
+}
+
+#start-date,#end-date{
+	cursor:pointer;
+	background-color:#fff;
+	/* text-indent:10px; */
+}
+
+#btn-search{
+	width:100px;
+}
+
+.btn-group button{
+	width:33%;
+}
+.btn-group{
+	width:100%;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+#trxAmt{
+	color:#f37800;
+}
+.pa-t5 {
+	padding-top:5px;
+}
+.text-align-right {
+	text-align: right;	
+}
+.tfoot{
+	background: #E6E5EA;
+	border-top: solid 3px #F79032;
+	font-weight: bold;
+}
+#print-withddepappls-table {
+	  border:1;
+	  margin:0;
+	  border-collapse:collapse;
+	  border-spacing:0; 
+      width:100%;    
+      font-size:10px; 
+}
+#print-withddepappls-table tr td {
+    border-collapse:collapse;
+    padding:0;
+    padding-left:1px;
+	padding-right:1px;
+}
+#print-withddepappls-table tr th {
+    border-collapse:collapse;
+    padding:0;
+    padding-left:1px;
+	padding-right:1px;
+}

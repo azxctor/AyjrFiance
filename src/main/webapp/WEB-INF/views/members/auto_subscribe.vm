@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/member/auto_subscribe.css">
+#if($tab)
+	<ul id="auto_sub_tab" class="nav nav-tabs micro-nav-tabs">
+	  <li class="active"><a href="#Current" data-toggle="tab">已生效申购</a></li>
+	  <li><a href="#Pending"  data-toggle="tab">待生效申购</a></li>
+	</ul>
+	<div class="tab-content micro-tab-content">
+	    <div class="tab-pane active" id="Current">
+	    	#set($dto = $formalParam)
+	    	#set($formId=1)
+			#parse("members\auto_subscribe_form.vm")
+		</div>
+	    <div class="tab-pane" id="Pending">
+	    	#set($dto = $pendingParam)
+	    	#set($formId=2)
+			#parse("members\auto_subscribe_form.vm")
+		</div>
+	</div>
+#else
+	#set($formId=1)
+	#if ($pendingExist)
+		#set($dto = $pendingParam)
+		#parse("members\auto_subscribe_form.vm")
+	#elseif ($formalExist)
+		#set($dto = $formalParam)
+		#parse("members\auto_subscribe_form.vm")
+	#end
+#end
+
+<script src="$link.contextPath/assets/js/page/member/auto_subscribe.js"></script>

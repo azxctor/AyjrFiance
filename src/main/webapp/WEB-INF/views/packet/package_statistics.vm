@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/package_statistics.css">
+<script src="$link.contextPath/assets/js/page/packet/package_statistics.js" type="text/javascript"></script>
+<div id="search-area" class="row">
+	<form id="packet-statistics-form" action="$link.contextPath/web/report/" method="post">
+		<div class="col-sm-2">
+    		<label>关键字</label>
+    		<div class="full-oqp">
+    			<input type="text" name="keyWord" class="form-control" placeholder="输入关键字模糊查询..."/>
+            </div>	
+        </div>
+    	<div class="col-sm-2">
+    		<label>签约时间</label>
+    			<div class="input-group">
+                        <input type="text" name="singStartDate" value=${selectDate} id="sign-start-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+    	<div class="col-sm-2">
+    		<label>&nbsp;</label>
+    			<div class="input-group">
+                        <input type="text" name="signEndDate" value=${selectDate} id="sign-end-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+		<div class="col-sm-2">
+    		<label>申购开始时间</label>
+    			<div class="input-group">
+                        <input type="text" name="startDate" value=${selectDate} id="subscripte-start-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+    	<div class="col-sm-2">
+    		<label>&nbsp;</label>
+    			<div class="input-group">
+                        <input type="text" name="endDate" value=${selectDate} id="subscripte-end-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+        <div class="col-sm-2">
+        	<label style="width:100%">&nbsp;</label>
+        	<div>
+                <a  class="btn btn-mf-primary" id="statistics-search-btn"><i class="fa fa-search"></i>查询</a>
+            </div>	
+        </div>
+    </form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="statistics-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>	

@@ -1,0 +1,219 @@
+<div class="info-panel">
+  <div class="row">
+   <div class="sub-title col-sm-12">基本信息</div>
+	<div class="basic-info-context">
+      <div class="col-sm-6">
+    	<div class="row">
+			<label class="sr-only" id="product-id">$!{detailsDto.productId}</label>
+    		<label class="col-sm-5 control-label">融资包编号</label>
+    		<div class="col-sm-7">
+    			<span id="package-id">$!{detailsDto.id}</span>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<label class="col-sm-5 control-label" >融资包金额</label>
+    		<div class="col-sm-7">
+                <span id="finance-amount">$!number.formatMoney($!{detailsDto.packageQuota})元</span>
+    		</div>
+    	</div>
+		<div class="row">
+    		<label class="col-sm-5 control-label" >交易账号</label>
+            <div class="col-sm-7">
+                <span>$!{detailsDto.accountNo}</span>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<label class="col-sm-5 control-label" >年利率</label>
+    		<div class="col-sm-7">
+                <span>$!{detailsDto.rateString}</span>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<label class="col-sm-5 control-label" >还款方式</label>
+    		<div class="col-sm-7">
+                <span>
+					$!{detailsDto.payMethod.text}
+				</span>
+    		</div>
+    	</div>
+	    	#if( $sec.canUpdateProdServInfo)
+	    	#else
+	    	<div class="row">
+	    		<label class="col-sm-5 control-label" >担保机构</label>
+	    		<div class="col-sm-7">
+                     <span>$!{detailsDto.wrtrNameShow}</span>
+	    		</div>
+	    	</div>
+	    	#end
+		<div class="row">
+    		<label class="col-sm-5 control-label" >融资项目级别</label>
+    		<div class="col-sm-7">
+				<span>$!{detailsDto.productLevel.textShort}</span>
+    		</div>
+    	</div>
+    		<div class="row">
+                    <label class="col-sm-5 control-label" >担保机构营业执照</label>
+    				<div class="col-sm-7">
+	            	#if($!{detailsDto.guaranteeLicenseNoImgUrl}!="")
+                        #if($stringUtil.isPdf($!{detailsDto.guaranteeLicenseNoImgUrl}))
+                              <img class="hidden-form-control image-control " width="80" height="60" src="$link.contextPath/assets/img/pdf.jpg" data-pdfpath="$!{detailsDto.guaranteeLicenseNoImgUrl}" />
+                        #else
+                        <img class="hidden-form-control image-control" width="80" height="60" src="$!{detailsDto.guaranteeLicenseNoImgUrl}" />
+                        #end
+                    #end
+                    </div>
+            </div>
+      </div>
+      <div class="col-sm-6">
+    	<div class="row">
+    		<label class="col-sm-5 control-label" >融资包简称</label>
+            <div class="col-sm-7">
+                <span>$!{detailsDto.packageName}</span>
+    		</div>
+    	</div>
+		<div class="row">
+    		<label class="col-sm-5 control-label" >项目简称</label>
+    		<div class="col-sm-7">
+                <span class="link" id="product-name">$!{detailsDto.productName}</span>
+    		</div>
+    	</div>
+		<div class="row">
+    		<label class="col-sm-5 control-label" >融资人</label>
+            <div class="col-sm-7">
+                <span>$!{detailsDto.financierName}</span>
+    		</div>
+    	</div>
+		<div class="row">
+    		<label class="col-sm-5 control-label" >融资期限</label>
+    		<div class="col-sm-7">
+    			<span>$!{detailsDto.duration}</span>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<label class="col-sm-5 control-label" >风险保障</label>
+    		<div class="col-sm-7">
+                <span>
+					$!{detailsDto.warrantyType.text}
+				</span>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<label class="col-sm-5 control-label" >用途</label>
+            <div class="col-sm-7">
+    			<span>$!{detailsDto.loanPurpose}</span>
+    		</div>
+    	</div>
+		<div class="row">
+    		#if($!detailsDto.statusAfterWaitLoadApproal)
+        		<label class="col-sm-5 control-label" >
+    			       合同
+                </label>
+        		<div class="col-sm-7">
+					<span class="link" id="contract-list-link" data-toggle="modal" data-id="$!{detailsDto.id}" data-target="#supply-contract-modal">预览或下载</span>
+        		</div>
+	        #else
+    			<label class="col-sm-5 control-label" >
+    	                            合同模板 
+				</label>
+				<div class="col-sm-7">
+                    <span class="link" id="contract-link"  data-contract="$!{detailsDto.contractTemplateId}" data-productId="$!{detailsDto.productId}">预览或下载</span>
+        		</div>
+            #end
+    	</div>
+		<div class="row">
+                <label class="col-sm-5 control-label" >逾期转代偿期限</label>
+                <div class="col-sm-7">
+                    <span>$!{detailsDto.overdue2CmpnsDays}天</span>
+                </div>
+            </div>
+      </div>
+    </div>
+	
+  <div class="basic-info-context">
+	<div class="sub-title col-sm-12"><hr/></div>
+	  <div class="col-sm-6">
+		<div class="row">
+    		<label class="col-sm-5 control-label" >定投</label>
+    		<div class="col-sm-7">
+                <span>#if($!{detailsDto.aipFlag}=="Y")是#else 否#end</span>
+    		</div>
+    	</div>
+      </div>
+	  <div class="col-sm-6">
+	  <!--
+		<div class="row">
+    		<label class="col-sm-5 control-label" >委托自动申购</label>
+    		<div class="col-sm-7">
+                <span>#if($!{detailsDto.autoSubsFlag}=="Y")开启#else 关闭 #end</span>
+    		</div>
+    	</div>
+    -->	
+      </div>
+    </div>
+	
+	#if($!detailsDto.canDisplaySupplyTime)
+	  <div class="basic-info-context">
+		<div class="sub-title col-sm-12"><hr/></div>
+		  <div class="col-sm-6">
+			<div class="row">
+	    		<label class="col-sm-5 control-label" >申购起始时间</label>
+	    		<div class="col-sm-7">
+	                <span>$!{detailsDto.supplyStartTime}</span>
+	    		</div>
+	    	</div>
+	      </div>
+		  <div class="col-sm-6">
+			<div class="row">
+	    		<label class="col-sm-5 control-label" >申购截止时间</label>
+	    		<div class="col-sm-7">
+	                <span>$!{detailsDto.supplyEndTime}</span>
+	    		</div>
+	    	</div>
+	      </div>
+	    </div>
+	#end
+	#if($!detailsDto.statusAfterSubscribe)
+	  <div class="basic-info-context">
+		<div class="sub-title col-sm-12"><hr/></div>
+		  <div class="col-sm-6">
+			<div class="row">
+	    		<label class="col-sm-5 control-label" >申购进度</label>
+	    		<div class="col-sm-7">
+	                <span>$!{detailsDto.subsPercent}</span>
+	    		</div>
+	    	</div>
+			<div class="row">
+	    		<label class="col-sm-5 control-label" >实际申购额</label>
+	    		<div class="col-sm-7">
+	                <span>$!number.formatMoney($!{detailsDto.supplyAmount})元</span>
+	    		</div>
+	    	</div>
+	      </div>
+		  <div class="col-sm-6">
+			<div class="row">
+	    		<label class="col-sm-5 control-label" >申购人数</label>
+	    		<div class="col-sm-7">
+					<span class="link" id="supply-user-count" data-toggle="modal" data-id="$!{detailsDto.id}"  data-target="#supply-user-modal">$!{detailsDto.supplyUserCount}人</span>
+	    		</div>
+	    	</div>
+	      </div>
+	    </div>
+	#end
+	#if($!detailsDto.statusAfterWaitLoadApproal)
+	<div class="basic-info-context">
+	<div class="sub-title col-sm-12"><hr/></div>
+	  <div class="col-sm-6">
+		<div class="row">
+    		<label class="col-sm-5 control-label" >签约时间</label>
+    		<div class="col-sm-7">
+                <span>$!{detailsDto.signContractTime}</span>
+    		</div>
+    	</div>
+      </div>
+    </div>
+    #end
+ </div>
+</div>
+#parse("packet\packet_manage_supply_user_modal.vm")
+#parse("packet\packet_manage_supply_contract_modal.vm")
+

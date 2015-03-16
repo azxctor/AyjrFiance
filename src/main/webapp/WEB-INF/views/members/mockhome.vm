@@ -1,0 +1,27 @@
+###set($layout = "common/signinLayout.vm")  
+##<link href="$link.contextPath/assets/css/page/microsignin.css" rel="stylesheet">
+<div>
+	<a href="$link.contextPath/web/members/basicinfo/">基本信息</a>
+	<br /><br /><br />
+	
+	#if($basicSubimt)
+    <label>权限申请</label><br />
+		<a href="$link.contextPath/web/members/investorinfo/">投资权限信息</a><br />
+		<a href="$link.contextPath/web/members/financierinfo/">融资权限信息</a><br />
+	#end
+	<label>代注册</label><br />
+	<a href="$link.contextPath/web/members/registeragent/">代注册</a><br />
+	<br /><br />
+	<a href="$link.contextPath/web/market/financing">融资包行情</a><br />
+	<a href="$link.contextPath/web/market/transfer">债券转让行情</a><br />
+	
+	
+	<label>机构权限申请</label></br/>
+	<a href="$link.contextPath/web/agency/servicecentorinfo/">服务中心权限信息</a><br />
+	<a href="$link.contextPath/web/provider/productproviderinfo/">担保机构权限信息</a><br />
+	
+	<a href="$link.contextPath/web/members/password/update">密码修改</a><br />
+	
+	<a href="$link.contextPath/web/autosubscribe">自动申购</a><br />
+	
+</div>	

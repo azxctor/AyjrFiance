@@ -1,0 +1,76 @@
+#search-wrapper label{
+    line-height:25px;
+}
+.creditlevel {
+   display: block;
+	border-radius: 23px;
+	width: 36px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-style: normal;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	margin: 0 auto;
+	font-weight: bold;
+}
+.creditlevel:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.creditlevel.A{
+    background: #51C710;
+}
+.creditlevel.B{
+    background: #d2da2d;
+}
+.creditlevel.C{
+    background: #F39B18;
+}
+.creditlevel.D{
+    background: #ee4f17;
+}
+.flag {
+    background-color: #E74C3C;
+    margin-right: 5px;
+    padding: .1em .3em .1em;
+}
+
+.label.A{
+	background: #51C710;
+}
+.label.B{
+	background: #d2da2d;
+}
+.label.C{
+	background: #F39B18;
+}
+.label.D{
+	background: #ee4f17;
+}
+.mythumbs{
+	margin-top: 8px;
+	text-align: center;
+}
+.mythumbs .fa-thumbs-o-up{
+	margin-right: 4px;
+}
+.mythumbs.A{
+	color: #51C710;
+}
+.mythumbs.B{
+	color: #d2da2d;
+}
+.mythumbs.C{
+	color: #F39B18;
+}
+.mythumbs.D{
+	color: #ee4f17;
+}
+.dataTable .mylable{
+	font-size: 13px;
+}
+.dataTable .mythumbs{
+	text-align: left;
+}

@@ -1,0 +1,68 @@
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="project-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="project-modal-header">
+					
+				</div>
+				 <form class="form-horizontal modal-form" role="form" method= "POST" id="form-modal">
+    				<div class="modal-body" id="project-modal-body">
+                      
+    				</div>
+    				<div class="modal-footer" id="project-modal-footer">
+						
+    				</div>
+				</form>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->
+<!-- Modal -->
+	<div class="modal fade modal-micro" id="approve-accept-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog dialog-box">
+			<div class="modal-content">
+				<div class="modal-header" id="approve-accept-modal-header">
+					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 <h4 class="modal-title" id="myModalLabel">审批通过确认</h4>
+				</div>
+				 <form class="form-horizontal modal-form" role="form" method= "POST" id="form-modal-approve-accept">
+    				<div class="modal-body" id="approve-accept-modal-body">
+						<div class="form-group">
+							<label for="contract-template" class="col-sm-3 control-label required">合同模板</label>
+							<div class="col-sm-9">
+								<select class="form-control" id="contract-template" name="templateId" data-validate="{required:true}"></select>
+							</div>
+						</div>
+						<div class="form-group">
+    						<label for="note-approve" class="col-sm-3 control-label required">逾期转代偿期限</label>
+    						<div class="col-sm-9 row">
+								<div class="col-sm-6">
+									<div class="input-group">
+                						<input class="form-control" placeholder="天数" name="overdueToCompDays" data-validate="{required:true,positiveInteger:true}">
+                						<div class="input-group-addon">日后逾期转代偿</div>
+            						</div>
+                                 </div>
+								<div class="col-sm-6">
+            						<div class="input-group">
+                						<input class="form-control" placeholder="天数" type="hidden" name="compensatoryDays" value="0">
+                						##<div class="input-group-addon">日内完成代偿&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            						</div>
+								</div>
+    						</div>
+						</div>
+						<div class="form-group">
+    						<label for="note-approve" class="col-sm-3 control-label">备注</label>
+    						<div class="col-sm-9">
+								<textarea class="form-control" id="note-approve" name="comments"></textarea>
+    						</div>
+						</div>
+    				</div>
+    				<div class="modal-footer" id="approve-accept-modal-footer">
+						<button type="submit" class="btn btn-mf-primary" id="modal-btn-accept">确定</button>
+						<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+    				</div>
+				</form>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!-- Modal -->

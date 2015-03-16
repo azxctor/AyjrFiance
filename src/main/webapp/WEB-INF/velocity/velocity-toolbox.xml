@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolbox> 
+	<tool>
+		<key>link</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.view.tools.LinkTool</class>
+	</tool>
+<!-- 	<tool> -->
+<!-- 		<key>shiro</key> -->
+<!-- 		<scope>application</scope> -->
+<!-- 		<class>org.apache.shiro.web.support.velocity.Permission</class> -->
+<!-- 	</tool> -->
+	<tool>
+		<key>date</key>
+		<scope>application</scope>
+		<class>org.apache.velocity.tools.generic.DateTool</class>
+		<parameter name="format" value="yyyy-MM-dd"/>
+	</tool>
+	
+	<tool>
+		<key>sec</key>
+		<scope>application</scope>
+		<class>com.hengxin.platform.security.SecurityContext</class>
+	</tool>
+	
+	<tool>
+		<key>config</key>
+		<scope>application</scope>
+		<class>com.hengxin.platform.common.util.AppConfigUtil</class>
+	</tool>
+	
+	<tool>
+		<key>number</key>
+		<scope>application</scope>
+		<class>com.hengxin.platform.common.util.velocity.NumberTool</class>
+	</tool>
+	
+	<tool>
+		<key>stringUtil</key>
+		<scope>application</scope>
+		<class>com.hengxin.platform.common.util.velocity.StringUtilTool</class>
+	</tool>
+	
+	<!-- <tool> -->
+	<!-- <key>escape</key> -->
+	<!-- <scope>application</scope> -->
+	<!-- <class>org.apache.velocity.tools.generic.EscapeTool</class> -->
+	<!-- </tool> -->
+
+
+	<!-- <tool> -->
+	<!-- <key>math</key> -->
+	<!-- <scope>application</scope> -->
+	<!-- <class>org.apache.velocity.tools.generic.MathTool</class> -->
+	<!-- </tool> -->
+
+	<!-- <tool> -->
+	<!-- <key>cookie</key> -->
+	<!-- <scope>request</scope> -->
+	<!-- <class>org.apache.velocity.tools.view.tools.CookieTool</class> -->
+	<!-- </tool> -->
+
+</toolbox>

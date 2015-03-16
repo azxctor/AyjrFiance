@@ -1,0 +1,638 @@
+<div id="org-basic-info">
+    <h3 class="inner-form-title">
+        身份信息
+    </h3>
+    <form class="form-horizontal view-mode" role="form">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">企业名称</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.org_name"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">所在区域</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control"  data-prop="organization.region.fullText"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">企业地址</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.address"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">邮编</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.postcode"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">企业性质</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.nature.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">所属行业</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.industry.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">企业类型</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.org_type.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">主营业务</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.main_business"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">联系人</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.contact"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">联系人座机</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.contact_phone"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">联系人手机</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.contact_mobile"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">联系人传真</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.contact_fax"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="row">
+			<div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">联系人Email</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.contact_email"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">企业座机</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.phone"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">传真号</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.fax"></span>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">法人代表</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.legal_person"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">法人性别</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.legal_gender.text"></span>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">法人手机</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.legal_mobile"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">法人学历状况</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.legal_education.text"></span>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">法人QQ</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.qq"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">法人Email</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.legal_email"></span>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">法人身份证号</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.legal_id_card"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">法人身份证正面扫描图</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="org-cardf" data-prop="organization.legal_id_card_front_img_url"></img>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">法人手持身份证(<a href="javascript:void(0)" class="image-example-popoverx" data-content="loading..." data-src="$link.contextPath/assets/img/IDCard_s.jpg">图例</a>)</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="org-cardb" data-prop="organization.legal_id_card_back_img_url"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">法人出生年月</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.legal_birthday"></span>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">法人年龄</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.legal_age"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		#* <h3 class="inner-form-title">银行信息 </h3>
+		<div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">银行账号</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.bank_account"></span>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">银行账户名</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="organization.bank_account_name"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+					<label class="col-sm-4 control-label">开户银行</label>
+					<div class="col-sm-8">
+					<div class="form-area">
+						<span class="" data-prop="organization.bank_province.text"></span>
+						&nbsp;<span class="" data-prop="organization.bank_city.text"></span>
+						&nbsp;<span class="" data-prop="organization.bank_name.text"></span> 
+						&nbsp;<span class="" data-prop="organization.bank_branch"></span> 
+                    </div>
+                    </div>
+                </div>
+            </div>
+			<div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">银行卡正面扫描图</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" data-prop="organization.bank_card_front_img_url"></img>
+                    </div>
+                </div>
+            </div>
+			
+        </div> *#
+        <div class="row  check-row">
+            <div class="col-sm-6 col-sm-offset-6">
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-4 ">
+                        <a id="org_basic_audit" class="btn  audit-btn" style="float:right" data-toggle="modal" data-target="#checkModal">审核</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- <form id="org-basicinfo-check" class="form-horizontal">
+    #parse("members/audit_check.vm")-->
+</form>
+</div>
+<div id="org-invest-info" style="display:none">
+    <h3 class="inner-form-title">
+        投资信息
+    </h3>
+    <form class="form-horizontal view-mode" role="form">
+		 <div class="row">
+			<div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">授权服务中心</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="investorInfo.auth_center.name"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">受理人</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="investorInfo.agent"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">经办人</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="investorInfo.agentName"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">会员申请表第一页</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="orginv-first" data-prop="investorInfo.application_img_first_url"></img>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">会员申请表第二页</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="orginv-second" data-prop="investorInfo.application_img_second_url"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row  check-row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">投资等级</label>
+                    <div class="col-sm-8">
+                        <select  id="org-investor-level-select"  style="display:none">
+                        </select>
+						<span id="org-investor-level-span" class="hidden-form-control" data-prop="investorInfo.investorLevel.text" style="display:none"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-4 audit-row">
+                        <a id="org_investor_audit" class="btn  audit-btn" style="float:right" data-toggle="modal" data-target="#checkModal">审核</a>
+						 <span  id="org_investor_tip" style="display:none" class="audit-tip label label-danger"><i class="fa fa-exclamation"></i>&nbsp;基本信息未审核</span>
+					</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--<form id="org-invest-check" class="form-horizontal">
+    #parse("members/audit_check.vm")-->
+</form>
+</div>
+<div id="org-financing-info" style="display:none">
+    <h3 class="inner-form-title">
+        融资信息
+    </h3>
+    <form class="form-horizontal view-mode" role="form">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">注册资本金</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.register_capital"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">股东信息及占股比例</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.stockholder"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">品牌名称</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.brand"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">组织机构代码</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.org_number"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">组织机构代码扫描图</label>
+                    <div class="col-sm-8">
+						<img class="hidden-form-control" id="orgfin-onfu" data-prop="financierInfo.org_number_file_url"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">营业执照代码</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.licence_number"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label required">营业执照扫描图</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="orgfin-lfu" data-prop="financierInfo.licence_file_url"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">税务登记号码</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.fax_register_number"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">税务登记证扫描图</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="orgfin-frfu" data-prop="financierInfo.fax_register_file_url"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">会员申请表第一页</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="orgfin-first" data-prop="financierInfo.application_img_first_url"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">会员申请表第二页</label>
+                    <div class="col-sm-8">
+                        <img class="hidden-form-control" id="orgfin-second" data-prop="financierInfo.application_img_second_url"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">受理人</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.agent"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">征信记录</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.credit_hist.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">经营所在地居住时间</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.residence.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">家庭状况</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.family_status.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">企业成立年限/核心管理层从业经营</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.found_age.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">家借款人家庭及企业资产总值</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.total_assert.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">借款人家庭及企业资产负债比</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.debt_radio.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">授信期限内主营业务收入与期限内到期债务比</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.income_debt_ratio.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">单一客户集中度</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.concentra.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">利润率</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.profit_ratio.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">主营业务收入增长率</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.revenue_growth.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">主营业务下游客户分布的地域范围</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.customer_dist.text"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">社会地位</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.social_status.text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="row check-row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">融资等级</label>
+                    <div class="col-sm-8">
+                        <select  id="org-financier-level-select" style="display:none">
+                        </select>
+						<span id="org-financier-level-span" class="hidden-form-control" data-prop="financierInfo.financierLevel.text" style="display:none"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">授权服务中心</label>
+                    <div class="col-sm-8">
+                        <span class="hidden-form-control" data-prop="financierInfo.auth_center.name"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label"></label>
+                    <div class="col-sm-8">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="col-sm-8 col-sm-offset-4 audit-row">
+                        <a  id="org_financier_audit"  class="btn  audit-btn" style="float:right" data-toggle="modal" data-target="#checkModal">审核</a>
+						 <span  id="org_financier_tip" style="display:none" class="audit-tip label label-danger"><i class="fa fa-exclamation"></i>&nbsp;基本信息未审核</span>
+					</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--<form id="org-financing-check" class="form-horizontal">
+    #parse("members/audit_check.vm")-->
+</form>
+</div>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+<head lang="ZH">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>昆明小微企业金融交易服务有限公司</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="../../../vendor/bootstrap-datepicker/css/datepicker.css">
+		<link rel="stylesheet" href="../../../vendor/select2/css/select2.css">
+		<link rel="stylesheet" href="../../../vendor/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../../../css/page/prototype/templ.css">
+		<link rel="stylesheet" href="../../../css/page/prototype/product/transaction_params_detail.css">
+
+    <script src="../../../js/require.js"></script>
+    <!-- Global variable module which will take variables from sever side -->
+    <script type="text/javascript">
+        define('global', {
+            context: '../../../../'
+        })
+    </script>
+    <script src="../../../js/base.js"></script>
+</head>
+<body>
+<!--页面顶部-->
+<div class="top">
+    <img class="top-logo" src="../../../img/templ_img/logo.jpg">
+    <div class="top-time">
+        <span class="hours">18:35</span>
+            <span class="dates">
+                <span class="date">04-15</span>
+                <span class="week">TUE</span>
+            </span>
+    </div>
+    <div class="top-logout">
+        <i class="fa fa-user"></i> <span class="user-name">Nick Jones </span> <a href="javascript:void(0);" >退出</a>
+    </div>
+</div>
+
+<div class="page-wrapper">
+    <!--页面内容-->
+    <div class="right-blk">
+        <div class="right-blk-head">
+            <!--此处更改标题-->
+            <span class="right-blk-head-title">交易管理</span>
+            <span> > </span>
+            <span class="right-blk-head-subtitle">产品发布</span>
+            <!--此处更改标题-->
+        </div>
+        <div class="right-blk-line"></div>
+        <div class="right-blk-body">
+            <!--此处替换内容-->
+							<form class="form-horizontal" role="form">
+								<div class="row" style="padding-left:50px;">
+								  <div class="sub-title">基本信息</div>
+									<div class="col-sm-6">
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">项目简称</label>
+											<div class="control-label col-sm-6" for="">融资申请额竹海水韵楼盘融资</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">融资申请额</label>
+											<div class="control-label col-sm-6" id="finance-amount" value="500000.00" for="">500,000.00</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">最迟资金到帐日</label>
+											<div class="control-label col-sm-6" for="">2014-12-32</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">年利率</label>
+											<div class="control-label col-sm-6" for="">11.3%</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">融资期限</label>
+											<div class="control-label col-sm-6" for="">6月</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">还款方式</label>
+											<div class="control-label col-sm-6" for="">到期一次还本息</div>
+										</div>
+										<div class="row content-margin">
+						            <label class="col-sm-4 control-label">风险管理费</label>
+						            <div class="col-sm-6">
+						              <div class="input-group">
+						              	<input class="form-control" type="text" value="5">
+						              	<span class="input-group-addon">%</span>
+						              </div>
+						            </div>
+						        </div>
+						        <div class="row content-margin">
+					            	<label class="col-sm-4 control-label">合同模板</label>
+					            	<div class="col-sm-6">
+					            	  <input type="file">
+					            	</div>
+					          </div>
+					          <div class="row content-margin">
+					              <div class="col-sm-4 control-label">
+					                <label class="checkbox inline control-label">
+													  <input class="chk-vote" type="checkbox" value="option1" data-role="0">&nbsp定投
+													</label>
+					              </div>
+					              <div  class="col-sm-6 vote-content" data-role="0">
+					                <input class="vote-group" type="hidden" value="分组A, 分组B"/>
+					              </div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">融资人</label>
+											<div class="control-label col-sm-6" for="">刘勇</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">手机号码</label>
+											<div class="control-label col-sm-6" for="">1385802470</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">行业</label>
+											<div class="control-label col-sm-6" for="">房地产/建筑施工</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">风险保障</label>
+											<div class="control-label col-sm-6" for="">本息担保</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">平均月收入</label>
+											<div class="control-label col-sm-6" for="">12,000.00</div>
+										</div>
+										<div class="row">
+											<label class="col-sm-4 control-label" for="">用途</label>
+											<div class="control-label col-sm-6" for="">短期资金流动补给</div>
+										</div>
+										<div class="row content-margin">
+						            <label class="col-sm-4 control-label">借款合同履约保证金</label>
+						            <div class="col-sm-6">
+						              <div class="input-group">
+							              <input class="form-control" type="text" value="10">
+							              <span class="input-group-addon">%</span>
+						              </div>
+						            </div>
+					          </div>
+					          <div class="row content-margin">
+							          <label class="col-sm-4 control-label">融资服务费</label>
+							          <div class="col-sm-6">
+							            <div class="input-group">
+							            	<input class="form-control" type="text" value="4">
+							            	<span class="input-group-addon">%</span>
+							            </div>
+							          </div>
+					          </div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="row content-margin">
+						            <label class="col-sm-4 control-label">风险管理费</label>
+						            <div class="col-sm-6">
+						              <div class="input-group">
+						              	<input class="form-control" type="text" value="5">
+						              	<span class="input-group-addon">%</span>
+						              </div>
+						            </div>
+						        </div>
+						        <div class="row content-margin">
+					            	<label class="col-sm-4 control-label">合同模板</label>
+					            	<div class="col-sm-6">
+					            	  <input type="file">
+					            	</div>
+					          </div>
+					          <div class="row content-margin">
+					              <div class="col-sm-4 control-label">
+					                <label class="checkbox inline control-label">
+													  <input class="chk-vote" type="checkbox" value="option1" data-role="0">&nbsp定投
+													</label>
+					              </div>
+					              <div  class="col-sm-6 vote-content" data-role="0">
+					                <input class="vote-group" type="hidden" value="分组A, 分组B"/>
+					              </div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="row content-margin">
+						            <label class="col-sm-4 control-label">借款合同履约保证金</label>
+						            <div class="col-sm-6">
+						              <div class="input-group">
+							              <input class="form-control" type="text" value="10">
+							              <span class="input-group-addon">%</span>
+						              </div>
+						            </div>
+					          </div>
+					          <div class="row content-margin">
+							          <label class="col-sm-4 control-label">融资服务费</label>
+							          <div class="col-sm-6">
+							            <div class="input-group">
+							            	<input class="form-control" type="text" value="4">
+							            	<span class="input-group-addon">%</span>
+							            </div>
+							          </div>
+					          </div>
+									</div>
+								</div>
+								<div class="row">
+									  <div class="col-sm-6">
+											<div class="form-group vote-content" data-role="0">
+					          	  <label class="col-sm-4 control-label">定投起始日期</label>
+							          <div class="col-sm-6">
+							            <input class="form-control start-time" type="text" placeholder="">
+							          </div>
+							        </div>
+						        </div>
+					        	<div class="col-sm-6">
+					        		<div class="form-group vote-content" data-role="0">
+						            <label class="col-sm-4 control-label">定投截止日期</label>
+						            <div class="col-sm-6">
+						              <input type="text" class="form-control end-time" placeholder="">
+						            </div>
+				              </div>
+					        	</div>
+								</div>
+								<hr>
+								<div id="is-unpaking" style="padding-left:50px;">
+									<div class="row">
+									  <div class="col-sm-6">
+									    <div class="col-sm-4 control-label">
+									      <label class="checkbox inline control-label">
+												  <input type="checkbox" id="chk-unpaking" value="option1">&nbsp分项挂单
+												</label>
+									  	</div>
+									  </div>
+									    
+									  <div class="col-sm-6">
+									    <div id="unpaking-num" class="form-group">
+										    <label class="col-sm-4 control-label">分项挂单份数</label>
+										    <div class="col-sm-6">
+										      <input class="form-control" id="txt-unpaking-num" type="number" min="2">
+										    </div>
+									  	</div>
+									  </div>
+									</div>
+									<div class="row" id="unpaking"></div>
+							    <div class="row" id="unpaking-content">
+									  <div class="col-sm-6">
+							      	<div class="form-group">
+					          		<label class="col-sm-4 control-label pake">融资包1金额(万元)</label>
+					          		<div class="col-sm-6">
+					            		<input class="form-control contract-templ" type="text" readonly>
+					          		</div>
+							        </div>
+									  </div>
+									</div>
+									<div class="row">
+									  <div class="col-sm-6">
+					        		<div class="form-group">
+						            <label class="col-sm-4 control-label">起始日期</label>
+						            <div class="col-sm-6">
+						              <input type="text" class="form-control start-time" placeholder="">
+						            </div>
+					            </div>
+						        </div>
+					        	<div class="col-sm-6">
+				              <div class="form-group">
+						            <label class="col-sm-4 control-label">截止日期</label>
+						            <div class="col-sm-6">
+						              <input type="text" class="form-control end-time" placeholder="">
+						            </div>
+					            </div>
+					        	</div>
+									  </div>
+								</div>
+								<hr>
+								<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+								<div class="panel-heading" id = "panel-heading">
+							      <h4 class="panel-title" data-toggle="collapse" data-toggle="collapse" data-parent="#accordion">
+							      	<i class="fa fa-caret-down" id ="fa_icon"></i>更多详情
+							      </h4>
+							    </div>
+							    
+								<div class="panel-collapse collapse tab_box" id="collapseOne">
+									<ul class="nav nav-tabs nav-micro" id="myTab">
+										<li class="active"><a href="#margin-cost" data-toggle="tab">保证金及费用</a></li>
+										<li><a href="#counter-guarantee" data-toggle="tab">反担保情况</a></li>
+										<li><a href="#activos-pasivos" data-toggle="tab">资产及负债</a></li>
+										<li><a href="#data-bank" data-toggle="tab">资料库</a></li>
+										<li><a href="#remark" data-toggle="tab">备注</a></li>
+									</ul>
+
+									<!-- Tab panes -->
+									<div class="tab-content">
+										<div class="tab-pane active" id="margin-cost">
+											<div class="row">
+												<label class="col-sm-4 control-label" for="">委托发布协议履约保证金（参考值）</label>
+												<div class="col-sm-3">250.00</div>
+											</div>
+											<div class="row">
+												<label class="col-sm-4 control-label" for="">融资会员席位费（参考值）</label>
+												<div class="col-sm-3">15.00</div>
+											</div>
+											<div class="row">
+												<label class="col-sm-3 control-label" for="">风险管理费</label>
+												<div class="col-sm-2">250.00</div>
+												<label class="col-sm-2 control-label" for="">付费方式</label>
+												<div class="col-sm-2">
+													XXXX
+												</div>
+											</div>
+											<div class="row">
+												<label class="col-sm-3 control-label" for="">融资服务费</label>
+												<div class="col-sm-2">250.00</div>
+												<label class="col-sm-2 control-label" for="">付费方式</label>
+												<div class="col-sm-2">
+													XXXX
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane" id="counter-guarantee">
+											<!-- Nav tabs -->
+											<ul class="nav">
+												<li><a href="#guaranty" data-toggle="tab">抵押产品</a></li>
+												<li><a href="#pledge" data-toggle="tab">质押产品</a></li>
+												<li><a href="#certificate" data-toggle="tab">证担保</a></li>
+											</ul>
+											<!-- Tab panes -->
+											<div class="tab-content">
+												<div class="tab-pane active" id="guaranty">
+														<label class="control-label" for="">房产</label>
+														<div class="house-box">
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">类型</label>
+															<div class="col-sm-2">私有房产</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">产权证号</label>
+															<div class="col-sm-2">XNO123456789</div>
+															<label class="col-sm-2 control-label" for="">房屋所有权人</label>
+															<div class="col-sm-2">刘勇</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">房屋坐落</label>
+															<div class="col-sm-2">XXXXXX</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">共有权情况</label>
+															<div class="col-sm-2">共同所有</div>
+															<label class="col-sm-1 control-label" for="">姓名</label>
+															<div class="col-sm-1">刘勇</div>
+															<label class="col-sm-1 control-label" for="">年龄</label>
+															<div class="col-sm-2">45</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">登记时间</label>
+															<div class="col-sm-2">2013-3-1</div>
+															<label class="col-sm-2 control-label" for="">建筑面积</label>
+															<div class="col-sm-2">120平方米</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">房屋价值</label>
+															<div class="col-sm-10">
+																<div class="row">
+																	<label class="col-sm-2 control-label" for="">购买价格</label>
+																	<div class="col-sm-3">2000,000.0元</div>
+																</div>
+																<div class="row">
+																	<label class="col-sm-2 control-label" for="">市场评估价格</label>
+																	<div class="col-sm-3">2000,000.0元</div>
+																</div>
+																<div class="row">
+																	<label class="col-sm-2 control-label" for="">市场价格</label>
+																	<div class="col-sm-3">2000,000.0元</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<hr>
+													<!-- ---- -->
+													<label class="control-label" for="">车辆</label>
+														<div class="house-box">
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">机动车所有权人</label>
+															<div class="col-sm-2">刘勇</div>
+															<label class="col-sm-2 control-label" for="">机动车编号登记</label>
+															<div class="col-sm-2">XNO1134546789</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">登记机关</label>
+															<div class="col-sm-2">XXXXXXXXXXX</div>
+															<label class="col-sm-2 control-label" for="">车辆型号</label>
+															<div class="col-sm-2">B22</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">登记时间</label>
+															<div class="col-sm-2">2013-5-22</div>
+															<label class="col-sm-2 control-label" for="">车辆品牌</label>
+															<div class="col-sm-2">BMW</div>
+														</div>
+													</div>
+													<hr/>
+													<!-- ---- -->
+													<label class="control-label" for="">其它</label>
+													<div class="form-group">
+														<div class="col-xs-10">
+															XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+														</div>
+													</div>
+													<!-- ---- -->
+												</div>
+												<div class="tab-pane" id="pledge">
+													<label class="control-label" for="">动产</label>
+													<div class="house-box">
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">质押物名称</label>
+															<div class="col-sm-2">XXX</div>
+															<label class="col-sm-2 control-label" for="">价格</label>
+															<div class="col-sm-2">10,000.0</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">品种</label>
+															<div class="col-sm-2">XXXXXXXXXXX</div>
+															<label class="col-sm-2 control-label" for="">存放地</label>
+															<div class="col-sm-2">B22</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">型号</label>
+															<div class="col-sm-2">GFK</div>
+															<label class="col-sm-2 control-label" for="">其他</label>
+															<div class="col-sm-2">XXX</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">数量</label>
+															<div class="col-sm-2">5</div>
+														</div>
+													</div>
+													<hr/>
+													<!-- ---- -->
+													<label class="control-label" for="">其它</label>
+													<div class="form-group">
+														<div class="col-xs-10">
+															XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+														</div>
+													</div>
+													<!-- ---- -->
+												</div>
+												<div class="tab-pane" id="certificate">
+													<label class="control-label" for="">自然人</label>
+													<div class="house-box">
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">姓名</label>
+															<div class="col-sm-2">刘勇</div>
+															<label class="col-sm-2 control-label" for="">营业执照号码</label>
+															<div class="col-sm-2">CXM131654</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">身份证号码</label>
+															<div class="col-sm-2">335489155625</div>
+															<label class="col-sm-2 control-label" for="">行业</label>
+															<div class="col-sm-2">IT</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">职业</label>
+															<div class="col-sm-2">XXX</div>
+															<label class="col-sm-2 control-label" for="">其他必要描述</label>
+															<div class="col-sm-2">XXXSDSS</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">企业名称</label>
+															<div class="col-sm-2">BBIUJ</div>
+														</div>
+													</div>
+													<hr/>
+													<!-- ---- -->
+													<label class="control-label" for="">法人</label>
+													<div class="house-box">
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">企业名称</label>
+															<div class="col-sm-2">BBIUJ</div>
+															<label class="col-sm-2 control-label" for="">行业</label>
+															<div class="col-sm-2">IT</div>
+														</div>
+														<div class="row">
+															<label class="col-sm-2 control-label" for="">营业执照号码</label>
+															<div class="col-sm-2">XX56748976</div>
+															<label class="col-sm-2 control-label" for="">其他必要描述</label>
+															<div class="col-sm-2">B2sJAJFDK2</div>
+														</div>
+													</div>
+													<hr/>
+													<!-- ---- -->
+													<label class="control-label" for="">其它</label>
+													<div class="form-group">
+														<div class="col-xs-10">
+															XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+														</div>
+													</div>
+													<!-- ---- -->
+												</div>
+												
+												
+											</div>
+										</div>
+										<div class="tab-pane" id="activos-pasivos">
+											<label class="control-label" for="">负债情况</label>
+											<div class="house-box">
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">总负债</label>
+													<div class="col-sm-2">50,000元</div>
+												</div>
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">月还款额</label>
+													<div class="col-sm-2">5000元</div>
+												</div>
+											</div>
+											<hr/>
+											<!-- ---- -->
+											<label class="control-label" for="">房产</label>
+											<div class="house-box">
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">总价值</label>
+													<div class="col-sm-2">200,000元</div>
+												</div>
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">贷款总额</label>
+													<div class="col-sm-2">100,000元</div>
+												</div>
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">贷款期限</label>
+													<div class="col-sm-2">五年以下</div>
+												</div>
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">房产信息</label>
+													<div class="col-sm-2">XXXXX</div>
+												</div>
+											</div>
+											<hr/>
+											<!-- ---- -->
+											<label class="control-label" for="">机动车</label>
+											<div class="house-box">
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">总价值</label>
+													<div class="col-sm-2">30,000元</div>
+												</div>
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">购买日期</label>
+													<div class="col-sm-2">2013-2-5</div>
+												</div>
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">贷款总额</label>
+													<div class="col-sm-2">10,000元</div>
+												</div>
+												<div class="row">
+													<label class="col-sm-2 control-label" for="">贷款期限</label>
+													<div class="col-sm-2">五年以下</div>
+												</div>
+											</div>
+											<hr/>
+												<!-- ---- -->
+												<label class="control-label" for="">其它资产</label>
+												<div class="form-group">
+													<div class="col-xs-10">
+														XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+													</div>
+												</div>
+												<!-- ---- -->
+										</div>
+										<div class="tab-pane" id="data-bank">
+											<table class="table" id="table-database">
+													<thead>
+														<tr>
+															<th>序号</th>
+															<th>文件名</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th>1</th>
+															<th>营业执照扫描.jpg</th>
+														</tr>
+														<tr>
+															<th>1</th>
+															<th>营业执照扫描.jpg</th>
+														</tr>
+														<tr>
+															<th>1</th>
+															<th>营业执照扫描.jpg</th>
+														</tr>
+													</tbody>
+												</table>
+										</div>
+										
+										<div class="tab-pane" id="remark">
+											文字突破口语受到时间和空间的限制，是人类可以在书面语的基础上完整地传承人类的智慧和精神财富，使人类能够完善教育体系，提高自己的智慧，发展科学技术，进入文明社会。
+普通文字是用简单图形形成，早期更加接近图画，更加接近几何线条。例如拉丁字母是简单的直线、弧线和点构成。汉字主要是由直线构成，所以叫做“方块汉字”。古代的甲骨文汉字，埃及象形文字和玛雅文字等古老文字图画性比较强。
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+								<div class="row handle">
+									<div class="col-sm-1 col-sm-offset-1">
+									  <input type="button" class="btn btn-mf-default btn-mf-primary" onclick="location.href='transaction_params.html'" value="确定">
+									</div>
+									<div class="col-sm-1 col-sm-offset-1">
+									  <input type="button" class="btn btn-mf-default btn-mf-primary" onclick="location.href='transaction_params.html'" value="取消">
+									</div>
+						    </div>
+								<!-- Modal警告 -->
+							    <div class="modal fade modal-micro" id="modal-log" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+									  <div class="modal-header">
+									    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									    <h4 class="modal-title" id="myModalLabel">警告</h4>
+								    </div>
+								    <div class="modal-body">
+										  <label class="control-form" id="msg"></label>
+									  </div>
+								  </div>
+							    </div>
+							  </div><!-- /.modal警告 -->
+							</form>
+							<!--此处替换内容-->
+        </div>
+
+    </div>
+
+</div>
+<!--左菜单-->
+<div class="menu">
+    <div class="menu-wrapper">
+
+        <div class="active on menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-code-fork"></i>
+            </div>
+            <h4>行情展示</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 信息补录
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div   class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-book"></i>
+            </div>
+            <h4>正在融资</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 融资包管理
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 融资管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div   class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-pagelines"></i>
+            </div>
+            <h4>订单管理</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 订单管理
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-briefcase"></i>
+            </div>
+            <h4>债权转让</h4>
+            <span> > </span>
+
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 信息补录
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div  class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-info"></i>
+            </div>
+            <h4>我的账户</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 账户信息
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+        <div  class="menu-blk-el">
+            <div class="menu-blk-el-ico">
+                <i class="fa fa-tasks"></i>
+            </div>
+            <h4>统计分析</h4>
+            <span> > </span>
+            <div class="sub-content">
+                <ul>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 统计操作
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="submenu-blk-el" href="#">
+                            <div class="submenu-blk-el-ico">
+                                <i class="fa fa-code-fork"></i> 会员管理
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sub-on">
+                <div class="menu-blk-el-ico-mini">
+                    <i class="fa fa-code-fork"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="submenu-wrapper">
+        <a class="submenu-back submenu-blk-el" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left"></i></a>
+        <div class="submenu-content"></div>
+    </div>
+</div>
+</body>
+
+<!-- JavaScript -->
+<script src="../../../js/page/prototype/templ.js"></script>
+<script src="../../../js/page/prototype/product/transaction_params_detail.js"></script>
+
+</html>

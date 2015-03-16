@@ -1,0 +1,123 @@
+	<%if(dtos.iTotalRecords == 0){%>
+		谢谢您的关注，暂无债权申购信息，请稍后查看！
+	<%}else{%>
+	<% _.each(dtos, function(dto){ 
+		var fix_progress = dto.progress*1000;
+		if(fix_progress%10 == 0){
+			fix_progress = (fix_progress/10).toFixed(0);
+		}else{
+			fix_progress = (fix_progress/10).toFixed(1);
+		}
+		dto.fix_progress = fix_progress;
+	%>
+    <div class="item <%=dto.id%>" data-id="<%=dto.id%>">
+			<div class="square-header">
+                <h4 class="square-header-h4"><a href="<%=dtos.url%><%=dto.id%>" class="square-header-hrf" title="<%=dto.packageName%>" target="_blank">
+                	<%if(dto.aipFlag == true){%>
+                		<span class="label label-info flag">定</span>
+                	<%}%>
+               		<%=dto.packageName%></a></h4>
+            </div>
+			
+			<div class="square-main">
+			  <div class="block clearfix">
+				<div class="finance-amount pull-left">
+                    <h5>融资额</h5>
+                    <h4 class="num-color"><%=dto.packageQuotaStr%>&nbsp;<span class="inner-diff"></span></h4>
+                </div>
+				<div class="finance-profit pull-left">
+					 <h5>年利率</h5>
+                    <h4 class="num-color"><%=dto.product.ratePercentage%><span class="inner-diff"></span></h4>
+                </div>
+                <div class="finance-time pull-left">
+					<h5>融资期限</h5>
+                    <h4 class="num-color">
+	                    <%=dto.product.termLength%>&nbsp;&nbsp;
+	                    <%
+	                    	var unit = dto.product.term.charAt(dto.product.term.length-1);		                    	
+	                    	if(unit == "月"){	
+	                    %>	                    
+	                    <span class="inner-diff">个月</span>
+	                    <%
+	                    	}else if(unit == "天"){		                    	
+	                    %>
+	                    	 <span class="inner-diff">天</span>
+	                    <%
+	                    	}
+	                    %>
+                    </h4>
+                </div>
+              </div> 
+               
+              
+                <%
+		       	  var render_thumb = function (code) {
+		       	    var th_map = {"A":4,"B":3,"C":2,"D":1};
+		       	    var num = th_map[code];
+		       	  	var thumb_html = "";
+		       	  	var thumb_html2 = "";
+		       	  	for(var i=0;i<num;i++){
+		       	  		thumb_html += "<i class='fa fa-heart' style='color:#EA6B24'></i>&nbsp;";
+		       	  	}
+		       	  	for(var i=0;i<5-num;i++){
+		       	  		thumb_html2 += "<i class='fa fa-heart-o' style='border-color:#EAEAEA' ></i>&nbsp;";
+		       	  	}
+		       	  	return 	thumb_html + thumb_html2;	
+		       	  }
+		       	  
+		       	  var msg_map = {"A":"A级项目：提供货币类资产质押，本金覆盖率大于100%，违约可能性极低。",
+ 				   "B":"B级项目：提供有形或无形资产抵质押（变现渠道畅通），本金覆盖率不低于100%，违约可能性较低。",
+ 				   "C":"C级项目：提供有形或无形资产抵质押（有变现渠道）；或提供合格保证人担保，本金覆盖率不到100%，可能会违约。",
+ 				   "D":"D级项目：无有形或无形资产抵质押，无保证机构担保，能提供非保证机构担保，违约的可能性较高。"
+ 				  };
+		       %>
+              
+              <div class="block clearfix border-top">
+					
+					<div class="risk-level pull-left">
+						<%var text = dto.product.riskLevel.text;%>
+						<%var code = dto.product.riskLevel.code;%>
+						<h5>融资项目级别<span href="javascript:void(0)" class="color-<%=code%>" style="text-decoration:none;font-size: 20px;font-weight: bold;">(<%=code%>)</span></h5>
+						<h4 class="level-wrapper">
+						
+						<!--<span class="label <%=code%> mylable" title="<%=text%>项目"><%=text.substr(0,2)%></span>
+						<a class="creditlevel <%=code%>" title="<%=msg_map[code]%>"><%=text%></a>-->
+						<div class="mythumbs <%=code%>">
+							<%=render_thumb(code) %>
+						</div>
+						</h4>
+	                </div>
+	                <div class="finance-progress-bar pull-left">
+						<h5 class="progress-state"><%=dto.status.text%>&nbsp;</h5>
+						<div class="progress pr">
+							<div class="progress-bar" style="width:<%=dto.fix_progress+'%' %>">
+							</div>
+						</div>
+						
+						<span class="progress-num"><%=dto.fix_progress+"%"%></span>
+            		</div>
+                </div>
+              
+			
+				
+                 <%if(dtos.hide != "true"){%>              	
+                	<div class="invest-btn-wrapper clear-left">
+					<%if(dtos.flag=="true" || dto.status.code != "S" || dto.progress == 1){%>
+						<a class="btn btn-mf-primary btn-lg btn-block purchase disabled" href="javascript:void(0);" data-id="<%=dto.id%>" data-content="loading...">立即申购</a>
+					<%}else{%>
+						<a class="btn btn-mf-primary btn-lg btn-block purchase" href="javascript:void(0);" data-id="<%=dto.id%>" data-content="loading...">立即申购</a>
+					<%}%>
+					</div>
+				<%}%>
+            </div>
+			
+			<div class="square-bottom clearfix">
+				<div class="pull-left pro-start-date">
+                    <span>起始时间：<%=dto.subscribeStartTimeStr%></span>
+                </div>
+				<div class="pull-right">
+                    <span class="num-color"><%=dto.product.warrantyType.text%></span>
+                </div>	
+            </div>	
+        </div>
+<%  }); };%>

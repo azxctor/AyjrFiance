@@ -1,0 +1,40 @@
+<script src="$link.contextPath/assets/js/page/admin/cache_management.js" type="text/javascript"></script>	
+<div class="row pd">
+  <div class="col-md-6">
+  	  <div class="main-wrapper">
+	  		<div class="main">
+				<div class="form-btn-wrapper">
+					<button class="btn btn-mf-primary" id="refresh-common-btn">刷新公用缓存</button>
+                </div>
+                <br/>
+                <div class="form-btn-wrapper">
+					<button class="btn btn-mf-primary" id="refresh-market-all-btn">刷新行情缓存（所有融资包）</button>
+                </div>
+                <br/>
+                
+                <div class="input-group form-item">
+					<input type="text" class="form-control" id="pkgId" name="pkgId" minlength="1" maxlength="20" required placeholder="融资包编号"/>
+				</div>
+				<div class="form-btn-wrapper">
+					<button type="submit" class="btn btn-mf-primary" id="refresh-market-one-btn">刷新行情缓存（单个融资包）</button>
+				</div>
+				
+				<br/>
+                
+				<div class="input-group form-item">
+					<input type="text" class="form-control" id="userName" name="userName" minlength="1" maxlength="60" required placeholder="用户名"/>
+				</div>
+				<div class="form-btn-wrapper">
+					<button type="submit" class="btn btn-mf-primary" id="refresh-auth-btn">刷新用户信息缓存</button>
+				</div>
+				
+				<br/>
+                <div class="form-btn-wrapper">
+					<button class="btn btn-mf-primary" id="refresh-all-authz-btn">刷新所有用户授权信息缓存</button>
+                </div>
+	  		</div>
+  	   </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,50 @@
+<!-- Modal -->
+<div class="modal modal-micro fade" id="rechargeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<form class="form-horizontal" role="form" id="recharge-form" action='$link.contextPath/web/myaccount/$!rechargeUrl' method="POST">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">充值</h4>
+      </div>
+      <div class="modal-body">
+			<div class="form-group">
+                <label  class="col-sm-2 control-label">银行卡号</label>
+                <div class="col-sm-6">
+                    <p class="bankcard-num"></p>
+                </div>
+              </div>
+			<div class="form-group">
+                <label  class="col-sm-2 control-label required">存入金额</label>
+                <div class="col-sm-6">
+					<div class="input-group">
+                       <input type="text" class="form-control" data-validate="{required:true,number:true,positiveNumber:true,fixednumber:2}" id="recharge-amount" name="amount" placeholder="存入金额"/>
+                       <span class="input-group-addon">元</span>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label  class="col-sm-2 control-label required">支付密码</label>
+                <div class="col-sm-6">
+                  <input type="password" class="form-control" data-validate="{required:true}" id="pay-password" name="password" maxlength="20" placeholder="支付密码"/>
+                </div>
+				 <label  class="col-sm-4 control-label label-tip" ><i class="fa fa-info-circle"></i>&nbsp;支付密码与登录密码相同</label>
+              </div>
+              <div class="form-group">
+              	<label class="col-sm-2 control-label">备注</label>
+              	<div>
+              		<div class="col-sm-6">
+              			<textarea class="form-control" name="memo" rows="2" cols="" maxlength="200"></textarea>
+              		</div>
+              	</div>
+              </div>
+			  <input type="hidden" name="bankAcctNo" id="bankacctno"/>
+      </div>
+      <div class="modal-footer">
+		<button type="submit" class="btn btn-mf-primary">提交</button>
+        <button type="button" class="btn btn-mf-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div><!-- /.modal-content -->
+    </form>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

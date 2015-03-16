@@ -1,0 +1,297 @@
+/*
+ * Project Name: kmfex-platform
+ * File Name: CommonMenuDto.java
+ * Class Name: CommonMenuDto
+ *
+ * Copyright 2014 Hengtian Software Inc
+ *
+ * Licensed under the Hengtiansoft
+ *
+ * http://www.hengtiansoft.com
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * Styling for the MFMenu module
+ *
+ * Author: Tao Shi
+ */
+
+/*==========================================================================
+      Menu wrapper style
+  ==========================================================================*/
+.menu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    height: 100%;
+    background: #e6e6ee;
+}
+
+.menu-wrapper{
+    width: 100px;
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    padding-top:65px;  /**110px;**/  
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px #333;
+    overflow: auto;
+} 
+
+.menu-index{ 
+	font-size: 28px;
+    cursor: pointer;
+    position: relative;
+	padding: 5px 3px;
+    color:#646464;
+	text-align: center;
+	list-style: none;
+ } 
+ 
+.menu-index:hover{
+	transition: all 0.35s ease 0s;
+	background-color: #888;
+}
+ 
+.menu-index:hover a{
+	color: #f1f1f1;
+} 
+.menu-index:hover .fa-home{
+	border: 1px solid #f1f1f1;
+}
+.menu-index .menu-index-ico{
+	margin: 0 auto;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+} 
+/* .menu-index .menu-index-ico a{  
+	color: #646464; 
+	list-style: none;
+}  */
+.menu-index h4{
+    font-size:14px;
+	margin-bottom: 0px;
+} 
+ 
+.menu-index a{  
+	color: #646464; 
+	text-decoration: none;
+} 
+ 
+.submenu-wrapper{
+    background-color: #E0E0E0;
+    position: absolute;
+    height: 100%;
+    width: 150px;
+    left:100px;
+    top: 0;
+    padding-top: 80px;
+    overflow-y: auto;
+}
+.submenu-content{
+	margin: 20px 0 0 0;
+    position: relative;
+    text-align: left;
+}
+.submenu-inner{
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	left: 150px;
+	width: 100%;
+}
+
+/*==========================================================================
+      Menu item style
+  ==========================================================================*/
+
+.menu-blk-el{
+	font-size: 28px;
+    cursor: pointer;
+    position: relative;
+	padding: 8px 5px;
+    color:#646464;
+	text-align: center;
+	list-style: none;
+}
+.menu-blk-el.actived,
+.menu-blk-el:hover{
+	color: #f1f1f1;
+	transition: all 0.35s ease 0s;
+	background-color: #888;
+}
+.menu-blk-el.selected,
+.menu-blk-el.selected:hover{
+	color: #F1F1F1;
+	background-color: #C37523;
+	text-decoration: none;
+    transition: all 0.35s ease 0s;
+}
+.menu-blk-el .menu-blk-el-ico{
+	margin: 0 auto;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+}
+.menu-blk-el .on{
+	position: absolute;
+	background-color: #fff;
+	border: 1px solid #C27724;
+	width: 26px;
+	height: 26px;
+	border-radius: 26px;
+	color: #A9651A;
+	right: 12px;
+	top: 9px;
+}
+.menu-blk-el .on i{
+	display: block;
+	font-size: 16px;
+	line-height: 26px;
+	margin-top: 0px;
+}
+.menu-blk-el h4{
+    font-size:14px;
+    margin-bottom: 0px;
+}
+.menu-blk-el span{
+    position: absolute;
+    left: 82px;
+    top: 34px;
+    font-size: 18px;
+    color: #b58e71;
+    display: none;
+}
+.menu-blk-el.actived .menu-blk-el-ico,
+.menu-blk-el:hover .menu-blk-el-ico{
+    border-color: #F1F1F1;
+}
+.menu-blk-el.selected .menu-blk-el-ico{
+	border-color: #F1F1F1;
+}
+.menu-blk-el.selected .menu-blk-el-ico-mini{
+    display: block;
+}
+.menu-wrapper .fa-border {
+    border: 1px solid #666666;
+    border-radius: 1.2em;
+    display: block;
+    height: 100%;
+    padding: 0.35em 0.3em;
+}
+.menu-blk-el.actived .fa-border,
+.menu-blk-el:hover .fa-border,
+.menu-blk-el.selected  .fa-border {
+ 	border-color: #F1F1F1;
+}
+
+/*==========================================================================
+      Sub menu item style
+  ==========================================================================*/
+
+.submenu-blk-el {
+	margin: 0;
+	padding: 5px;
+    color:#646464;
+    list-style: none;
+}
+
+.submenu-blk-el.selected,
+.submenu-blk-el.selected:hover{
+    transition: all 0.35s ease 0s;
+	background: #D26C00;
+}
+.submenu-blk-el.selected i{
+	background: none repeat scroll 0 0 #F1F1F1;
+	color: #E55300;
+}
+.submenu-blk-el:hover{
+	transition: all 0.35s ease 0s;
+	background-color: #888;
+}
+
+.submenu-back {
+	padding: 5px;
+	display: block;
+    color: #B4B4B4;
+	text-decoration: none;
+	text-align: center;
+	font-size:4em;
+}
+.submenu-back:hover i.fa{
+	color: #F1F1F1;
+}
+
+.submenu-blk-el a{
+	color:#646464;
+	display: block;
+	text-decoration: none;
+	padding-left: 10px;
+	padding: 5px 12px;
+}
+
+.submenu-blk-el a:hover{
+	color: #F1F1F1;
+    text-decoration: none;
+    transition: all 0.35s ease 0s;
+}
+.submenu-blk-el.selected a{
+	color: #F1F1F1;
+}
+.submenu-blk-el a i{
+    background: none repeat scroll 0 0 #666666;
+    border-radius: 12px;
+    color: #F1F1F1;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 6px;
+    text-align: center;
+    width: 24px;
+    float:left;
+    font-size: 12px;
+}
+
+/*==========================================================================
+      Menu arrow style
+  ==========================================================================*/
+  
+.menu-ph {
+	position: absolute;
+	z-index: 4;
+}
+.menu-ph > .arrow,
+.menu-ph > .arrow:after {
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+}
+.menu-ph > .arrow {
+	border-width: 16px;
+	top: 50%;
+	right: -16px;
+	margin-top: -16px;
+	border-left-width: 0;
+	border-right-color: #fff;
+}
+.menu-ph > .arrow:after {
+	content: "";
+	border-width: 16px;
+	left: 1px;
+	bottom: -16px;
+	content: " ";
+	border-left-width: 0;
+	border-right-color: #f2f2f2;
+}

@@ -1,0 +1,9 @@
+#set($layout = "common\emptyLayout.vm")
+#set($defaultValue = "--")
+<div id="pro-product-details">
+    #parse("product\project_basic_info.vm")
+    #parse("product\project_more_details.vm")
+	#if(!$!{productDetails.flag})
+		#parse("product\project_operate.vm")
+	#end
+</div>

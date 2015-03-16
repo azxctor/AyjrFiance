@@ -1,0 +1,116 @@
+#table-search-result {
+	margin-top: 20px;
+}
+#btn-finance-apply {
+	float: right;
+}
+#finance-apply{
+	display: none;
+}
+#btn-finance-apply {
+	display: none;
+}
+#table-porpose-affirm .radio-accept {
+	width:20px;
+	height:20px;
+}
+
+/*finance-apply*/
+.selectpicker {
+	width: 100%;
+}
+.btn-choose-org {
+	float:right;
+}
+
+.tab-content {
+	margin-top: 20px;
+}
+#counter-guarantee {
+	position: relative;
+}
+#counter-guarantee .nav {
+	position: absolute;
+	width: 10%;
+}
+#counter-guarantee .tab-content {
+	padding-left: 10%;
+}
+.add-box {
+	margin-bottom: 15px;
+}
+.add-content {
+	margin-top:10px;
+	border: 1px solid #fff;
+}
+.add-close-btn {
+	float:right;
+}
+.file-upload[type="file"] {
+	display: none;
+}
+
+.box-guarantee-org {
+	width: 100%;
+	margin-top: 20px;
+	border: 1px solid #ccc;
+	background-color: #eee;
+}
+.btn-modal-submit {
+	width:100%;
+	text-align:right;
+	margin-top:20px;
+}
+.btn-modal-submit .btn{
+	margin: 0 5px;
+}
+.submit {
+	float: right;
+	margin: 20px 0 0 20px;
+}
+.myradio{
+	display: none;
+}
+.radio-label{
+	width: 20px;
+	margin: 5px 15px;
+	border: 1px solid #d3ceca;
+	text-align: center;
+}
+.form-group .input-group {
+	padding: 0 15px;
+}
+#main-tab li a{
+	cursor: default;
+}
+
+.operation-box .fa:before {
+	line-height: 22px;
+	margin: 0 10px;
+	color: #000;
+}
+table.dataTable tr.mytr-selected {
+	background-color: #f0f0f0;
+}
+.right-blk-body  .btn-operate-revoke {
+	padding: 0 15px;
+	line-height: 20px;
+	border-radius: 3px;
+	margin-right: 5px;
+	font-size: 12px;
+}
+.right-blk-body  .btn-operate-cancel {
+	padding: 0 15px;
+	line-height: 20px;
+	border-radius: 3px;
+	margin-right: 5px;
+	font-size: 12px;
+}
+.status-operate .fa {
+}
+.time-search {
+	display: none;
+}
+.go-view{
+	cursor:pointer;
+}

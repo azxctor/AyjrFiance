@@ -1,0 +1,35 @@
+#set($layout="common/emptyLayout.vm")
+<link href="$link.contextPath/assets/css/page/packet/report_common.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/activity_statistics.js"></script>
+<div class="row" id="search">
+	<form id="activity-form" action="">
+		<div class="col-sm-2">
+			<label>起止日期</label>
+			<div class="input-group">
+				<input class="form-control" id="search-start-date" name="startDate" value="$!{selectDate}">
+				<span class="input-group-addon">
+					<i class="fa fa-calendar"></i>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<label>&nbsp;</label>
+			<div class="input-group">
+				<input class="form-control" id="search-end-date" name="endDate" value="$!{selectDate}">
+				<span class="input-group-addon">
+					<i class="fa fa-calendar"></i>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<label class="auto-width">&nbsp;</label>
+			<a class="btn btn-mf-primary" id="activity-search-btn">
+				<i class="fa fa-search"></i>&nbsp;查询
+			</a>
+		</div>
+	</form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="activity-frame-table" class="kmfex-frame" scrolling="no"></iframe>
+	<iframe  width="100%" id="activity-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>

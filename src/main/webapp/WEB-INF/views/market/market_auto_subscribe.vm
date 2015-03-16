@@ -1,0 +1,69 @@
+<link href="$link.contextPath/assets/css/page/market/market_auto.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/market/market-auto.js" type="text/javascript"></script>	
+<div class="row header">
+	<div id="search_area">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<input type="text" class="form-control" name="packageId" placeholder="输入融资包编号"/>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="form-group">
+				<button class="btn btn btn-mf-primary" id="search">
+					<i class="fa fa-search"></i> 查询
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-12 ht760">
+		<table id="auto-table">
+			<thead>
+				<tr>
+					<th data-mData="id">融资包编号</th>
+					<th data-mRender="_fnProductName" data-bSortable="false">融资包名称</th>
+					<th data-mData="financingRealName" data-bSortable="false">融资人</th>
+					<th data-mData="warrantorShow" data-bSortable="false">担保机构</th>
+					<th data-mData="packageQuota" data-sFormatType="thousand" align="right">总融资额 (元)</th>
+					<th data-mData="availableQuota" data-sFormatType="thousand" data-bSortable="false">可融资额 (元)</th>
+					<th data-mData="supplyAmount" data-sFormatType="thousand">已融资额 (元)</th>
+					<th data-mData="product.rate" data-sFormatType="aprate">年利率</th>
+					<th data-mData="product.termLength">期限</th>
+					<th data-mData="payMethod" data-bSortable="false">还款方式</th>
+					<th data-mData="region" data-bSortable="false">所属地域</th>
+					<th data-mData="industry" data-bSortable="false">行业</th>
+					<th data-mData="percent" data-bSortable="false">进度</th>
+					<th data-mData="status" data-bSortable="false">状态</th>
+                    <th data-mRender="_fnSelectButton" data-bSortable="false">筛选人</th>
+                    <th data-mRender="_fnDrawButton" data-bSortable="false">抽签</th>
+					<th data-mRender="_fnPublicButton" data-bSortable="false" data-fnCreatedCell="_fnbuyButton">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="modal fade modal-micro" id="modal-approve" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                  &times;
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel">
+            						确认提示
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>是否确认对外公布融资包<strong>“</strong><strong id="well-pkg-name"></strong><strong>”</strong>？</p>
+                          </div>
+            			  <div class="modal-footer">
+            				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+            				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+                          </div>
+                      </div>
+                  </div>
+			 </div>
+		

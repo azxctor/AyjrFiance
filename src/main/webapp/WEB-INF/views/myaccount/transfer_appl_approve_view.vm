@@ -1,0 +1,167 @@
+<link href="$link.contextPath/assets/css/page/myaccount/transfer_appl_approve_view.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/myaccount/transfer_appl_approve_view.js" type="text/javascript"></script>
+<div id="container-transfer">
+    <div class="info-panel">
+		<div class="panel-header">
+			<div class="row"> 
+				<div class="col-sm-12">
+    				<div class="col-sm-10 col-bigger">
+                        <i class="fa fa-list-alt fa-lg"></i>&nbsp;转账复核
+                    </div>
+            		<div class="col-sm-2 col-bigger">
+            			<div class="btn-group operate-all">
+                          <button type="button" class="btn btn-mf-primary dropdown-toggle btn-do-all" data-toggle="dropdown" style="width:120px" disabled>
+            					批量操作 <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="javascript:void(0)" class="btn-approve-all"><i class='fa fa-check fa-lg'></i> 通过</a></li>
+                            <li><a href="javascript:void(0)" class="btn-refuse-all"><i class='fa fa-times fa-lg'></i> 拒绝</a></li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+			</div>
+        </div>
+        <div class="row row-search">
+			<div class="col-sm-12">
+    			<div class="col-sm-10 col-bigger">
+    				<input type="hidden" name="useType" value='$!useType' />
+    				<div class="row ma-b15">
+                        <div class="col-sm-2">
+    						<label class="control-label">转出会员交易账号</label>
+    					</div>
+                        <div class="col-sm-2 no-padding-left">
+    						<div class="input-group">
+    							<input  class="form-control" name="payerAcctNo"  type="text"/>
+    						</div>
+    					</div>
+    					<div class="col-sm-2 no-padding-left">
+    						<label class="control-label">转入会员交易账号</label>
+    					</div>
+                        <div class="col-sm-2 no-padding-left">
+    						<div class="input-group">
+    							<input  class="form-control" name="payeeAcctNo"  type="text"/>
+    						</div>
+    					</div>
+    					<div class="col-sm-1 no-padding-left">
+    						<label class="control-label">事件编号</label>
+    					</div>
+                        <div class="col-sm-3 no-padding-left">
+    						<div class="input-group">
+    							<input  class="form-control" name="eventId"  type="text"/>
+    						</div>
+    					</div>
+                    </div>
+    				<div class="row">
+                        <div class="col-sm-2">
+    						<label class="control-label">审核状态</label>
+    					</div>
+    					<div class="col-sm-2 no-padding-left">
+    						<select class="form-control" name="applStatus">
+        						#foreach($status in $applStatus)
+        							<option value="$!status" #if($!status=="WAIT_APPROVAL") selected="selected" #end>$!status.text</option>
+        						#end
+                            </select>
+                        </div>
+                		<div class="col-sm-2 no-padding-left">
+                			<label class="control-label">
+                				起止日期
+                			</label>
+                		</div>
+                        <div class="col-sm-3 no-padding-left">
+                			<div class="input-group">
+                				<input class="form-control datepicker" name="fromDate" id="start-date" readonly/>
+                                <label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+                            </div>
+                		</div>
+                		<div class="col-sm-3 no-padding-left">
+                			<div class="input-group">
+                				<input class="form-control datepicker" name="toDate" id="end-date" readonly/>
+                                <label class="input-group-addon"><i class="fa fa-calendar"></i></label>
+                            </div>
+                		</div>
+                    </div>
+                </div>
+        		<div class="col-sm-2 col-bigger">
+        			<button type="button" id="btn-search" class="btn btn-mf-primary pull-right"><i class="fa fa-search"></i>&nbsp;查询</button>
+                </div>
+			</div>
+		</div>
+		<div class="row">
+            <div class="col-sm-12">
+        	<table class="display" id="table-result" cellspacing="0" cellpadding="0" border="0">
+        		<thead>
+        			<tr>
+						<th data-mRender="_fnSelect" data-bSortable="false">
+							<input type="checkbox"  class="approve-check-all" title="全选">
+						</th>
+        				<th data-mData="eventId" data-bSortable="false">事件编号</th>
+						<th data-mData="payerAcctNo">转出交易账号</th>
+						<th data-mData="payeeAcctNo">转入交易账号</th>
+        				<th data-mData="applDt" data-bSortable="false">申请时间</th>
+        				<th data-mData="trxAmt" data-sFormatType="thousand" data-bSortable="false">转账金额（元）</th>
+						<th data-mData="createOpid" data-bSortable="false">申请人</th>
+						<th data-mData="applStatus.text" data-bSortable="false">申请状态</th>
+						<th data-mRender="_fnEllipsisTre" data-bSortable="false">申请备注</th>
+        				<th data-mData="apprOpid" data-bSortable="false">审核人</th>
+						<th data-mRender="_fnEllipsisDeal" data-bSortable="false">审核备注</th>
+						<th data-mRender="_fnOperate" data-bSortable="false" style="min-width:100px">操作</th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        		</tbody>
+        	</table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-micro" id="modal-approve" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      &times;
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+						确认提示
+                  </h4>
+              </div>
+              <div class="modal-body">
+                <p>是否同意所选转账申请？</p>
+              </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+              </div>
+          </div>
+      </div>
+ </div>
+ <div class="modal fade modal-micro" id="modal-refuse" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      &times;
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+						请填写拒绝理由
+                  </h4>
+              </div>
+              <div class="modal-body">
+					<form id="form-reason">
+						<div class="form-group">
+                            <label for="reason" class="control-label required">拒绝理由：</label>
+							<textarea id="reason" name="dealMemo" class="form-control" data-validate="{required:true}" max-length="150"></textarea>
+						</div>
+                    </form>
+              </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-mf-primary btn-modal-agree">确认</button>
+				<button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+              </div>
+          </div>
+      </div>
+ </div>
+#parse("myaccount\print_modal.vm")

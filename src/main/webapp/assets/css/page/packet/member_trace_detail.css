@@ -1,0 +1,17 @@
+#search-start-date{
+	background-color: #fff;
+	cursor:pointer;
+}
+#search-end-date{
+	background-color: #fff;
+	cursor:pointer;
+}
+.iframe-wrapper{
+	margin-top: 20px;
+}
+.trace-tab-content{
+	margin-bottom: 0px;
+}
+.mt10{
+	margin-top: 10px;
+}

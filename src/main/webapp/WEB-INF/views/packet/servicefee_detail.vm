@@ -1,0 +1,67 @@
+#set($layout = "common\emptyLayout.vm")
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/packet_repay_search.css">
+<script src="$link.contextPath/assets/js/page/packet/servicefee_detail.js" type="text/javascript"></script>
+<div id="search-area" class="row">
+	<form id="detail-form" action="$link.contextPath/web/report/getservicefeedetail" method="post">
+    	<div class="col-sm-2">
+    		<label>统计时间</label>
+    			<div class="input-group">
+                        <input type="text" name="selectMonth"   id="search-start-date" class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                 </div>
+        </div>
+    	
+    	    	
+    	<div class="col-sm-3">
+    		<label>关键字</label>
+    		<div class="full-oqp">
+    			<input type="text" name="keyWord" class="form-control" placeholder="输入受理人、申购人、经办人姓名模糊查询..."/>
+            </div>	
+        </div>
+      	<div class="col-sm-2">
+    		<label >融资期限</label>
+    		     <div class="full-oqp">
+    					<select  class="form-control" name="term">
+    					  <option value="">全部</option>
+    				        <option value="1-m">1月</option>
+    				        <option value="2-m">2月</option>
+    				        <option value="3-m">3月</option>
+    				        <option value="4-m">4月</option>
+    				        <option value="5-m">5月</option>
+    				        <option value="6-m">6月</option>
+    				        <option value="7-m">7月</option>
+    				        <option value="8-m">8月</option>
+    				        <option value="9-m">9月</option>
+    				        <option value="10-m">10月</option>
+    				        <option value="11-m">11月</option>
+    				        <option value="12-m">12月</option>
+    				        <option value="d">按日计息</option>        
+        				</select>
+                 </div>
+			
+        </div>
+        
+        <div class="col-sm-2">
+    		<label>支付方式</label>
+    		     <div class="full-oqp">
+    					<select  class="form-control" name="feePayMethodType">
+    				     #foreach($!feePayMethod in $!payMethodList)
+                                 <option value=$!{feePayMethod.code}>#if($!{feePayMethod.text}=="")全部 #else $!{feePayMethod.text}#end</option>
+                         #end     
+        				</select>
+        				
+        				 
+                 </div>
+			
+        </div>
+    	
+        <div class="col-sm-2">
+        	<label style="width:100%">&nbsp;</label>
+        	<div>
+                <a class="btn btn-mf-primary" id="btn-search-detail"><i class="fa fa-search"></i>查询</a>
+            </div>	
+        </div>
+    </form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="detail-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>	

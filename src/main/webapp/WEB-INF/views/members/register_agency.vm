@@ -1,0 +1,102 @@
+#set($layout="common/simple_layout.vm")
+<!-- 服务中心信息表单 -->
+<link href="$link.contextPath/assets/css/page/member/agency.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/member/register_agency.js" type="text/javascript"></script>
+<form class="form-horizontal $!basicMode" role="form" id="agency-form"
+	method="POST"
+	action="$link.contextPath/web/agency/register/submit/"
+	data-save-action="$link.contextPath/web/agency/register/save/" >
+	
+	<h3>登录信息</h3>
+	<div class="info-login">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label required">用户名</label>
+					<div class="col-sm-8">
+						<span class="hidden-form-control"></span> 
+						<input maxlength="15" type="text"	class="form-control" name="username" data-validate="{required:true,stringMinLength:4,stringMaxLength:15}"/>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label required">密码</label>
+					<div class="col-sm-8">
+						<span class="hidden-form-control"></span> 
+						<input type="password" name="password" class="form-control" data-validate="{required:true,minlength:1}" id="agency-password" maxlength="20"/>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label required">再次输入密码</label>
+					<div class="col-sm-8">
+						<span class="hidden-form-control"></span> 
+						<input type="password" name="passwordConfirm" class="form-control" data-validate="{required:true,minlength:1,equalTo:'#agency-password'}" maxlength="20"/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<h3>基本信息</h3>
+	 <div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">类型</label>
+				<div class="col-sm-8">
+				   <select id="org_type" class="form-control" name="type" data-validate="{required:true}">
+						<option value="NULL"></option>
+                        <option value="AUTHZDCENTER">服务中心</option>
+                        <option value="PRODUCTSERVICE">担保机构</option>
+                   </select>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">所属公司</label>
+				<div class="col-sm-8">
+				   <select id="company_Id" class="form-control" name="companyId" data-validate="{required:true}">
+ 						<option value=""></option>
+ 						#foreach($company in $companyList)
+ 							<option value="$company.companyId">$company.companyInfo</option>
+ 						#end
+ 				   </select>
+				</div>
+			</div>
+		</div>
+	</div>
+	 #parse("members\basicinfo_agency.vm")
+	 
+	 
+	<div id="agency_service"  style="display:none"> 
+	<h3>服务中心信息</h3>
+	 #parse("members\agency_service.vm")
+    </div>
+	
+	<div id="agency_provide"  style="display:none">
+	<h3>担保机构信息</h3>
+	#parse("members\agency_provider.vm")
+    </div>
+	<!-- 提交重置Button -->
+	<div class="row row-button">
+		<div class="col-sm-5 col-sm-offset-6">
+			<div class="col-sm-4 col-xs-12">
+				<button type="button" class="btn form-btn-save">保存</button>
+			</div>
+			<div class="col-sm-4 col-xs-12">
+				<button type="reset" class="btn form-btn-reset">重置</button>
+			</div>
+			<div class="col-sm-4 col-xs-12">
+				<button type="submit" class="btn form-btn-submit">提交申请</button>
+			</div>
+		</div>
+	</div>
+
+</form>

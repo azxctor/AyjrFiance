@@ -1,0 +1,79 @@
+#message {
+	position: fixed;
+	top: 6px;
+	left: 49.28%;
+	z-index: 5;
+	cursor: pointer;
+}
+#message .btn.btn-mf-primary {
+	background-color: transparent;
+	border-color: transparent;
+	margin-top:7px;
+}
+#message .badge {
+	position: relative;
+	top: -6px;
+	right: 26px;
+	background-color: #c27823;
+}
+#message .fa {
+	font-size: 28px;
+}
+
+#mytodo {
+	position: fixed;
+	margin-left: -340px;
+	top: 50px;
+	left: 50%;
+	z-index: 5;
+	display: none;
+	width: 680px;
+	background-color: #edf0f7;
+	box-shadow: 2px 5px 10px rgba(0, 0, 0, .5);
+}
+#mytodo .content {
+	background-color: #fff;
+	border-top: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+}
+#mytodo .no-margin {
+	margin: 0;
+}
+
+#title {
+	background-color: #edf0f7
+}
+
+#footer, #title-message {
+	padding-left: 8px;
+	color: #648abb;
+}
+
+#mytable tr td {
+	padding: 10px 5px 10px 8px;
+	border: 1px solid #fff;
+	font-size: 12px;
+}
+#mytodo-table tr td, #mytodo-table th {
+	border: 1 solid #f00 !important;
+	background-color: #fff;
+}
+#mytodo-table thead th {
+	background-color: #fff;
+	border-bottom: 1px solid #F79032;
+}
+
+.show-all-message {
+	padding: 5px 0;
+	margin-right: 25px;
+}
+.show-all-message .fs12 {
+	font-size: 12px;
+}
+.btn.btn-mf-primary.btn-up {
+	margin-left: 330px;
+	width: 50px;
+	height: 20px;
+	text-align: center;
+	border-radius: 0 0 5px 5px;
+}

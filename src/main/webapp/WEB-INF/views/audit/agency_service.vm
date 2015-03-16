@@ -1,0 +1,79 @@
+<div id="agency-service">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">合作形式</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="cooperationForm"></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">注册地</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="registrationPlace"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">注册时间</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="registrationDate"></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">注册资本</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="registrationCapital"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">合作协议起始日</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="cooperationBeginDate"></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">合作协议截止日</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="cooperationEndDate"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">员工人数</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="employeeNo"></span>
+				</div>
+			</div>
+		</div>
+		
+		 
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">受理人</label>
+				<div class="col-sm-7">
+					<span class="hidden-form-control" data-prop="agent"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

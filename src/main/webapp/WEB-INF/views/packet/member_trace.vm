@@ -1,0 +1,96 @@
+
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/packet/packet_repay_search.css">
+<script src="$link.contextPath/assets/js/page/packet/member_trace.js" type="text/javascript"></script>
+<div id="main-wrapper">
+    <div id="search-area" class="row">
+        <form id="packet-repay-form" action="$link.contextPath/web/report/memberbusinesstracepage" method="post">
+            <div class="col-sm-2">
+                <label>开户起止日期</label>
+                <div class="input-group">
+                    <input type="text" name="startDate" id="search-start-date"  value="$selectDate"   class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <label>&nbsp;</label>
+                <div class="input-group">
+                    <input type="text" name="endDate" id="search-end-date"  value="$selectDate"  class="form-control" readonly="readonly"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <label>会员等级</label>
+                <div class="full-oqp">
+                    <select  class="form-control" name="memberLevel">
+                        #foreach($!memberLevel in $!memberLevelList)
+                            <option value=$!{memberLevel.code}>#if($!{memberLevel.text}=="")全部 #else $!{memberLevel.text}#end</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <label>状态</label>
+                <div class="full-oqp">
+                    <select  class="form-control" name="applicationStatus">
+
+                        #foreach($!memeberStatus in $!memeberStatusList)
+                            <option value=$!{memeberStatus.code}>#if($!{memeberStatus.text}=="")全部 #else $!{memeberStatus.text}#end</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <label>余额等级</label>
+                <div class="full-oqp">
+                    <select  class="form-control" name="remainLevel">
+                        #foreach($!remainAmount in $!remainAmountList)
+                            <option value=$!{remainAmount.code}>#if($!{remainAmount.text}=="")全部 #else $!{remainAmount.text}#end</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <label>账户总额</label>
+                <div class="full-oqp">
+                    <select  class="form-control" name="assetLevel">
+                        #foreach($!totalAmount in $!totalAmountList)
+                            <option value=$!{totalAmount.code}>#if($!{totalAmount.text}=="")全部 #else $!{totalAmount.text}#end</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+			#if ($!{isServiceCenter} != "true")
+			<div class="col-sm-3">
+                <label>授权服务中心</label>
+                <div class="full-oqp">
+                    <select  class="form-control" name="serviceCenterId">
+                        #foreach($!serviceCenter in $!serviceCenterList)
+                            <option value=$!{serviceCenter.code}>#if($!{serviceCenter.text}=="")全部 #else $!{serviceCenter.text}#end</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+			#end
+            <div class="col-sm-5">
+                <label>关键字</label>
+                <div class="full-oqp">
+                    <input type="text" name="keyWord" class="form-control" placeholder="输入会员交易账号、会员姓名、受理人、经办人进行模糊查询..."/>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <label style="width:100%">&nbsp;</label>
+                <div>
+                    <a  class="btn btn-mf-primary" id="search-btn"><i class="fa fa-search"></i>查询</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="iframe-wrapper">
+        <iframe  width="100%" id="main-frame" class="kmfex-frame"></iframe>
+    </div>
+</div>
+<span class="id-wrapper hide"></span>
+<span class="detail-id-wrapper hide"></span>
+<span class="paydate-wrapper hide"></span>

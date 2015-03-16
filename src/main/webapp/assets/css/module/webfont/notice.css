@@ -1,0 +1,93 @@
+@charset "UTF-8";
+ 
+#noticeContentList1 li  a,#noticeContentList2 li a {
+    text-decoration: none;
+}
+#noticeContentList1 li a:link,#noticeContentList2 li a:link {
+    color: #555555;
+}
+#noticeContentList1 li a:visited,#noticeContentList2 li a:visited {
+    color: #555555;
+}
+#noticeContentList1 li a:hover,#noticeContentList2 li a:hover {
+    color: #cb0000;
+    text-decoration: none;
+}
+#noticeContentList1 li a:active,#noticeContentList2 li a:active {
+    color: #555555;
+    text-decoration: underline;
+}
+#noticeContentList1 li,#noticeContentList2 li {
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    word-break: break-all;
+}
+.noticeShow { 
+    padding: 0;
+    background: url("../../../img/notice_bg.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 31px;
+    margin: 0 auto;
+    width: 950px;
+	font-size: 12px;
+	clear: both;
+}
+#demoNotice {
+    display: inline;
+    float: left;
+    height: 20px;
+    margin: 6px 0 0 150px;
+    overflow: hidden;
+    width: 710px;
+}
+#indemo {
+    float: left;
+    height: 119px;
+    overflow: hidden;
+    width: 710%;
+}
+#demo1Notice {
+    float: left;
+    height: 20px;
+    overflow: hidden;
+}
+#demo2Notice {
+    float: left;
+    height: 20px;
+    overflow: hidden;
+}
+.noticeShow li {
+    list-style-type: none;
+    display: inline;
+    float: left;
+    height: 20px;
+}
+.noticeShow li a {
+    background: url("../../../img/xw_img.gif") no-repeat scroll left -468px rgba(0, 0, 0, 0);
+    display: block;
+    line-height: 14px;
+    padding: 4px 8px 0 8px;
+}
+.but {
+    display: inline;
+    float: right;
+    height: 15px;
+    margin: 9px 19px 0 0;
+    width: 45px;
+}
+.but div {
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 15px;
+    width: 15px;
+}
+#butstop {
+    background: url("../../../img/xw_img.gif") no-repeat scroll -92px 0 rgba(0, 0, 0, 0);
+    float: left;
+}
+#butstart {
+    background: url("../../../img/xw_img.gif") no-repeat scroll -108px 0 rgba(0, 0, 0, 0);
+    float: right;
+}

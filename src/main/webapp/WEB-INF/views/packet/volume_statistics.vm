@@ -1,0 +1,33 @@
+#set($layout="common/emptyLayout.vm")
+<link href="$link.contextPath/assets/css/page/packet/report_common.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/volume_statistics.js"></script>
+<div class="row" id="search">
+	<form id="volume-statistics" action="$link.contextPath/web/report/gettradestatistics" method="post">
+		<div class="col-sm-2">
+			<label>年份</label>
+			<div>
+				<select class="form-control" id="year" name="keyWord">
+					#foreach($!year in $!yearList)
+						<option value=$!{year}>$!{year}</option>
+					#end
+				</select>
+			</div>
+		</div>
+		<!-- <div class="col-sm-2">
+			<label class="auto-width">&nbsp;</label>
+			<a class="btn btn-mf-primary" id="volume-search-btn">
+				<i class="fa fa-search"></i>&nbsp;查询
+			</a>
+		</div>
+		<div class="col-sm-2">
+			<label class="auto-width">&nbsp;</label>
+			<a class="btn btn-mf-primary" id="volume-chart-btn">
+				<i class="fa fa-search"></i>&nbsp;查看/刷新柱状分布图
+			</a>
+		</div> -->
+	</form>
+</div>
+<div class="iframe-wrapper">
+	<iframe  width="100%" id="volume-frame-table" class="kmfex-frame" scrolling="no"></iframe>
+	<iframe  width="100%" id="volume-frame" class="kmfex-frame" scrolling="no"></iframe>
+</div>

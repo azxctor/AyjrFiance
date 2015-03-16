@@ -1,0 +1,9 @@
+###set($layout = "common/signinLayout.vm")  
+<link href="$link.contextPath/assets/css/page/microsignin.css" rel="stylesheet">
+<div>
+	
+    <label>权限申请</label><br />
+		<a href="$link.contextPath/web/agency/servicecentorinfo/view/$userId?basicMode=edit-mode">服务中心权限信息</a><br />
+		<a href="$link.contextPath/web/agency/productproviderinfo/view/$userId?basicMode=edit-mode">担保机构信息</a><br />
+	
+</div>	

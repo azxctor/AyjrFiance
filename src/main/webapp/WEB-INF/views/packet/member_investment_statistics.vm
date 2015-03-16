@@ -1,0 +1,61 @@
+<link href="$link.contextPath/assets/css/page/packet/report_common.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/member_investment_statistics.js"></script>
+<div id="main-wrapper">
+	<div id="search">
+		<form id="member-investment-search" action="" method="post">
+			<div class="row">
+				<div class="col-sm-4">
+					<label>关键字</label>
+					<input class="form-control" id="key-word" name="keyWord" placeholder="输入融资包编号、融资包简称模糊查询...">
+				</div>
+				<div class="col-sm-2">
+					<label class="auto-width">&nbsp;</label>
+					<select class="form-control" id="member-type" name="memberType">
+						#foreach($!memberType in $!memberTypeList)
+							<option value=$!{memberType.code}>$!{memberType.text}</option>
+						#end
+					</select>
+				</div>
+				#*<div class="col-sm-2">
+					<label class="auto-width">&nbsp;</label>
+					<select class="form-control" id="timetype" name="timeType">
+						#foreach($!payMethod in $!payMethodList)
+							<option value=$!{payMethod.code}>$!{payMethod.text}</option>
+						#end
+					</select>
+				</div>*#
+				<div class="col-sm-2">
+					<label>签约起止日期</label>
+					<div class="input-group">
+						<input class="form-control" id="search-start-date" name="startDate" value="$!{selectDate}">
+						<span class="input-group-addon">
+							<i class="fa fa-calendar"></i>
+						</span>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<label class="auto-width">&nbsp;</label>
+					<div class="input-group">
+						<input class="form-control" id="search-end-date" name="endDate" value="$!{selectDate}">
+						<span class="input-group-addon">
+							<i class="fa fa-calendar"></i>
+						</span>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<label class="auto-width">&nbsp;</label>
+					<a class="btn btn-mf-primary" id="investment-search-btn">
+						<i class="fa fa-search"></i>&nbsp;查询
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="iframe-wrapper">
+		<iframe  width="100%" id="member-investment-frame" class="kmfex-frame" scrolling="no"></iframe>
+	</div>
+</div>
+<span class="id-wrapper hide"></span>
+<span class="type-time-wrapper hide"></span>
+<span class="start-time-wrapper hide">$!{selectDate}</span>
+<span class="end-time-wrapper hide">$!{selectDate}</span>

@@ -1,0 +1,156 @@
+<link rel="stylesheet" type="text/css" href="$link.contextPath/assets/css/page/product/contract_rate.css"/>
+<script src="$link.contextPath/assets/js/page/product/contract_rate.js" type="text/javascript"></script>
+<div class="row" id="search-wrapper">
+    <div class="col-xs-3">
+         <div class="form-group">
+             <label class="control-label" for="operation-select">合同模板</label>
+              <select class="form-control form-inline"  name="contractId">
+              	  <option value="">全部</option>
+                  #foreach($contractId in $templateDtoList)
+                      <option value="${contractId.templateId}">$!{contractId.templateName}</option>
+                  #end
+              </select>
+         </div>
+    </div>
+    <div class="col-xs-2">
+	      <div class="form-group">
+	          <label class="control-label" for="operation-select">风险等级</label>
+	           <select class="form-control form-inline"  name="productLevelId">
+	               <option value="">全部</option>
+	               #foreach($productLevelId in $riskLevels)
+	                   <option value="${productLevelId.code}">$!{productLevelId.textShort}</option>
+	               #end
+	           </select>
+	      </div>
+    </div>
+     <div class="col-xs-1">
+     	  <label class="control-label">&nbsp;</label>
+          <button class="btn btn-mf-primary btn-search" id="btn-search" style="display:block">
+              <i class="fa fa-search"></i>查询
+          </button>
+     </div>
+     <div class="col-xs-1">
+          <label class="control-label">&nbsp;</label>
+          <button class="btn btn-mf-primary btn-add" style="display:block">新建</button>
+     </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table id="table-search-result">
+            <thead>
+                <tr>
+                    <th data-mData="contractId" data-mRender="_fnContract" style="min-width:150px">合同模板</th>
+                    <th data-mData="productLevelId" data-mRender="_fnProductLevel">风险等级</th>
+                    <th data-mData="financierPrepaymentPenaltyRate" data-mRender="_fnFinancierRate" >融资人提前还款违约金率</th>
+                    <th data-mData="platformPrepaymentPenaltyRate" data-mRender="_fnPlatformRate" >平台提前还款违约金率</th>
+                    <th data-mData="paymentPenaltyFineRate" data-mRender="_fnPaymentRate" data-bSortable="false">滞纳金</th>
+                    <th data-mData="prepayDeductIntrFlg" data-mRender="_fnPrepayDeductIntrflg" style="width:100px">是否扣除当月利息</th>
+                    <th data-mRender="_fnOperate" data-bSortable="false">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal modal-micro fade" id="modal-contract" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <form class="form-horizontal" id="contract-form" method="POST">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title">合同模板利率</h4>
+	            </div>
+	            <div class="modal-body">
+					 <div class="row pd">
+						  <div class="col-md-12">
+						  	  <div class="main-wrapper">
+				  			 		<div class="row">
+				                          <label class="control-label col-md-4 required" for="contractId">合同模板</label>
+				    					  <div class="col-md-6">
+				    						  <select class="form-control"  name="contractId" id="contractId" data-validate="{required:true}">
+							                     #foreach($contractId in $templateDtoList)
+							                         <option value="${contractId.templateId}">$!{contractId.templateName}</option>
+							                     #end
+							                  </select>
+				    					  </div>
+									 </div>
+									 
+									<div class="row  form-item">
+										  <label class="control-label col-md-4 required" for="productLevelId">风险等级</label>
+									 	  <div class="col-md-6">
+											  <select class="form-control"  name="productLevelId" id="productLevelId" data-validate="{required:true}">
+							                     #foreach($productLevelId in $riskLevels)
+							                         <option value="${productLevelId.code}">$!{productLevelId.textShort}</option>
+							                     #end
+							                  </select>
+										  </div>
+									  </div>
+									  
+									  <div class="row  form-item">
+										  <label class="control-label col-md-4 required" for="financierPrepaymentPenaltyRate">融资人提前还款违约金率</label>
+										  <div class="col-md-6">
+										  	<div class="input-group">
+											  <input type="text" class="form-control"  name="financierPrepaymentPenaltyRate" id="financierPrepaymentPenaltyRate" data-validate="{required:true,min:0,max:1,fixednumber:8}" placeholder=""/>
+											</div>
+										  </div>
+									  </div>
+									  
+									  <div class="row  form-item">
+										  <label class="control-label col-md-4 required" for="platformPrepaymentPenaltyRate">平台提前还款违约金率</label>
+										  <div class="col-md-6">
+										  	  <div class="input-group ">
+												  <input type="text" class="form-control"  name="platformPrepaymentPenaltyRate" id="platformPrepaymentPenaltyRate" data-validate="{required:true,min:0,max:1,fixednumber:8}" placeholder=""/>
+											  </div>
+										  </div>
+									  </div>
+									  
+									  <div class="row  form-item">
+										  <label class="control-label col-md-4 required" for="paymentPenaltyFineRate">滞纳金</label>
+										  <div class="col-md-6">
+										  	  <div class="input-group ">
+												  <input type="text" class="form-control"  name="paymentPenaltyFineRate" id="paymentPenaltyFineRate"data-validate="{required:true,min:0,max:1,fixednumber:8}" placeholder=""/>
+											  </div>
+										  </div>
+									  </div>
+									  
+									  <div class="row  form-item">
+										  <label class="control-label col-md-4" for="deductFlg">提前还款扣除当月利息</label>
+										  <div class="col-md-6" style="padding-top:7px">
+										  	  <input type="checkbox" name="deductFlg" id="deductFlg">
+										  </div>
+									  </div>
+						  	   </div>
+						  </div>
+						</div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-mf-primary btn-modal-tosure">确定</button>
+	                <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+	            </div>
+	        </div>
+	    </div>
+	</form>
+</div>
+
+<div class="modal modal-micro fade" id="modal-contract-delete" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <form class="form-horizontal">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title">提示</h4>
+	            </div>
+	            <div class="modal-body">
+					 是否确定删除该条记录？
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-mf-primary btn-modal-delete" id="btn-modal-delete">确定</button>
+	                <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+	            </div>
+	        </div>
+	    </div>
+	</form>
+</div>

@@ -1,0 +1,141 @@
+#set($layout = "common/emptyLayout.vm")  
+<link href="$link.contextPath/assets/css/page/member/complete_base.css"
+	rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/member/detail_userinfo.js" type="text/javascript"></script>
+
+<!-- 个人信息表单 -->
+<form class="form-horizontal view-mode" role="form" id="form-basic" method="POST"
+	data-url="$link.contextPath/web/members/details/$member.userId/basicinfo"
+	#if($member.containsPerson())
+		action="$link.contextPath/web/members/details/$member.userId/basicinfo/person"
+	#elseif($member.containsOrg())
+		action="$link.contextPath/web/members/details/$member.userId/basicinfo/org"
+	#end>	
+	<h3>基本信息</h3>
+	#if($member.rejectLastTime)		
+		<div class="row">
+            <div class="alert alert-danger">
+				<i class="fa fa-exclamation-triangle fa-lg"></i>
+                <strong>您的申请被拒绝，拒绝理由：</strong>
+				<span class="" name="commonts">$!member.comments</span>
+			</div>
+        </div>
+	#end
+	#if($member.containsPerson())
+		#parse("members\basicinfo_person.vm")
+	#elseif($member.containsOrg())
+		#parse("members\basicinfo_org.vm")
+	#end
+	<!-- 提交重置Button -->
+	<div class="row row-button">
+		<div class="col-sm-6 col-sm-offset-6 info-area">
+    		#if($member.canEdit)
+				<div class="">
+    				<button type="submit" class="btn form-btn-submit" style="float:right;width: 92px;">提交</button>
+    			</div>
+				<div class="">
+					<button type="button" class="btn form-btn-edit" data-target="#form-basic"  style="float:right;width: 92px;">编辑</button>
+                </div>
+			#elseif($member.isPendding())
+    			<div class="alert alert-warning">
+					<ul class="fa-ul">
+						<li >
+							<i class="fa fa-info-circle fa-lg"> </i>
+							信息审核中！
+                        </li>
+                    </ul>
+				</div>
+    		#end
+		</div>
+	</div>
+</form>
+
+<form class="form-horizontal view-mode" role="form" id="form-investor" method="POST"
+	data-url="$link.contextPath/web/members/details/$member.userId/investorinfo"
+	action="$link.contextPath/web/members/details/$member.userId/investorinfo">	
+	<h3>投资信息</h3>
+	#if($investorInfo.rejectLastTime)
+		<div class="row">
+            <div class="alert alert-danger">
+				<i class="fa fa-exclamation-triangle fa-lg"></i>
+                <strong>您的申请被拒绝，拒绝理由：</strong>
+				<span class="" name="commonts">$!investorInfo.comments</span>
+			</div>
+        </div>
+	#end
+	<div id="reg-agant-invest" data-ignore="false">
+		#if($member.containsPerson())
+			#parse("members\investorinfo_person.vm")
+		#elseif($member.containsOrg())
+			#parse("members\investorinfo_org.vm")
+		#end
+    </div>
+	<!-- 提交重置Button -->
+	<div class="row row-button">
+		<div class="col-sm-6 col-sm-offset-6 info-area">
+    		
+			#if($investorInfo.canEdit)
+				<div class="">
+    				<button type="submit" class="btn form-btn-submit"  style="float:right;width: 92px;">提交</button>
+    			</div>
+				<div class="">
+					<button type="button" class="btn form-btn-edit" data-target="#form-investor"  style="float:right;width: 92px;" #if($member.rejectLastTime && !$member.oldMember) disabled  #end>编辑</button>
+                </div>
+			#elseif($investorInfo.isPendding())
+    			<div class="alert alert-warning">
+					<ul class="fa-ul">
+						<li >
+							<i class="fa fa-info-circle fa-lg"> </i>
+							信息审核中！
+                        </li>
+                    </ul>
+				</div>
+    		#end
+		</div>
+	</div>
+</form>
+<form class="form-horizontal view-mode" role="form" id="form-financier" method="POST"
+	data-url="$link.contextPath/web/members/details/$member.userId/financierinfo"
+	action="$link.contextPath/web/members/details/$member.userId/financierinfo">
+	<h3>融资信息</h3>
+	
+	#if($financierInfo.rejectLastTime)
+		<div class="row">
+            <div class="alert alert-danger">
+				<i class="fa fa-exclamation-triangle fa-lg"></i>
+                <strong>您的申请被拒绝，拒绝理由：</strong>
+				<span class="" name="commonts">$!financierInfo.comments</span>
+			</div>
+        </div>
+	#end
+	
+	<div id="reg-agant-finance" data-ignore="false">
+		#if($member.containsPerson())
+        	#parse("members\financierinfo_person.vm")
+		#elseif($member.containsOrg())
+    		#parse("members\financierinfo_org.vm")
+		#end
+    </div>
+	<!-- 提交重置Button -->
+	<div class="row row-button">
+		<div class="col-sm-6 col-sm-offset-6 info-area">
+			#if($financierInfo.canEdit)
+				<div class="">
+    				<button type="submit" class="btn form-btn-submit"  style="float:right;width: 92px;">提交</button>
+    			</div>
+				<div class="">
+					<button type="button" class="btn form-btn-edit" data-target="#form-financier"  style="float:right;width: 92px;" #if($member.rejectLastTime && !$member.oldMember) disabled  #end>编辑</button>
+                </div>
+			#elseif($financierInfo.isPendding())
+    			<div class="alert alert-warning">
+					<ul class="fa-ul">
+						<li >
+							<i class="fa fa-info-circle fa-lg"> </i>
+							信息审核中！
+                        </li>
+                    </ul>
+				</div>
+    		#end
+		</div>
+	</div>
+</form>

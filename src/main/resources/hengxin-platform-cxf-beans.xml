@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://cxf.apache.org/jaxws
+    http://cxf.apache.org/schemas/jaxws.xsd">
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<jaxws:client id="transferClient"
+		serviceClass="com.hengxin.platform.bnkdocking.service.TransferService"
+		address="${bnk.url}/transfer" />
+
+	<jaxws:client id="manageClient"
+		serviceClass="com.hengxin.platform.bnkdocking.service.ManageService"
+		address="${bnk.url}/manage" />
+
+	<jaxws:client id="systemClient"
+		serviceClass="com.hengxin.platform.bnkdocking.service.SystemService"
+		address="${bnk.url}/system" />
+
+	<jaxws:client id="queryClient"
+		serviceClass="com.hengxin.platform.bnkdocking.service.QueryService"
+		address="${bnk.url}/query" />
+
+	<jaxws:client id="protocolClient"
+		serviceClass="com.hengxin.platform.bnkdocking.service.ProtocolService"
+		address="${bnk.url}/protocol" />
+
+	<jaxws:endpoint id="userTransferWS" implementor="#userTransferServiceImpl"
+		address="/userTransfer" />
+
+	<jaxws:endpoint id="bnkAcctAgrmntWS" implementor="#userProtocolServiceImpl"
+		address="/bnkAcctAgrmnt" />
+
+	<!-- ebc -->
+	<jaxws:client id="ebcExecuterClient"
+		serviceClass="com.hengxin.platform.ebc.webservice.EbcExecuterWebservice"
+		address="${bnk.url}/ebc/execute" />
+
+	<jaxws:endpoint id="bindingWS" implementor="#ebcBindingWebserviceImpl"
+		address="/binding" />
+
+	<jaxws:endpoint id="rechargeWS" implementor="#ebcRechargeWebserviceImpl"
+		address="/recharge" />
+
+</beans>

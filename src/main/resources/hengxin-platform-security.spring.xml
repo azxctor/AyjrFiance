@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    	http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- required external beans -->
+	<!-- "realm": a Shiro realm to perform authentication/authorization -->
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="realm" />
+		<property name="cacheManager" ref="shiroCacheManager" />
+		<property name="sessionManager" ref="sessionManager" />
+	</bean>
+
+	<bean id="shiroCacheManager" class="com.hengxin.platform.security.cache.HazelcastCacheManager" >
+		<property name="hazelcastInstance" ref="hc-instance" />
+	</bean>
+	
+<!-- 	<bean id="shiroCacheManager" class="com.hengxin.platform.security.cache.EhCacheManager" > -->
+<!-- 		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" /> -->
+<!-- 	</bean> -->
+	
+	<bean id="concurrentSessionFactory" class="com.hengxin.platform.security.authc.session.ConcurrentSessionFactory" />
+	<bean id="sessionManager" class="com.hengxin.platform.security.authc.session.ShiroWebSessionManager" >
+		<property name="sessionDAO" ref="enterpriseCacheSessionDAO" />
+		<property name="globalSessionTimeout" value="${sec.session.timeout}" />
+		<property name="sessionValidationScheduler" ref="sessionValidationScheduler" />
+		<property name="sessionFactory" ref="concurrentSessionFactory" />
+	</bean>
+	<bean id="enterpriseCacheSessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO" />
+	<bean id="sessionValidationScheduler"  class="com.hengxin.platform.security.authc.session.QuartzSessionValidationScheduler">  
+	    <property name="sessionValidationInterval" value="${sec.session.validation.interval}"/>  
+	    <property name="sessionManager" ref="sessionManager"/>
+	    <property name="scheduler" ref="quartzScheduler"/>   
+	</bean>  
+	
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"
+		depends-on="lifecycleBeanPostProcessor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+
+	<bean id="shiroFilter" class="com.hengxin.platform.security.authc.session.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/web/members/signin" />
+		<property name="filterChainDefinitions">
+			<value>
+				/=anon
+				/web/ws/**=anon
+				/web/error/**=anon
+				/assets/**=anon
+				/webservice/**=anon
+				/web/members/signin=anon
+				/web/members/signin/authc=pass
+				/web/members/signin/authc_int=anon
+				/web/members/signin/**=anon
+				/web/members/smsVerify/**=anon
+				/web/notice/**=anon
+				/web/captcha=anon
+				/web/signout=logout
+				/web/members/register=anon
+				/web/agency/register/**=anon
+				/web/option/region/**=anon
+				/web/uploadfile/**=anon
+				/web/product/jbpm/**=anon
+				/web/market/financing/subscribe=anon
+				/app/user/login=anon
+				/app/user/login2=anon
+				/app/user/login3=anon
+				/app/test/**=anon
+				/app/version=anon
+				/app/version3=anon
+				/**=authc
+			</value>
+		</property>
+	</bean>
+
+	<bean id="authc" class="com.hengxin.platform.security.authc.SessionTimeoutAuthenticationFilter">
+		<property name="loginUrl" value="/web/members/signin" />
+	</bean>
+	<bean id="pass" class="org.apache.shiro.web.filter.authc.PassThruAuthenticationFilter" >
+		<property name="loginUrl" value="/web/members/signin/authc" />
+	</bean>
+	
+<!-- 	<bean id="realm" class="com.hengxin.platform.security.authc.ShiroSpringRealm" /> -->
+	<bean id="realm" class="com.hengxin.platform.security.authc.ShiroJdbcRealm">
+		<property name="dataSource" ref="dataSource" />
+		<property name="authorizationCacheName" value="${cache.name.authz}" />
+		<property name="authenticationCachingEnabled" value="false" />
+		<property name="authenticationCacheName" value="${cache.name.authc}" />
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
+		<property name="permissionsLookupEnabled" value="true" />
+		<property name="passwordService" ref="privateSaltPasswordService" />
+		<property name="authenticationQuery"
+			value="select password from um_user where lower(user_name) = lower(?)" />
+		<property name="userRolesQuery"
+			value="select role_name from um_user u, um_user_role rel, um_role r where u.user_id = rel. user_id and r.role_id = rel.role_id and lower(u.user_name)= lower(?)" />
+		<property name="permissionsQuery"
+			value="select perm_name from um_role r, um_role_perm rel, um_perm p where r.role_id=rel.role_id and p.perm_id= rel.perm_id and r.role_name = ?" />
+		<property name="loginFailureQuery"
+			value="update um_user set login_failure_ct=login_failure_ct+1, last_login_failure_ts=current_timestamp where lower(user_name) = lower(?)" />
+		<property name="resetLoginFailureQuery"
+			value="update um_user set login_failure_ct=0 where lower(user_name) = lower(?)" />
+		<property name="lastLoginFailureTsQuery"
+			value="select to_char(last_login_failure_ts, 'yyyy-MM-dd HH24:mi:ss') from um_user where lower(user_name) = lower(?)" />
+		<property name="loginSuccessQuery"
+			value="update um_user set login_failure_ct=0, last_login_ts=current_timestamp where lower(user_name) = lower(?)" />
+		<property name="passwordPolicyQuery"
+			value="select login_failure_ct,status from um_user where lower(user_name) = lower(?)" />
+		<property name="passwordMigrateQuery"
+			value="update um_user set password=(?) where lower(user_name) = lower(?)" />
+	</bean>
+	
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher" >
+		<property name="passwordService" ref="privateSaltPasswordService" />
+	</bean>
+	
+	<bean id="privateSaltPasswordService" class="com.hengxin.platform.security.authc.PrivateSaltPasswordService" >
+		<property name="hashIterations" value="${sec.hashIterations}" />
+	</bean>
+	
+	<bean id="hazelcastWebFilter" class="com.hengxin.platform.security.authc.session.HazelcastWebFilter"
+        depends-on="hc-instance">
+        <constructor-arg name="properties">
+            <props>
+                <prop key="map-name">${hazelcast.session.map.name}</prop>
+                <prop key="sticky-session">${hazelcast.session.sticky}</prop>
+                <prop key="cookie-http-only">true</prop>
+                <prop key="deferred-write">${hazelcast.session.deferred-write}</prop>
+                <prop key="session-ttl-seconds">${hazelcast.session.ttl}</prop>
+                <prop key="instance-name">${hazelcast.instance.name}</prop>
+            </props>
+        </constructor-arg>
+    </bean>
+    
+    <!--<bean id="hazelcastWebFilter" class="com.hazelcast.web.WebFilter"
+        depends-on="hc-instance">
+        <constructor-arg name="properties">
+            <props>
+                <prop key="map-name">${hazelcast.session.map.name}</prop>
+                <prop key="sticky-session">${hazelcast.session.sticky}</prop>
+                <prop key="cookie-http-only">true</prop>
+                <prop key="deferred-write">${hazelcast.session.deferred-write}</prop>
+                <prop key="session-ttl-seconds">${hazelcast.session.ttl}</prop>
+                <prop key="instance-name">${hazelcast.instance.name}</prop>
+            </props>
+        </constructor-arg>
+    </bean>-->
+    
+</beans>

@@ -1,0 +1,42 @@
+<link href="$link.contextPath/assets/css/page/myaccount/myaccount.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/myaccount/cmbt_sign.js" type="text/javascript"></script>
+<div id="main-wrapper">
+
+       <div class="col-xs-6">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <input class="form-control" id="sign-date"   type="text"/> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        <label class="void-label">&nbsp;</label>
+                        <button class="btn btn-mf-primary" id="sign">签到</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-wrapper" id="table-wrapper">
+                <table  class="packet-manage-table" id="packet-manage-table">
+                    <thead>
+                    <tr>
+						<th data-mData="signDate" data-bSortable="false">签到日期</th>
+                        <th data-mData="workDate" data-bSortable="false">交易日期</th>
+                        <th data-mData="createTime" data-bSortable="false">操作时间</th>
+                        <th data-mData="crateOperateId" data-bSortable="false">操作者</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

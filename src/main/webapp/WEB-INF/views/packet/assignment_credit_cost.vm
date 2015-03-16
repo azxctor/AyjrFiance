@@ -1,0 +1,47 @@
+<link href="$link.contextPath/assets/css/page/packet/report_common.css" rel="stylesheet">
+<script src="$link.contextPath/assets/js/page/packet/assignment_credit_cost.js"></script>
+<div id="main-wrapper">
+	<div class="row" id="search">
+		<form id="assignment-cost-form" action="">
+			<div class="col-sm-2">
+				<label>关键字</label>
+				<select class="form-control" name="creditTransferKeyType">
+					#foreach($!keyType in $!keyTypeList)
+					<option value=$!{keyType.code}>$!{keyType.text}</option>
+					#end
+				</select>
+			</div>
+			<div class="col-sm-2">
+				<label>&nbsp;</label>
+				<input class="form-control" name="keyWord" placeholder="模糊查询">
+			</div>
+			<div class="col-sm-2">
+				<label>起止日期</label>
+				<div class="input-group">
+					<input class="form-control" id="search-start-date" name="startDate" value="$!{selectDate}">
+					<span class="input-group-addon">
+						<i class="fa fa-calendar"></i>
+					</span>
+				</div> 
+			</div>
+			<div class="col-sm-2">
+				<label>&nbsp;</label>
+				<div class="input-group">
+					<input class="form-control" id="search-end-date" name="endDate" value="$!{selectDate}">
+					<span class="input-group-addon">
+						<i class="fa fa-calendar"></i>
+					</span>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<label class="auto-width">&nbsp;</label>
+				<a class="btn btn-mf-primary" id="assignment-cost-btn">
+					<i class="fa fa-search"></i>&nbsp;查询
+				</a>
+			</div>
+		</form>
+	</div>
+	<div class="iframe-wrapper">
+		<iframe  width="100%" id="assignment-cost-frame" class="kmfex-frame" scrolling="no"></iframe>
+	</div>
+</div>

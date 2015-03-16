@@ -1,0 +1,35 @@
+#search-area{
+	margin-bottom: 20px;
+}
+#search-area .search-date{
+	background: white;
+	cursor: pointer;
+}
+.ope-row{
+	margin-bottom: 5px;
+}
+.zw-row{
+	height:10px;
+}
+.ope-row .btn-mf-primary{
+	padding: 4px 23px;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#C27724), to(#A9651A));
+	background: -moz-linear-gradient(top, #C27724, #A9651A);
+	background: -ms-linear-gradient(top,#C27724 0,#A9651A 100%);
+	background: linear-gradient(top,#C27724,#A9651A);/*#F98A38,#A9651A*/
+	position: absolute;
+	top: -14px;
+}
+.report-foot{
+	background-color: #E6E5EA;
+}
+.total-trxAmt{
+	font-weight: bold;
+}
+
+.export {
+	margin-top: 20px;
+}
+.tooltip-inner{
+	text-align: left;
+}

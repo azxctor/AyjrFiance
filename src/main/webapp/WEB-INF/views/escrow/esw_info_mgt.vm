@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="$link.contextPath/assets/css/page/escrow/esw_info_mgt.css"/>
+<script src="$link.contextPath/assets/js/page/escrow/esw_info_mgt.js" type="text/javascript"></script>
+<div id="esw-view">
+#if($isActive==false)
+	#parse("/escrow/partial_activate.vm")
+#else
+	#parse("/escrow/partial_esw_info.vm")
+	#parse("/escrow/partial_update_pwd.vm")
+	#parse("/escrow/partial_update_phone_no.vm")
+	#parse("/escrow/partial_bank_info.vm")
+#end
+</div>

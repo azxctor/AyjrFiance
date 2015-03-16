@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><html class="no-js"> <![endif]-->
+<!--[if !IE]>-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Micro invest</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+<!-- Bootstrap core CSS -->
+<link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="../vendor/bootstrap-datepicker/css/datepicker.css"
+	rel="stylesheet">
+<link href="../vendor/jquery.spinner/bootstrap-spinner.css"
+	rel="stylesheet">
+<link href="../vendor/select2/css/select2.css" rel="stylesheet">
+<link href="../vendor/font-awesome/css/font-awesome.css"
+	rel="stylesheet">
+<link href="../vendor/pnotify/jquery.pnotify.default.css"
+	rel="stylesheet">
+<link href="../vendor/pnotify/jquery.pnotify.default.icons.css"
+	rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+<link href="../css/form.css" rel="stylesheet">
+<link href="../css/plugins.css" rel="stylesheet">
+<link href="../css/page/member/complete-userinfo.css" rel="stylesheet">
+<link href="../css/page/member/complete-base.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+<script type="text/javascript" src="../js/require.js"></script>
+<!-- <script type="text/javascript" src="../js/page/member/userinfo.js"></script>
+		<script type="text/javascript" src="../js/page/member/detail.js"></script> -->
+<!-- <script type="text/javascript" src="../js/page/member/complete_demo.js"></script> -->
+<!-- Global variable module which will take variables from sever side -->
+<script type="text/javascript">
+	       define('global', {
+	            context: 'D:/workspace-lanhaoxiang/MicroFinancing/src/main/webapp/'
+	        });
+    	</script>
+<script type="text/javascript" src="../js/base.js"></script>
+<script type="text/javascript"
+	src="../js/page/member/complete-userinfo.js"></script>
+<script type="text/javascript" src="../js/page/member/detail.js"></script>
+<script type="text/javascript" src="../js/page/member/complete-base.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="col-md-11 no-padding-right">
+			<div class="panel panel-default addInfoPanel">
+				<div class="panel-heading addInfo-heading">
+					<i class="fa fa-user fa-2x pull-left"></i>
+					<ol class="breadcrumb addInfobreadcrumb">
+						<li><a href="#">权限申请</a></li>
+						<li class="active">投资信息补全</li>
+					</ol>
+				</div>
+				<div class="jb-border-div"></div>
+				<div class="panel-body addInfo-body">
+					<div class="scroll-area" style="">
+						<div class="row">
+							<div class="col-sm-6">
+								<h3 class="toggle-baseinfo">
+									基本信息<span class="fa fa-angle-down"></span>
+								</h3>
+							</div>
+						</div>
+						<div class="row container-baseinfo">
+							<!-- 会员信息表单 -->
+							<form class="form-horizontal view-mode" id="info-person"
+								role="form" method="POST"
+								action="$link.contextPath/web/members/person/$!user.username"
+								style="display: none">
+								<!-- 选择会员类型 -->
+								<div class="row" id='group-user-type'>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">会员类型</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control" id="user-type" name="type">
+													<option value="person">个人</option>
+													<option value="organization">机构</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 会员信息 -->
+
+
+								<div class="row">
+									<div class="col-sm-6">
+										<!-- 姓名 -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">姓名:</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" name="realName">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<!-- 性别 -->
+										<div class=form-group>
+											<label class="col-sm-4 control-label required">性别:</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control" name="sex">
+													<option value="M">男</option>
+													<option value="F">女</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<!-- 职业 -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">职业</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<!-- 学历 -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">学历状况</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control">
+													<option value="">小学</option>
+													<option value="">初中</option>
+													<option value="">高中</option>
+													<option value="">大专</option>
+													<option value="">本科及以上</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<!-- 手机 -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">手机</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" name="mobile">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<!-- 座机 -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label">座机</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" name="phone">
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+
+								<div class=row>
+									<div class="col-sm-6">
+										<!-- 所在区域 -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">所在区域</label>
+											<div class="col-sm-2 col-bigger">
+												<span class="hidden-form-control"></span> <select
+													class="form-control no-side-padding"
+													onchange="loadCityOptions()">
+													<option value="0">浙江省</option>
+													<option value="1">云南省</option>
+												</select>
+											</div>
+											<div class="col-sm-2 col-bigger">
+												<span class="hidden-form-control"></span> <select
+													id="citySelection" class="form-control  no-side-padding"
+													name="region.id">
+
+												</select>
+											</div>
+											<div class="col-sm-2 col-bigger">
+												<span class="hidden-form-control"></span> <select
+													id="countySelection no-side-padding"
+													class="form-control  no-side-padding"></select>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<!-- 常住地址 -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">常住地址</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<!-- 邮编 -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label">邮编</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" name="postCode">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<!-- QQ -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label">QQ</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<!-- Email -->
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">Email</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">身份证号</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" name="idCardNumber">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">出生年月</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" name="birthday" id="birthday" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">年龄</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">开户行</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">开户行全称</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">银行账号</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">银行账户名</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">银行账户开户省(直辖市)</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">银行账户开户市(县)</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">银行账户开户银行网点</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">银行卡正面扫描图</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="file"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">身份证正面扫描图</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="file"
+													class="form-control" name="idCardFrontImg">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">身份证反面扫描图</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="file"
+													class="form-control" name="idCardBackImg">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- 提交重置Button -->
+								<div class="row row-button">
+									<div class="col-sm-5 col-sm-offset-6">
+										<div class="col-sm-4 col-xs-12">
+											<button type="submit" class="btn btn-default form-btn-save">保存</button>
+										</div>
+										<div class="col-sm-4 col-xs-12">
+											<button type="reset" class="btn btn-default form-btn-reset">重置</button>
+										</div>
+										<div class="col-sm-4 col-xs-12">
+											<button type="submit" class="btn btn-default form-btn-submit">提交申请</button>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- 机构信息表单 -->
+							<form class="form-horizontal view-mode" id="info-organization"
+								role="form" method="POST"
+								action="$link.contextPath/web/members/organization/$!user.username">
+
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">企业名称</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">所在区域</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control">
+													<option>华东</option>
+													<option>华南</option>
+													<option>华西</option>
+													<option>华北</option>
+													<option>华中</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">企业地址</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">邮编</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">所属行业</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input
+													type="hidden" id="org-type">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">企业性质</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control">
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">企业类型</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control">
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">主营业务</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control">
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">联系人</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">联系人座机</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class=row>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">联系人手机</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">联系人传真</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">企业座机</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">传真号</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">法人代表</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">法人性别</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control">
+													<option value="M">男</option>
+													<option value="F">女</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">法人学历状况</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <select
+													class="form-control">
+													<option>小学</option>
+													<option>初中</option>
+													<option>高中</option>
+													<option>大专</option>
+													<option>本科及以上</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">法人手机</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">法人QQ</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">法人Email</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">法人身份证号</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">法人出生年月</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">法人年龄</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">企业开户行</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="row">
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">开户行全称</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">银行账号</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">银行账户名</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">银行账户开户省(直辖市)</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">银行账户开户市(县)</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">银行账户开户银行网点</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="text"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">银行卡正面扫描图</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="file"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">法人身份证正面扫描图</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="file"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-sm-4 control-label required">法人身份证反面扫描图</label>
+											<div class="col-sm-7">
+												<span class="hidden-form-control"></span> <input type="file"
+													class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6"></div>
+								</div>
+
+								<!-- 提交重置Button -->
+								<div class="row row-button">
+									<div class="col-sm-5 col-sm-offset-6">
+										<div class="col-sm-4 col-xs-12">
+											<button type="submit" class="btn btn-default form-btn-save">保存</button>
+										</div>
+										<div class="col-sm-4 col-xs-12">
+											<button type="reset" class="btn btn-default form-btn-reset">重置</button>
+										</div>
+										<div class="col-sm-4 col-xs-12">
+											<button type="submit" class="btn btn-default form-btn-submit">提交申请</button>
+										</div>
+									</div>
+								</div>
+							</form>
+							<div class="col-sm-6 col-sm-offset-6">
+								<a class="link-edit-userinfo" href="complete_userinfo.html">编辑基本用户信息</a>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-6">
+								<h3 class="title-investinfo">投资信息</h3>
+							</div>
+						</div>
+
+						<!-- 个人投资信息表单 -->
+						<form class="form-horizontal info-person" id="investinfo-person"
+							role="form" method="POST" action="" style="display: none">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-sm-4 control-label">经办人</label>
+										<div class="col-sm-7">
+											<span class="hidden-form-control"></span> <input type="text"
+												class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-sm-4 control-label">授权服务中心</label>
+										<div class="col-sm-7">
+											<span class="hidden-form-control"></span> <input type="text"
+												class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-sm-4 control-label required">会员申请表第一页</label>
+										<div class="col-sm-7">
+											<span class="hidden-form-control"></span> <input type="file"
+												class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-sm-4 control-label required">会员申请表第二页</label>
+										<div class="col-sm-7">
+											<span class="hidden-form-control"></span> <input type="file"
+												class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- 提交重置Button -->
+							<div class="row row-button">
+								<div class="col-sm-5 col-sm-offset-6">
+									<div class="col-sm-4 col-xs-12">
+										<button type="submit" class="btn btn-default form-btn-save">保存</button>
+									</div>
+									<div class="col-sm-4 col-xs-12">
+										<button type="reset" class="btn btn-default form-btn-reset">重置</button>
+									</div>
+									<div class="col-sm-4 col-xs-12">
+										<button type="submit" class="btn btn-default form-btn-submit">提交申请</button>
+									</div>
+								</div>
+							</div>
+						</form>
+
+						<!-- 机构投资信息表单 -->
+						<form class="form-horizontal info-organization"
+							id="investinfo-organization" role="form" method="POST" action=""
+							style="display: none">
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-sm-4 control-label">经办人</label>
+										<div class="col-sm-7">
+											<span class="hidden-form-control"></span> <input type="text"
+												class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-sm-4 control-label">授权服务中心</label>
+										<div class="col-sm-7">
+											<span class="hidden-form-control"></span> <input type="text"
+												class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-sm-4 control-label required">会员申请表第一页</label>
+										<div class="col-sm-7">
+											<span class="hidden-form-control"></span> <input type="file"
+												class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-sm-4 control-label required">会员申请表第二页</label>
+										<div class="col-sm-7">
+											<span class="hidden-form-control"></span> <input type="file"
+												class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- 提交重置Button -->
+							<div class="row row-button">
+								<div class="col-sm-5 col-sm-offset-6">
+									<div class="col-sm-4 col-xs-12">
+										<button type="submit" class="btn btn-default form-btn-save">保存</button>
+									</div>
+									<div class="col-sm-4 col-xs-12">
+										<button type="reset" class="btn btn-default form-btn-reset">重置</button>
+									</div>
+									<div class="col-sm-4 col-xs-12">
+										<button type="submit" class="btn btn-default form-btn-submit">提交申请</button>
+									</div>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1 no-padding-left">
+			<div class="btn-group-vertical" id="sidebar">
+				<a class="btn btn-default" role="button"><i
+					class="fa fa-picture-o fa-3x"></i>行情展示</a> <a
+					class="btn btn-default active" role="button"> <i
+					class="fa fa-user fa-3x"></i> 权限申请
+				</a> <a class="btn btn-default" role="button"><i
+					class="fa fa-dollar fa-3x"></i>订单管理</a> <a class="btn btn-default"
+					role="button"><i class="fa fa-reply fa-3x"></i>债权转让</a> <a
+					class="btn btn-default" role="button"><i
+					class="fa fa-gear fa-3x"></i>我的帐户</a> <a class="btn btn-default"
+					role="button"><i class="fa fa-bar-chart-o fa-3x"></i>统计分析</a>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

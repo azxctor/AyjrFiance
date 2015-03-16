@@ -1,0 +1,193 @@
+<link href="$link.contextPath/assets/css/page/product/clearing_pkg_schd_list.css" rel="stylesheet"/>
+<script src="$link.contextPath/assets/js/page/product/clearing_pkg_schd_list.js" type="text/javascript"></script>
+<div id="packet-list">
+    <div id="search-wrapper" #if($!cleared) data-action="getclearedlist" #elseif(!$!cleared) data-action="getdefaultlist" #end>
+                <div class="row" >
+                    #if(!$!cleared)
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label class="control-label" for="operation-select">融资人姓名</label>
+                                    <input class="form-control" name="financierName" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                    #end
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="control-label" for="operation-select">融资包编号</label>
+                                <input class="form-control" name="packageId" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="control-label" for="operation-select">融资包简称</label>
+                                <input class="form-control" name="packageName" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    #if($!cleared)
+	                    <div class="col-xs-2">
+	                        <div class="form-group">
+	                            <label class="void-label">&nbsp;</label>
+	                            <button class="btn btn-mf-primary" id="btn-search">
+	                                <i class="fa fa-search"></i>
+	                                查询
+	                            </button>
+	                        </div>
+	                    </div>
+                    #end
+                    #if(!$!cleared)
+	                    <div class="col-xs-4">
+	                        <label class="control-label" for="operation-select">合计可还款额</label>
+	                        <div class="row">
+	                            <div class="col-xs-4 custom-right">
+	                                <div class="input-group">
+	                                    <select class="form-control form-inline"  name="amtOperation">
+	                                        #foreach($operation in $operationList)
+	                                            <option value="${operation}">$!{operation.text}</option>
+	                                        #end
+	                                    </select>
+	                                </div>
+	                            </div>
+	                            <div class="col-xs-6 custom-left">
+	                                <div class="input-group">
+	                                    <input class="form-control" name="totalAmt" type="text"/>
+	                                    <span  class="input-group-addon">元</span>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+                	#end
+                </div>
+                #if(!$!cleared)
+                   <div class="row">
+                     <div class="col-xs-4">
+                         <label class="control-label" id="search-date-label" for="search-investor">应还款日期</label>
+                         <div class="row">
+                             <div class="col-xs-6">
+                                 <div class="input-group">
+                                     <input class="form-control" id="search-start-date" name="startPaymentDate"  type="text" value=""/>
+                                     <span class="input-group-addon">
+                                         <i class="fa fa-calendar"></i>
+                                     </span>
+                                 </div>
+                             </div>
+                             <div class="col-xs-6">
+                                 <div class="input-group">
+                                     <input class="form-control" id="search-end-date" name="endPaymentDate"  type="text" value=""/>
+                                     <span class="input-group-addon">
+                                         <i class="fa fa-calendar"></i>
+                                     </span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-xs-2">
+                         <div class="form-group">
+                             <label class="void-label">&nbsp;</label>
+                             <button class="btn btn-mf-primary" id="btn-search">
+                                 <i class="fa fa-search"></i>
+                                 查询
+                             </button>
+                         </div>
+                     </div>
+                   </div>
+                 #end
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="table-search-result">
+                <thead>
+                    <tr>
+                        <th data-mData="financierName" data-bSortable="false">融资人</th>
+                        <th data-mData="packageId" data-bSortable="false">融资包编号</th>
+                        <th data-mData="_fnNameLink" data-bSortable="false">融资包简称</th>
+                        <th data-mData="packageQuota" data-bSortable="false" data-sFormatType="thousand">实际申购额（元）</th>
+                        <th data-mData="wrtrNameShow" data-bSortable="false">担保机构</th>
+                        <th data-mData="paymentDate" data-bSortable="false">应还款日期</th>
+                        <th data-mData="sequenceId" data-bSortable="false">还款期数</th>
+                        <th data-mData="payStatus.text" data-bSortable="false">状态</th>
+                        <th data-mData="debt" data-bSortable="false" data-sFormatType="thousand">欠款额（元）</th>
+                        <th data-mData="financerAmount" data-bSortable="false" data-sFormatType="thousand">融资人可还款额（元）</th>
+                        #if(!$!cleared)
+                            <th data-mData="_fnWarrantAmount" data-bSortable="false">担保机构可还款额（元）</th>
+                            <th data-mData="totalAmount" data-bSortable="false" data-sFormatType="thousand">合计可还款额（元）</th>
+                        #end
+                        <th data-mData="_fnOperateBtn" data-bSortable="false" width="80px">操作</th>
+                        <th data-mData="_fnLogLink" data-bSortable="false">日志</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Modal清分 -->
+<div class="modal modal-micro fade" id="modal-clear" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <form class="form-horizontal" id="form-clear" method="POST" novalidate="novalidate">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title">清分</h4>
+	            </div>
+	            <div class="modal-body">
+			        <div class="form-group">
+			          <label class="col-sm-3">&nbsp;</label>
+			          <div class="col-sm-6">
+			          	<select class="form-control" id="select-choose" name="clearType">
+			          		#foreach($!clearType in $!clearTypeList)
+			          			<option class="$!{clearType.code}" value="$!{clearType.code}">$!{clearType.text}</option>
+			          		#end
+			          	</select>
+			          </div>
+		            </div>
+		            <div id="clear-hidden"></div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-mf-primary" id="btn-modal-tosure">确定</button>
+	                <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+	            </div>
+	        </div>
+	    </div>
+	</form>
+</div>
+<!-- /.modal清分 -->
+<!-- Modal审核日志 -->
+<div class="modal modal-micro fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modal-title">日志</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-table">
+                    <table class="display" id="table-log" cellspacing="0" cellpadding="0" border="0">
+                        <thead>
+                            <tr>
+                                <th data-mData="operateTime">日志时间</th>
+                                <th data-mData="operateUser" data-bSortable="false">操作人</th>
+                                <th data-mData="action.text" data-bSortable="false">操作</th>
+                                <th data-mData="comment" data-bSortable="false">内容</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-notice"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-mf-primary" id="btn-modal-sure">确定</button>
+                <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.modal审核日志 -->

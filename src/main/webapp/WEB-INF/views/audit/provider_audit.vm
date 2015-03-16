@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/jquery.dataTables.flat.css">
+<link rel="stylesheet" href="$link.contextPath/assets/vendor/bootstrap-datepicker/css/datepicker.css">
+<link rel="stylesheet" href="$link.contextPath/assets/css/form.css">
+<link rel="stylesheet" href="$link.contextPath/assets/css/page/member/audit.css">
+<script src="$link.contextPath/assets/js/page/audit/provider-audit.js" type="text/javascript"></script>
+<script src="$link.contextPath/assets/js/page/audit/provider-audit-check.js" type="text/javascript"></script>
+<script src="$link.contextPath/assets/js/page/audit/audit-log.js" type="text/javascript"></script>
+#parse("audit/provider_audit_check.vm")
+#parse("audit/audit_log.vm")
+<div id="table-wrapper">
+	<div id="search-area" class="row search-area">
+    		<div class="col-sm-2">
+    			<label>用户名:</label>
+    			<div class="full-oqp">
+    				<input id="audit_userid" type="text" name="user_id" class="form-control"/>	
+                </div>	
+            </div>
+    		
+    		<div class="col-sm-2">
+    			<label  id="search-name">企业名称:</label>
+    			<div class="full-oqp">
+    				<input id="audit_orgid" type="text" name="name" class="form-control"/>	
+                </div>	
+            </div>
+			
+			<div class="col-sm-2">
+    			<label >审核状态:</label>
+    			     <div class="full-oqp">
+    						<select id="audit_status" class="form-control" name="audit_status">
+            					<option value="PENDDING">待审核</option>
+            					<option value="AUDITED">已审核</option>
+            				</select>
+                     </div>
+            </div>
+    		
+		<div class="col-sm-2">
+			<label style="width:100%">&nbsp;</label>
+			<div>
+                <a id="audit_provider_search" class="btn btn-mf-primary"><i class="fa fa-search"></i>查询</a>
+            </div>	
+		</div>
+	</div>
+		
+				 <table id="providerTable" class="dataTable">
+            		<thead>
+                            <tr>
+                                <th data-mData="userName" data-bSortable="false">用户名</th>
+                                <th data-mData="name" data-bSortable="false">企业名称</th>
+                                <th data-mData="region.fullText">所在区域</th>
+                                <th data-mData="orgNature.text" data-bSortable="false">企业性质</th>
+                                <th data-mData="orgLegalPerson" data-bSortable="false">法人代表</th>
+								<th data-mData="latestTs">最新提交时间</th>
+								<th data-mData="productServiceStatus.text" data-bSortable="false">审核状态</th>
+								<th data-mRender="_fnProviderRenderbtn" data-bSortable="false">操作</th>
+								<th data-mRender="_fnRenderlog" data-bSortable="false">日志</th>
+            				</tr>
+                    </thead>
+            		<tbody>
+            		</tbody>
+       			 </table>
+</div>
+<div  id="provider-wrapper" style="display:none" class="form-wrapper">
+	<h3 class="inner-form-title">基本信息</h3>
+	<form class="form-horizontal view-mode">
+	#parse("audit/basicinfo_agency_provider.vm")
+    </form>
+    <h3 class="inner-form-title">担保机构信息</h3>
+	
+	<form class="form-horizontal view-mode">
+	#parse("audit/agency_provider.vm")
+	 <div class="row check-row">
+			<div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">担保机构等级</label>
+                    <div class="col-sm-7">
+                        <select id="provider-level" style="display:none"> 
+						</select>
+						<span class="hidden-form-control" id="provider-level-span" style="display:none"></span> 
+                    </div>
+                </div>
+            </div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<div class="col-sm-7 col-sm-offset-4 ">
+                        <a class="btn audit-btn" id="product-provider-audit" style="float:right" data-toggle="modal" data-target="#providerCheckModal">审核</a>
+					</div>
+				</div>
+			</div>
+	   </div>	
+	  </form>
+</div>	
+
+

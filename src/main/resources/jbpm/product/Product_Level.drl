@@ -1,0 +1,13 @@
+package com.hengxin.platform.product.dto
+ 
+import com.hengxin.platform.product.dto.JbpmProductDto;
+ 
+rule "ProducterRule"
+	ruleflow-group "ProducterRuleGroup"
+	no-loop true
+    when
+		p:JbpmProductDto( violate == false , qualityPass == true );
+    then
+        p.setUser("grounder");
+        update(p);
+end

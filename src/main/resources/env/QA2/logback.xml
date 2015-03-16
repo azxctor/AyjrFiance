@@ -1,0 +1,68 @@
+<configuration scan="true" scanPeriod="30 seconds">
+	<contextName>hengxin-platform</contextName>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<withJansi>true</withJansi>
+		<encoder>
+			<pattern>%date %level [user: %X{userName:-unknown}] %logger{55} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="file"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${jboss.server.log.dir}/hengxin-platform.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${jboss.server.log.dir}/hengxin-platform.log.%i
+			</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>30</maxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>10MB</maxFileSize>
+		</triggeringPolicy>
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>%date %level [%thread] %logger{55} - %msg%n</pattern>
+			</layout>
+		</encoder>
+	</appender>
+
+	<appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<!-- in the absence of the class attribute, it is assumed that the desired 
+			discriminator type is ch.qos.logback.classic.sift.MDCBasedDiscriminator -->
+		<discriminator>
+			<key>jobId</key>
+			<defaultValue>hengxin-platform</defaultValue>
+		</discriminator>
+		<sift>
+			<appender name="FILE-${jobId}"
+				class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<file>${jboss.server.log.dir}/finance-test/${jobId}/${jobId}.log</file>
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+					<fileNamePattern>${jboss.server.log.dir}/${jobId}/${jobId}-%d{yyyy-MM-dd}.%i.log
+					</fileNamePattern>
+					<timeBasedFileNamingAndTriggeringPolicy
+						class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+						<maxFileSize>50MB</maxFileSize>
+					</timeBasedFileNamingAndTriggeringPolicy>
+					<maxHistory>30</maxHistory>
+				</rollingPolicy>
+				<encoder>
+					<pattern>%date %level [%thread] [user: %X{userName:-unknown}] %logger{55} - %msg%n</pattern>
+				</encoder>
+			</appender>
+		</sift>
+	</appender>
+	
+
+	<logger name="com.hengxin" level="debug"  />
+	<logger name="org.quartz" level="info" />
+	<logger name="com.hazelcast" level="info" />
+	<logger name="org.springframework" level="info" />
+	<logger name="org.apache.shiro" level="info" />
+
+	<root level="debug">
+		<appender-ref ref="console" />
+		<appender-ref ref="SIFT" />
+	</root>
+</configuration>

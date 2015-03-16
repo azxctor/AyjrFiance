@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head lang="ZH">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>融资包管理</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../vendor/font-awesome/css/font-awesome.min.css">
+
+    <link href="../../../vendor/datatables/css/jquery.dataTables.css" rel="stylesheet">
+
+    <link href="../../../vendor/dataTables.fixedColumns/css/dataTables.fixedColumns.css" rel="stylesheet">
+    <link href="../../../css/page/jquery.dataTables.flat.css" rel="stylesheet">
+
+    <link href="../../../vendor/bootstrap-datepicker/css/datepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/page/prototype/templ.css">
+
+    <script type="text/javascript" src="../../../js/require.js"></script>
+    <!-- Global variable module which will take variables from sever side -->
+    <script type="text/javascript">
+        define('global', {
+            context: '../../../../'
+        })
+    </script>
+    <style>
+        a i{ color:#784d20;}
+        .void-label{ width: 100%;}
+        .transfer-wrapper .col-xs-3{ text-align: right; padding-bottom:20px; }
+        .transfer-wrapper .col-xs-9{ text-align: left; }
+        #modal-owe .modal-content,#modal-get .modal-content,#modal-agreement .modal-content{ width: 800px; margin-left: -100px; }
+        .btn-group .btn{ background: #551f03; color:#FFF;}
+        .btn-group .btn:first-child{ margin-left:12px; }
+
+    </style>
+    <script type="text/javascript" src="../../../js/base.js"></script>
+</head>
+<body>
+<!--页面顶部-->
+<div class="top">
+    <img class="top-logo" src="../../../img/templ_img/logo.jpg">
+    <div class="top-time">
+        <span class="hours">18:35</span>
+            <span class="dates">
+                <span class="date">04-15</span>
+                <span class="week">TUE</span>
+            </span>
+    </div>
+    <div class="top-logout">
+        <i class="fa fa-user"></i> <span class="user-name">Nick Jones </span> <a href="javascript:void(0);" >退出</a>
+    </div>
+</div>
+
+<div class="page-wrapper">
+<!--页面内容-->
+<div class="right-blk">
+    <div class="right-blk-head">
+        <!--此处更改标题-->
+        <span class="right-blk-head-title">我的账户</span>
+        <span> > </span>
+        <span class="right-blk-head-subtitle">我的债权</span>
+        <!--此处更改标题-->
+    </div>
+    <div class="right-blk-line"></div>
+    <div class="right-blk-body">
+
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="form-inline">
+                    <label class="control-label">签约时间</label>
+                    <input type="text" name="start-time" id="search-start-time"/><span>-</span><input type="text" id="search-end-time"  name="end-time"  />
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+                <div class="form-inline">
+                    <button class="btn btn-mf-primary"><i class="fa fa-search"></i>查询</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="table-wrapper">
+                    <table class="dataTable-micro" id="invest-table" cellspacing="0" cellpadding="0" border="0">
+                        <thead>
+                        <tr> <th>编号</th><th>融资包简称</th> <th>年利率</th> <th>期限</th> <th>还款方式</th>  <th>本金</th>   <th>利息</th> <th>本金余额</th> <th>利息余额</th>  <th>剩余本息</th> <th>下一收益日</th>        <th>下一收益额</th>    <th>状态</th>    <th>操作</th>      </tr>
+                        </thead>
+                        <tbody>
+                      <!--      <tr><td>AX0201</td> <td><a href='common_detail.html?title=5&sub_title=0&role=1&status=14'>服装店融资</a></td>  <td>15%</td><td>三年</td><td>一次还清</td><td>6,000</td><td>600</td><td>222</td><td>100</td><td>500</td><td>2014.4.12</td><td>1.6</td> <td>还款中</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-xs check-get">
+                                            <i class="fa fa-jpy fa-lg" title="查看收益表"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-xs check-get">
+                                            <i class="fa fa-minus-square fa-lg" title="还款"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr> <td>AX0201</td><td><a href='common_detail.html?title=5&sub_title=0&role=1&status=14'>do游戏融资</a></td>  <td>15%</td><td>三年</td><td>一次还清</td><td>6,000</td><td>600</td><td>222</td><td>100</td><td>500</td><td>2014.4.12</td><td>1.6</td>   <td>待签约</td><td> </td></tr>
+                            <tr><td>AX0201</td> <td><a href='common_detail.html?title=5&sub_title=0&role=1&status=14'>理发店融资</a></td>  <td>15%</td><td>三年</td><td>一次还清</td><td>6,000</td><td>600</td><td>222</td><td>100</td><td>500</td><td>2014.4.12</td><td>1.6</td>   <td>待放款审批</td><td> </td></tr>
+                            <tr><td>AX0201</td> <td><a href='common_detail.html?title=5&sub_title=0&role=1&status=14'>微交易融资</a></td>  <td>15%</td><td>三年</td><td>一次还清</td><td>6,000</td><td>600</td><td>222</td><td>100</td><td>500</td><td>2014.4.12</td><td>1.6</td>   <td>订单废弃</td><td> </td></tr>
+                            <tr> <td>AX0201</td><td><a href='common_detail.html?title=5&sub_title=0&role=1&status=14'>服务平台融资</a></td>  <td>15%</td><td>三年</td><td>一次还清</td><td>6,000</td><td>600</td><td>222</td><td>100</td><td>500</td><td>2014.4.12</td><td>1.6</td>   <td>转让中</td><td> </td></tr>
+                            <tr><td>AX0201</td> <td><a href='common_detail.html?title=5&sub_title=0&role=1&status=14'>快玩游戏融资</a></td>  <td>15%</td><td>三年</td><td>一次还清</td><td>6,000</td><td>600</td><td>222</td><td>100</td><td>500</td><td>2014.4.12</td><td>1.6</td>   <td>逾期还款</td><td></td></tr>
+                            <tr><td>AX0201</td> <td><a href='common_detail.html?title=5&sub_title=0&role=1&status=14'>钢铁融资</a></td>  <td>15%</td><td>三年</td><td>一次还清</td><td>6,000</td><td>600</td><td>222</td><td>100</td><td>500</td><td>2014.4.12</td><td>1.6</td>  <td>转让中</td><td><div class='operation-box'><a class='check-get' href='javascript:void(0);'><i class="fa fa-jpy fa-lg" title="查看收益表"></i></a><a class='drop-transfer' href='javascript:void(0);' ><i class='fa fa-minus-square fa-lg'  title='撤单'></i></a></div></td></tr>
+                            <tr> <td>AX0201</td><td><a href='common_detail.html?title=5&sub_title=0&role=1&status=14'>长江地产融资</a></td>  <td>15%</td><td>三年</td><td>一次还清</td><td>6,000</td><td>600</td><td>222</td><td>100</td><td>500</td><td>2014.4.12</td><td>1.6</td>  <td>还款中</td><td><div class='operation-box'><a class='check-get' href='javascript:void(0);'><i class="fa fa-jpy fa-lg" title="查看收益表"></i></a></div></td></tr>
+                        --></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Modal还款表 -->
+<div class="modal fade modal-micro" id="modal-owe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" >还款表</h4>
+            </div>
+            <div class="modal-body">
+                <legend>    <h4>服装店融资还款表&nbsp&nbsp年利率：11.6%&nbsp&nbsp还款方式：等本等息</h4>  </legend>
+                <table class="table table-bordered table-striped" id="table-audit-log">
+                    <thead>
+                    <tr>
+                        <td colspan="4"><label>还款计划</label></td>
+                        <td rowspan="3"><label>实际还款</label></td>
+                        <td colspan="2">
+                            <label>违约还款额</label>
+                        </td>
+                        <td rowspan="3">
+                            <label>代偿金额</label>
+                        </td>
+                        <td rowspan="3"><label>还款状态</label></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><label>还款期数</label></td>
+                        <td rowspan="2"><label>还款日</label></td>
+                        <td colspan="2"><label>还款金额</label></td>
+                        <td rowspan="2"><label>违约金</label></td>
+                        <td rowspan="2"><label>罚息</label></td>
+                    </tr>
+                    <tr>
+                        <td><label>本金</label></td>
+                        <td><label>利息</label></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2014-1-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td>2,350.00</td>
+                        <td>273.01</td>
+                        <td>53.23</td>
+                        <td>273.01</td>
+                        <td>代偿</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2014-2-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td>2,623.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>已还</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2014-3-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td>2,623.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>已还</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>2014-4-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td>2,350.00</td>
+                        <td>273.01</td>
+                        <td>53.23</td>
+                        <td>0.00</td>
+                        <td>还款逾期</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>2014-5-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>未还</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>2014-6-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>未还</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>2014-7-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>未还</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>2014-8-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>未还</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>2014-9-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>未还</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>2014-10-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>未还</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>2014-10-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>未还</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>2014-11-12</td>
+                        <td>2500</td>
+                        <td>123.01</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>未还</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!--左菜单-->
+<div class="menu">
+<div class="menu-wrapper">
+    <div class="active on menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-code-fork"></i>
+        </div>
+        <h4>行情展示</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 信息补录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div   class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-book"></i>
+        </div>
+        <h4>正在融资</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 融资包管理
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 融资管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div   class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-pagelines"></i>
+        </div>
+        <h4>订单管理</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 订单管理
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-briefcase"></i>
+        </div>
+        <h4>债权转让</h4>
+        <span> > </span>
+
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 信息补录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div  class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-info"></i>
+        </div>
+        <h4>我的账户</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 账户信息
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+    <div  class="menu-blk-el">
+        <div class="menu-blk-el-ico">
+            <i class="fa fa-tasks"></i>
+        </div>
+        <h4>统计分析</h4>
+        <span> > </span>
+        <div class="sub-content">
+            <ul>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 统计操作
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="submenu-blk-el" href="#">
+                        <div class="submenu-blk-el-ico">
+                            <i class="fa fa-code-fork"></i> 会员管理
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sub-on">
+            <div class="menu-blk-el-ico-mini">
+                <i class="fa fa-code-fork"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="submenu-wrapper">
+    <a class="submenu-back submenu-blk-el" href="javascript:void(0);"><i class="fa fa-arrow-circle-o-left"></i></a>
+    <div class="submenu-content"></div>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-micro" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">确认终止</h4>
+            </div>
+            <div class="modal-body">
+                <div class="transfer-wrapper">
+                    <div class="row">
+                        <div class="col-xs-3">融资包简称</div>
+                        <div class="col-xs-9">服装店融资</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">年利率</div>
+                        <div class="col-xs-9">10%</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">最后还款日期</div>
+                        <div class="col-xs-9">2014-06-20</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">剩余本息</div>
+                        <div class="col-xs-9">10250.00元</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-3">转让报价</div>
+                        <div class="col-xs-9 input-group">
+                            <input type="text" class="transfer-input">
+                            <span class="input-group-addon">元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-mf-primary" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-mf-default">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal 债权转让-->
+<div class="modal fade modal-micro" id="modal-transfer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">债权转让报价</h4>
+            </div>
+            <div class="modal-body">
+                <div class="transfer-wrapper">
+                    <div class="row">
+                        <div class="col-xs-3">融资包简称</div>
+                        <div class="col-xs-9">服装店融资</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">年利率</div>
+                        <div class="col-xs-9">10%</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">最后还款日期</div>
+                        <div class="col-xs-9">2014-06-20</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">剩余本息</div>
+                        <div class="col-xs-9">10250.00元</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">转让报价</div>
+                        <div class="col-xs-9">
+                            <input type="text" class="transfer-input"> 元
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8 col-xs-offset-1"> <p class="text-danger">报价上限：剩余本息合计，即10250.00<br/>报价下限：剩余本息合计*90%，即9255.00</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn   btn-mf-primary" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-mf-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Modal收益表 -->
+<div class="modal fade modal-micro" id="modal-get" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" >收益表</h4>
+            </div>
+            <div class="modal-body">
+                <legend><h4>服装店融资收益表 年化收益率：9.2%</h4></legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td rowspan="2"><label>期数</label></td>
+                        <td rowspan="2"><label>日期</label></td>
+                        <td colspan="2">
+                            <label>预计收益额</label>
+                        </td>
+                        <td colspan="3">
+                            <label>实际收益额</label>
+                        </td>
+                        <td rowspan="2"><label>状态</label></td>
+                    </tr>
+                    <tr>
+                        <td><label>本金</label></td>
+                        <td><label>利息</label></td>
+                        <td><label>本金</label></td>
+                        <td><label>利息</label></td>
+                        <td><label>违约金</label></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2014-3-10</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                        <td>0.00</td>
+                        <td>已收</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">2</td>
+                        <td>2014-4-10</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>未收</td>
+                    </tr>
+                    <tr>
+                        <td>2014-4-16</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                        <td>0.00</td>
+                        <td>已收</td>
+                    </tr>
+                    <tr>
+                        <td>2014-4-16</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>50.00</td>
+                        <td>已收</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2014-5-10</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>2014-6-10</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>2014-7-10</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>2014-8-10</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>2014-9-10</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>2014-10-10</td>
+                        <td>0.00</td>
+                        <td>230.50</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>2014-11-10</td>
+                        <td>8,000.00</td>
+                        <td>230.50</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> <!-- /.收益表 -->
+</body>
+
+<!-- JavaScript -->
+<script src="../../../js/page/prototype/templ.js"></script>
+<script src="../../../js/page/prototype/product/finance_packet_manage_investor.js"></script>
+
+
+</html>

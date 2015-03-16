@@ -1,0 +1,43 @@
+<!-- Modal -->
+<div class="modal fade modal-micro" id="supply-contract-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">合同列表</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-2">
+                    <div>
+                        <form id="export-form" action="$link.contextPath/web/contract/exportExcel" method="post">
+                            <input id="export-packageid" type="hidden" name="packageId" value=""/>
+                            <button type="submit" class="btn btn-mf-primary" id="excel">
+                                <i class="fa fa-file-excel-o"></i>
+									导出excel
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <table id="contract-table">
+                    <thead>
+                        <tr>
+                            <th data-mData="userName" data-bSortable="false">甲方（出借人）</th>
+                            <th data-mData="userIdNumber" data-bSortable="false">身份证号（出借人）</th>
+                            <th data-mData="signedAmt" data-sFormatType="thousand">借款(元)</th>
+                            <th data-mData="signDate" data-bSortable="false">甲方签署日期</th>
+                            <th data-mData="_fnShowContract">合同编号</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-mf-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- Modal -->

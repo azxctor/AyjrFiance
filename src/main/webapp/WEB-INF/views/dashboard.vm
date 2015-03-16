@@ -1,0 +1,530 @@
+#set($emptyBody=true)
+#set($layout = "common/dashboard_layout.vm")
+<link href="$link.contextPath/assets/css/page/dashboard.css" rel="stylesheet">
+<!--控制面板蒙板-->
+<div class="mask">
+    <!--控制面板(请将内容放在thumbnail内)-->
+    <div class="container container-dashboard">
+		
+        <div class="row">
+            <!--投资-->
+            <span class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+                <span class="dashboard-item thumbnail" data-event="event-viewinvest">
+                    <!--投资背景图-->
+                    <span class="img-invest col-lg-8 col-md-8 col-sm-6">
+                        <img class="lazyloading" width="100%" height="100%" src="" data-original="$link.contextPath/assets/img/dashboard/dashboard-item1.jpg"></img>
+                    </span>
+                    <!--投资overlay-->
+					#if($dashboardLinkList&&$dashboardLinkList.size()>0)
+					<a #if($!{dashboardLinkList.get(0).menuUrl}!="") href="$link.contextPath/web/$dashboardLinkList.get(0).menuUrl"#end>
+                    <span class="overlay-invest col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <h2 class="title-invest">$dashboardLinkList.get(0).menuName</h2>
+                        <h4 class="subtitle-invest">$dashboardLinkList.get(0).code</h4>
+                        <span class="fa fa-chevron-circle-right"></span>
+                    </span>
+						</a>
+						#end
+                </span>
+            </span>
+
+			<!-- 行情 -->
+            <span class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                <span class="dashboard-item thumbnail" data-event="event-viewquotation">
+                    <!--行情背景图-->
+                    <span class="img-quotation col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <img class="lazyloading" width="100%" height="100%" src="" data-original="$link.contextPath/assets/img/dashboard/dashboard-item3.jpg"></img>
+                    </span>
+                    <!--行情overlay-->
+					#if($dashboardLinkList&&$dashboardLinkList.size()>1)
+					<a #if($!{dashboardLinkList.get(1).menuUrl}!="") href="$link.contextPath/web/$dashboardLinkList.get(1).menuUrl"#end>
+                    <span class="overlay-quotation col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="title-quotation">$dashboardLinkList.get(1).menuName</h2>
+                        <h4 class="subtitle-quotation">$dashboardLinkList.get(1).code</h4>
+                        <span class="fa fa-chevron-circle-right"></span>
+                    </span>
+                    </a>
+					#end
+                </span>
+            </span>
+            
+           
+
+            <!--融资-->
+            <span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <span class="dashboard-item thumbnail" data-event="event-viewfinancing">
+                     <!--融资背景图-->
+                    <span class="img-financing col-lg-6 col-md-6 col-sm-6">
+                        <img class="lazyloading" width="100%" height="100%" src="" data-original="$link.contextPath/assets/img/dashboard/dashboard-item2.jpg"></img>
+                    </span>
+                    <!--融资overlay-->
+					#if($dashboardLinkList&&$dashboardLinkList.size()>2)
+					<a #if($!{dashboardLinkList.get(2).menuUrl}!="") href="$link.contextPath/web/$dashboardLinkList.get(2).menuUrl"#end>
+                    <span class="overlay-financing col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h2 class="title-financing">$dashboardLinkList.get(2).menuName</h2>
+                        <h4 class="subtitle-financing">$dashboardLinkList.get(2).code</h4>
+                        <span class="fa fa-chevron-circle-right"></span>
+                    </span>
+                    </a>
+					#end
+                </span>
+            </span>
+        </div>
+
+        <div class="row">
+
+            <!--广告2-->
+            <span class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <span class="dashboard-item thumbnail" data-event="event-viewad2">
+                    <span class="img-ad2">
+                        <img class="lazyloading" width="100%" height="100%" src="" data-original="$link.contextPath/assets/img/dashboard/dashboard-item5.jpg" width="100%" height="100%"></img>
+                    </span>
+                </span>
+            </span>
+
+            <!--统计分析-->
+            <span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <span class="dashboard-item thumbnail" data-event="event-viewanalysis">
+                    <!--统计分析背景图-->
+                    <span class="img-analysis col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <img class="lazyloading" width="100%" height="100%" src="" data-original="$link.contextPath/assets/img/dashboard/dashboard-item4.jpg"></img>
+                    </span>
+                    <!--统计分析overlay-->
+					#if($dashboardLinkList&&$dashboardLinkList.size()>3)
+					<a #if($!{dashboardLinkList.get(3).menuUrl}!="") href="$link.contextPath/web/$dashboardLinkList.get(3).menuUrl" #end>
+                    <span class="overlay-analysis col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h2 class="title-analysis">$dashboardLinkList.get(3).menuName</h2>
+                        <h4 class="subtitle-analysis">$dashboardLinkList.get(3).code</h4>
+                        <span class="fa fa-chevron-circle-right"></span>
+                    </span>
+                    </a>
+					#end
+                </span>
+            </span>
+
+             <!--广告1-->
+            <span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <span class="dashboard-item thumbnail" data-event="event-viewad1">
+                    <!--广告1背景图-->
+                    <span class="img-ad1">
+                        <img class="lazyloading" width="100%" height="100%" src="" data-original="$link.contextPath/assets/img/dashboard/dashboard-item6.jpg"></img>
+                    </span>
+                    <!--广告1overlay-->
+                    <!-- <span class="overlay-ad1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="title-ad1">收益高达</h2>
+                        <h4 class="subtitle-ad1">小微金融</h4>
+                        <span class="content-ad1">12%</span>
+                    </span> -->
+                </span>
+            </span>
+
+            <!-- 更多 -->
+            <span class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <span class="dashboard-item thumbnail" data-event="event-openmore">
+                    <!--更多背景图-->
+                    <span class="img-more col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <img class="lazyloading" width="100%" height="100%" src="" data-original="$link.contextPath/assets/img/dashboard/dashboard-item7.jpg"></img>
+                    </span>
+                    <!--更多overlay-->
+					#if($dashboardLinkList&&$dashboardLinkList.size()>4)
+					<a #if($!{dashboardLinkList.get(4).menuUrl}!="") href="$link.contextPath/web/$dashboardLinkList.get(4).menuUrl" #end>
+                    <span class="overlay-more col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="title-more">更多</h2>
+                        <h4 class="subtitle-more">More</h4>
+                        <span class="fa fa-chevron-circle-right"></span>
+                    </span>
+                    </a>
+					#end
+                </span>
+            </span>
+            
+        </div>
+    </div>
+	
+	<!-- Modal -->
+	#if($!promptMsg == "true")
+
+	#end
+	
+	<!--Questionnaire Modal-->
+	#if($!promptRiskQuestionnaire == "true")
+	<div class="modal fade modal-micro" id="ques-warning-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="modal-form" method="POST">
+                <div class="modal-content" id="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="modal-title">通知</h4>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                        <h3 class="text-center">投资会员风险偏好问卷调查温馨提示</h3>
+                        <p>尊敬的会员：</p>
+                        <p class="note-cnt">欢迎您参加安益金融投资会员风险偏好问卷调查。</p>
+                        <p class="note-cnt">安益金融始终坚持为投资会员提供合法、规范、风险可控的投资渠道，持续推进多层次风险防控体系建设。风险偏好是个人投资行为的重要特征，也是市场风险分散机制的重要依据，此次调查关系到安益金融每一位投资会员的切身权益。</p>
+                        <p class="note-cnt">为充分了解您的投资偏好和风险承受能力，以便我们向您提供更加安全、可靠的投资服务，请您结合自身情况认真填写，我们将稳妥保管您填写的信息。</p>
+                        <p class="note-cnt">调查结果将计入您的风险偏好总评分，若未填写，您的此项评分为0，评分等级将影响您后期在安益金融的项目投资上限。</p>
+                        <p class="note-cnt">谢谢合作！</p>
+                        <p class="note-cnt text-right"><span class="note-author">安益金融</span></p>
+
+                    </div>
+                    <div id="modal-footer-wrapper">
+                    </div>
+                </div>
+            </form><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+	
+	
+	<div class="modal fade modal-micro" id="ques-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <form id="modal-form" method="POST">
+                <div class="modal-content" id="modal-content">
+                    <div class="modal-header">
+                        ##<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="modal-title">问卷</h4>
+                    </div>
+                    <div class="modal-body" id="ques-modal-body">
+						<div class="alert alert-danger" role="alert" style="display:none" id="error-message">
+                          <span id="error-message-content">&nbsp</span>
+                        </div>
+							
+						<div class="ques-wrapper">
+							  <div class="ques-item">
+                                <span>1&nbsp;.&nbsp;您的年龄：</span>
+                                  <input type="text"  name="ques-age" maxlength="3" class="ques-age" value="$!age" disabled />
+                              </div>
+							  
+							  <div class="ques-item">
+                                 <div><span>2&nbsp;.&nbsp;您的职业属于：</span></div>
+								 <div class="choice-wrapper">
+									<div class="row choice-line">
+                                        <div class="col-sm-6">
+    										<input type="radio" data-score="10" name="q2"/>
+                                            <span class="choice-content">A. 政府机关及企事业单位</span>
+    									</div>
+    									
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="8" name="q2"/>
+                                            <span class="choice-content">B. 非国有企业</span>
+                                        </div>
+                                    </div>	
+									
+									<div class="row choice-line">
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="6" name="q2"/>
+                                            <span class="choice-content">C. 房产、金融中介服务公司</span>
+                                        </div>
+    									
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="4" name="q2"/>
+                                            <span class="choice-content">D. 自营事业者</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="2" name="q2"/>
+                                            <span class="choice-content">E. 其它</span>
+                                        </div>
+                                    </div>	
+                                 </div>	
+                              </div>
+							  
+							   <div class="ques-item">
+                                 <div><span>3&nbsp;.&nbsp;您的投资年限：</span></div>
+								 <div class="choice-wrapper">
+									<div class="row choice-line">
+                                        <div class="col-sm-6">
+    										<input type="radio" data-score="5" name="q3"/>
+                                            <span class="choice-content">A. 10年以上</span>
+    									</div>
+    									
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="4" name="q3"/>
+                                            <span class="choice-content">B. 5-10年</span>
+                                        </div>
+                                    </div>	
+									
+									<div class="row choice-line">
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="3" name="q3"/>
+                                            <span class="choice-content">C. 1-5年</span>
+                                        </div>
+    									
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="2" name="q3"/>
+                                            <span class="choice-content">D. 1年以内</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="1" name="q3"/>
+                                            <span class="choice-content">E. 无</span>
+                                        </div>
+                                    </div>	
+                                 </div>	
+                              </div>
+							  
+							  <div class="ques-item">
+                                 <div><span>4&nbsp;.&nbsp;您的投资经验可以被概括为：</span></div>
+								 <div class="choice-wrapper">
+									<div class="row choice-line">
+                                        <div class="col-sm-12">
+    										<input type="radio" data-score="5" name="q4"/>
+                                            <span class="choice-content">A. 丰富:是一位积极和有经验的证券投资者,并倾向于自己作出投资决定</span>
+    									</div>
+    									
+                                    </div>	
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="4" name="q4"/>
+                                            <span class="choice-content">B. 一般：具有一定的证券投资经验，需要进一步的指导</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="3" name="q4"/>
+                                            <span class="choice-content">C. 有限：有过购买国债，货币型基金等保本型金融产品投资经验</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="1" name="q4"/>
+                                            <span class="choice-content">D. 无:除银行活期和定期储蓄存款外，基本没有其他投资经验 </span>
+                                        </div>
+                                    </div>
+                                 </div>	
+                              </div>
+							  
+							  <div class="ques-item">
+                                 <div><span>5&nbsp;.&nbsp;您是否了解安益金融的相关知识：</span></div>
+								 <div class="choice-wrapper">
+									<div class="row choice-line">
+                                        <div class="col-sm-12">
+    										<input type="radio" data-score="1" name="q5"/>
+                                            <span class="choice-content">A. 从来没有参与过安益金融的交易，对安益金融的知识完全不了解</span>
+    									</div>
+    									
+                                    </div>	
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="3" name="q5"/>
+                                            <span class="choice-content">B. 学习过安益金融知识，但没有实际操作经验，不懂平台投资技巧</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="4" name="q5"/>
+                                            <span class="choice-content">C. 了解安益金融的投资知识，并且有过实际操作经验，懂得一些安益金融投资技巧</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="5" name="q5"/>
+                                            <span class="choice-content">D. 参与过安益金融交易，平台投资知识丰富，具有一定的专业水平 </span>
+                                        </div>
+                                    </div>
+                                 </div>	
+                              </div>
+							  
+							  <div class="ques-item">
+                                 <div><span>6&nbsp;.&nbsp;如您有机会通过承担额外风险（包括本金可能受到损失）来明显增加潜在回报，那么您：</span></div>
+								 <div class="choice-wrapper">
+									<div class="row choice-line">
+                                        <div class="col-sm-12">
+    										<input type="radio" data-score="1" name="q6"/>
+                                            <span class="choice-content">A. 不愿意承担任何额外风险</span>
+    									</div>
+    									
+                                    </div>	
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="2" name="q6"/>
+                                            <span class="choice-content">B. 愿意动用部分资金承担较小的额外风险</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="3" name="q6"/>
+                                            <span class="choice-content">C. 愿意动用部分资金承担较大的额外风险</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="4" name="q6"/>
+                                            <span class="choice-content">D. 愿意动用全部资金承担较小的额外风险</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-12">
+    										<input type="radio" data-score="5" name="q6"/>
+                                            <span class="choice-content">E. 愿意动用全部资金承担较大的额外风险</span>
+                                        </div>
+                                    </div>
+                                 </div>	
+                              </div>
+							  
+							  <div class="ques-item">
+                                 <div><span>7&nbsp;.&nbsp;您的婚姻状况：</span></div>
+								 <div class="choice-wrapper">
+									<div class="row choice-line">
+                                        <div class="col-sm-6">
+    										<input type="radio" data-score="10" name="q7"/>
+                                            <span class="choice-content">A. 未婚</span>
+    									</div>
+    									
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="8" name="q7"/>
+                                            <span class="choice-content">B. 双薪无子</span>
+                                        </div>
+                                    </div>	
+									
+									<div class="row choice-line">
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="6" name="q7"/>
+                                            <span class="choice-content">C. 双薪有子</span>
+                                        </div>
+    									
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="4" name="q7"/>
+                                            <span class="choice-content">D. 单薪有子</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="2" name="q7"/>
+                                            <span class="choice-content">E. 其它</span>
+                                        </div>
+                                    </div>	
+                                 </div>	
+                              </div>
+							  
+							  <div class="ques-item">
+                                 <div><span>8&nbsp;.&nbsp;您的固定资产状况：</span></div>
+								 <div class="choice-wrapper">
+									<div class="row choice-line">
+                                        <div class="col-sm-6">
+    										<input type="radio" data-score="10" name="q8"/>
+                                            <span class="choice-content">A. 多套房无房贷</span>
+    									</div>
+    									
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="8" name="q8"/>
+                                            <span class="choice-content">B. 自宅无房贷</span>
+                                        </div>
+                                    </div>	
+									
+									<div class="row choice-line">
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="6" name="q8"/>
+                                            <span class="choice-content">C. 一套房有房贷</span>
+                                        </div>
+    									
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="4" name="q8"/>
+                                            <span class="choice-content">D. 多套房有房贷</span>
+                                        </div>
+                                    </div>
+									
+									<div class="row choice-line">
+    									<div class="col-sm-6">
+    										<input type="radio" data-score="2" name="q8"/>
+                                            <span class="choice-content">E. 无自有房产</span>
+                                        </div>
+                                    </div>	
+                                 </div>	
+                              </div>
+                        </div>	
+                    </div>
+                    <div class="modal-footer">
+						<button type="button" class="btn btn-mf-primary" id="ques-submit">提交</button>
+        				<button type="button" class="btn btn-mf-default" data-dismiss="modal" id="ques-do-next">下次再做</button>
+                    </div>
+                </div>
+            </form><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+	
+	<div class="modal fade modal-micro" id="ques-result-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+                <div class="modal-content" id="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="modal-title">通知</h4>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                         <p id="ques-result-msg"></p>
+                    </div>
+                    <div class="modal-footer">
+						<button type="button" class="btn btn-mf-primary" data-dismiss="modal">确定</button>
+                    </div>
+				</div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+	#end
+
+	
+	<!-- Modal -->
+	#if($!promptBulletin == "true")
+    <div class="modal fade modal-micro" id="transfer-open-modal" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="modal-form" method="POST">
+                <div class="modal-content" id="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="modal-title">通知</h4>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                        <h3 class="text-center">关于开通债权转让功能的通知</h3>
+                        <p>尊敬的用户：</p>
+                        <p class="note-cnt">为提高用户资金使用的流动性，方便用户对已购买的未到期债权项目进行灵活处置，安益金融现已开通债权转让功能。您可登录“我的账户”页面选择“我的债权”进行操作，具体规则请详见“债权转让规则”。</p>
+                        <p class="note-cnt">特此通知。</p>
+                        <p class="note-cnt text-right"><span class="note-author">安益金融</span></p>
+						
+						<div class="checkbox text-left">
+                          <label>
+                            <input type="checkbox" value="" id="transfer-check">
+								下次不再提醒
+                          </label>
+                        </div>
+                    </div>
+                    <div id="modal-footer-wrapper" class="modal-footer">
+						<button type="button" class="btn btn-mf-primary" id="transfer-submit">确定</button>
+                    </div>
+                </div>
+            </form><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+	#end
+	
+    
+	
+	
+    <span class="hide" id="isShow-modal">$promptMsg</span>
+	
+		 
+ 	#if($login == "true")
+	 <div id="listOnlyList"></div><!--独立窗口-->
+	 <div id="listMoreList"></div><!--滚动窗口-->
+	 <div id="temp_notice_comtent" style="display:none;"></div>
+	#end  
+	
+</div>
+	
+	
+
+
+<!--页面所需脚本-->
+<script type="text/javascript" src="$link.contextPath/assets/js/page/dashboard.js"></script>
+

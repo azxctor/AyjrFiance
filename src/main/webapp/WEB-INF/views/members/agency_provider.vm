@@ -1,0 +1,91 @@
+<div id="agency-provider" class="agency-provider $!hasPrefix" data-prefix="$!productProviderPrefix">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label required">特许经营许可证</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="privilege_license" name="privilege_license"></span> 
+					<input maxlength="20" type="text" class="form-control" name="privilege_license" data-validate="{required:true}" />
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">服务地区范围</label>
+				<div class="col-sm-8">
+    				<span class="hidden-form-control" name="service_region.fullText"></span>
+    				<div class="col-sm-4 col-bigger">
+    					<select id="org-province" name="org_province"
+    						class="form-control no-side-padding" data-ignore="true">
+    						#foreach($province in $provinceList)
+    							<option value="$province.code">$province.text</option>
+    						#end
+    					</select>
+    				</div>
+    				<div class="col-sm-4 col-bigger">
+    					<select name="org_city" id="org-city" style="display:none;"
+    						class="form-control  no-side-padding" data-ignore="true">
+    					</select>
+    				</div>
+    				<div class="col-sm-4 col-bigger">
+    					<select name="org_county" id="org-county" style="display:none;"
+    						class="form-control  no-side-padding" data-ignore="true">
+    					</select>
+    				</div>
+    				<input type="hidden" id="org-region" name="service_region.code" value=""></input>
+                </div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">服务行业范围</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" name="service_industry.text"></span>
+					<select
+						class="form-control" name="service_industry.code">
+						#foreach($industry in $industryList)
+							<option value="$industry.code">$industry.text</option>
+						#end
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">受理人</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="agent" name="agent"></span>
+					<input maxlength="25" type="text" class="form-control" #if ($dto.productFixedAgent) readonly #end name="agent" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">担保公司简介</label>
+				<div class="col-sm-8">
+					<span class="hidden-form-control" data-prop="desc" name="desc" style="height:auto;word-break:break-all;white-space:normal;">&nbsp;</span>
+					<textarea maxlength="250" class="form-control" name="desc" style="height:100px"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	#if($dto.displayProviderLevel())
+		<div class="row" style="display:none;">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">等级</label>
+					<div class="col-sm-8">
+						<span class="hidden-form-control" name="level.text"></span>
+	                    <input type="text" class="form-control" name="level.text" disabled  data-ignore="true" >
+					</div>
+				</div>
+			</div>
+		</div>
+	#end
+	
+</div>

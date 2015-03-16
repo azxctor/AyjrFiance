@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/jee 
+	http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+	<import resource="classpath:jbpm-service.spring.xml" />
+
+	<jee:jndi-lookup id="jbpmDataSource" jndi-name="java:jboss/datasources/JBPM_MFDS"
+		proxy-interface="javax.sql.DataSource" />
+
+	<bean id="jbpmConfig" class="com.hengtiansoft.sc.jbpm.config.JbpmServiceConfigurer"
+		lazy-init="false">
+		<property name="locations">
+			<list>
+				<value>classpath:jbpm/jbpm-config.properties
+				</value>
+			</list>
+		</property>
+		<property name="jbpmFiles">
+			<list>
+				<value>jbpm/product/Product_Level.drl</value>
+				<value>jbpm/product/Product_Process_Sell.bpmn</value>
+				<value>jbpm/product/Finance_Product_Process.bpmn</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true"></property>
+	</bean>
+
+</beans>
